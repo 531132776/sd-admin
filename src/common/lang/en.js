@@ -132,6 +132,7 @@ export default {
     HousingTypes:'Housing types',
     SystemData:'System data',
     TradingHours:'Trading hours',
+    TradingOrder:'Trading order',
     HousingSourceAddress:'Housing source address', 
     FinalCommissionList:'Final commission list',
     TotalMoney:'Total money',

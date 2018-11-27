@@ -54,7 +54,8 @@ axios.interceptors.request.use(config => {
 	return config;
 }, error => Promise.reject(error));
 
-axios.interceptors.response.use(response => 
+axios.interceptors.response.use(
+	response => 
 	response.data.result === 0 || response.data.result === 1002 ? Promise.resolve(response.data) : Promise.reject(response.data), error => Promise.reject(error));
 Vue.prototype.$axios = axios;
 Vue.prototype.$qs = qs;
@@ -64,7 +65,6 @@ Vue.config.productionTip = false
 
 //定义路由守卫 处理登陆跳转问题
 router.beforeEach((to, from, next) => {
-	
 	//console.log('router gard...',to);
 	if (to.meta.requireAuth) { //需要登录
 		if (sessionStorage.getItem('accessToken')) { //已登录

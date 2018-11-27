@@ -82,7 +82,7 @@ export default {
                                   this.routePath = item3.permissionUrl;
                                 }else{
                                   this.routePath = item.permissionUrl;
-                                  console.log( item.permissionUrl,'item.permissionUrl'  )
+                                  // console.log( item.permissionUrl,'item.permissionUrl'  )
                                 }
                               }
                             })
@@ -108,7 +108,7 @@ export default {
               }
 
               localStorage.setItem("store",JSON.stringify(this.$store.state))
-              console.log( this.routePath ,'this.routePath')
+              // console.log( this.routePath ,'this.routePath')
               this.$router.replace({path:this.routePath }) 
             } 
           }

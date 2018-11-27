@@ -119,6 +119,7 @@ export default  {
     HousingTypes:'交易属性',
     SystemData:'收据',
     TradingHours:'交易时间',
+    TradingOrder:'交易订单',
     HousingSourceAddress:'房源地址',  
     TotalMoney:'总金额',
     company:'公司',

@@ -50,7 +50,7 @@
             <el-form label-width="160px" class="d_flex" :model="house" :rules="rules" ref="ruleForm" >
                 <el-form-item prop="projectMainImg">
                     <span slot="label"> {{$t('projectImg')}}1:</span>
-                    <el-upload  name="submitFile" class="avatar-uploader" action="/api/pc/file/upload"
+                    <el-upload  name="submitFile"  class="avatar-uploader" action="/api/pc/file/upload"
                         :show-file-list="false" :on-success="handImgOneSuccess">
                         <img v-if="imageUrl1" :src="imageUrl1" class="avatar">
                         <i v-else class="el-icon-plus avatar-uploader-icon"></i>

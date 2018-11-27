@@ -20,14 +20,14 @@
         <el-table :data="developerSaleList" :header-cell-style="{'background':'#E5E5E5','color:':'#333333'}" stripe
             max-height="622" size="mini" v-loading="loading" element-loading-text="loading" element-loading-spinner="el-icon-loading"
             element-loading-background="rgba(0, 0, 0, 0.8)">
-            <el-table-column prop="date" :label="$t('info')" header-align="center" align="center" >
+            <el-table-column prop="date" :label="$t('info')" header-align="center" align="center" width="500">
                 <template slot-scope="scope">
                     <div class="info">
                         <div class="credent">
                             <img :src="scope.row.projectMainImg" alt="">
                         </div>
                         <div class="address">
-                            <p class="code">{{$t('UploadNumber')}}:{{scope.row.applyCode}}</p>
+                            <p class="code">{{$t('projectCode')}}:{{scope.row.projectCode}}</p>
                             <p class="detail-addr">
                                 <i class="el-icon-location-outline" style="width:10px;height:13px;margin-right:4px;;"></i>
                                 {{scope.row.city}}{{scope.row.community}}{{scope.row.subCommunity}}{{scope.row.address}}

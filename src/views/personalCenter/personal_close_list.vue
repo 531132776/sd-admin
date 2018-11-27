@@ -7,12 +7,23 @@
                         
                 <p class="title">{{$t('closerecord')}}</p>
 
-                <el-tabs v-model="activeName" @tab-click="handleClick" v-if="moduleType==0">
-                    <el-tab-pane :label="$t('complaints')" name="first"></el-tab-pane>
-                    <el-tab-pane :label="$t('feedback')" name="second"></el-tab-pane>
-                </el-tabs>                
+                <el-tabs v-model="activeName" @tab-click="handleClick">
+                    <template v-if="moduleType==0">
+                        <el-tab-pane :label="$t('complaints')" name="first"></el-tab-pane>
+                        <el-tab-pane :label="$t('feedback')" name="second"></el-tab-pane> 
+                    </template>
+                    <template v-if="moduleType==1">
+                        <el-tab-pane :label="`${$t('Commissioningrecord')}${$t('closerecord')}`" name="first"></el-tab-pane>
+                        <el-tab-pane :label="`${$t('doRefund')}${$t('closerecord')}`" name="second"></el-tab-pane>
+                    </template>
+                    <template v-else>
+                        <el-tab-pane :label="`${$t('TradingOrder')}${$t('closerecord')}`" name="first"></el-tab-pane>
+                        <el-tab-pane :label="`${$t('doRefund')}${$t('closerecord')}`" name="second"></el-tab-pane>
+                    </template>
+                    
+                </el-tabs>  
 
-                <template v-if="searchVal.type==0">
+                <template v-if="moduleType==0 &&searchVal.type==0　|| moduleType==1 || moduleType==2">
                     <el-button type="success" @click="refreshList(null)">Default sort</el-button>
                     <el-button  class="mr-10" @click="refreshList(0)">{{$t('Rent')}}</el-button>
                     <el-button  class="mr-10" @click="refreshList(1)">{{$t('Sale')}}</el-button>                     
@@ -114,9 +125,20 @@ export default {
     mounted(){
         if( this.moduleType==0 ){ //PC-客服
             this.urlStr = "/api/pc/center/order/closes"
+        }else if( this.moduleType==1 ){ //1 -pc财务
+            if( this.searchVal.type==0){
+                this.urlStr = "/api/pc/final/commission/close/list";//成单结佣
+            }else{
+                this.urlStr = "/api/pc/refund/close/list";//退款
+            }
         }else if( this.moduleType==2 ){//2-pc内勤
-            this.urlStr = "/api/pc/internal/close/order/list"
-        } 
+            if(this.searchVal.type==0){
+                this.urlStr = "/api/pc/internal/close/order/list";//交易单
+            }else{
+                this.urlStr = "/api/pc/refund/review/close/list"//退款
+            }
+            
+        }
         this.getInterClose();
     },
     methods:{
@@ -179,6 +201,19 @@ export default {
         handleClick(tab, event){
             this.searchVal.type = tab.index;
             this.table_loading = true;
+            if( this.moduleType==1 ){ //1 -pc财务
+                if( this.searchVal.type==0){
+                    this.urlStr = "/api/pc/final/commission/close/list";//成单结佣
+                }else{
+                    this.urlStr = "/api/pc/refund/close/list";//退款
+                }
+            }else if(this.moduleType==2){
+                if(this.searchVal.type==0){
+                    this.urlStr = "/api/pc/internal/close/order/list";//交易单
+                }else{
+                    this.urlStr = "/api/pc/refund/review/close/list"//退款
+                }
+            }
             this.getInterClose();
         }
     }
