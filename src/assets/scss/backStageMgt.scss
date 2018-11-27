@@ -1,0 +1,68 @@
+// 后台管理业务scss
+// 角色
+.role-page{
+    &.role-detail{
+       ul.block{
+           li{
+               .el-input{
+                   width: 240px;
+               }
+           }
+       }
+       .el-radio-group{
+           margin-left: 160px;
+           display: flex;
+           flex-wrap:wrap; 
+           .el-radio {
+               width: 120px;
+               margin-left: 0px;
+               margin-right: 40px;
+               margin-bottom: 20px;
+           }
+       }
+       .block{
+            max-height: 400px!important;
+       }
+   } 
+}
+
+// 资源管理
+.permission-page,.role-page{
+    .section{
+        .block{
+            max-height: 600px;
+            overflow-y: auto;
+            .el-tree{
+                background: transparent;
+                width: 100%;
+                .el-tree-node{
+                    margin-bottom: 10px;
+                    .el-tree-node__label{
+                        margin-left: 10px;
+                    }
+                }
+                .custom-tree-node {
+                    flex: 1;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    font-size: 14px;
+                    padding-right: 8px;
+                }
+            }
+        }
+        ul.block{
+            li{
+                .el-input{
+                    width: 240px;
+                }
+                >span{
+                    display: inline-block;
+                    width: 150px;
+                    text-align: right;
+                    padding-right: 5px;
+                }
+            }
+        }
+    }
+}

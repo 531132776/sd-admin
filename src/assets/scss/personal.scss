@@ -1,0 +1,220 @@
+
+//个人中心
+.personal_center {
+    .personal_pic {
+      height: 80px;
+      padding: 40px 20px;
+      img {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        margin-right: 10px;
+      }
+      > div {
+        display: inline-block;
+        vertical-align: bottom;
+        i.warning {
+          color: #f39700;
+        }
+      }
+    }
+  
+    // .el-tabs {
+      p.title {
+        border-left: 2px solid #00b660;
+        padding-left: 5px;
+        margin-bottom: 20px;
+      }
+      div.personal_detail {
+        // height: 228px;
+        padding: 20px 0;
+        padding-left: 48px;
+        background: #f7f7f7;
+        .el-form-item__label {
+          padding-right: 20px;
+        }
+        img.personal_detail_pic {
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+        }
+      }
+      .tablelist_close {
+        margin-top: 10px;
+        img {
+          width: 48px;
+          height: 48px;
+          vertical-align: middle;
+          margin-right: 10px;
+          float: left;
+        }
+        .order_detail {
+          text-align: left;
+          width: 75%;
+          position: relative;
+          i{
+              display: inline-block;
+              color: #fff!important;
+              position: absolute;
+              right: 0;
+              top: 0;
+              padding: 0 5px;
+              border-radius: 3px;
+          }
+          i.rent{
+              background: #00B660;   
+          }
+          i.sale{
+              background: #F39700;
+          }
+          .rent{color: #00B660; }
+          .sale{color: #F39700;}
+        }
+    //   }
+    }
+    // 弹窗
+    .el-dialog {
+      .el-input {
+        // width: 260px;
+      }
+      .validateCode_input {
+        .el-input {
+          width: 170px;
+          margin-right: 10px;
+        }
+      }
+    }
+    .page {
+      text-align: right;
+      padding: 10px 0;
+    }
+  }
+
+//   关单记录
+.persona_close{
+    .el-breadcrumb{
+        margin-bottom: 35px;
+    }
+    .section{
+        ul.progress{
+            display: flex;
+            justify-content: space-around;
+            li{text-align: center;
+                i{
+                    display: inline-block;
+                    width: 48px;
+                    height: 48px;
+                    border-radius: 50%;
+                    line-height: 48px;
+                    text-align: center;
+                    margin-bottom: 10px;
+                }            
+                &.success{ 
+                    i{background: #00B660;color: #fff;} 
+                }
+                &.unsuccess{ i{background: #F7F7F7;color: #666;} }
+            }
+
+        }
+        .remark{
+            background: #F7F7F7;
+            padding: 20px;
+        }
+    }
+}
+// 排班
+.personal_schedule{
+    p.title {
+        border-left: 2px solid #00b660;
+        padding-left: 5px;
+        margin-bottom: 20px;
+        &.click-tag{
+            cursor: pointer;
+        }
+    }
+    div.section{
+        padding: 10px;
+        .calendar_header,.calendar_body{
+            flex-wrap: wrap;
+            li{
+                width: 14%;
+                margin-bottom: 20px;
+                text-align: center;
+                .colorF{color: transparent;} 
+                .day{
+                    display: block;
+                    margin-bottom: 10px;
+                    position: relative;
+                }
+                .el-select{margin: 0 5px;}
+                i.dot{
+                    display: inline-block;
+                    width: 6px;
+                    height: 6px;
+                    border-radius: 50%;
+                }
+                i.tip{
+                    position: absolute;
+                    left: 60%;
+                    top: 0;
+                    font-size: 10px;
+                }
+                .el-select{
+                    input{
+                        &[name='bg-red']{ color: $red;}
+                        &[name='bg-orange']{ color: $orange;}
+                        &[name='bg-lightgreen']{ color: $light-green;}
+                        &[name='bg-blue']{ color: $blue;}
+                        &[name='bg-primary']{ color: $primary;}
+                    }
+                }
+            }
+        }
+        .schedule-list{
+            font-size: 14px;
+            li{
+                margin-bottom: 20px;
+            }
+            i.dot{
+                display: inline-block;
+                width: 6px;
+                height: 6px;
+                border-radius: 50%;
+                margin-right: 10px;
+            }
+            span{
+                &:nth-of-type(1){
+                    display: inline-block;
+                    width: 85px;
+                    margin-right: 100px;
+                }
+                &:nth-of-type(2){
+                    color: #333333;
+                    font-size: 16px;
+                    font-weight:500;
+                }
+            }
+        }
+    }
+    .footer{
+        margin-bottom: 70px;
+        margin-top: 30px;
+        text-align: center;
+        .el-button{width: 240px;}
+    }
+    
+}
+
+// 内勤关单记录
+.inner_closelist{
+    .el-table{
+        img.map_pic{
+            width: 10px;
+            height: 13px;
+            margin-right: 0px;
+            vertical-align: middle;
+            padding-top: 5px;
+            padding-right: 5px;
+        }
+    }
+}

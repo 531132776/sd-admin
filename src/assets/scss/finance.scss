@@ -1,0 +1,72 @@
+// 财务样式scss
+.finance_page{
+    position: relative;
+    .el-pagination{
+        padding: 10px 0;
+        text-align: right;
+    }
+    i.label{
+        padding: 0px 5px;
+        border-radius: 3px;
+        color: #fff;   
+    }
+    a{color: $primary}
+
+    // 线上列表
+    &.transaction_list{
+        .el-table{
+            img{
+                width: 48px;
+                height: 48px;
+                margin-right: 10px;
+                &.map_pic{
+                    width: 10px;
+                    height: 13px;
+                    margin-right: 0px;
+                    vertical-align: middle;
+                }
+            }
+            .order-detail{
+                position: relative;
+                width: 80%;
+                text-align: left;
+                i.label{
+                    position: absolute;
+                    right: 0;
+                    top: 0;
+                }           
+            }
+        }
+        a.export-button{
+            display: inline-block;
+            height: 44px;
+            line-height: 44px;
+            width: 240px;
+            border-radius: 3px;
+            text-align: center;
+            color: #fff;
+        }
+    }
+    // 线上详情
+    &.transaction_detail{
+        .section{
+            ul.block{
+                li{
+                    .el-input{
+                        width: 120px;
+                    }
+                    >span{
+                        display: inline-block;
+                        width: 150px;
+                        text-align: right;
+                        padding-right: 5px;
+                    }
+                }
+            }
+        } 
+        .el-button{
+            width: 240px;
+            height: 44px;
+        }
+    }
+}

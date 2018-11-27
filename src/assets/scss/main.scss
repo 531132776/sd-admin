@@ -1,0 +1,77 @@
+@import './variables.scss';
+@import './finance.scss';
+@import './personal.scss';
+@import './backStageMgt.scss';
+@import './customer.scss';
+
+//清除默认样式
+ul,li{ padding:0;margin:0;list-style:none}
+i{font-style: normal;}
+a{ text-decoration:none;  color:#333; }
+
+
+// 通用样式
+.section{
+    .section-title{
+        border-left: 2px solid #00B660;
+        padding-left: 5px;
+        margin-bottom: 20px;
+    }
+    .block{
+        background: #F7F7F7;
+        padding: 20px 60px;
+        display: flex;
+        flex-wrap: wrap;
+        li{
+            width: 50%;
+            margin-bottom: 20px;
+        }
+    }
+    textarea{
+        padding: 0.2rem;
+        font-family: '微软雅黑';
+        &::placeholder{
+            font-family: '微软雅黑';
+        }
+    }
+}
+.width240{width: 240px;}
+.el-pagination{
+    padding: 10px 0;
+    text-align: right;
+}
+
+// 表格通用样式
+.el-table{
+    img{
+        width: 48px;
+        height: 48px;
+        margin-right: 10px;
+        &.map_pic{
+            width: 10px;
+            height: 13px;
+            margin-right: 0px;
+            vertical-align: middle;
+        }
+    }
+    .order-detail{
+        position: relative;
+        width: 80%;
+        text-align: left;
+        i.label{
+            position: absolute;
+            right: 0;
+            top: 0;
+            padding: 0px 5px;
+            border-radius: 3px;
+            color: #fff;  
+        }           
+    }
+}
+
+// 文件上传后达到指定数量，不显示上传按钮
+.no-uploadIcon{
+    div.el-upload{
+        display: none;
+    }
+}

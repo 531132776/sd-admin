@@ -1,0 +1,95 @@
+
+
+//公共颜色，公共类等
+$light_grey:#666;
+$gray:#F7F7F7;
+$light:#D8D8D8;
+$dark:#333;
+$black:#000;
+$green:#00B660;
+$orange:#F39700;
+$primary:$green;
+$spacer:10px;
+$blue:#007AFF;
+$red:#E21010;
+$light-green:#7ED321;
+
+.color-white{ color: #fff;}
+.color-light{ color: $light_grey;}
+.light{color:$light; }
+.dark{color: $dark;}
+.color-black{color: $black;}
+.color-primary{ color: $primary;}
+.color-orange{ color: $orange;}
+.bg-primary{    background-color: $primary;}
+.bg-orange{     background-color: $orange;}
+.bg-gray { background-color: $gray;}
+.bg-blue{ background-color: $blue;}
+.bg-red{ background-color: $red;}
+.bg-lightgreen{ background-color:$light-green; }
+.color-red{ color: $red; }
+.color-blue{ color: $blue;}
+.color-lightgreen{ color: $light-green;}
+
+.font-s{font-size: 10px;}
+.font-s12{font-size: 12px;}
+
+.float-right{float: right;}
+.float-left{float: left;}
+
+.mt-5{  margin-top: $spacer * 0.5 !important; }
+.mt-10{ margin-top: $spacer * 1 !important; }
+.mt-15{ margin-top: $spacer * 1.5 !important; }
+.mt-20{ margin-top: $spacer * 2 !important; }
+
+.mr-5{  margin-right: $spacer * 0.5 !important; }
+.mr-10{ margin-right: $spacer * 1 !important; }
+.mr-15{ margin-right: $spacer * 1.5 !important; }
+.mr-20{ margin-right: $spacer * 2 !important; }
+
+.mb-5{  margin-bottom: $spacer * 0.5 !important; }
+.mb-10{ margin-bottom: $spacer * 1 !important; }
+.mb-15{ margin-bottom: $spacer * 1.5 !important; }
+.mb-20{ margin-bottom: $spacer * 2 !important; }
+
+.ml-5{  margin-left: $spacer * 0.5 !important; }
+.ml-10{ margin-left: $spacer * 1 !important; }
+.ml-15{ margin-left: $spacer * 1.5 !important; }
+.ml-20{ margin-left: $spacer * 2 !important; }
+
+
+// 居中方式
+.h-center {
+    display: inline-block;
+    position: absolute;
+    left: 50%;
+    transform: translatex(-50%);
+}
+.v-center {
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    transform: translatey(-50%);
+}
+
+.h-v-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%)
+}
+
+.d_flex{
+    display: flex;
+}
+.flex_wrap{
+    flex-wrap: wrap;
+    .el-form-item{
+        width: 45%;
+    }
+    
+}
+
+.min-width500{
+    min-width: 500px;
+}
