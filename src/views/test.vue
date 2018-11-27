@@ -19,6 +19,7 @@
             }
         },
         methods:{
+            
                 getTESTtime(val){
                     // 48小时内
                     let selectTimeStr = new Date(val).getHours()*3600 + new Date(val).getMinutes()*60 + new Date(val).getSeconds();
