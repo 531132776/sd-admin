@@ -181,10 +181,10 @@
       },
       getValidCode() {
         //获取手机验证码
-        console.log("验证码");
+        // console.log("验证码");
         this.$axios.post('/api/pc/send/sms/code', this.$qs.stringify({ mobile: this.PhoneValid.mobile }))
           .then(res => {
-            console.log('获取验证码:', res);
+            // console.log('获取验证码:', res);
           })
       },
       checkRole() {//客服上传房源-判断是否是新用户

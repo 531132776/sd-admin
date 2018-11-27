@@ -15,6 +15,7 @@
                         text-color="#fff"
                         :unique-opened="true"
                         :default-active="routePath"  
+                        :default-openeds="routeIndex"
                         active-text-color="#409EFF" 
                         router
                         @open="handleOpen"
@@ -49,7 +50,7 @@
                     </el-col>
                   </el-row>
             </el-aside>
-            <el-main style="height:100vh;" v-loading="loading" element-loading-text="拼命加载中" element-loading-spinner="el-icon-loading" element-loading-background="rgba(0, 0, 0, 0.8)">
+            <el-main style="height:100vh;" v-loading="loading" element-loading-text="Loading..." element-loading-spinner="el-icon-loading" element-loading-background="rgba(0, 0, 0, 0.8)">
                 <div class="main-header">
                   <el-button class="mr-10" @click="changeLanguage">{{$i18n.locale === "zh" ? 'English' : 'Chinese' }}</el-button>
                     <!-- <a href="javascript:void(0);">消息</a>
@@ -83,7 +84,8 @@ export default {
   data() {
     return {
       permissionList: [],
-      routePath:''
+      routePath:'',
+      routeIndex:[]
     };
   },
   computed: {
@@ -93,6 +95,7 @@ export default {
   },
   mounted() {
     this.routePath=this.$route.fullPath;
+    this.routeIndex = this.$store.getters.getRouteIndex;
     setTimeout(() => {
       this.permissionList = this.$store.getters.getPermissionList;
     }, 300);
@@ -109,18 +112,19 @@ export default {
       console.log("切换语言", this.$i18n.locale);
       this.$i18n.locale = this.$i18n.locale === "zh" ? "en" : "zh";
     },
-    getPermissionList() {//获取资源列表
-      this.$axios
-        .post("/api/pc/get/permissions")
-        .then(res => {
-          if (res.result == 0) {
-            this.permissionList = res.dataSet;
-          }
-        })
-        .catch(err => this.$message.error(err.message));
-    },
+    // getPermissionList() {//获取资源列表
+    //   this.$axios
+    //     .post("/api/pc/get/permissions")
+    //     .then(res => {
+    //       if (res.result == 0) {
+    //         this.permissionList = res.dataSet;
+    //       }
+    //     })
+    //     .catch(err => this.$message.error(err.message));
+    // },
     selectIndex(index,indexPath){
-      console.log( index,indexPath  )
+      // console.log( index,indexPath  )
+      this.$store.dispatch('setRouteIndex',indexPath);
       // if(index != '/home/innerUser'){
         if( indexPath.length>2){ //当前点击为三级,设置页面增删改查权限
           let arr = this.permissionList[indexPath[0].split('-')[1]].children[indexPath[1].split('-')[1]].children;
@@ -129,7 +133,7 @@ export default {
               this.$store.dispatch('addPermission',element.children);
               if(element.children.length>0){
                 element.children.forEach((ele)=>{
-                  console.log(ele.permissionCode.split(':')[1])
+                  // console.log(ele.permissionCode.split(':')[1])
                   let str = ele.permissionCode.split(':')[1];
                   this.$store.dispatch('setpermissionCode',str);
                 })
@@ -156,7 +160,7 @@ export default {
         .post("/api/pc/logout")
         .then(res => {
           if (res.result == 0) {
-            this.$message.success('退出成功！');
+            this.$message.success(res.message);
             this.$router.replace({name:'login'});
           }
         })

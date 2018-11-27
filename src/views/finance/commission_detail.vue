@@ -85,7 +85,7 @@ export default {
                     -this.orderDetail.regionLeaderTakeKeyFee*10000
                     -this.orderDetail.regionLeaderFee*10000
                     -this.orderDetail.elseAssistantAmount*10000)/10000;
-                    console.log( this.companyAmount ,'this.companyAmount ' )
+                    // console.log( this.companyAmount ,'this.companyAmount ' )
                 })
                 .catch(err => this.$message.error(err.message));   
         },

@@ -77,7 +77,7 @@
             reloadContractList() {
                 this.$axios.post('/api/pc/contract/list', this.$qs.stringify(this.pagination))
                     .then(res => {
-                        console.log(res);
+                        // console.log(res);
                         this.contractList = res.dataSet || [];
                         this.pagination.pageIndex = res.pageInfo?res.pageInfo.pageNum:1;
                         this.pagination.pageSize = res.pageInfo?res.pageInfo.pageSize:10;
@@ -105,7 +105,7 @@
                 this.reloadContractList();
             },
             view(row) {//合同详情
-                console.log('投诉id：', row);
+                // console.log('投诉id：', row);
                 if(row.orderType==0){ //租房
                     this.$router.push({name:'contractDetail_rent',params:{id:row.id}});
                 }else if( row.orderType==1 ){ //出售

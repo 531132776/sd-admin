@@ -92,7 +92,7 @@
             loadRefundApprovalListList() {//改为退款审批的接口 
                 this.$axios.post('/api/pc/refund/review/list', this.$qs.stringify(this.pagination))
                     .then(res => {
-                        console.log(res);
+                        // console.log(res);
                         this.refundApprovalList = res.dataSet || [];
                         this.pagination.pageIndex = res.pageInfo ? res.pageInfo.pageNum : 1;
                         this.pagination.pageSize = res.pageInfo ? res.pageInfo.pageSize : 10;

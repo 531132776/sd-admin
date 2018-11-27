@@ -3,10 +3,10 @@
     <div class="login-window">
       <div class="title">welcome hi sandy</div>
       <div class="in">
-          <input type="text" v-model.trim="loginInfo.username" placeholder="请输入登录账号" style="margin:24px 0 20px 0;">
+          <input type="text" v-model.trim="loginInfo.username" :placeholder="$t('Loginmobilenumber')" style="margin:24px 0 20px 0;">
       </div>
       <div class="in">
-        <input type="password" v-model.trim="loginInfo.password" @keyup.enter="login" placeholder="请输入登录密码">
+        <input type="password" v-model.trim="loginInfo.password" @keyup.enter="login" :placeholder="$t('Loginpassword')">
       </div>
       <div class="forget">
         <label for=""><input type="checkbox"/><span>记住用户</span></label>
@@ -33,7 +33,8 @@ export default {
         password:''
       },
       permissionList:[],
-      routePath:''
+      routePath:'',
+      routeIndex:[]
     }
   },
   computed:{
@@ -56,7 +57,7 @@ export default {
         .then(res => {
           if (res.result == 0) {
             if( res.dataSet == null || res.dataSet.length == 0){
-              this.$message.warning('无权限，请切换账号登录！');
+              this.$message.warning(this.$t('Nopermission'));
               return false;
             }else{
               console.log('-----------------------login---------------------------')
@@ -67,22 +68,32 @@ export default {
                     if(element.children.length==0){
                       arr = res.dataSet[0].children;
                       this.routePath = element.permissionUrl;
+                      this.routeIndex = [`1-${i}`,element.permissionUrl];
+
                     }else if(element.children.length>0){
                       arr = element.children;
                       element.children.forEach((item,i2)=>{
+
                         if(i2==0){
+
                           if(item.children.length==0){
                             arr = element.children;
                             this.routePath = item.permissionUrl;
+                            this.routeIndex = [`1-${i}`,`2-${i2}`,item.permissionUrl];
+
                           }else if( item.children.length>0){
                             arr =  item.children;
                             arr.forEach((item3,i3)=>{
+
                               if(i3==0){
+
                                 if(item3.permissionUrl!=null && item3.permissionUrl!=""){
                                   this.routePath = item3.permissionUrl;
+                                  this.routeIndex = [`1-${i}`,`2-${i2}`];
+
                                 }else{
                                   this.routePath = item.permissionUrl;
-                                  // console.log( item.permissionUrl,'item.permissionUrl'  )
+                                  this.routeIndex = [`1-${i}`,`2-${i2}`,item.permissionUrl];
                                 }
                               }
                             })
@@ -92,9 +103,11 @@ export default {
                     }
                   }
               });
+
               this.$store.dispatch('addpermissionList',res.dataSet);
               this.$store.dispatch('addPermission',arr);
               this.$store.dispatch('setRoutePath',this.routePath);
+              this.$store.dispatch('setRouteIndex',this.routeIndex);
               if(arr.length>0){
                 arr.forEach((ele)=>{
                   if( ele.permissionCode!=''||ele.permissionCode!=null){

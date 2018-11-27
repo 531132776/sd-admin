@@ -219,7 +219,7 @@ export default {
             const _this = this;
             let arr = this.dateArr; //日历数据
             let brr = this.salesData;  //业务员数据
-            console.log(arr,'arr' )
+            // console.log(arr,'arr' )
             arr.forEach((ele)=>{
                 if(ele!=='null'){
                     if( ele.idArr.length < this.salesData.length ){ //如果排班id有减少

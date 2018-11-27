@@ -173,7 +173,7 @@
                 try {
                     // 先保存信息
                     let res = await this.$axios.post('/api/pc/add/owner/apply',this.$qs.stringify(this.house));
-                    console.log(res,'await')
+                    // console.log(res,'await')
                     if(!this.$route.query.memberMobile){
                         //重新加载
                         this.loadHouse();
@@ -256,7 +256,7 @@
             },
             housingTypeDictcode(val){
                 this.$set(this.house, 'housingTypeDictcode', val[1]);
-                console.log(this.house.housingTypeDictcode)
+                // console.log(this.house.housingTypeDictcode)
             }
         }
     }

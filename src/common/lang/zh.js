@@ -559,7 +559,7 @@ export default  {
             Permissioncodestring:	"权限代码字符串",
             Addedsuccessfully:	"添加成功",
             Modifiedsuccessfully:	"修改成功",
-            Nopermission:	"无权限，请切换账号登录",
+            Nopermission:	"无权限，请切换账号登录!",
             Suretodeletetherole:	"确定要删除该角色吗?",
             Enablethisrole:	"确定将该角色启用?",
             Disablethisrole	:"确定将该角色禁用?",

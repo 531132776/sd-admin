@@ -95,7 +95,7 @@ export default {
     loadWithdrawList(){
       this.$axios.post('/api/pc/get/obtained/list', this.$qs.stringify(this.pagination))
           .then(res => {
-            console.log(res);
+            // console.log(res);
             this.withdrawList = res.dataSet || [];
             this.pagination.pageIndex = res.pageInfo ? res.pageInfo.pageNum : 1;
             this.pagination.pageSize = res.pageInfo ? res.pageInfo.pageSize : 10 ;

@@ -73,6 +73,7 @@ export default {
                 pageSize:10,
                 total:100,
                 orderStatus:'2,3,4,5',//固定传值
+                tradingStatus :0
             },
             tableData:[],
         }
@@ -123,7 +124,7 @@ export default {
             this.queryContractList();
         },
         view(item){
-            console.log(item.standby2)
+            // console.log(item.standby2)
             if(item.standby2!=''){
                 this.$confirm(this.$t('Thecontractisexisting'), this.$t('prompt'), {
                     confirmButtonText: this.$t('confirm'),

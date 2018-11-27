@@ -38,7 +38,7 @@
         let loadingInstance = this.$Loading.service({ fullscreen: true, text: 'loading', spinner: 'el-icon-loading', background: 'rgba(56, 53, 53, 0.6)' });
         this.$axios.post('/api/pc/support/cities')
           .then(res => {
-            console.log(res)
+            // console.log(res)
             this.city = res.dataSet;
           }).catch(err => this.$message.error(err.message))
           .finally(() => this.$nextTick(() => {
@@ -57,8 +57,8 @@
         // data.sub.push(newChild);
       },
       remove(node, data) {//移除节点
-        console.log(node);
-        console.log(data);
+        // console.log(node);
+        // console.log(data);
         // const parent = node.parent;
         // const children = parent.data.children || parent.data;
         // const index = children.findIndex(d => d.id === data.id);

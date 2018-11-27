@@ -283,7 +283,7 @@
 
       },
       handleAvatarSuccess(res, file) { //成功上传
-        console.log('uploadImg:', res)
+        // console.log('uploadImg:', res)
         this.imgSrc = URL.createObjectURL(file.raw);
         this.$set(this.currentUser, 'userLogo', res.fid);
       },

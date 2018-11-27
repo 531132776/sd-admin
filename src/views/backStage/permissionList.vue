@@ -76,7 +76,7 @@ export default {
         },
         add(data){
             if(data){
-                console.log(data)
+                // console.log(data)
                 // sessionStorage.setItem('parentId',data.id);
                 sessionStorage.setItem('permission',JSON.stringify({
                     parentId:data.id,

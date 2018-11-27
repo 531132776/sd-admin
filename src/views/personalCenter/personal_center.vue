@@ -260,7 +260,7 @@ export default {
     },
     // 上传头像
     handleAvatarSuccess(res, file){
-      console.log(res)
+      // console.log(res)
       if(res.state==0){
         this.userLogo = res.fid;
         this.userLogoUrl = res.url;

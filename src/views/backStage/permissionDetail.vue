@@ -89,7 +89,7 @@ export default {
             this.permissionDetail.parentId =JSON.parse(sessionStorage.getItem('permission')).parentId;
             this.permissionDetail.currentLevel = JSON.parse(sessionStorage.getItem('permission')).currentLevel+1;
         }
-        console.log(  this.permissionID,this.permissionDetail )        
+        // console.log(  this.permissionID,this.permissionDetail )        
     },
     mounted(){        
     },

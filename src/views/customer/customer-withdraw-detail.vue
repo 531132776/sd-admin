@@ -115,7 +115,7 @@
       this.$axios
         .post(`/api/pc/get/obtained/detail/${this.$props.id}`)
         .then(res => {
-          console.log('下架详情', res);
+          // console.log('下架详情', res);
           this.detail = res.dataSet ? res.dataSet : this.detail;
         })
         .catch(err => this.$message.error(err.message));

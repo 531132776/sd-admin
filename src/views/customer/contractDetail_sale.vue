@@ -213,7 +213,7 @@ export default {
     };
   },
   beforeMount() {
-    console.log("id:", this.$props.id);
+    // console.log("id:", this.$props.id);
     this.queryDetail();
   },
   mounted(){
@@ -231,12 +231,12 @@ export default {
             if(this.detail.additionalTerms==null ){
                 this.detail.additionalTerms = [];
             }
-            console.log( res.dataSet  )
+            // console.log( res.dataSet  )
         })
         .catch(err => this.$message.error(err.message));
       },
       editContract(){
-          console.log(this.additionalTerms)
+        //   console.log(this.additionalTerms)
           this.$axios.post('/api/pc/contract/update',
           this.$qs.stringify({orderId:this.$props.id,additionalTerms:JSON.stringify(this.detail.additionalTerms)}) 
           ).then(res=>{

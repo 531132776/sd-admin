@@ -569,7 +569,7 @@
                         this.$message({ type: 'success', message: res.message });
                         this.$router.push({ name: 'houseUpLoad' });
                     }).catch(err => {
-                        console.log(err);
+                        // console.log(err);
                         this.$message.error(err.message)
                     }).finally(() => {
                         this.$nextTick(() => {
@@ -592,7 +592,7 @@
             }
         },
         beforeMount() {
-            console.log('memberId--->', this.$props.memberId);
+            // console.log('memberId--->', this.$props.memberId);
             this.house.memberId = this.$props.memberId;
             //房屋类型字典
             let houseTypeMapPro = this.$axios.post(`/api/pc/dict/get/1`, {});
@@ -614,7 +614,7 @@
 
                     //------->房屋状态字典
                     this.houseStatusMap = resList[1].dataSet.items || [];
-                    console.log("houseSourceMap:", resList[2].dataSet.items);
+                    // console.log("houseSourceMap:", resList[2].dataSet.items);
 
                     //-------->房间配套字典
                     this.houseMatchingMap = resList[2].dataSet.items || [];

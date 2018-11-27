@@ -181,7 +181,7 @@ export default {
         // 查看关单详情
         view(code) {
             // this.$store.commit('updateType', this.$route.params.type);
-            console.log(code)
+            // console.log(code)
             if(this.searchVal.type==0){
                 this.$router.push({ name: "personal_close", params: { id: code } });
             }else{

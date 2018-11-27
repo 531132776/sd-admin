@@ -52,11 +52,21 @@ axios.interceptors.request.use(config => {
 		config.headers.auth = 'CDGHKFDSHKFGBSDHBFHWMKGBFSGHKGHKGBHK';
 	}
 	return config;
-}, error => Promise.reject(error));
+}, error =>{
+	return Promise.reject(error)
+});
 
 axios.interceptors.response.use(
-	response => 
-	response.data.result === 0 || response.data.result === 1002 ? Promise.resolve(response.data) : Promise.reject(response.data), error => Promise.reject(error));
+	response => {
+		// response.data.result === 0 || response.data.result === 1002 ? Promise.resolve(response.data) : Promise.reject(response.data)
+		if( response.data.result === 1001 ){
+			router.push('/login');	
+		}
+		return Promise.resolve(response.data);
+	}, error =>{
+		return Promise.reject(error)	
+	} 
+);
 Vue.prototype.$axios = axios;
 Vue.prototype.$qs = qs;
 Vue.prototype.$Loading = Loading;

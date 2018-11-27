@@ -129,7 +129,7 @@ export default {
                         this.closeData = res.dataSet;   
                     }else if(this.moduleType==2){
                         this.innerData = res.dataSet;
-                        console.log( this.innerData )
+                        // console.log( this.innerData )
                         this.$axios.post('/api/pc/get/progress/list', 
                         this.$qs.stringify({ type: this.innerData.order.orderType === 0 ? 50 : 51 })
                         ).then(res=>{

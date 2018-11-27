@@ -73,7 +73,7 @@
             }
         },
         async beforeMount() {
-            console.log(this.$props)
+            // console.log(this.$props)
             // 查房源详情
             let res = await this.$axios.post(`/api/pc/loans/detail/${this.$props.id}`);
             this.detail = res.dataSet;

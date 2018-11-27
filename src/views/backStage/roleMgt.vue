@@ -144,7 +144,7 @@
                 this.queryList();
             },
             getUseState(val, row) { //角色勾选禁用，启用
-                console.log(val, row)
+                // console.log(val, row)
                 let str = '';
                 if (val) { str = this.$t('Disablethisrole') } else { str = this.$t('Enablethisrole') }
                 this.$confirm(str, this.$t('prompt'), {

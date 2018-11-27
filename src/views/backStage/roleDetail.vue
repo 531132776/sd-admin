@@ -166,7 +166,7 @@ export default {
         },
         updatePermission(){
             // 调用修改权限的接口
-            console.log(this.permissionArr,'调用修改权限的接口')
+            // console.log(this.permissionArr,'调用修改权限的接口')
                 // return false;
             this.$axios
                 .post(`/api/pc/permission/grant/${this.permissionArr.join(',')}/${this.roleDetail.id}`,

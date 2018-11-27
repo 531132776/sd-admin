@@ -240,7 +240,7 @@ export default {
   },
   mounted(){
       this.queryDetail();
-      console.log( this.$route.query.id ,this.$route.query.isDelivery)
+    //   console.log( this.$route.query.id ,this.$route.query.isDelivery)
       if(this.$route.query.isDelivery){
           this.isDelivery = this.$route.query.isDelivery;
       }else{

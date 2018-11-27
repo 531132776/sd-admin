@@ -12,7 +12,8 @@ export default new Vuex.Store({
     detail:null,//查看
     update:null,//更新
     delete:null,//删除
-    routePath:null
+    routePath:null,
+    routeIndex:[]
   },
   getters:{ //取值
     getPermission(state){
@@ -29,6 +30,9 @@ export default new Vuex.Store({
     },
     getRoutePath(state){
       return state.routePath;
+    },
+    getRouteIndex(state){
+      return state.routeIndex;
     }
 },
   mutations: {
@@ -54,6 +58,9 @@ export default new Vuex.Store({
     },
     syncRoutePath(state,str){
       state.routePath = str;
+    },
+    syncRouteIndex(state,arr){
+      state.routeIndex = arr;
     }
   },
   actions: {
@@ -71,6 +78,9 @@ export default new Vuex.Store({
     },
     setLoading(context,str){ //全局loading
       context.commit('setLoadingState',str);
-    }
+    },
+    setRouteIndex(context,arr){  //当前打开的 sub-menu 的 index 的数组
+      context.commit('syncRouteIndex',arr);
+    },
   }
 })

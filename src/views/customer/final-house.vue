@@ -1015,7 +1015,7 @@
 
                         //------->房屋状态字典
                         this.houseStatusMap = resList[2].dataSet.items;
-                        console.log("houseSourceMap:", resList[2].dataSet.items);
+                        // console.log("houseSourceMap:", resList[2].dataSet.items);
 
                         //-------->房间配套字典
                         this.houseMatchingMap = resList[3].dataSet.items;
@@ -1091,12 +1091,12 @@
 
             },
             saveAnswer(val) {//新增保存自动应答到服务端
-                console.log(val);
+                // console.log(val);
                 //添加房源id
                 let answer = Object.assign(val, { houseId: this.$props.id, applyId: this.housingApplication.id });
                 this.$axios.post('/api/pc/house/addAutoReplySetting', this.$qs.stringify(answer))
                     .then(res => {
-                        console.log('出售新增自动应答,', res);
+                        // console.log('出售新增自动应答,', res);
                         this.getAutoAnswerList();
                     }).catch(err => this.$message.error(err.message));
             },
@@ -1125,7 +1125,7 @@
                 this.autoAnswer = Object.assign(this.autoAnswer, { houseId: this.$props.id, applyId: this.housingApplication.id });
                 this.$axios.post('/api/pc/house/addAutoReplySetting', this.$qs.stringify(this.autoAnswer))
                     .then(res => {
-                        console.log('新增自动应答:', res);
+                        // console.log('新增自动应答:', res);
                         if (res.result === 0) {
                             this.$message({
                                 message: '添加成功',
@@ -1149,7 +1149,7 @@
                 }).then(() => {
                     this.$axios.post('/api/pc/house/deleteAutoReply', this.$qs.stringify({ autoReplyId: val.id }))
                         .then(res => {
-                            console.log('删除自动应答:', res);
+                            // console.log('删除自动应答:', res);
                             this.$message({ type: 'success', message: 'success' });
                             this.getAutoAnswerList();
                         });
@@ -1626,7 +1626,7 @@
     handleAppointmentLookTime() {
       let str = this.housingApplication.appointmentLookTime;
       let count = 0;
-        console.log(str)
+        // console.log(str)
       if (str != null) {
         let arr = str.split(";");
         arr.forEach((ele, i) => {
@@ -1711,7 +1711,7 @@
       //code==0 houseRent  code==1 最低租金
       if(code==1){
         if(val> Number(this.housingApplication.houseRent) ){
-            console.log( val, Number(this.housingApplication.houseRent  ) )
+            // console.log( val, Number(this.housingApplication.houseRent  ) )
           this.$message.warning('最低租金不得高于期望租金，请重新输入');
           this.housingApplication.minHouseRent = 0;
         }

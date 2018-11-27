@@ -121,7 +121,7 @@
             res = await this.$axios.post('/api/pc/get/progress/list', this.$qs.stringify({ type: this.detail.order.orderType === 0 ? 50 : 51 }));
             this.progress = res.dataSet || [];
 
-            console.log('进度列表', res);
+            // console.log('进度列表', res);
 
             this.$nextTick(() => { 
                 loadingInstance.close();

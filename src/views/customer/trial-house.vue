@@ -945,7 +945,7 @@ export default {
     }
   },
   mounted(){
-    console.log( this.defaultTime)
+    // console.log( this.defaultTime)
   },
   methods: {
     loadDetail(loadingInstance) {
@@ -1065,11 +1065,11 @@ export default {
 
           //------>房屋类型字典
           this.houseTypeMap = resList[1].dataSet.items;
-          console.log("houseTypeMap:", resList[1].dataSet.items);
+          // console.log("houseTypeMap:", resList[1].dataSet.items);
 
           //------->房屋状态字典
           this.houseStatusMap = resList[2].dataSet.items;
-          console.log("houseSourceMap:", resList[2].dataSet.items);
+          // console.log("houseSourceMap:", resList[2].dataSet.items);
 
           //-------->房间配套字典
           this.houseMatchingMap = resList[3].dataSet.items;
@@ -1083,7 +1083,7 @@ export default {
           this.cities = resList[5].dataSet || [];
         })
         .catch(err => {
-          console.log(err);
+          // console.log(err);
           this.$message.error(err.message);
         })
         .finally(() => {
@@ -1244,7 +1244,7 @@ export default {
 
       //处理上传的数据
       this.handleSubmitData();
-      console.log(this.submitData ,'submitData');
+      // console.log(this.submitData ,'submitData');
 
       try {
         //1,先保存信息 (在客服上传新提交 和 初审审核通过时才保存信息)
@@ -1681,7 +1681,7 @@ export default {
       //code==0 houseRent  code==1 最低租金
       if(code==1){
         if(val> Number(this.housingApplication.houseRent) ){
-          console.log( val, typeof this.housingApplication.houseRent )
+          // console.log( val, typeof this.housingApplication.houseRent )
           this.$message.warning('最低租金不得高于期望租金，请重新输入');
           this.housingApplication.minHouseRent = 0;
         }

@@ -581,7 +581,7 @@ export default {
   },
   methods:{
       queryDetail(){
-          console.log(this.$route,'id'  )
+        //   console.log(this.$route,'id'  )
         this.$axios
         .post(
             "/api/pc/contract/detail",
@@ -607,12 +607,12 @@ export default {
                 this.detail.buyerIDCardNumber = res.dataSet.memberPurchase.passportNumber;
             }
 
-            console.log( this.detail ,'detail;');            
+            // console.log( this.detail ,'detail;');            
         })
         .catch(err => this.$message.error(err.message));
       },
       editContract(){
-          console.log(this.additionalTerms)
+        //   console.log(this.additionalTerms)
           this.$axios.post('/api/pc/contract/update',
           this.$qs.stringify({orderId:this.$props.id,additionalTerms:JSON.stringify(this.detail.additionalTerms)}) 
           ).then(res=>{
@@ -672,7 +672,7 @@ export default {
           }).catch(err => this.$message.error(err.message));
     },
     getSignTime(val){
-        console.log(val,this.signDate);
+        // console.log(val,this.signDate);
         this.signDate = val;
         this.detail.signYear = val.split('/')[2];
         this.detail.signMonth = val.split('/')[1];

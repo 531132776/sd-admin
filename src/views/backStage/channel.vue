@@ -197,7 +197,7 @@
         this.loading=true;
         this.$axios.post('/api/pc/channel/list', this.$qs.stringify(this.pagination))
           .then(res => {
-            console.log(res);
+            // console.log(res);
             this.channelList = res.dataSet || [];
             this.pagination.pageIndex = res.pageInfo ? res.pageInfo.pageNum : 1;
             this.pagination.pageSize = res.pageInfo ? res.pageInfo.pageSize : 10;

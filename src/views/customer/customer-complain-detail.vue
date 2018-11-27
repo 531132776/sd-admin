@@ -331,7 +331,7 @@
       },
       RemoveUploadImg(file,filelist){
         this.withdrawImgList = filelist;
-        console.log( file )
+        // console.log( file )
         this.$axios.post('/api/pc/file/delete', 
           this.$qs.stringify({fid: file.response.fid }))
           .then((res) => {

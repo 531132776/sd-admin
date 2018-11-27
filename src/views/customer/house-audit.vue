@@ -251,14 +251,14 @@
       },
       ChangeApplicantType(val) {
         //终审-筛选业主、POA上传
-        console.log(val);
+        // console.log(val);
         this.loading = true;
         this.pagination.applicantType = val;
         this.reloadFinalHouseList();
       },
       viewFinalHouse(row) {
         //查看终审房源
-        console.log("查看终审房源", row);
+        // console.log("查看终审房源", row);
         this.$router.push({ name: "finalhouse", params: { id: row.id } });
       },
       reloadTrailHouseList() {
@@ -266,7 +266,7 @@
         this.$axios
           .post("/api/pc/owner/apply/list", this.$qs.stringify(this.pagination))
           .then(res => {
-            console.log("初审房源列表", res);
+            // console.log("初审房源列表", res);
             this.trialHouseList = res.dataSet || [];
             this.pagination.total = res.pageInfo ? res.pageInfo.total : 0;
             this.pagination.pageIndex = res.pageInfo ? res.pageInfo.pageNum : 1;
@@ -280,7 +280,7 @@
         this.$axios
           .post("/api/pc/house/list", this.$qs.stringify(this.pagination))
           .then(res => {
-            console.log("终审房源列表", res);
+            // console.log("终审房源列表", res);
             this.finalHouseList = res.dataSet || [];
             this.pagination.total = res.pageInfo ? res.pageInfo.total : 0;
             this.pagination.pageIndex = res.pageInfo ? res.pageInfo.pageNum : 1;
@@ -291,11 +291,11 @@
       },
       selectArea() {
         //级联选择地区
-        console.log("获取地区");
+        // console.log("获取地区");
       },
     },
     beforeMount() {
-      console.log("当前路由", this.$route)
+      // console.log("当前路由", this.$route)
       this.reloadTrailHouseList();
     }
   };

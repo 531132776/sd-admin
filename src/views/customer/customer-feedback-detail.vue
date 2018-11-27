@@ -85,7 +85,7 @@
 
       closeOrder() {
         let loadingInstance = this.$Loading.service({ fullscreen: true, text: 'loading', spinner: 'el-icon-loading', background: 'rgba(56, 53, 53, 0.6)' });
-        console.log(this.detail.id,this.detail.platform,this.detail.remark )
+        // console.log(this.detail.id,this.detail.platform,this.detail.remark )
         this.$axios.post('/api/pc/update/feedback', this.$qs.stringify({
           id: this.detail.id,
           platform: this.detail.platform,
