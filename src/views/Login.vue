@@ -3,16 +3,16 @@
     <div class="login-window">
       <div class="title">welcome hi sandy</div>
       <div class="in">
-          <input type="text" v-model.trim="loginInfo.username" :placeholder="$t('Loginmobilenumber')" style="margin:24px 0 20px 0;">
+          <input type="text" v-model.trim="loginInfo.username" placeholder="account" style="margin:24px 0 20px 0;">
       </div>
       <div class="in">
-        <input type="password" v-model.trim="loginInfo.password" @keyup.enter="login" :placeholder="$t('Loginpassword')">
+        <input type="password" v-model.trim="loginInfo.password" @keyup.enter="login" placeholder="password">
       </div>
       <div class="forget">
-        <label for=""><input type="checkbox"/><span>记住用户</span></label>
-        <span>忘记密码</span>
+        <label for=""><input type="checkbox" v-model="remember" /><span>remember</span></label>
+        <span>Forgot password</span>
       </div>
-      <div class="btn" @click="login">立即登录</div>
+      <div class="btn" @click="login">Login</div>
     </div>
   </div>
 </template>
@@ -32,6 +32,7 @@ export default {
         username:'',
         password:''
       },
+      remember:false,
       permissionList:[],
       routePath:'',
       routeIndex:[]
@@ -42,12 +43,18 @@ export default {
       return this.message+"1234";
     }
   },
+  mounted(){
+    
+  },
   methods:{
     login(){
       this.$axios.post('/api/pc/login',this.$qs.stringify(this.loginInfo)).then(res=>{
                   this.getPermissionList(); 
                   sessionStorage.setItem('accessToken','DFSAGHJKFHSDJKG');
                   // this.$router.replace({name:'home'});                        
+                  // if(this.remember){
+                  //   localStorage.setItem('loginData', JSON.stringify(this.loginInfo) )
+                  // }
                }).catch(err=>this.$message.error(err.message));
     },
     getPermissionList() {
