@@ -1,11 +1,14 @@
 <template>
     <div>
+
+        <div>test</div>
         <el-date-picker
         :text="'aaaa'"
         v-model="value1"
         type="datetime"
         placeholder="选择日期时间" @change="getTESTtime" value-format="yyyy-MM-dd HH:mm:ss" ref="datePicker">
         </el-date-picker>
+        
     </div>
 </template>
 <script>
