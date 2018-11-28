@@ -80,7 +80,7 @@
                 </el-form-item>
                 <el-form-item prop="houseAcreage">
                     <span slot="label">{{$t('buildingArea')}}:</span>
-                    <el-input v-model.trim="house.houseAcreage"></el-input>
+                    <el-input v-model.trim="house.houseAcreage" type="number"></el-input>
                 </el-form-item>
                 <el-form-item prop="housingTypeDictcode">
                     <span slot="label">{{$t('HousingTypes')}}:</span>

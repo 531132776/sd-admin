@@ -30,7 +30,7 @@
                             <img v-lazy="scope.row.houseMainImg" alt="">
                         </div>
                         <div class="address">
-                            <p class="code">{{$t('UploadNumber')}}:{{scope.row.applyCode}}</p>
+                            <p class="code">{{$t('UploadNumber')}}:{{scope.row.houseCode}}</p>
                             <p class="detail-addr">
                                 <i class="el-icon-location-outline" style="width:10px;height:13px;margin-right:4px;;"></i>
                                 {{scope.row.city}}{{scope.row.community}}{{scope.row.subCommunity}}{{scope.row.address}}

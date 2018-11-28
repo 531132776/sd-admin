@@ -12,7 +12,7 @@
                         <el-tab-pane :label="$t('complaints')" name="first"></el-tab-pane>
                         <el-tab-pane :label="$t('feedback')" name="second"></el-tab-pane> 
                     </template>
-                    <template v-if="moduleType==1">
+                    <template v-else-if="moduleType==1">
                         <el-tab-pane :label="`${$t('Commissioningrecord')}${$t('closerecord')}`" name="first"></el-tab-pane>
                         <el-tab-pane :label="`${$t('doRefund')}${$t('closerecord')}`" name="second"></el-tab-pane>
                     </template>

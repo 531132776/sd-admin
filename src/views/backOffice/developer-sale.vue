@@ -49,7 +49,7 @@
             </el-table-column>
             <el-table-column prop="nickname" :label="$t('operation')" header-align="center" align="center">
                 <template slot-scope="scope">
-                    <el-button @click="view(scope.row)" type="text" size="small">{{$t('edit')}}</el-button>
+                    <el-button @click="view(scope.row)" type="text" size="small">{{$t('view')}}</el-button>
                 </template>
             </el-table-column>
         </el-table>
