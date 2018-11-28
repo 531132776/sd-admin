@@ -52,9 +52,7 @@ export default {
                   this.getPermissionList(); 
                   sessionStorage.setItem('accessToken','DFSAGHJKFHSDJKG');
                   // this.$router.replace({name:'home'});                        
-                  // if(this.remember){
-                  //   localStorage.setItem('loginData', JSON.stringify(this.loginInfo) )
-                  // }
+
                }).catch(err=>this.$message.error(err.message));
     },
     getPermissionList() {
