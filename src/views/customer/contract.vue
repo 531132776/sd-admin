@@ -122,7 +122,11 @@
             margin: 5px 0;
         }
 
-        >.body {}
+        >.body {
+            .order-detail{
+                width: 100%
+            }
+        }
 
         >.page {
             text-align: right;
