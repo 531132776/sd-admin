@@ -18,7 +18,7 @@
             </el-breadcrumb>
         </div>
         <div class="order-info">
-            <p>订单信息</p>
+            <p>{{$t('orderInfo')}}</p>
             <div>
                 <div class="left">
                     <p>
@@ -88,13 +88,13 @@
             <div v-if="detail.order.tradingStatus===0" class="btn" @click="cancel">{{$t('cancelTheDeal')}}</div>
         </div>
         <!-- 取消交易 -->
-        <el-dialog title="提示" :visible.sync="dialogVisible" width="30%">
+        <el-dialog :title="$t('prompt')" :visible.sync="dialogVisible" width="30%">
             <el-form label-width="100px">
                 <el-form-item>
-                    <span slot="label">责任人:</span>
-                    <el-radio v-model="cancelOrder.isCancel" label="1">客户</el-radio>
-                    <el-radio v-model="cancelOrder.isCancel" label="2">业主</el-radio>
-                    <el-radio v-model="cancelOrder.isCancel" label="3">平台</el-radio>
+                    <span slot="label">{{$t('responsiblePerson')}}:</span>
+                    <el-radio v-model="cancelOrder.isCancel" label="1">{{$t('customer')}}</el-radio>
+                    <el-radio v-model="cancelOrder.isCancel" label="2">{{$t('landlord')}}</el-radio>
+                    <el-radio v-model="cancelOrder.isCancel" label="3">{{$t('platform')}}</el-radio>
                 </el-form-item>
                 <el-form-item>
                     <span slot="label">{{$t('note')}}:</span>
@@ -147,9 +147,9 @@
             setStep(index, step) {//只有交易中才能修改
                 if (this.detail.order.tradingStatus != 0) return;
                 if (index != this.detail.progress.length) return;
-                this.$prompt('请输入备注信息', '提示', {
-                    confirmButtonText: '确定',
-                    cancelButtonText: '取消'
+                this.$prompt(this.$t('Pleaseentertheremark'), $t('prompt'), {
+                    confirmButtonText: this.$t('confirm'),
+                    cancelButtonText: this.$t('cancel')
                 }).then(({ value }) => {
                     let loadingInstance = this.$Loading.service({ fullscreen: true, text: 'loading', spinner: 'el-icon-loading', background: 'rgba(56, 53, 53, 0.6)' });
                     this.$axios.post('/api/pc/progress/update', this.$qs.stringify({ orderId: this.$props.orderId, progressCode: step.code, houseId: this.detail.order.houseId, remark: value }))

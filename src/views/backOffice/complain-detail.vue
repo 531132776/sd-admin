@@ -34,9 +34,9 @@
                 <el-radio v-model="detail.complainReason" :label="4" disabled><span>{{$t('other')}}</span></el-radio>
             </div>
             <div class="complain-content d_flex" v-if="detail.complainType==1">
-                <el-radio v-model="detail.complainReason" :label="5" disabled><span>业务员未按约定时间到达</span></el-radio>
-                <el-radio v-model="detail.complainReason" :label="6" disabled><span>业务员态度恶劣</span></el-radio>
-                <el-radio v-model="detail.complainReason" :label="7" disabled><span>业务员收取额外费用</span></el-radio>
+                <el-radio v-model="detail.complainReason" :label="5" disabled><span>{{$t('salesmanTime')}}</span></el-radio>
+                <el-radio v-model="detail.complainReason" :label="6" disabled><span>{{$t('salesmanAttitude')}}</span></el-radio>
+                <el-radio v-model="detail.complainReason" :label="7" disabled><span>{{$t('salesmanFee')}}</span></el-radio>
             </div>            
         </div>
         <div class="supplement">

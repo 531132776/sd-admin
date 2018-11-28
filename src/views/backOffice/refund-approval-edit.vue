@@ -3,8 +3,13 @@
     <div class="edit-progress">
         <div class="nav">
             <el-breadcrumb separator="/">
-                <el-breadcrumb-item :to="{  }"><span class="first-nav">{{$t('refund')}}</span></el-breadcrumb-item>
-                <el-breadcrumb-item><span class="second-nav">出租/出售</span></el-breadcrumb-item>
+                <el-breadcrumb-item :to="{ path:'/home/refundApproval' }"><span class="first-nav">{{$t('refund')}}</span></el-breadcrumb-item>
+                <el-breadcrumb-item>
+                    <span class="second-nav">
+                        <i v-if="detail.order.orderType===0">{{$t('Rent')}}</i>
+                        <i v-else>{{$t('Sale')}}</i>
+                    </span>
+                </el-breadcrumb-item>
             </el-breadcrumb>
         </div>
         <div class="order-info">

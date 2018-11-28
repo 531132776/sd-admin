@@ -319,7 +319,7 @@
             <li>
                 
                 <div class="block">
-                    <span class="demonstration">1.On加过户时间</span>
+                    <span class="demonstration">1.On{{$t('transferTime')}}</span>
                     <el-date-picker
                     v-model="detail.transferDate"
                     type="datetime"

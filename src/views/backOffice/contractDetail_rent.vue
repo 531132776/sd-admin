@@ -154,7 +154,7 @@
                 </el-radio-group>
             </div>
             <div class="section mb-20" v-if="detail.isDelivery===0">
-                <p class="">请填写见面时间和见面地点：</p>
+                <p class="">{{$t('meetingTimeAndMeetingPlace')}}</p>
                 <ul class="contract-from">
                     <li>
                         <span>owner's name:{{detail.memberName}}</span>
@@ -183,8 +183,8 @@
                 </ul>
             </div> 
             <div slot="footer" class="dialog-footer">
-                <el-button @click="confirmBool = false">取 消</el-button>
-                <el-button type="primary" @click="GenerateContract()">确 定</el-button>
+                <el-button @click="confirmBool = false">{{$t('cancel')}}</el-button>
+                <el-button type="primary" @click="GenerateContract()">{{$t('confirm')}}</el-button>
             </div>
         </el-dialog>
 
@@ -275,13 +275,13 @@ export default {
             if(this.detail.isDelivery===0){
                 if( this.detail.estimatedTime=="" ){
                     this.$message({
-                    message: '请填写见面时间',
+                    message: this.$t('pleaseFilemeetingTime'),
                     type: 'warning'
                     });   
                     return false;             
                 }else if(this.detail.appointmentMeetPlace==""){
                     this.$message({
-                        message: '请填写见面地点',
+                        message: this.$t('pleaseFilemeetingPlace'),
                         type: 'warning'
                     }); 
                     return false;
@@ -311,7 +311,7 @@ export default {
           ).then(res=>{
               if(res.result==0){
                     loading.close();
-                    this.$message.success('生成合同成功!');
+                    this.$message.success( this.$t('GeneratethecontractSuccess'));
                     this.$router.push('/home/contractList')
               }
           }).catch(err => this.$message.error(err.message)); 
