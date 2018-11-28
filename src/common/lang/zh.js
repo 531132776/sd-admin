@@ -5,6 +5,7 @@ export default  {
     username:'用户名',
     prompt:'提示',
     exit:'退出',
+    // system: 'HS 管理系统',
 
     /**分页插件的中英文 */
     total:'共',

@@ -12,7 +12,7 @@
             <el-tab-pane label="个人信息" name="first"> -->
                 <p class="title">{{$t('Personalinformation')}}</p>
                 <div class="personal_detail">
-                    <el-form :label-position="labelPosition" label-width="100px" >
+                    <el-form :label-position="labelPosition" label-width="195px" >
                         <el-form-item :label="$t('Nickname')"> {{userInfo.username}} </el-form-item>
                         <el-form-item :label="$t('avatar')"> 
                             <!-- <img class="personal_detail_pic" v-lazy="userInfo.userLogo" alt=""> -->

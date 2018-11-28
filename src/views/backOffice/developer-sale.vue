@@ -37,7 +37,7 @@
                 </template>
             </el-table-column>
             <el-table-column prop="developers" :label="$t('developerInformation')" header-align="center" align="center"
-                width="177">
+                >
             </el-table-column>
             <el-table-column  :label="$t('openingStatus')" header-align="center" align="center">
                 <template slot-scope="scope">

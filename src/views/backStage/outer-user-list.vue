@@ -8,15 +8,15 @@
     </div>
 
     <el-table :data="outerUserList" :header-cell-style="{'background':'#E5E5E5','color:':'#333333'}" stripe max-height="622"
-      size="mini" v-loading="table_loading" element-loading-text="loading" element-loading-spinner="el-icon-loading"
+       v-loading="table_loading" element-loading-text="loading" element-loading-spinner="el-icon-loading"
       element-loading-background="rgba(0, 0, 0, 0.8)">
-      <el-table-column prop="memberCode" :label="$t('memberNumber')" header-align="center" align="center" width="177">
+      <el-table-column prop="memberCode" :label="$t('memberNumber')" header-align="center" align="center" width="277">
       </el-table-column>
       <!-- <el-table-column prop="username" :label="'用户名'" header-align="center" align="center">
             </el-table-column> -->
       <el-table-column prop="nickname" :label="$t('membersNickname')" header-align="center" align="center">
       </el-table-column>
-      <el-table-column prop="sex" :label="$t('gender')" header-align="center" align="center" width="80">
+      <el-table-column prop="sex" :label="$t('gender')" header-align="center" align="center" width="100">
         <template slot-scope="scope">
           <i v-if="scope.row.sex==0">{{$t('secret')}}</i>
           <i v-if="scope.row.sex==1">{{$t('female')}}</i>
