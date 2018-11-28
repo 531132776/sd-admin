@@ -1,28 +1,24 @@
 <!-- 房源管理-房源列表 -->
 <template>
   <div class="house-list">
-    <p class="header">
-      <el-form :inline="true">
-         <el-form-item>
+    <p class="header d_flex flex_wrap20">
+
            <el-select v-model="pagination.leaseType" @change="changeType" :placeholder="$t('choose')">
              <el-option v-for="item in [{value:0,label:$t('Rent')},{value:1,label:$t('Sale')},{value:null,label:$t('all')}]"
                :key="item.value" :label="item.label" :value="item.value">
              </el-option>
            </el-select>
-         </el-form-item>
-         <el-form-item>
+
            <el-select v-model="pagination.applyTypes" @change="changeType" :placeholder="$t('choose')" >
              <el-option v-for="item in [{value:'1',label:$t('CompleteService')},{value:'2',label:$t('CompleteOutSide')},{value:'0',label:$t('CompleteOwner')},{value:'0,1,2',label:$t('all')}]"
                :key="item.value" :label="item.label" :value="item.value">
              </el-option>
            </el-select>
-         </el-form-item>
-         <el-form-item>
+
            <el-input v-model.trim="pagination.applyCode" @keyup.enter.native="searchHouse" :placeholder="$t('UploadNumber')" >
              <el-button slot="append" icon="el-icon-search"  @click="searchHouse"></el-button>
            </el-input>
-         </el-form-item>
-      </el-form>
+
     </p>
 
     <el-table class="house_upload" :data="trialHouseList" :header-cell-style="{'background':'#E5E5E5','color:':'#333333'}" stripe max-height="622"

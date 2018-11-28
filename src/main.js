@@ -61,8 +61,13 @@ axios.interceptors.response.use(
 		// response.data.result === 0 || response.data.result === 1002 ? Promise.resolve(response.data) : Promise.reject(response.data)
 		if( response.data.result === 1001 ){
 			router.push('/login');	
-		}
-		return Promise.resolve(response.data);
+			return Promise.reject(response.data);
+		}else if( response.data.result ===-1){
+			return Promise.reject(response.data);	
+		}else{
+			return Promise.resolve(response.data);
+		}	
+		
 	}, error =>{
 		return Promise.reject(error)	
 	} 

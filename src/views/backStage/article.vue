@@ -1,19 +1,16 @@
 <!-- 网站管理-文章管理 -->
 <template>
   <div class="article">
-    <div class="header">
-      <el-form :inline="true">
-        <el-form-item>
+    <div class="header d_flex flex_wrap20">
+
           <el-button type="success" @click="addArticle">{{$t('addBtn')}}</el-button>
-        </el-form-item>
-        <el-form-item>
+
           <el-select v-model="pagination.status" @change="changeStatus" :placeholder="$t('choose')">
             <el-option :label="$t('disable')" :value="0"></el-option>
             <el-option :label="$t('enable')" :value="1"></el-option>
             <el-option :label="$t('all')" :value="null"></el-option>
           </el-select>
-        </el-form-item>
-        <el-form-item>
+
           <el-select v-model="pagination.articleType" @change="changeStatus" :placeholder="$t('choose')">
             <el-option :label="$t('buyerToRent')" :value="0"></el-option>
             <el-option :label="$t('buyerToBuy')" :value="1"></el-option>
@@ -22,8 +19,7 @@
             <el-option :label="$t('FAQPage')" :value="4"></el-option>
             <el-option :label="$t('all')" :value="null"></el-option>
           </el-select>
-        </el-form-item>
-      </el-form>
+
     </div>
     <el-table :data="articleList" :header-cell-style="{'background':'#E5E5E5','color:':'#333333'}" stripe max-height="622"
       size="mini" v-loading="loading" element-loading-text="loading" element-loading-spinner="el-icon-loading"

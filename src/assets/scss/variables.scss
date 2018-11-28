@@ -89,6 +89,14 @@ $light-green:#7ED321;
     }
     
 }
+.flex_wrap20{
+    flex-wrap: wrap;
+    >div{
+        width: 20%;
+        margin-right: 10px;
+    } 
+}
+
 
 .min-width500{
     min-width: 500px;

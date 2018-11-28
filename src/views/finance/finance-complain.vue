@@ -1,21 +1,18 @@
 <!--PC内勤-投诉-->
 <template>
   <div class="finance-complaint">
-    <div class="header">
-      <el-form :inline="true">
-        <el-form-item>
+    <div class="header d_flex flex_wrap20">
+
           <el-select v-model="pagination.leaseType" @change="changeType" :placeholder="$t('choose')">
             <el-option v-for="item in [{value:0,label:$t('Rent')},{value:1,label:$t('Sale')},{value:'0,1',label:$t('all')}]"
               :key="item.value" :label="item.label" :value="item.value">
             </el-option>
           </el-select>
-        </el-form-item>
-        <el-form-item>
+
           <el-input v-model="pagination.complainCode" :placeholder="$t('search')" @change="searchComplaint">
             <el-button slot="append" icon="el-icon-search" @click="searchComplaint()"></el-button>
           </el-input>
-        </el-form-item>
-      </el-form>
+
     </div>
     <div class="body">
       <el-table :data="complainList" max-height="500" :header-cell-style="{'background':'#E5E5E5','color:':'#333333'}"

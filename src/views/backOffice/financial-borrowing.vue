@@ -1,14 +1,12 @@
 <template>
     <div class="financial-borrowing">
 
-        <div class="header">
-            <el-form :inline="true">
-                <el-form-item>
+        <div class="header d_flex flex_wrap20">
+
                     <el-input v-model.trim="pagination.telephone" :placeholder="$t('search')" @change="search">
                         <el-button slot="append" icon="el-icon-search"  @click="search()"></el-button>
                     </el-input>
-                </el-form-item>
-            </el-form>
+
         </div>
         <el-table :data="financialBorrowingList" :header-cell-style="{'background':'#E5E5E5','color:':'#333333'}"
             stripe max-height="622" size="mini" v-loading="loading" element-loading-text="loading"

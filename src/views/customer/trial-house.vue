@@ -401,7 +401,7 @@
                     <span slot="label">{{$t('otherContactMethods')}}</span>
                     <el-form-item prop="email">
                         <span slot="label">{{$t('email')}}</span>
-                        <el-input v-model="housingApplication.email"></el-input>
+                        <el-input v-model="housingApplication.email" ></el-input>
                     </el-form-item>
                     <el-form-item prop="facebook">
                         <span slot="label">Facebook</span>
@@ -825,7 +825,8 @@ export default {
             message: `${this.$t("PleaseEnter")} email
             `,
             trigger: "blur"
-          }
+          },
+          { type: 'email', message: `Please enter the correct email address `, trigger: ['blur', 'change'] }
         ],
         // 图片
         mandataryCopiesImg: [ //POA证件照

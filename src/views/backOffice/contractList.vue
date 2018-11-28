@@ -1,12 +1,8 @@
 <template>
     <div class="finance_page transaction_list">
-        <el-form :inline="true">
-            <el-form-item>
-                <el-input v-model.trim="searchVal.orderCode" :placeholder="$t('PleaseEnterOrder')"  @change="searchOrder()">
-                    <el-button slot="append" icon="el-icon-search"  @click="searchOrder()"></el-button>
-                </el-input>
-            </el-form-item>
-        </el-form>
+        <el-input class="mb-10" style="width:350px;" v-model.trim="searchVal.orderCode" :placeholder="$t('PleaseEnterOrder')"  @change="searchOrder">
+            <el-button slot="append" icon="el-icon-search"  @click="searchOrder()"></el-button>
+        </el-input>
 
         <!-- 列表 -->
         <el-table class="tablelist_close" :fit="true"
@@ -92,7 +88,6 @@ export default {
                 this.$qs.stringify(this.searchVal)
                 )
                 .then(res => {
-                    this.table_loading = false;
                     if(res.dataSet!==null){
                         this.tableData = res.dataSet;
                         this.searchVal.pageIndex = res.pageInfo.pageNum;
@@ -105,7 +100,7 @@ export default {
                         this.searchVal.total = 0;      
                     }
                 })
-                .catch(err => this.$message.error(err.message));            
+                .catch(err => this.$message.error(err.message)).finally(() => this.table_loading = false);;            
         },
         searchOrder(){ //按照订单编号搜索
             this.table_loading = true;

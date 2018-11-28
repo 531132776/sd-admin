@@ -1,28 +1,23 @@
 <!--PC内勤-投诉-->
 <template>
         <div class="customer-complaint">
-          <div class="header">
-            <el-form :inline="true">
-              <el-form-item>
-                <el-select v-model="pagination.leaseType" @change="changeType" :placeholder="$t('choose')">
-                  <el-option v-for="item in [{value:0,label:$t('Rent')},{value:1,label:$t('Sale')},{value:'0,1',label:$t('all')}]" :key="item.value"
+          <div class="header d_flex flex_wrap20">
+                <el-select v-model="pagination.leaseType" @change="loadcomplainList" :placeholder="$t('choose')">
+                  <el-option v-for="item in [{value:0,label:$t('Rent')},{value:1,label:$t('Sale')},{value:null,label:$t('all')}]" :key="item.value"
                     :label="item.label" :value="item.value">
                   </el-option>
                 </el-select>
-              </el-form-item>
-              <el-form-item>
-                <el-select v-model="pagination.source" @change="changeApplyType" :placeholder="$t('choose')">
+
+                <!-- <el-select v-model="pagination.source" @change="changeApplyType" :placeholder="$t('choose')">
                   <el-option v-for="item in [{value:0,label:$t('internal')},{value:1,label:$t('external')},{value:'0,1',label:$t('all')}]" :key="item.value"
                     :label="item.label" :value="item.value">
                   </el-option>
-                </el-select>
-              </el-form-item>
-              <el-form-item>
-                <el-input :placeholder="$t('search')"  @change="searchComplaint">
-                  <el-button slot="append" icon="el-icon-search"  @click="searchComplaint()"></el-button>
+                </el-select> -->
+
+                <el-input :placeholder="$t('search')" v-model="pagination.complainCode" @change="loadcomplainList">
+                  <el-button slot="append" icon="el-icon-search"  @click="loadcomplainList()"></el-button>
                 </el-input>
-              </el-form-item>
-            </el-form>
+
           </div>
           <div class="body">
             <el-table :data="complainList" max-height="500" :header-cell-style="{'background':'#E5E5E5','color:':'#333333'}"
@@ -71,7 +66,8 @@
                 pageSize: 10,
                 total: 0,
                 leaseType: null,//出租-出售
-                source: null//内部-外部
+                source: null,//内部-外部,
+                complainCode:''
               },
               complainList: []
             };
@@ -79,6 +75,7 @@
           methods: {
       
             loadcomplainList() {
+              this.loading = true;
               this.$axios.post('/api/pc/internal/house/complain/list', this.$qs.stringify(this.pagination))
                 .then(res => {
                   this.complainList = res.dataSet || [];

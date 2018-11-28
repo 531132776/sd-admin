@@ -1,21 +1,18 @@
 <!--合同列表-->
 <template>
     <div class="contract">
-        <div class="header">
-            <el-form :inline="true">
-                <el-form-item>
+        <div class="header d_flex flex_wrap20">
+
                     <el-select v-model="pagination.orderType" @change="changeType" :placeholder="$t('PleaseSelect')" style="width:100px;">
                         <el-option v-for="item in [{value:0,label:$t('Rent')},{value:1,label:$t('Sale')},{value:null,label:$t('all')}]" :key="item.value"
                             :label="item.label" :value="item.value">
                         </el-option>
                     </el-select>
-                </el-form-item>
-                <el-form-item>
+
                     <el-input v-model="pagination.orderCode" :placeholder="$t('orderCode')" style="width:200px;" @change="searchContract">
                         <el-button slot="append" icon="el-icon-search"  @click="searchContract()"></el-button>
                     </el-input>
-                </el-form-item>
-            </el-form>
+
         </div>
         <div class="body">
             <el-table :data="contractList" max-height="500" :header-cell-style="{'background':'#E5E5E5','color:':'#333333'}"

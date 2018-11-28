@@ -155,6 +155,7 @@
                     this.$axios.post('/api/pc/progress/update', this.$qs.stringify({ orderId: this.$props.orderId, progressCode: step.code, houseId: this.detail.order.houseId, remark: value }))
                         .then(res => {
                             this.loadDetail();
+                        
                         }).catch(err => this.$message.error(err.message))
                         .finally(() => this.$nextTick(() => {
                             loadingInstance.close();

@@ -1,13 +1,11 @@
 <!-- 权限管理-用户列表 -->
 <template>
   <div class="admin-list">
-    <el-form :inline="true">
-      <el-form-item>
+    <div class="d_flex flex_wrap20">
         <el-input v-model="searchVal.keyword" :placeholder="$t('Pleaseentermobilenumber')" class="mb-15" @change="loadOuterUserList">
           <el-button slot="append" icon="el-icon-search"  @click="loadOuterUserList"></el-button>
         </el-input>
-      </el-form-item>
-    </el-form>
+    </div>
 
     <el-table :data="outerUserList" :header-cell-style="{'background':'#E5E5E5','color:':'#333333'}" stripe max-height="622"
       size="mini" v-loading="table_loading" element-loading-text="loading" element-loading-spinner="el-icon-loading"

@@ -761,7 +761,8 @@
                     titleDeedNumber: [{required: true, message: `${this.$t("PleaseEnter")} ${this.$t("titleDeedNumber")}`,trigger: "blur"}],
                     propertyNumber: [{required: true, message: `${this.$t("PleaseEnter")} ${this.$t("propertyNumber")}`,trigger: "blur"}],
                     masterDevelpoerName: [{required: true, message: `${this.$t("PleaseEnter")} ${this.$t("masterDevelpoerName")}`,trigger: "blur"}],
-                    email: [ { required: true, message: `${this.$t("PleaseEnter")} email `,trigger: "blur"}],
+                    email: [ { required: true, message: `${this.$t("PleaseEnter")} email `,trigger: "blur"},
+                    { type: 'email', message: `Please enter the correct email address `, trigger: ['blur', 'change'] }],
                     // 图片
                     mandataryCopiesImg: [ //POA证件照
                     {

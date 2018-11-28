@@ -1,16 +1,13 @@
 <template>
   <div class="inner-user">
-    <div class="header">
-      <el-form :inline="true">
-        <el-form-item>
+    <div class="header d_flex flex_wrap20">
+
           <el-button type="success" @click="addInnerUser" :disabled="boolList['add']" >{{$t('Addinternalusers')}}</el-button>
-        </el-form-item>
-         <el-form-item>
+
            <el-input v-model.trim="pagination.keyword" :placeholder="$t('Pleaseentermobilenumber')" @change="loadInnerUserList">
                <el-button slot="append" icon="el-icon-search"  @click="loadInnerUserList"></el-button>
            </el-input>
-         </el-form-item>
-      </el-form>
+
     </div>
     <el-table :data="innerUserList" :header-cell-style="{'background':'#E5E5E5','color:':'#333333'}" stripe max-height="622"
       size="mini" v-loading="loading" element-loading-text="loading" element-loading-spinner="el-icon-loading"

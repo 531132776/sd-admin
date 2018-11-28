@@ -1,21 +1,15 @@
 <template>
     <div class="refund-approval">
 
-        <div class="header">
-            <el-form :inline="true">
-                <el-form-item>
+        <div class="header d_flex flex_wrap20">
                     <el-select v-model="pagination.orderType" @change="changeStatus" :placeholder="$t('choose')">
                         <el-option :label="$t('Rent')" :value="0"></el-option>
                         <el-option :label="$t('Sale')" :value="1"></el-option>
                         <el-option :label="$t('all')" :value="null"></el-option>
                     </el-select>
-                </el-form-item>
-                <el-form-item>
                     <el-input v-model.trim="pagination.orderCode" :placeholder="$t('search')" @change="search">
                         <el-button slot="append" icon="el-icon-search"  @click="search()"></el-button>
                     </el-input>
-                </el-form-item>
-            </el-form>
         </div>
         <el-table :data="refundApprovalList" :header-cell-style="{'background':'#E5E5E5','color:':'#333333'}" stripe max-height="622"
             size="mini" v-loading="loading" element-loading-text="loading" element-loading-spinner="el-icon-loading"

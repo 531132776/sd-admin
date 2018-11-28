@@ -1,24 +1,20 @@
 <!--客服接单-下架-->
 <template>
   <div class="customer-withdraw">
-    <div class="header">
-        <el-form :inline="true">
-           <el-form-item>
+    <div class="header d_flex flex_wrap20">
+
              <el-select v-model="pagination.status" @change="changeType" :placeholder="$t('choose')">
                  <el-option v-for="item in [{value:0,label:$t('applyObtained')},{value:2,label:$t('obtainedSuccess')},{value:null,label:$t('all')}]" :key="item.value"
                    :label="item.label" :value="item.value">
                  </el-option>
              </el-select>
-           </el-form-item>
-           <el-form-item>
+
              <el-input v-model.trim="pagination.obtainedCode" @keyup.enter.native="searchComplaint" :placeholder="$t('obtainedNumber')">
                  <el-button slot="append" icon="el-icon-search"  @click="searchComplaint"></el-button>
              </el-input>
-           </el-form-item>
-           <el-form-item>
+
              <el-button type="success" @click="setWithdraw">{{$t('obtained')}}</el-button>
-           </el-form-item>
-        </el-form>
+
     </div>
     <el-table
         :data="withdrawList"
