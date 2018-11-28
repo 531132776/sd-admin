@@ -4,7 +4,8 @@ export default {
     addBtn:'add',
     username:'username',
     prompt:'prompt',
-    exit:'exit',
+    exit:'Log out',
+    // system: 'Hi Sandy',
 
 
     /**分页插件的中英文 */

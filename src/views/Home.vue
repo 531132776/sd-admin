@@ -1,22 +1,30 @@
 <template>
   <div class="home">
-      <el-container>
+      <el-container style="height: 100vh">
         
-          <!-- <el-header>
-          </el-header> -->
-          <!-- <el-container> -->
-            <el-aside  style="background-color:#20222A;color:#fff;height:100vh;">
+          <el-header class="common_header">
+              <!-- <el-button class="mr-10" @click="changeLanguage">{{$i18n.locale === "zh" ? 'English' : 'Chinese' }}</el-button> -->
+                    <!-- <a href="javascript:void(0);">消息</a>
+                    <a href="javascript:void(0);">客服接单列表</a> -->
+                    <!-- <el-button type="text" @click="loginOut()">{{$t('exit')}}</el-button> -->
+                    <span class="systenName">Hi Sandy</span>
+                    <ul>
+                      <li><span @click="changeLanguage">{{$i18n.locale === "zh" ? 'English' : 'Chinese' }}</span></li>
+                      <li><span @click="loginOut()">{{$t('exit')}}</span></li>
+                    </ul>
+                    
+          </el-header>
+          <el-container>
+            <el-aside  style="border:1px solid #ccc">
               <el-row class="tac">
                     <el-col :span="24">
-                        <h1 class="ml-20">HS管理系统</h1>
+                        <!-- <h1 class="ml-20">HS管理系统</h1> -->
                       <el-menu
                         class="el-menu-vertical-demo"
-                        background-color="#20222A" 
-                        text-color="#fff"
                         :unique-opened="true"
                         :default-active="routePath"  
                         :default-openeds="routeIndex"
-                        active-text-color="#409EFF" 
+                        active-text-color="#00b660" 
                         router
                         @open="handleOpen"
                         @close="handleClose"
@@ -50,12 +58,12 @@
                     </el-col>
                   </el-row>
             </el-aside>
-            <el-main style="height:100vh;" v-loading="loading" element-loading-text="Loading..." element-loading-spinner="el-icon-loading" element-loading-background="rgba(0, 0, 0, 0.8)">
-                <div class="main-header">
-                  <el-button class="mr-10" @click="changeLanguage">{{$i18n.locale === "zh" ? 'English' : 'Chinese' }}</el-button>
+            <el-main v-loading="loading" element-loading-text="Loading..." element-loading-spinner="el-icon-loading" element-loading-background="rgba(0, 0, 0, 0.8)">
+                <!-- <div class="main-header"> -->
+                  <!-- <el-button class="mr-10" @click="changeLanguage">{{$i18n.locale === "zh" ? 'English' : 'Chinese' }}</el-button> -->
                     <!-- <a href="javascript:void(0);">消息</a>
                     <a href="javascript:void(0);">客服接单列表</a> -->
-                    <el-button type="text" @click="loginOut()">{{$t('exit')}}</el-button>
+                    <!-- <el-button type="text" @click="loginOut()">{{$t('exit')}}</el-button> -->
 
                     <!-- <el-dropdown>
                         <span class="el-dropdown-link">
@@ -70,11 +78,11 @@
                           </el-dropdown-item>
                         </el-dropdown-menu>
                     </el-dropdown> -->
-                </div>
+                <!-- </div> -->
                 <!--子路由插座-->
                 <router-view/>
             </el-main>
-          <!-- </el-container> -->
+          </el-container>
       </el-container>
   </div>
 </template>
@@ -174,6 +182,30 @@ export default {
 </script>
 <style scoped lang="less">
 div.home {
+  .common_header{
+    background:rgba(0,182,96,1);
+    box-shadow:0px 2px 2px 0px rgba(204,204,204,1);
+    line-height: 60px;
+    ul{
+      float:right;
+      margin-right: 10%;
+    li{
+      display: inline-block;
+      padding: 0 15px;
+      color:rgba(255,255,255,1);
+      cursor: pointer;
+    }
+  }
+  .systenName{
+    display: inline-block;
+    font-size: 20px;
+    font-family:PingFangSC-Semibold;
+    font-weight:600;
+    color:rgba(255,255,255,1);
+    line-height:24px;
+    margin-left: 10%;
+  }
+  }
   a {
     text-decoration: none;
     &.router-link-exact-active {

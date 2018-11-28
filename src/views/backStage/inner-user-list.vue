@@ -2,7 +2,7 @@
   <div class="inner-user">
     <div class="header d_flex flex_wrap20">
 
-          <el-button type="success" @click="addInnerUser" :disabled="boolList['add']" >{{$t('Addinternalusers')}}</el-button>
+          <el-button type="success" @click="addInnerUser" :disabled="boolList['add']" style="margin-right:15px">{{$t('Addinternalusers')}}</el-button>
 
            <el-input v-model.trim="pagination.keyword" :placeholder="$t('Pleaseentermobilenumber')" @change="loadInnerUserList">
                <el-button slot="append" icon="el-icon-search"  @click="loadInnerUserList"></el-button>
@@ -378,7 +378,8 @@
   .inner-user {
 
     >.header {
-      margin: 5px 0;
+      /* margin: 5px 0; */
+      margin-bottom: 15px;
     }
 
     .info {
