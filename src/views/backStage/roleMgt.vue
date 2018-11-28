@@ -1,21 +1,18 @@
 <template>
     <div class="role-page role-list">
         <!-- 筛选条件 -->
-        <el-form :inline="true">
-            <el-form-item>
-                <el-button type="success">{{$t('addNewRole')}}
+            <div class="mb-5">
+                <el-button type="success" class="mr-10">{{$t('addNewRole')}}
                     <template slot-scope="scope">
                         <router-link :to="{name:'roleDetail',params:{'id':'add'}}" class="mr-20 color-white">{{$t('addNewRole')}}</router-link>
                     </template>
                 </el-button>
-            </el-form-item>
-            <el-form-item>
+
                 <el-select v-model="searchVal.isForbidden" @change="changeType" :placeholder="$t('choose')">
                     <el-option v-for="item in useStateSelect" :key="item.value" :label="item.label" :value="item.value">
                     </el-option>
                 </el-select>
-            </el-form-item>
-        </el-form>
+            </div>
         <!-- 列表 -->
         <el-table class="tablelist_close" :fit="true" :data="tableData" max-height="800" :header-cell-style="{'background':'#E5E5E5','color:':'#333333'}"
             :row-style="{'backgroundColor':'#F7F7F7'}" size="mini" v-loading="table_loading" element-loading-text="loading"

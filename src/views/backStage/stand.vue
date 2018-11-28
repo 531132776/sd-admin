@@ -50,7 +50,7 @@
             </el-pagination>
         </div>
         <!-- 查看，编辑,新增 -->
-        <el-dialog :title="$t('prompt')" :visible.sync="dialogVisible" width="30%">
+        <el-dialog :title="$t('prompt')" :visible.sync="dialogVisible" width="50%">
             <el-form label-width="100px">
                 <el-row>
                     <el-col :span="10">

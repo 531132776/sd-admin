@@ -3,7 +3,7 @@
   <div class="article">
     <div class="header d_flex flex_wrap20">
 
-          <el-button type="success" @click="addArticle">{{$t('addBtn')}}</el-button>
+          <el-button type="success" @click="addArticle" class="mr-10">{{$t('addBtn')}}</el-button>
 
           <el-select v-model="pagination.status" @change="changeStatus" :placeholder="$t('choose')">
             <el-option :label="$t('disable')" :value="0"></el-option>
@@ -56,7 +56,7 @@
       </el-pagination>
     </div>
     <!-- 查看，编辑,新增 -->
-    <el-dialog :title="article.id ? '编辑文章' : '新增文章'" :visible.sync="dialogVisible" width="30%">
+    <el-dialog :title="article.id ? '编辑文章' : '新增文章'" :visible.sync="dialogVisible" width="50%">
       <el-form label-width="100px">
         <el-row>
           <el-col :span="10">

@@ -17,7 +17,7 @@
           </el-select>
         </el-form-item> -->
 
-      <el-input :placeholder="$t('ComplaintNumber')"  @change="searchOrder" v-model="pagination.complainCode" class="mb-20">
+      <el-input :placeholder="$t('ComplaintNumber')"  @change="searchOrder" v-model="pagination.complainCode" >
           <el-button slot="append" icon="el-icon-search"  @click="searchOrder"></el-button>
       </el-input>         
     </div>

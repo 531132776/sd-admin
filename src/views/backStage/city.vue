@@ -1,7 +1,7 @@
 <!--网站管理-支持城市管理 -->
 <template>
   <div class="city">
-    <el-input placeholder="输入城市名进行过滤" v-model.trim="filterText">
+    <el-input placeholder="输入城市名进行过滤" v-model.trim="filterText" style="width:350px;" class="mb-10">
     </el-input>
     <el-tree :data="city" ref="tree2" show-checkbox node-key="id" accordion :expand-on-click-node="false"
       :filter-node-method="filterNode" :props="{label:'cityNameCn',children:'sub'}">

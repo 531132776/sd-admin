@@ -2,7 +2,7 @@
 <template>
   <div class="admin-list">
     <div class="d_flex flex_wrap20">
-        <el-input v-model="searchVal.keyword" :placeholder="$t('Pleaseentermobilenumber')" class="mb-15" @change="loadOuterUserList">
+        <el-input v-model="searchVal.keyword" :placeholder="$t('Pleaseentermobilenumber')" class="mb-5" @change="loadOuterUserList">
           <el-button slot="append" icon="el-icon-search"  @click="loadOuterUserList"></el-button>
         </el-input>
     </div>

@@ -379,7 +379,7 @@
 
     >.header {
       /* margin: 5px 0; */
-      margin-bottom: 15px;
+      margin-bottom: 5px;
     }
 
     .info {

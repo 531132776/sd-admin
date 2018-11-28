@@ -2,7 +2,7 @@
     <div class="permission-page">
         <div class="section">
             <p class="section-title">{{$t('permissionManager')}}</p>
-                <el-button class="mb-20" type="success" @click="add()">{{$t('addBtn')}}</el-button>
+                <el-button class="mb-5" type="success" @click="add()">{{$t('addBtn')}}</el-button>
             <div class="block">
                 <el-tree
                     :data="permissionList"

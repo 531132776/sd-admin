@@ -3,13 +3,13 @@
     <div class="contract">
         <div class="header d_flex flex_wrap20">
 
-                    <el-select v-model="pagination.orderType" @change="changeType" :placeholder="$t('PleaseSelect')" style="width:100px;">
+                    <el-select v-model="pagination.orderType" @change="changeType" :placeholder="$t('PleaseSelect')" >
                         <el-option v-for="item in [{value:0,label:$t('Rent')},{value:1,label:$t('Sale')},{value:null,label:$t('all')}]" :key="item.value"
                             :label="item.label" :value="item.value">
                         </el-option>
                     </el-select>
 
-                    <el-input v-model="pagination.orderCode" :placeholder="$t('orderCode')" style="width:200px;" @change="searchContract">
+                    <el-input v-model="pagination.orderCode" :placeholder="$t('orderCode')" @change="searchContract">
                         <el-button slot="append" icon="el-icon-search"  @click="searchContract()"></el-button>
                     </el-input>
 
@@ -18,7 +18,7 @@
             <el-table :data="contractList" max-height="500" :header-cell-style="{'background':'#E5E5E5','color:':'#333333'}"
                 :row-style="{'backgroundColor':'#F7F7F7'}" size="mini" v-loading="loading" element-loading-text="loading"
                 element-loading-spinner="el-icon-loading" element-loading-background="rgba(0, 0, 0, 0.8)">
-                <el-table-column prop="date" :label="$t('info')" header-align="center" align="center">
+                <el-table-column prop="date" :label="$t('info')" header-align="center" align="center" width="400">
                     <template slot-scope="scope">
                         <div class="order-detail">
                         {{$t('orderCode')}}:{{scope.row.orderCode}}

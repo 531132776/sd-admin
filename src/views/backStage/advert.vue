@@ -2,11 +2,9 @@
 <template>
   <div class="advert">
     <div class="header">
-      <el-form :inline="true">
-        <el-form-item>
+
           <el-button type="success" @click="addAdvert">{{$t('addBtn')}}</el-button>
-        </el-form-item>
-      </el-form>
+
     </div>
     <el-table :data="advertList" :header-cell-style="{'background':'#E5E5E5','color:':'#333333'}" stripe max-height="622"
       size="mini" v-loading="loading" element-loading-text="loading" element-loading-spinner="el-icon-loading"
@@ -55,7 +53,7 @@
     </div>
 
     <!-- 查看，编辑,新增 -->
-    <el-dialog :title="advert.id ? '编辑查看广告' : '新增广告'" :visible.sync="dialogVisible" width="30%">
+    <el-dialog :title="advert.id ? '编辑查看广告' : '新增广告'" :visible.sync="dialogVisible" width="50%">
       <el-form label-width="100px">
         <el-row>
           <el-col :span="10">

@@ -1,16 +1,15 @@
 <template>
     <div class="developerEntry">
         <div class="header">
-            <el-form :inline="true">
-                <el-form-item>
+          
                     <el-button @click="openDialog">{{$t('addBtnNew')}}</el-button>
-                </el-form-item>
+              
                 <!-- <el-form-item>
                     <el-input v-model.trim="pagination.developers" :placeholder="$t('search')">
                         <i slot="suffix" @click="search" class="el-input__icon el-icon-search"></i>
                     </el-input>
                 </el-form-item> -->
-            </el-form>
+          
         </div>
         <el-table :data="houseList" :header-cell-style="{'background':'#E5E5E5','color:':'#333333'}" stripe max-height="622"
             size="mini" v-loading="loading" element-loading-text="loading" element-loading-spinner="el-icon-loading"

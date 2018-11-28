@@ -2,7 +2,7 @@
 <template>
   <div class="customer-feedback">
     <div class="header">
-          <el-input :placeholder="$t('feedbackNumber')" @change="searchComplaint" v-model="pagination.feedbackCode" class="mb-20">
+          <el-input :placeholder="$t('feedbackNumber')" @change="searchComplaint" v-model="pagination.feedbackCode" >
             <el-button slot="append" icon="el-icon-search"  @click="searchComplaint"></el-button>
           </el-input>
 
