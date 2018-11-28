@@ -223,7 +223,7 @@
                     <!-- 面积 -->
                     <el-form-item prop="houseAcreage">
                         <span slot="label">{{$t('area')}}</span>
-                        <el-input v-model="housingApplication.houseAcreage"></el-input>
+                        <el-input v-model="housingApplication.houseAcreage" type="number"></el-input>
                     </el-form-item>
                     <!-- 车位 -->
                     <el-form-item prop="parkingSpace">
