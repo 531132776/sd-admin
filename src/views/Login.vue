@@ -218,9 +218,14 @@ export default {
 </script>
 <style lang="less">
   .forget > label .el-checkbox__input.is-checked .el-checkbox__inner{
-            background-color: #0F8A44;
-            border-color: #0F8A44;
+            background-color: rgba(0,182,96,1);
+            border-color: rgba(0,182,96,1);
           }
+         
+  .password > .el-input__inner:focus,
+  .password > .el-input__inner:hover{
+    border-color: #00b660
+  }
    .username > .el-input__inner, .password > .el-input__inner{
     width:418px;
           height:61px;
@@ -322,7 +327,8 @@ export default {
         align-items: center;
         width:418px;
         height:61px;
-        background:rgba(0,147,69,1);
+        /* background:rgba(0,147,69,1); */
+        background:rgba(0,182,96,1);
         border-radius:8px;
         font-size:32px;
         font-family:PingFangSC-Medium;
