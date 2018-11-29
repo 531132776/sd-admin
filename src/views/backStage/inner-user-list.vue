@@ -27,7 +27,7 @@
       <el-table-column prop="nickname" :label="$t('operation')" header-align="center" align="center">
         <template slot-scope="scope">
           <el-button @click="edit(scope.row)" type="text" size="small" :disabled="boolList['detail']" :style="{'color':'#00B660'}">{{$t('edit')}}</el-button>
-          <el-button @click="deleteUser(scope.row)" type="text" size="small" :disabled="boolList['delete']" >{{$t('delete')}}</el-button>
+          <el-button @click="deleteUser(scope.row)" type="text" size="small" :disabled="boolList['delete']" :style="{'color':'#333'}">{{$t('delete')}}</el-button>
         </template>
       </el-table-column>
     </el-table>

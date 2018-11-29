@@ -41,8 +41,8 @@
                 <template slot-scope="scope">
                     <!-- <router-link v-if="scope.row.orderType==0" :to="{name:'back_contractDetail_rent',query:{'id':scope.row.id}}">edit</router-link>
                     <router-link v-if="scope.row.orderType==1" :to="{name:'back_contractDetail_sale',query:{'id':scope.row.id}}">edit</router-link> -->
-                    <a href="javascript:;" @click="view(scope.row)">edit</a>    
-                    <a class="ml-10" v-if="scope.row.standby2!=''" :href="scope.row.standby2" target="blank" :style="{'color':'#333333'}">preview</a>
+                    <a href="javascript:;" @click="view(scope.row)">{{$t('edit')}}</a>    
+                    <a class="ml-10" v-if="scope.row.standby2!=''" :href="scope.row.standby2" target="blank" :style="{'color':'#333333'}">{{$t('preview')}}</a>
                 </template>
             </el-table-column>
 

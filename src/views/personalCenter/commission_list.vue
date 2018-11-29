@@ -41,7 +41,7 @@
             <el-table-column prop="createTime" :label="$t('applyTime')" header-align="center" width="200" align="center">
             </el-table-column>
 
-            <el-table-column prop="nickname" :label="$t('operation')" header-align="center" align="center" width="80">
+            <el-table-column prop="nickname" :label="$t('operation')" header-align="center" align="center" width="180">
                 <template slot-scope="scope">
                     <router-link :to="{name:'personal_commission',params:{'id':scope.row.orderId}}">view</router-link>
                 </template>
