@@ -2,7 +2,7 @@
     <div class="developerEntry">
         <div class="header">
           
-                    <el-button @click="openDialog">{{$t('addBtnNew')}}</el-button>
+                    <el-button @click="openDialog" type="primary">{{$t('addBtnNew')}}</el-button>
               
                 <!-- <el-form-item>
                     <el-input v-model.trim="pagination.developers" :placeholder="$t('search')">
@@ -34,7 +34,7 @@
             <el-table-column :label="$t('operation')" header-align="center" align="center">
                 <template slot-scope="scope">
                     <el-button @click="view(scope.row)" type="text" size="small">{{$t('edit')}}</el-button>
-                    <el-button @click="deleteArticle(scope.row)" type="text" size="small">{{$t('delete')}}</el-button>
+                    <el-button @click="deleteArticle(scope.row)" type="text" size="small" :style="{'color':'#333333'}">{{$t('delete')}}</el-button>
                 </template>
             </el-table-column>
         </el-table>

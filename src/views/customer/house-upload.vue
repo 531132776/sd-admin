@@ -53,7 +53,7 @@
       </el-table-column>
       <el-table-column prop="nickname" :label="$t('operation')" header-align="center" width="180" align="center">
         <template slot-scope="scope">
-          <el-button @click="checkHouse(scope.row)" type="text" size="small">{{$t('edit')}}</el-button>
+          <el-button @click="checkHouse(scope.row)" type="text" size="small" :style="{'color':'#00B660'}">{{$t('edit')}}</el-button>
         </template>
       </el-table-column>
     </el-table>

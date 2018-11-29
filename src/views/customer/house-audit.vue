@@ -58,7 +58,7 @@
           </el-table-column>
           <el-table-column prop="nickname" :label="$t('operation')" header-align="center" align="center" width="180">
             <template slot-scope="scope">
-              <el-button @click="checkHouse(scope.row)" type="text" size="small">{{$t('edit')}}</el-button>
+              <el-button @click="checkHouse(scope.row)" type="text" size="small" :style="{'color':'#00b660'}">{{$t('edit')}}</el-button>
             </template>
           </el-table-column>
         </el-table>
@@ -126,7 +126,7 @@
           </el-table-column>
           <el-table-column prop="nickname" :label="$t('operation')" width="180" align="center">
             <template slot-scope="scope">
-              <el-button @click="viewFinalHouse(scope.row)" type="text" size="small">{{$t('view')}}</el-button>
+              <el-button @click="viewFinalHouse(scope.row)" type="text" size="small" :style="{'color':'#00b660'}">{{$t('view')}}</el-button>
             </template>
           </el-table-column>
         </el-table>

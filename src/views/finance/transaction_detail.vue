@@ -94,4 +94,12 @@ export default {
 }
 </script>
 
-
+<style lang="less">
+    .transaction_detail{
+        .el-button--success.is-disabled{
+            color: #fff;
+            background-color: #b3e19d;
+            border-color: #b3e19d;
+        }
+    }
+</style>
