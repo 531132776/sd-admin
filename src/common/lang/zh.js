@@ -339,6 +339,7 @@ export default  {
             minSaleAmount:'最低售价',
             maxSaleAmount:'最高售价',
             otherContactMethods:'其它联系方式',
+            checkAll:'全选',
             //email:'邮箱',
             approved:'审核通过',
             auditFail:'审核不通过',

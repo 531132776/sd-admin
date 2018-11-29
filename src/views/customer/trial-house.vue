@@ -178,7 +178,7 @@
                     <!-- 房屋类型 -->
                     <el-form-item prop="housingTypeDictcode">
                         <span slot="label">{{$t('HousingTypes')}}</span>
-                        <el-select v-model="housingApplication.housingTypeDictcode" placeholder="请选择">
+                        <el-select v-model="housingApplication.housingTypeDictcode" :placeholder="$t('PleaseSelect')">
                             <el-option v-for="item in houseTypeMap" :key="item.id" :label="$i18n.locale=='zh'?item.itemValue:item.itemValueEn"
                                 :value="item.id+''">
                             </el-option>
@@ -243,7 +243,7 @@
                     <!-- 装修情况 -->
                     <el-form-item prop="houseDecorationDictcode">
                         <span slot="label">{{$t('decorateSituation')}}</span>
-                        <el-select v-model="housingApplication.houseDecorationDictcode" placeholder="请选择">
+                        <el-select v-model="housingApplication.houseDecorationDictcode" :placeholder="$t('PleaseSelect')">
                             <el-option :label="$t('withFurniture')" value="0"></el-option>
                             <el-option :label="$t('withNoFurniture')" value="1"></el-option>
                             <el-option :label="$t('halfFurniture')" value="2"></el-option>
@@ -252,7 +252,7 @@
                     <!-- 房源状态 -->
                     <el-form-item v-if="housingApplication.leaseType===1" prop="isPromissoryBuild">
                         <span slot="label">{{$t('housingCondition')}}</span>
-                        <el-select v-model="housingApplication.isPromissoryBuild" placeholder="请选择">
+                        <el-select v-model="housingApplication.isPromissoryBuild" :placeholder="$t('PleaseSelect')">
                             <el-option :label="$t('periodRoom')" :value="0"></el-option>
                             <el-option :label="$t('existingHome')" :value="1"></el-option>
                         </el-select>
@@ -260,16 +260,18 @@
                     <!-- 房屋状态 -->
                     <el-form-item prop="housingStatus" v-if="housingApplication.isPromissoryBuild==1 || housingApplication.leaseType===0">
                         <span slot="label">{{$t('homeState')}}</span>
-                        <el-select v-model="housingApplication.housingStatus" placeholder="请选择">
+                        <el-select v-model="housingApplication.housingStatus" :placeholder="$t('PleaseSelect')">
                             <el-option v-for="item in houseStatusMap" :key="item.id" :label="$i18n.locale=='zh'?item.itemValue:item.itemValueEn"
                                 :value="item.id.toString()">
                             </el-option>
                         </el-select>
                     </el-form-item>                    
                     <!-- 是否有钥匙 -->
-                    <el-form-item prop="haveKeyValue" v-if="housingApplication.leaseType==0&& housingApplication.housingStatus!=20076&&housingApplication.housingStatus!='' || housingApplication.leaseType==1&& housingApplication.housingStatus!=20076&&housingApplication.housingStatus!=''&&housingApplication.isPromissoryBuild==1">
+
+                    <el-form-item prop="haveKeyValue" 
+                    v-if="housingApplication.leaseType==0&& housingApplication.housingStatus!=20076&&housingApplication.housingStatus!=''&&housingApplication.housingStatus!=null || housingApplication.leaseType==1&& housingApplication.housingStatus!=20076&&housingApplication.housingStatus!=''&& housingApplication.housingStatus!=null&&housingApplication.isPromissoryBuild==1">
                         <span slot="label">{{$t('haveKey')}}</span>
-                        <el-select v-model="housingApplication.haveKeyValue" placeholder="请选择">
+                        <el-select v-model="housingApplication.haveKeyValue" :placeholder="$t('PleaseSelect')">
                             <el-option :label="housingApplication.housingStatus==20074?$t('vacantOption1'):$t('rentedOption1')" :value="1"></el-option>
                             <el-option :label="housingApplication.housingStatus==20074?$t('vacantOption2'):$t('rentedOption2')" :value="0"></el-option>
                         </el-select>
@@ -277,19 +279,23 @@
 
                     <!-- 房屋状态为已出租 且授权平台联系租客时 填写租客姓名电话 -->
                     <!-- 租客姓名 -->
-                    <el-form-item prop="rentCustomerName" v-if="housingApplication.housingStatus==20075&&housingApplication.haveKeyValue==1">
+                    <el-form-item prop="rentCustomerName" 
+                    v-if="housingApplication.leaseType==0&&housingApplication.housingStatus==20075&&housingApplication.haveKeyValue==1 || housingApplication.isPromissoryBuild==1&&housingApplication.housingStatus==20075&&housingApplication.haveKeyValue==1">
                         <span slot="label">{{$t('tenantsName')}}</span>
                         <el-input v-model="housingApplication.rentCustomerName"></el-input>
                     </el-form-item>
                     <!-- 租客电话 -->
-                    <el-form-item prop="rentCustomerPhone" v-if="housingApplication.housingStatus==20075&&housingApplication.haveKeyValue==1">
+                    <el-form-item prop="rentCustomerPhone" 
+                    v-if="housingApplication.leaseType==0&&housingApplication.housingStatus==20075&&housingApplication.haveKeyValue==1|| housingApplication.isPromissoryBuild==1&&housingApplication.housingStatus==20075&&housingApplication.haveKeyValue==1">
                         <span slot="label">{{$t('tenantsPhone')}}</span>
                         <el-input v-model="housingApplication.rentCustomerPhone"></el-input>
                     </el-form-item>
                     <el-row >
                         <el-col :span="20">
                             <!-- 业主设置预约时间 -->
-                            <el-form-item prop="appointmentLookTime" v-if="housingApplication.housingStatus!=''&&housingApplication.haveKeyValue==0 || housingApplication.housingStatus==20076">
+
+                            <el-form-item prop="appointmentLookTime" 
+                            v-if="housingApplication.housingStatus!=''&& housingApplication.housingStatus!=null &&housingApplication.haveKeyValue==0 &&housingApplication.leaseType==0|| housingApplication.leaseType==0&&housingApplication.housingStatus==20076 || housingApplication.leaseType==1&&housingApplication.housingStatus==20076 && housingApplication.isPromissoryBuild==1 ||housingApplication.leaseType==1 &&housingApplication.isPromissoryBuild==1 && housingApplication.haveKeyValue==0">
                                 <span slot="label">{{$t('appointmentTime')}}</span>
                                 <el-input class="hidden" type="hidden" v-model="housingApplication.appointmentLookTime"></el-input>
                                 <div class="appointmentLookTime_div mb-20">
@@ -305,7 +311,7 @@
                                     </ul>
                                     <ul class="d_flex">
                                         <li v-for="(item, index) in 7" :key="index">
-                                            <el-select v-model="appointmentLookTimeArr[index]" multiple placeholder="请选择" 
+                                            <el-select v-model="appointmentLookTimeArr[index]" multiple :placeholder="$t('PleaseSelect')" 
                                             @change="changeTimeOptions(index)">
                                                 <el-option
                                                 v-for="item in timeOptions"
@@ -325,7 +331,7 @@
                         <el-col :span="20">
                             <el-form-item>
                                 <span slot="label">{{$t('houseingFacilities')}}</span>
-                                <el-select v-model="houseSelfContainedDict" multiple placeholder="请选择" style="width:800px;">
+                                <el-select v-model="houseSelfContainedDict" multiple :placeholder="$t('PleaseSelect')" style="width:800px;">
                                     <el-option v-for="item in houseMatchingMap" :key="item.id" :label="$i18n.locale=='zh'?item.itemValue:item.itemValueEn"
                                         :value="item.id">
                                     </el-option>
@@ -337,7 +343,7 @@
                         <el-col :span="20">
                             <el-form-item>
                                 <span slot="label">{{$t('housingAllocation')}}</span>
-                                <el-select v-model="houseConfigDict" multiple placeholder="请选择" style="width:800px;">
+                                <el-select v-model="houseConfigDict" multiple :placeholder="$t('PleaseSelect')" style="width:800px;">
                                     <el-option v-for="item in houseConfigureMap" :key="item.id" :label="$i18n.locale=='zh'?item.itemValue:item.itemValueEn"
                                         :value="item.id">
                                     </el-option>
@@ -382,7 +388,7 @@
                     <span slot="label">{{$t('saleInfo')}}</span>
                     <el-form-item prop="isHouseLoan">
                         <span slot="label">{{$t('haveHouseingMortgage')}}</span>
-                        <el-select v-model="housingApplication.isHouseLoan" placeholder="请选择">
+                        <el-select v-model="housingApplication.isHouseLoan" :placeholder="$t('PleaseSelect')">
                             <el-option label="yes" :value="1"></el-option>
                             <el-option label="no" :value="0"></el-option>
                         </el-select>
@@ -459,12 +465,12 @@
                                 <el-form-item>
                                     <span slot="label">支付方式</span>
                                     <el-select :disabled="autoAnswer.id ? true : false" v-model="autoAnswer.payType"
-                                        placeholder="请选择" style="width: 75px;">
+                                        :placeholder="$t('PleaseSelect')" style="width: 75px;">
                                         <el-option label="现金" :value="0"></el-option>
                                         <el-option label="贷款" :value="1"></el-option>
                                     </el-select>
                                     <el-select v-if="autoAnswer.payType===1" :disabled="autoAnswer.id ? true : false"
-                                        v-model="autoAnswer.hasExpectApprove" placeholder="请选择" style="width: 75px;">
+                                        v-model="autoAnswer.hasExpectApprove" :placeholder="$t('PleaseSelect')" style="width: 75px;">
                                         <el-option label="已审" :value="0"></el-option>
                                         <el-option label="未审" :value="1"></el-option>
                                     </el-select>

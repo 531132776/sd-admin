@@ -495,6 +495,7 @@ expectSaleAmount: 'Expected price',
 minSaleAmount: 'Least sale price',
 maxSaleAmount:'Highest sale price',
 otherContactMethods: 'Other contact information',
+checkAll:'check all',
 //email: 'email'
 approved:'Approved',
 auditFail:'Refused',
