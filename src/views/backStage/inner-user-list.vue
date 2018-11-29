@@ -26,8 +26,8 @@
       </el-table-column>
       <el-table-column prop="nickname" :label="$t('operation')" header-align="center" align="center">
         <template slot-scope="scope">
-          <el-button @click="edit(scope.row)" type="text" size="small" :disabled="boolList['detail']" >{{$t('edit')}}</el-button>
-          <el-button @click="deleteUser(scope.row)" type="text" size="small" :disabled="boolList['delete']" >{{$t('delete')}}</el-button>
+          <el-button @click="edit(scope.row)" type="text" size="small" :disabled="boolList['detail']" :style="{'color':'#00B660'}">{{$t('edit')}}</el-button>
+          <el-button @click="deleteUser(scope.row)" type="text" size="small" :disabled="boolList['delete']" :style="{'color':'#333'}">{{$t('delete')}}</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -39,7 +39,7 @@
     </div>
     <!-- 新增，查看，修改 内部用户 -->
     <el-dialog :title="$t('User')" :visible.sync="dialogVisible" >
-      <el-form :data="currentUser" ref="formsd" label-width="80px">
+      <el-form :data="currentUser" ref="formsd" label-width="150px">
         <el-row>
           <el-col>
             <el-form-item>

@@ -78,6 +78,7 @@ export default {
     operation:'operation',
     view:'view',
     edit:'edit',
+    preview:'preview',
     delete:'delete',
     SourceInfo:'Source of information',
     createTime:'createTime',

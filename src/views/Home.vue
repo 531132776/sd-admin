@@ -58,7 +58,7 @@
                     </el-col>
                   </el-row>
             </el-aside>
-            <el-main v-loading="loading" element-loading-text="Loading..." element-loading-spinner="el-icon-loading" element-loading-background="rgba(0, 0, 0, 0.8)">
+            <el-main class="common_main" v-loading="loading" element-loading-text="Loading..." element-loading-spinner="el-icon-loading" element-loading-background="rgba(0, 0, 0, 0.8)">
                 <!-- <div class="main-header"> -->
                   <!-- <el-button class="mr-10" @click="changeLanguage">{{$i18n.locale === "zh" ? 'English' : 'Chinese' }}</el-button> -->
                     <!-- <a href="javascript:void(0);">消息</a>

@@ -64,6 +64,7 @@ export default  {
     operation:'操作',
     view:'查看',
     edit:'编辑',
+    preview:'预览',
     delete:'删除',
     SourceInfo:'信息来源',
     createTime:'创建时间',

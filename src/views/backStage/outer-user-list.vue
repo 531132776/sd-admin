@@ -38,7 +38,7 @@
       </el-table-column>
       <el-table-column prop="nickname" :label="$t('operation')" header-align="center" align="center">
         <template slot-scope="scope">
-          <router-link class="color-primary" :to="{name:'outerUserDetail',params:{'id':scope.row.memberId}}">view</router-link>
+          <router-link class="color-primary" :to="{name:'outerUserDetail',params:{'id':scope.row.memberId}}">{{$t('view')}}</router-link>
           <!-- <el-button @click="view(scope.row)" type="text" size="small">{{$t('view')}}</el-button> -->
           <!-- <el-button @click="delete(scope.row)" type="text" size="small">{{$t('delete')}}</el-button> -->
         </template>

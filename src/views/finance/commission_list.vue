@@ -7,7 +7,7 @@
         <div class="mb-10">
             <el-button type="success" class="mr-10" @click="defaultData">Default sort</el-button>
             <el-select v-model="searchVal.orderType" @change="changeType" :placeholder="$t('choose')" style="width:100px;"  class="mr-10">
-                <el-option v-for="item in orderTypeSelect" :key="item.value"
+                <el-option v-for="item in [{value:0,label:$t('Rent')},{value:1,label:$t('Sale')},{value:null,label:$t('all')}]" :key="item.value"
                     :label="item.label" :value="item.value">
                 </el-option>
             </el-select>           
@@ -50,7 +50,7 @@
 
             <el-table-column prop="nickname" :label="$t('operation')" header-align="center" align="center" width="230">
                 <template slot-scope="scope">
-                    <router-link :to="{name:'commissionDetail',params:{'id':scope.row.commissionId}}">view</router-link>
+                    <router-link :to="{name:'commissionDetail',params:{'id':scope.row.commissionId}}">{{$t('view')}}</router-link>
                 </template>
             </el-table-column>
 

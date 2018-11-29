@@ -37,7 +37,7 @@
                 </el-table-column>
                 <el-table-column prop="nickname" :label="$t('operation')" header-align="center" align="center">
                     <template slot-scope="scope">
-                        <el-button @click="view(scope.row)" type="text" size="small">view</el-button>
+                        <el-button @click="view(scope.row)" type="text" size="small" :style="{'color':'#00b660'}">{{$t('view')}}</el-button>
                     </template>
                 </el-table-column>
             </el-table>

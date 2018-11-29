@@ -54,7 +54,7 @@
         </el-table-column>
         <el-table-column prop="nickname" :label="$t('operation')" width="180" align="center">
             <template slot-scope="scope">
-              <el-button @click="view(scope.row)" type="text" size="small">{{$t('view')}}</el-button>
+              <el-button @click="view(scope.row)" type="text" size="small" :style="{'color':'#00b660'}">{{$t('view')}}</el-button>
             </template>
         </el-table-column>
     </el-table>
