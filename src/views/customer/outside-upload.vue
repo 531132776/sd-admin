@@ -36,7 +36,7 @@
                         <span slot="label">{{$t('HousingTypes')}}</span>
                         <el-cascader placeholder="search" v-model="housingTypeDictcode" :options="houseTypeMap" :props="{'label':$i18n.locale=='zh'?'itemValue':'itemValueEn','children':'sub',value:'id'}"
                                     filterable
-                                    :show-all-levels="false"></el-cascader>
+                                    :show-all-levels="false" ></el-cascader>
                     </el-form-item>
                     
                     <el-form-item prop="city">
@@ -65,7 +65,7 @@
                     <el-form-item prop="appointmentDoorTime">
                         <span slot="label">{{$t('MeetingTime')}}</span>
                         <el-date-picker v-model="house.appointmentDoorTime" :picker-options="pickerOptions" type="datetime" value-format="yyyy-MM-dd HH:mm:ss"
-                                    placeholder="选择日期">
+                                    placeholder="选择日期" @change="getTESTtime" ref="datePicker">
                         </el-date-picker>
                     </el-form-item>
                     <el-form-item >
@@ -243,7 +243,27 @@
                     }).catch(err => {
                         this.$message.error(err.message)
                     });
-            }
+            },
+            getTESTtime(val){
+                // 48小时内
+                let selectTimeStr = new Date(val).getHours()*3600 + new Date(val).getMinutes()*60 + new Date(val).getSeconds();
+                let nowTimeStr = new Date().getHours()*3600 + new Date().getMinutes()*60 + new Date().getSeconds();
+                // 如果是当天，选择的时间应为当前时间两小时后
+                if( new Date(val).getDate() == new Date().getDate() ){
+                    if(selectTimeStr<nowTimeStr+2*3600){
+                        this.$refs.datePicker.showPicker();
+                        this.$message.error('Please select two hours after the current time!');
+                        this.$set(this.house,'appointmentDoorTime','');
+                        //housingApplication.appointmentDoorTime   
+                    }
+                }else if( new Date(val).getDate()-new Date().getDate() ==2) { //如果是最后一天,所选择的时间不能超过当前时分秒
+                    if( selectTimeStr > nowTimeStr ){
+                        this.$refs.datePicker.showPicker();
+                        this.$message.error('Not more than 48 hours! Please reselect'); 
+                        this.$set(this.house,'appointmentDoorTime','');     
+                    }
+                }  
+            }            
             
 
         },
