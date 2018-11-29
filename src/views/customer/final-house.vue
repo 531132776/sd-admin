@@ -208,11 +208,11 @@
                         <!-- 房屋类型 -->
                         <el-form-item prop="housingTypeDictcode">
                             <span slot="label">{{$t('HousingTypes')}}</span>
-                            <el-select v-model="housingApplication.housingTypeDictcode" placeholder="选择">
+                            <el-select v-model="housingApplication.housingTypeDictcode" :placeholder="$t('PleaseSelect')">
                                 <el-option v-for="item in houseTypeMap" :key="item.id" :label="$i18n.locale=='zh'?item.itemValue:item.itemValueEn"
                                     :value="item.id+''">
                                 </el-option>
-                                <el-option label="选择" :value="''"></el-option>
+                                <el-option :label="$t('PleaseSelect')" :value="''"></el-option>
                             </el-select>
                         </el-form-item>
 
@@ -454,7 +454,7 @@
                     <!-- 起租日期 -->
                     <el-form-item prop="beginRentDate">
                          <span slot="label">{{$t('rentStartDate')}}</span>
-                         <el-date-picker type="date" placeholder="选择日期" value-format="yyyy-MM-dd HH:mm:ss" v-model="housingApplication.beginRentDate"></el-date-picker>
+                         <el-date-picker type="date" :placeholder="$t('PleaseSelect')" value-format="yyyy-MM-dd HH:mm:ss" v-model="housingApplication.beginRentDate"></el-date-picker>
                     </el-form-item>
 
                     <!-- 期望租金 -->
@@ -522,11 +522,11 @@
                     <span slot="label">{{$t('autoAnswer')}}</span>
                     <!-- 出租模式 -->
                     <div v-if="housingApplication.leaseType===0">
-                        <el-row type="flex" v-for="autoAnswer in autoAnswerList" :key="autoAnswer.id">
+                        <el-row type="flex" v-for="(autoAnswer,idx) in autoAnswerList" :key="idx">
                             <el-col :span="3">
                                 <el-form-item>
                                     <span slot="label">{{$t('rentStartDate')}}</span>
-                                    <el-date-picker type="date"  placeholder="选择日期"
+                                    <el-date-picker type="date"  :placeholder="$t('PleaseSelect')"
                                         value-format="yyyy-MM-dd" v-model="autoAnswer.beginRentDate" style="width: 150px;"></el-date-picker>
                                 </el-form-item>
                             </el-col>
@@ -603,13 +603,13 @@
 
                         </el-row>
                         <!-- 新增,保存按钮，应答按钮 -->
-                        <el-row type="flex" justify="start">
+                        <el-row type="flex" justify="start" v-if="autoAnswerList.length<3">
                             <el-button type="success" @click="addAnswer" icon="el-icon-plus" size="mini" circle></el-button>
                         </el-row>
                     </div>
                     <!-- 出售模式 -->
                     <div v-if="housingApplication.leaseType===1">
-                        <el-row v-for="autoAnswer in autoAnswerList" :key="autoAnswer.id">
+                        <el-row v-for="(autoAnswer,idx) in autoAnswerList" :key="idx">
                             <el-col :span="5">
                                 <el-form-item>
                                     <span slot="label">{{$t('MethodOfPayment')}}</span>
@@ -661,7 +661,8 @@
                                 </el-form-item>
                             </el-col>                            
                         </el-row>
-                        <el-row type="flex" justify="start">
+                        
+                        <el-row type="flex" justify="start" v-if="autoAnswerList.length==0">
                             <el-button type="success" @click="addAnswer" icon="el-icon-plus" size="mini" circle></el-button>
                         </el-row>
                     </div>
@@ -675,8 +676,8 @@
             </el-row>
         </el-form>
         <!-- 审核不通过输入备注 -->
-        <el-dialog title="取消审核的原因?" :visible.sync="checkVisible" width="30%">
-            <el-input type="textarea" :rows="2" placeholder="审核不通过的原因" v-model="remarks">
+        <el-dialog :title="$t('cancelVerification')" :visible.sync="checkVisible" width="30%">
+            <el-input type="textarea" :rows="2" :placeholder="$t('Pleaseentertheremark')" v-model="remarks">
             </el-input>
             <span slot="footer" class="dialog-footer">
                 <el-button @click="checkVisible = false">{{$t('cancel')}}</el-button>
@@ -1073,13 +1074,12 @@
                     this.getAutoAnswerList();
             },
             addAnswer() {//出租模式下--->新增自动应答不超过三条
-
-                if (this.housingApplication.leaseType===0 && this.autoAnswerList.length === 3) {
+                if (this.housingApplication.leaseType===0 && this.autoAnswerList.length >= 3) {
                     this.$message.error('出租自动应答只能添加三条');
                     return;
                 }
 
-                if (this.housingApplication.leaseType===1 && this.autoAnswerList.length === 1) {
+                if (this.housingApplication.leaseType===1 && this.autoAnswerList.length >= 1) {
                     this.$message.error('出售自动应答只能添加1条');
                     return;
                 }

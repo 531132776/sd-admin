@@ -182,7 +182,7 @@
                             <el-option v-for="item in houseTypeMap" :key="item.id" :label="$i18n.locale=='zh'?item.itemValue:item.itemValueEn"
                                 :value="item.id+''">
                             </el-option>
-                            <el-option label="请选择" :value="''" v-if="housingApplication.housingTypeDictcode==''"></el-option>
+                            <el-option :label="$t('PleaseSelect')" :value="''" v-if="housingApplication.housingTypeDictcode==''"></el-option>
                         </el-select>
                     </el-form-item>      
                     <!-- 房源区域 -->
@@ -371,7 +371,7 @@
                     </el-form-item>
                     <el-form-item prop="beginRentDate">
                          <span slot="label">{{$t('rentStartDate')}}</span>
-                         <el-date-picker type="date"  placeholder="选择日期" value-format="yyyy-MM-dd" v-model="housingApplication.beginRentDate" ></el-date-picker>
+                         <el-date-picker type="date"  :placeholder="$t('PleaseSelect')" value-format="yyyy-MM-dd" v-model="housingApplication.beginRentDate" ></el-date-picker>
                     </el-form-item>
                     <el-form-item prop="houseRent">
                         <span slot="label">{{$t('expectRentAmount')}}</span>
@@ -564,8 +564,8 @@
             </el-row>
         </el-form>
         <!-- 审核不通过输入备注 -->
-        <el-dialog title="取消审核的原因?" :visible.sync="checkVisible" width="30%">
-            <el-input type="textarea" :rows="2" placeholder="审核不通过的原因" v-model="remarks">
+        <el-dialog :title="$t('cancelVerification')" :visible.sync="checkVisible" width="30%">
+            <el-input type="textarea" :rows="2" :placeholder="$t('Pleaseentertheremark')" v-model="remarks">
             </el-input>
             <span slot="footer" class="dialog-footer">
                 <el-button @click="checkVisible = false">{{$t('cancel')}}</el-button>
@@ -1689,12 +1689,12 @@ export default {
       if(code==1){
         if(val> Number(this.housingApplication.houseRent) ){
           // console.log( val, typeof this.housingApplication.houseRent )
-          this.$message.warning('最低租金不得高于期望租金，请重新输入');
+          this.$message.warning('The minimum rent must not exceed the expected rent. Please re-enter');
           this.housingApplication.minHouseRent = 0;
         }
       }else{
         if(val< Number(this.housingApplication.minHouseRent) ){
-          this.$message.warning('期望租金不得低于最低租金，请重新输入');
+          this.$message.warning('The expected rent must not be lower than the minimum rent. Please re-enter');
           this.housingApplication.houseRent = this.housingApplication.minHouseRent;
         }
       }

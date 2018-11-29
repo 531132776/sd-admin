@@ -548,6 +548,7 @@ export default  {
             Confirmedpayment:	"已确认收款",
             paymentSuccessful:"收款成功",
             Verification:	"审核",
+            cancelVerification:	"取消审核的原因",
             Verified:	"已审核",
             Refundsuccessfully:	"退款成功",
             Pleaseentertheremark:	"请输入备注",
