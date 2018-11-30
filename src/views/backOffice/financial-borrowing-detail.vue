@@ -161,7 +161,7 @@
                 justify-content: center;
                 align-items: center;
                 width: 240px;
-                height: 44px;
+                /* height: 44px; */
                 padding: 11px 104px;
                 color: #FFFFFF;
                 font-size: 16px;
