@@ -68,14 +68,20 @@
 }
 //修改源码样式>公用
 .common_main{
+    .el-checkbox__inner:hover,
+    .el-checkbox__input.is-focus .el-checkbox__inner,{
+        border-color: #dcdfe6;
+    }
     .el-button--success, .el-button--primary,
-    .el-radio__input.is-checked .el-radio__inner{
+    .el-radio__input.is-checked .el-radio__inner,
+    .el-checkbox__input.is-checked .el-checkbox__inner{
         background-color: #00B660;
         border-color:#00B660;
         &:hover{
             opacity: .7;
         }
     }
+    
     .el-radio__input.is-disabled .el-radio__inner, .el-radio__input.is-disabled.is-checked .el-radio__inner {
         background-color: #f5f7fa;
         border-color: #e4e7ed;
@@ -107,7 +113,8 @@
     .el-tabs__item:hover,
     .el-radio__input.is-checked+.el-radio__label,
     .el-button--text,
-    .el-cascader-menu__item.is-active{
+    .el-cascader-menu__item.is-active,
+    .el-checkbox__input.is-checked+.el-checkbox__label{
         color: #00B660
     }
     .el-radio__input.is-disabled+span.el-radio__label{
