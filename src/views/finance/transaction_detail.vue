@@ -9,10 +9,19 @@
             <p class="section-title">{{$t('RealEstateTransaction')}}</p>
             <ul class="block" >
                 <li><span class="font-s12">{{$t('ClinchAdealTheOrder')}}：  </span>  {{orderDetail.order.orderCode}}</li>
-                <li><span class="font-s12">{{$t('MethodOfPayment')}}：      </span>  {{orderDetail.order.payWay | paymentF}}</li>
+                <li><span class="font-s12">{{$t('MethodOfPayment')}}：      </span>  
+                    <i v-if="orderDetail.order.payWay==0">{{$t('unPay')}}</i>
+                    <i v-if="orderDetail.order.payWay==1">{{$t('Online')}}</i>
+                    <i v-if="orderDetail.order.payWay==2">{{$t('Case')}}</i>
+                    <i v-if="orderDetail.order.payWay==3">{{$t('pursePay')}}</i>
+                
+                </li>
                 <li><span class="font-s12">{{$t('PayTheAmount')}}：         </span>  {{orderDetail.order.platformServiceAmount}}</li>
                 <li><span class="font-s12">{{$t('HouseNumber')}}：          </span>  {{orderDetail.house.roomName}}</li>
-                <li><span class="font-s12">{{$t('HousingTypes')}}：         </span>  {{orderDetail.order.orderType | orderTypeF}}</li>
+                <li><span class="font-s12">{{$t('HousingTypes')}}：         </span>  
+                    <i v-if="orderDetail.order.orderType==0">{{$t('Rent')}}</i>
+                    <i v-if="orderDetail.order.orderType==1">{{$t('Sale')}}</i>
+                </li>
                 <!-- <li><span class="font-s12">{{$t('SystemData')}}：           </span>  </li> -->
                 <li><span class="font-s12">{{$t('TradingHours')}}：         </span>  {{orderDetail.order.createTime}}</li>
                 <li><span class="font-s12">{{$t('HousingSourceAddress')}}： </span>  {{orderDetail.house.city}}{{orderDetail.house.community}}{{orderDetail.house.subCommunity}}{{orderDetail.house.address}}</li>
@@ -23,14 +32,14 @@
             <!-- 交易中时才能点击 -->
             <el-button type="success" class="" @click="offlinePay()" 
             :disabled="orderDetail.order.orderStatus==0 && orderDetail.order.tradingStatus==0?false:true" >
-                <template v-if="orderDetail.order.orderStatus==1">已确认收款</template>
-                <template v-else>确认收款</template>
+                <template v-if="orderDetail.order.orderStatus==1">{{$t('Confirmedpayment')}}</template>
+                <template v-else>{{$t('Paymentconfirm')}}</template>
                 <!-- <template v-if="orderDetail.orderStatus==1">已确认收款</template> -->
             </el-button>
             <!-- orderDetail.order.orderStatus>=2 || orderDetail.order.orderStatus==0 -->
             <el-button type="success" class="" @click="checkPay()" :disabled="orderDetail.order.orderStatus==1 && orderDetail.order.tradingStatus==0?false:true" >
-                <template v-if="orderDetail.order.orderStatus>=2">已审核</template>
-                <template v-else>审核</template>
+                <template v-if="orderDetail.order.orderStatus>=2">{{$t('Verified')}}</template>
+                <template v-else>{{$t('Verification')}}</template>
             </el-button>
 
         </div>

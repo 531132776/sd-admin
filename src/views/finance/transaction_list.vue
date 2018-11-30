@@ -7,12 +7,12 @@
         <div class="mb-10">
             <el-button type="success" class="mr-10" @click="defaultData()">Default sort</el-button>
             <el-select v-model="searchVal.orderType" @change="changeType" :placeholder="$t('choose')" style="width:100px;"  class="mr-10">
-                <el-option v-for="item in [{value:0,label:$t('Rent')},{value:1,label:$t('Sale')},{value:null,label:$t('all')}]" :key="item.value"
+                <el-option v-for="item in orderTypeSelect" :key="item.value"
                     :label="item.label" :value="item.value">
                 </el-option>
             </el-select>    
             <el-select v-model="searchVal.payWay" @change="changePayWay" :placeholder="$t('choose')" style="width:100px;"  class="mr-10">
-                <el-option v-for="item in [{value:0,label:$t('unPay')},{value:1,label:$t('Online')},{value:2,label:$t('Case')},{value:null,label:$t('all')}]" :key="item.value"
+                <el-option v-for="item in payWaySelect" :key="item.value"
                     :label="item.label" :value="item.value">
                 </el-option>
             </el-select>         
@@ -45,13 +45,18 @@
 
             <el-table-column prop="payWay" :label="$t('MethodOfPayment')" header-align="center"  align="center">
                 <template slot-scope="scope">
-                    {{scope.row.payWay | paymentF}}
+                    <i v-if="scope.row.payWay==0">{{$t('unPay')}}</i>
+                    <i v-if="scope.row.payWay==1">{{$t('Online')}}</i>
+                    <i v-if="scope.row.payWay==2">{{$t('Case')}}</i>
+                    <i v-if="scope.row.payWay==3">{{$t('pursePay')}}</i>
                 </template>
             </el-table-column>
 
             <el-table-column prop="tradingStatus" :label="$t('OrderStatus')" header-align="center" align="center" >
                 <template slot-scope="scope">
-                    {{scope.row.tradingStatus | tradingStatusF}}
+                    <i v-if="scope.row.tradingStatus==0">{{$t('tradingIn')}}</i>
+                    <i v-if="scope.row.tradingStatus==1">{{$t('successfulDeal')}}</i>
+                    <i v-if="scope.row.tradingStatus==2">{{$t('TransactionFailure')}}</i>
                 </template>
             </el-table-column>
 
@@ -60,7 +65,7 @@
 
             <el-table-column prop="nickname" :label="$t('operation')" header-align="center" align="center" width="180">
                 <template slot-scope="scope">
-                    <router-link :to="{name:'transactionDetail',params:{'id':scope.row.orderId}}">{{$t('view')}}</router-link>
+                    <router-link :to="{name:'transactionDetail',params:{'id':scope.row.orderId}}">view</router-link>
                 </template>
             </el-table-column>
 

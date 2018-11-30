@@ -1,8 +1,9 @@
 
 // 过滤器
 
+// 引入上面一串才能使用国际化
 const paymentF = (idx)=>{ // 支付方式
-    var arr = ['未付款','线上支付','线下支付','钱包支付'];
+    var arr = ['unPay','Online','线下支付','钱包支付'];
     return arr[idx]
 }
 
@@ -37,7 +38,7 @@ const orderStatusF1 = (idx)=>{ //订单状态 - 出售
     return arr[idx]
 }
 const boothTypeF=(boothType)=>{
-    var arr=['广告','买家出租问题' ,'买家出售问题','卖家出租问题','卖家出售问题','友情链接','出租','出售','新楼盘'];
+    var arr=['','广告','买家出租问题' ,'买家出售问题','卖家出租问题','卖家出售问题','友情链接','出租','出售','新楼盘'];
     return arr[boothType]
 }
 const articleTypeF=(articleType)=>{

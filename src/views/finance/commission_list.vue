@@ -41,7 +41,9 @@
 
             <el-table-column prop="orderStatus" :label="$t('OrderStatus')" header-align="center" align="center" >
                 <template slot-scope="scope">
-                    {{scope.row.tradingStatus | tradingStatusF}}
+                    <i v-if="scope.row.tradingStatus==0">{{$t('tradingIn')}}</i>
+                    <i v-if="scope.row.tradingStatus==1">{{$t('successfulDeal')}}</i>
+                    <i v-if="scope.row.tradingStatus==2">{{$t('TransactionFailure')}}</i>
                 </template>
             </el-table-column>
 

@@ -100,10 +100,10 @@
             <el-col :span="8"><span>propertyNumber:</span><span>{{detail.house.propertyNumber}}</span></el-col>
         </el-row>
         <el-row type="flex" justify="center">
-            <el-button type="success" @click="checkVisible=true;valid=true">下架</el-button>
+            <el-button type="success" @click="checkVisible=true;valid=true">{{$t('obtained')}}</el-button>
         </el-row>
         <!-- 下架对话框 -->
-        <el-dialog title="下架提示" :visible.sync="checkVisible" width="30%">
+        <el-dialog :title="$t('prompt')" :visible.sync="checkVisible" width="30%">
             <el-form label-width="80px">
                 <el-form-item>
                     <span slot="label">{{$t('city')}}</span>
@@ -115,24 +115,24 @@
                 <el-form-item>
                     <span slot="label">{{$t('mobile')}}</span>
                     <el-input v-model.trim="PhoneValid.mobile" style="width:216px;margin-right:10px;" :placeholder="$t('telephone')"></el-input>
-                    <el-button type="success" @click="getValidCode">发送{{$t('VerificationCode')}}</el-button>
+                    <el-button type="success" @click="getValidCode">send{{$t('VerificationCode')}}</el-button>
                 </el-form-item>
                 <el-form-item>
-                    <span slot="label">验证码:</span>
+                    <span slot="label">{{$t('VerificationCode')}}:</span>
                     <el-input v-model="PhoneValid.validateCode" style="width:216px;" :placeholder="$t('VerificationCode')"></el-input>
                 </el-form-item>
                 <el-form-item>
-                    <span slot="label">备注:</span>
+                    <span slot="label">{{$t('note')}}:</span>
                     <el-input v-model="remark" type="textarea" resize="none"></el-input>
                 </el-form-item>
                 <el-form-item>
-                    <el-button @click="checkUser" type="info">验证</el-button>
+                    <el-button @click="checkUser" type="info">{{$t('Verify')}}</el-button>
                 </el-form-item>
             </el-form>
             <span slot="footer" class="dialog-footer">
-                <el-button @click="checkVisible = false">取 消</el-button>
+                <el-button @click="checkVisible = false">{{$t('cancel')}}</el-button>
                 <el-button type="primary" @click="confirm" :disabled="valid">
-                    <span v-if="valid">请先验证</span>
+                    <span v-if="valid">{{$t('pleaseVerify')}}</span>
                     <span v-else>{{$t('confirm')}}</span>
                 </el-button>
             </span>

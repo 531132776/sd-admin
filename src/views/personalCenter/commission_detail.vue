@@ -1,7 +1,7 @@
 <template>
     <div class="finance_page transaction_detail">
         <el-breadcrumb separator="/">
-            <el-breadcrumb-item :to="{ path:'/home/personalCenter/2' }"><span class="">个人中心</span></el-breadcrumb-item>
+            <el-breadcrumb-item :to="{ path:'/home/personalCenter/2' }"><span class="">{{$t('PersonalCenter')}}</span></el-breadcrumb-item>
             <el-breadcrumb-item>{{$t('Commissioningrecord')}}</el-breadcrumb-item>
             <el-breadcrumb-item>{{$t('Commissioningdetials')}}</el-breadcrumb-item>
         </el-breadcrumb>    
@@ -11,7 +11,10 @@
             <ul class="block">
                 <li><span class="font-s12">{{$t('orderCode')}}：</span>   {{orderDetail.orderCode}}</li>
                 <li><span class="font-s12">{{$t('HouseNumber1')}}： </span>   {{orderDetail.houseCode}}</li>
-                <li><span class="font-s12">{{$t('HousingTypes')}}：</span>  {{orderDetail.orderType | orderTypeF}} </li>
+                <li><span class="font-s12">{{$t('HousingTypes')}}：</span>  
+                    <i v-if="orderDetail.order.orderType==0">{{$t('Rent')}}</i>
+                    <i v-if="orderDetail.order.orderType==1">{{$t('Sale')}}</i> 
+                </li>
                 <li><span class="font-s12">{{$t('SourceInfo')}}：</span>APP</li>
                 <li><span class="font-s12">{{$t('telephone')}}：{{orderDetail.memberMoble}}</span>  </li>
                 <li><span class="font-s12">{{$t('createTime')}}： </span> {{orderDetail.createTime}} </li>

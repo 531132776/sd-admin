@@ -186,7 +186,7 @@ export default {
         .post("/api/pc/center/pwd/check", this.$qs.stringify({ password: val }))
         .then(res => {
           if (res.result == 0) {
-            this.$message.success("密码校验成功");
+            this.$message.success(this.$t('pswCheckSuccess'));
             this.editPhone_show = true;
           }
         })
@@ -201,7 +201,7 @@ export default {
         )
         .then(res => {
           if (res.result == 0) {
-            this.$message.success("验证码发送成功，请查收后输入");
+            this.$message.success(this.$t('verificationCodeSentSuccess'));
           }
         })
         .catch(err => this.$message.error(err.message));
@@ -218,7 +218,7 @@ export default {
         )
         .then(res => {
           if (res.result == 0) {
-            this.$message.success("手机号修改成功");
+            this.$message.success(this.$t('phoneModifySuccess'));
             this.phone_dialog = false;
           }
         })
@@ -239,11 +239,11 @@ export default {
             )
             .then(res => {
               if (res.result == 0) {
-                this.$message.success("密码修改成功");
+                this.$message.success(this.$t('pswChangeSuccess'));
                 this.pwd_dialog = false;
                 setTimeout(() => {
-                  _this.$alert("密码设置成功，自动为您跳转到登录页", "提示", {
-                    confirmButtonText: "我知道了",
+                  _this.$alert(this.$t('pswSetSuccess'), this.$t('prompt'), {
+                    confirmButtonText: this.$t('IveGotIt'),
                     callback: action => {
                       this.$router.push({ name: "home" });
                     }
@@ -253,7 +253,7 @@ export default {
             })
             .catch(err => this.$message.error(err.message));
         } else {
-          this.$message.error("请重新输入");
+          this.$message.error(this.$t('pleaseReEnter'));
           return false;
         }
       });

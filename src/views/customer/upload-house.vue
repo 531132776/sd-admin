@@ -30,7 +30,7 @@
                     <el-form-item>
                         <span slot="label">{{$t('MeetingTime')}}</span>
                         <el-date-picker v-model="house.appointmentDoorTime" :picker-options="pickerOptions" type="datetime" value-format="yyyy-MM-dd HH:mm:ss"
-                            placeholder="选择日期">
+                            :placeholder="$t('PleaseSelect')">
                         </el-date-picker>
                     </el-form-item>
 
@@ -101,11 +101,11 @@
                         <el-col :span="5">
                             <el-form-item>
                                 <span slot="label">{{$t('HousingTypes')}}</span>
-                                <el-select v-model="house.housingTypeDictcode" placeholder="请选择" style="width:247px;">
+                                <el-select v-model="house.housingTypeDictcode" :placeholder="$t('PleaseSelect')" style="width:247px;">
                                     <el-option v-for="item in houseTypeMap" :key="item.id" :label="item.itemValue"
                                         :value="item.id+''">
                                     </el-option>
-                                    <el-option label="请选择" :value="''">
+                                    <el-option :label="$t('PleaseSelect')" :value="''">
                                     </el-option>
                                 </el-select>
                             </el-form-item>
@@ -222,7 +222,7 @@
                         <el-col :span="10">
                             <el-form-item>
                                 <span slot="label">{{$t('houseingFacilities')}}</span>
-                                <el-select v-model="houseSelfContainedDict" multiple placeholder="请选择" style="width:641px;">
+                                <el-select v-model="houseSelfContainedDict" multiple :placeholder="$t('PleaseSelect')" style="width:641px;">
                                     <el-option v-for="item in houseMatchingMap" :key="item.id" :label="item.itemValue"
                                         :value="item.id">
                                     </el-option>
@@ -234,7 +234,7 @@
                         <el-col :span="10">
                             <el-form-item>
                                 <span slot="label">{{$t('housingAllocation')}}</span>
-                                <el-select v-model="houseConfigDict" multiple placeholder="请选择" style="width:641px;">
+                                <el-select v-model="houseConfigDict" multiple :placeholder="$t('PleaseSelect')" style="width:641px;">
                                     <el-option v-for="item in houseConfigureMap" :key="item.id" :label="item.itemValue"
                                         :value="item.id">
                                     </el-option>
@@ -263,7 +263,7 @@
                         <el-col :span="5" :offset="1">
                             <el-form-item>
                                 <span slot="label">{{$t('rentStartDate')}}</span>
-                                <el-date-picker type="datetime" placeholder="选择日期" value-format="yyyy-MM-dd HH:mm:ss" v-model="house.beginRentDate"></el-date-picker>
+                                <el-date-picker type="datetime" :placeholder="$t('PleaseSelect')" value-format="yyyy-MM-dd HH:mm:ss" v-model="house.beginRentDate"></el-date-picker>
                             </el-form-item>
                         </el-col>
                     </el-row>
@@ -289,7 +289,7 @@
                         <el-col :span="5">
                             <el-form-item>
                                 <span slot="label">{{$t('haveHouseingMortgage')}}</span>
-                                <el-select v-model="house.isHouseLoan" placeholder="请选择">
+                                <el-select v-model="house.isHouseLoan" :placeholder="$t('PleaseSelect')">
                                     <el-option label="yes" :value="1"></el-option>
                                     <el-option label="no" :value="0"></el-option>
                                 </el-select>

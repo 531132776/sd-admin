@@ -26,20 +26,18 @@ Vue.use(VueLazyLoad, {
 	error: require('./assets/images/placeholder.png'),
 })
 
-
 const i18n = new VueI18n({
 	locale: 'en',//default lang
 	messages: {
 		'zh': zh,
 		'en': en
 	}
-
 });
-
 
 // 引入全局filter
 import filters from './common/filter';
-Object.keys(filters).forEach(key => {
+
+Object.keys(filters).forEach(key => {	
 	Vue.filter(key, filters[key])
 })
 

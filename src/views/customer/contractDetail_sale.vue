@@ -241,7 +241,7 @@ export default {
           this.$qs.stringify({orderId:this.$props.id,additionalTerms:JSON.stringify(this.detail.additionalTerms)}) 
           ).then(res=>{
               if(res.result==0){
-                    this.$message.success('修改成功！');
+                    this.$message.success(this.$t('Modifiedsuccessfully'));
                     this.queryDetail();
               }
           }).catch(err => this.$message.error(err.message));

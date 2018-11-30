@@ -71,7 +71,7 @@
     </el-row>
 
     <!-- 填写手机验证码 -->
-    <el-dialog title="验证手机号码" :visible.sync="checkVisible" width="30%">
+    <el-dialog :title="$t('VerifyMobile')" :visible.sync="checkVisible" width="30%">
 
       <el-form label-width="80px">
         <!-- <el-form-item>
@@ -198,8 +198,8 @@
               this.$router.push({ name: 'outsideUpload',query:{memberMobile:this.PhoneValid.mobile,memberId: res.dataSet.id}});
             }
           }).catch(err => {
-            this.$alert(err.message, '温馨提示', {
-              confirmButtonText: '确定',
+            this.$alert(err.message, this.$t('prompt'), {
+              confirmButtonText: this.$t('confirm'),
               callback: action => {
                 this.checkVisible = false;
               }

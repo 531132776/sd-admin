@@ -7,7 +7,7 @@
 
         <div class="section mt-20">
             <el-alert
-                title="该订单已结算"
+                title="This order has been settled"
                 type="warning"
                 show-icon
                 v-if="orderDetail.isSettleAccounts==1">
@@ -17,7 +17,10 @@
             <ul class="block">
                 <li><span class="font-s12">{{$t('ClinchAdealTheOrder')}}：</span>   {{orderDetail.orderCode}}</li>
                 <li><span class="font-s12">{{$t('HouseNumber')}}：        </span>   {{orderDetail.houseCode}}</li>
-                <li><span class="font-s12">{{$t('HousingTypes')}}：       </span>  {{orderDetail.orderType | orderTypeF}} </li>
+                <li><span class="font-s12">{{$t('HousingTypes')}}：       </span>  
+                    <i v-if="orderDetail.order.orderType==0">{{$t('Rent')}}</i>
+                    <i v-if="orderDetail.order.orderType==1">{{$t('Sale')}}</i>
+                </li>
                 <li><span class="font-s12">{{$t('TotalMoney')}}：</span>  {{orderDetail.platformServiceAmount}}</li>
                 <li><span class="font-s12">{{$t('company')}}：</span>  {{companyAmount}}</li>
                 <li><span class="font-s12">{{$t('sellerAssistant')}}：  </span>  

@@ -10,10 +10,16 @@
             <ul class="block">
                 <li><span class="font-s12">{{$t('ClinchAdealTheOrder')}}：</span>   {{orderDetail.orderCode}}</li>
                 <li><span class="font-s12">{{$t('HouseNumber1')}}：        </span>   {{orderDetail.houseCode}}</li>
-                <li><span class="font-s12">{{$t('HousingTypes')}}：       </span>  {{orderDetail.orderType | orderTypeF}} </li>
+                <li><span class="font-s12">{{$t('HousingTypes')}}：       </span>  
+                    <i v-if="orderDetail.order.orderType==0">{{$t('Rent')}}</i>
+                    <i v-if="orderDetail.order.orderType==1">{{$t('Sale')}}</i>
+                </li>
                 <li><span class="font-s12">{{$t('TotalMoney')}}：</span>  {{orderDetail.platformServiceAmount}}</li>
                 <li><span class="font-s12">{{$t('MethodOfPayment')}}：</span>
-                    {{orderDetail.payWay | paymentF}}
+                    <i v-if="orderDetail.order.payWay==0">{{$t('unPay')}}</i>
+                    <i v-if="orderDetail.order.payWay==1">{{$t('Online')}}</i>
+                    <i v-if="orderDetail.order.payWay==2">{{$t('Case')}}</i>
+                    <i v-if="orderDetail.order.payWay==3">{{$t('pursePay')}}</i>
                 </li>
             </ul>            
         </div>
@@ -43,7 +49,7 @@
             <el-button type="success" @click="orderDetail.isCheck=1,checkRefund()">{{$t('approved')}}</el-button>
         </div>
 
-        <el-button  v-else type="success" class="h-center">退款成功</el-button>
+        <el-button  v-else type="success" class="h-center">{{$t('Refundsuccessfully')}}</el-button>
 
     </div>
 </template>

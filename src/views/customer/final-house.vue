@@ -20,8 +20,8 @@
                 </el-form-item>
                 <el-form-item :label="$t('housingOwnership')" >
                     <el-select v-model="housingApplication.applicantType" :placeholder="$t('PleaseSelect')" disabled>
-                        <el-option label="业主" :value="0"></el-option>
-                        <el-option label="poa" :value="1"></el-option>
+                        <el-option :label="$t('landlord')" :value="0"></el-option>
+                        <el-option :label="$t('poa')" :value="1"></el-option>
                     </el-select>
                 </el-form-item>
                 <el-form-item label="RERA permit NO" prop="reraPermitNo">
@@ -1135,7 +1135,7 @@
                         // console.log('新增自动应答:', res);
                         if (res.result === 0) {
                             this.$message({
-                                message: '添加成功',
+                                message: this.$t('Addedsuccessfully'),
                                 type: 'success'
                             });
                             this.getAutoAnswerList();
@@ -1719,12 +1719,12 @@
       if(code==1){
         if(val> Number(this.housingApplication.houseRent) ){
             // console.log( val, Number(this.housingApplication.houseRent  ) )
-          this.$message.warning('最低租金不得高于期望租金，请重新输入');
+          this.$message.warning('The minimum rent must not exceed the expected rent. Please re-enter');
           this.housingApplication.minHouseRent = 0;
         }
       }else{
         if(val< Number(this.housingApplication.minHouseRent) ){
-          this.$message.warning('期望租金不得低于期望租金，请重新输入');
+          this.$message.warning('The expected rent must not be lower than the minimum rent. Please re-enter');
           this.housingApplication.houseRent = this.housingApplication.minHouseRent;
         }
       }

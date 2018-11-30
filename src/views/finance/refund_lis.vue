@@ -47,7 +47,8 @@
 
             <el-table-column prop="isRefund" :label="$t('RefundSchedule')" header-align="center" align="center">
                 <template slot-scope="scope">
-                    {{scope.row.isRefund | refundF}}
+                    <i v-if="scope.row.isRefund==0">{{$t('unRefund')}}</i>
+                    <i v-if="scope.row.isRefund==1">{{$t('refunded')}}</i>
                 </template>
             </el-table-column>
 

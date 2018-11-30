@@ -3,7 +3,7 @@
         <div class="nav">
             <el-row>
                 <el-col :span="6">
-                    <el-input placeholder="输入订单号查询" v-model.trim="orderCode" @keyup.enter.native="search">
+                    <el-input :placeholder="$t('orderCode')" v-model.trim="orderCode" @keyup.enter.native="search">
                         <el-button slot="append" icon="el-icon-search"  @click="search"></el-button>
                     </el-input>
                 </el-col>
@@ -78,7 +78,7 @@
         methods: {
             async search() {
                 if(this.orderCode==""){
-                    this.$message.error('请输入订单号后查询！');
+                    this.$message.error('Please enter the order number and inquire！');
                     return false;
                 }
                 

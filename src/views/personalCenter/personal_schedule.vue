@@ -239,7 +239,7 @@ export default {
                 )
                 .then(res => {
                     if(res.result==0){
-                        this.$message.success('设置成功！');
+                        this.$message.success(this.$t('Setupsuccessfully'));
                         this.getSalesment();
                     }
                 })
@@ -300,7 +300,7 @@ export default {
                 )
                 .then(res => {
                     if(res.result==0){
-                        this.$message.success('设置成功！');
+                        this.$message.success(this.$t('Setupsuccessfully'));
                         this.getSalesSchedule();
                         this.showSingle = true;
                     }
@@ -329,7 +329,7 @@ export default {
                 )
                 .then(res => {
                     if(res.result==0){
-                        this.$message.success('打卡成功');
+                        this.$message.success(this.$t('clockInSuccess'));
                         this.queryMySchedule();
                     }
                 })

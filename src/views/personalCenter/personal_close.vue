@@ -81,17 +81,7 @@ export default {
             innerData:{},
             moduleType:'',
             urlStr:"/api/pc/center/order/closes/detail/",
-            progressList:[
-                {code:101,label:'上传房源',showBool:false},
-                {code:102,label:'发布房源',showBool:false},
-                {code:103,label:'线上议价成交',showBool:false},
-                {code:104,label:'合同签订',showBool:false},
-                // {code:105,label:'ejari注册',showBool:false},
-                // {code:114,label:'合同签订(FromF)',showBool:false},
-                {code:115,label:'卖家NOC/买家贷款',showBool:false},
-                {code:116,label:'产权变更',showBool:false},
-                // {code:21,label:'预约看房',showBool:false},
-            ],
+
             progress:[],
             loadingInstance:'',
             activeStep:0

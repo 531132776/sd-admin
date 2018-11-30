@@ -65,7 +65,7 @@
                     <el-form-item prop="appointmentDoorTime">
                         <span slot="label">{{$t('MeetingTime')}}</span>
                         <el-date-picker v-model="house.appointmentDoorTime" :picker-options="pickerOptions" type="datetime" value-format="yyyy-MM-dd HH:mm:ss"
-                                    placeholder="选择日期" @change="getTESTtime" ref="datePicker">
+                                    :placeholder="$t('PleaseSelect')" @change="getTESTtime" ref="datePicker">
                         </el-date-picker>
                     </el-form-item>
                     <el-form-item >

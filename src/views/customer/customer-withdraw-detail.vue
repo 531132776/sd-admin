@@ -103,13 +103,13 @@
       platformState() {
         switch (this.detail.platform) {
           case 1:
-            return '外部';
+            return this.$t('external');
           case 2:
-            return '外获';
+            return this.$t('sellerAssistant');
           case 3:
-            return '外看';
+            return this.$t('buyerAssistant');
           case 4:
-            return '区域长';
+            return this.$t('regionalLong');
           case 5:
             return 'PC'
         }
