@@ -299,6 +299,7 @@ export default  {
             // MeetingSpot:'见面地点',
             cancel:'取消',
             confirm:'确定',
+            reminder:'温馨提示',
             // MeetingTime:'见面时间',
             // MeetingSpot:'见面地点',
             housingAssociation :'房源关联',

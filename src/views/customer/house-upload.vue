@@ -198,7 +198,7 @@
               this.$router.push({ name: 'outsideUpload',query:{memberMobile:this.PhoneValid.mobile,memberId: res.dataSet.id}});
             }
           }).catch(err => {
-            this.$alert(err.message, this.$t('prompt'), {
+            this.$alert(err.message, this.$t('reminder'), {
               confirmButtonText: this.$t('confirm'),
               callback: action => {
                 this.checkVisible = false;
