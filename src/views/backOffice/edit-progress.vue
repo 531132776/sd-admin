@@ -147,7 +147,7 @@
             setStep(index, step) {//只有交易中才能修改
                 if (this.detail.order.tradingStatus != 0) return;
                 if (index != this.detail.progress.length) return;
-                this.$prompt(this.$t('Pleaseentertheremark'), $t('prompt'), {
+                this.$prompt(this.$t('Pleaseentertheremark'), this.$t('prompt'), {
                     confirmButtonText: this.$t('confirm'),
                     cancelButtonText: this.$t('cancel')
                 }).then(({ value }) => {

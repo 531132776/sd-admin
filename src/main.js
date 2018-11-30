@@ -62,10 +62,10 @@ axios.interceptors.response.use(
 		if( response.data.result === 1001 ){
 			router.push('/login');	
 			return Promise.reject(response.data);
-		}else if( response.data.result ===-1){
-			return Promise.reject(response.data);	
-		}else{
+		}else if( response.data.result === 0 || response.data.result === 1002){	//正常状态码
 			return Promise.resolve(response.data);
+		}else{
+			return Promise.reject(response.data);
 		}	
 		
 	}, error =>{

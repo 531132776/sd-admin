@@ -27,7 +27,7 @@
                 <template slot-scope="scope">
                     <div class="info">
                         <div class="credent">
-                            <img v-lazy="scope.row.houseMainImg" alt="">
+                            <img v-lazy="scope.row.houseMainImg" alt="" :key="scope.row.houseMainImg">
                         </div>
                         <div class="address">
                             <p class="code">{{$t('UploadNumber')}}:{{scope.row.houseCode}}</p>
@@ -119,8 +119,9 @@
                         </el-form-item>
                         <el-form-item>
                             <span slot="label">{{$t('MeetingTime')}}:</span>
-                            <el-date-picker type="datetime" placeholder="选择日期" value-format="yyyy-MM-dd HH:mm:ss"
-                                v-model="house.startApartmentTime"></el-date-picker>
+                            <el-date-picker type="datetime" :placeholder="$t('PleaseSelect')"      value-format="yyyy-MM-dd HH:mm:ss"
+                                v-model="house.startApartmentTime" 
+                                @change="getTESTtime" ref="datePicker" :picker-options="pickerOptions"></el-date-picker>
                         </el-form-item>
                         <el-form-item>
                             <span slot="label">{{$t('appointmentType')}}:</span>
@@ -154,6 +155,15 @@
         name: 'appoint',
         data() {
             return {
+                pickerOptions: {
+                    // 限制预约时间为未来两天内
+                    disabledDate(time) {
+                    return (
+                        Date.now()-24*60*60*1000 > time.getTime() ||
+                        time.getTime() - Date.now() > 2 * 24 * 60 * 60 * 1000
+                    );
+                    }
+                },
                 loading: true,
                 dialogVisible: false,
                 pagination: {
@@ -261,7 +271,29 @@
                     })
                     .catch(err => this.$message.error(err.message));
 
-            }
+            },
+            getTESTtime(val){
+                // 48小时内
+                let selectTimeStr = new Date(val).getHours()*3600 + new Date(val).getMinutes()*60 + new Date(val).getSeconds();
+                let nowTimeStr = new Date().getHours()*3600 + new Date().getMinutes()*60 + new Date().getSeconds();
+                // 如果是当天，选择的时间应为当前时间两小时后
+
+                if( new Date(val).getDate() == new Date().getDate() ){
+                    if(selectTimeStr<nowTimeStr+2*3600){
+                        this.$refs.datePicker.showPicker();
+                        this.$message.error('Please select two hours after the current time!');
+                        this.$set(this.house,'startApartmentTime','');
+                        //house.startApartmentTime
+                    }
+                }else if( new Date(val).getTime() - new Date().getTime() >2 * 24 * 60 * 60 * 1000) { //如果是最后一天,所选择的时间不能超过当前时分秒
+                
+                    if( selectTimeStr > nowTimeStr ){
+                        this.$refs.datePicker.showPicker();
+                        this.$message.error('Not more than 48 hours! Please reselect'); 
+                        this.$set(this.house,'startApartmentTime','');     
+                    }
+                }  
+            }            
         },
         beforeMount() {
             this.loadHouseList();

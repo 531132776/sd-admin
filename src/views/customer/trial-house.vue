@@ -1711,7 +1711,7 @@ export default {
                 this.$set(this.housingApplication,'appointmentDoorTime','');
                 //housingApplication.appointmentDoorTime   
             }
-        }else if( new Date(val).getDate()-new Date().getDate() ==2) { //如果是最后一天,所选择的时间不能超过当前时分秒
+        }else if( new Date(val).getTime() - new Date().getTime() >2 * 24 * 60 * 60 * 1000) { //如果是最后一天,所选择的时间不能超过当前时分秒
             if( selectTimeStr > nowTimeStr ){
                 this.$refs.datePicker.showPicker();
                 this.$message.error('Not more than 48 hours! Please reselect'); 

@@ -36,9 +36,9 @@
       </div>
     </div>
     <div class="footer">
-      <el-button v-if="detail.status===0" @click="obtained(1)">{{$t('cancel')}}</el-button>
-      <el-button @click="obtained(0)" type="primary">{{$t('return')}}</el-button>
-      <el-button v-if="detail.status===0" @click="obtained(2)" type="success">{{$t('confirm')}}</el-button>
+      <el-button v-if="detail.status===0" @click="obtained(1)">{{$t('cancelObtain')}}</el-button>
+      <el-button @click="obtained(0)" type="warning" plain>{{$t('return')}}</el-button>
+      <el-button v-if="detail.status===0" @click="obtained(2)" type="success">{{$t('confirmObtain')}}</el-button>
     </div>
   </div>
 </template>
@@ -76,6 +76,10 @@
     },
     methods: {
       obtained(status) {//取消下架,确认下架
+        if(status==0){
+          this.$router.push({ name: 'withdraw' });
+          return false;
+        }
         let loadingInstance = this.$Loading.service({ fullscreen: true, text: 'loading', spinner: 'el-icon-loading', background: 'rgba(56, 53, 53, 0.6)' });
         this.$axios.post('/api/pc/update/obtained', this.$qs.stringify({
           remark: this.detail.remark,

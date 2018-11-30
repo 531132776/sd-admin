@@ -13,7 +13,7 @@
             <p class="title"><span>{{$t('info')}}</span></p>
             <div class="content">
                 <el-form label-width="150px" class="d_flex" :model="house" :rules="rules" ref="ruleForm" >
-                    <el-form-item prop="leaseType">
+                    <el-form-item prop="leaseType" style="display:block;width:100%;">
                         <span slot="label"></span>
                         <el-radio-group v-model="house.leaseType" :disabled="this.$route.query.memberMobile?false:true">
                             <el-radio :label="0">{{$t('Rent')}}</el-radio>
@@ -24,10 +24,10 @@
                         <span slot="label">{{$t('contacts')}}</span>
                         <el-input v-model="house.contacts"></el-input>
                     </el-form-item>
-                    <!-- <el-form-item prop="phoneNumber">
+                    <el-form-item prop="phoneNumber">
                         <span slot="label">{{$t('contact')}}</span>
                         <el-input v-model="house.phoneNumber"></el-input>
-                    </el-form-item>    -->
+                    </el-form-item>   
                     <el-form-item prop="memberMobile">
                         <span slot="label">{{$t('landlordTelephone')}}</span>
                         <el-input v-model="house.memberMobile" disabled></el-input>
@@ -256,7 +256,7 @@
                         this.$set(this.house,'appointmentDoorTime','');
                         //housingApplication.appointmentDoorTime   
                     }
-                }else if( new Date(val).getDate()-new Date().getDate() ==2) { //如果是最后一天,所选择的时间不能超过当前时分秒
+                }else if( new Date(val).getTime() - new Date().getTime() >2 * 24 * 60 * 60 * 1000) { //如果是最后一天,所选择的时间不能超过当前时分秒
                     if( selectTimeStr > nowTimeStr ){
                         this.$refs.datePicker.showPicker();
                         this.$message.error('Not more than 48 hours! Please reselect'); 

@@ -18,7 +18,7 @@
 
             <el-table-column prop="orderCode" :label="$t('info')" header-align="center" width="500" align="center">
                 <template slot-scope="scope">
-                    <img class="float-left" v-lazy="scope.row.houseMainImg" alt="">
+                    <img class="float-left" v-lazy="scope.row.houseMainImg" alt="" :key="scope.row.houseMainImg">
                     <div class="float-left order-detail">
                         <span class="color-primary">Order number: {{scope.row.orderCode}}</span> 
                         <br>

@@ -98,7 +98,7 @@
     <div class="footer">
       <el-button @click="closeOrder">{{$t('closeOrder')}}</el-button>
       <el-button type="primary" @click="transformOrder">{{$t('TransferOrder')}}</el-button>
-      <el-button type="primary" @click="obtained">{{$t('obtained')}}</el-button>
+      <el-button type="primary" @click="obtained" :disabled="detail.houseStatus>1">{{$t('obtained')}}</el-button>
     </div>
 
     <el-dialog :title="$t('choose')" :visible.sync="checkVisible" width="30%">
@@ -309,9 +309,12 @@
 
               this.$axios.post('/api/pc/house/apply/withdraw', this.$qs.stringify(this.withdrawData))
             .then(res => {
-              this.$message({ type: 'success', message: res.message });
-              this.withdrawBool = false;
-              this.$router.go(-1);
+              if(res.result==0){
+                this.$message({ type: 'success', message: res.message });
+                this.withdrawBool = false;
+                this.$router.go(-1);
+              }
+
             })
             .catch(err => {
               this.$message.error(err.message);

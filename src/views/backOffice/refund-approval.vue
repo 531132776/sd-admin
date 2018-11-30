@@ -18,7 +18,7 @@
                 <template slot-scope="scope">
                     <div class="info">
                         <div class="credent">
-                            <img v-lazy="scope.row.houseMainImg" alt="">
+                            <img v-lazy="scope.row.houseMainImg" alt="" :key="scope.row.houseMainImg">
                         </div>
                         <div class="address">
                             <p class="code">{{$t('UploadNumber')}}:{{scope.row.houseCode}}</p>

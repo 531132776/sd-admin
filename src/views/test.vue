@@ -21,6 +21,7 @@
         methods:{
             
                 getTESTtime(val){
+                    console.log( new Date(val).getTime() - new Date().getTime() >2 * 24 * 60 * 60 * 1000  )
                     // 48小时内
                     let selectTimeStr = new Date(val).getHours()*3600 + new Date(val).getMinutes()*60 + new Date(val).getSeconds();
                     let nowTimeStr = new Date().getHours()*3600 + new Date().getMinutes()*60 + new Date().getSeconds();
@@ -31,7 +32,7 @@
                             this.$refs.datePicker.showPicker();
                             this.$message.error('Please select two hours after the current time!');   
                         }
-                    }else if( new Date(val).getDate()-new Date().getDate() ==2) { //如果是最后一天,所选择的时间不能超过当前时分秒
+                    }else if( new Date(val).getTime() - new Date().getTime() >2 * 24 * 60 * 60 * 1000) { //如果是最后一天,所选择的时间不能超过当前时分秒
                         if( selectTimeStr > nowTimeStr ){
                             this.$refs.datePicker.showPicker();
                             this.$message.error('Not more than 48 hours! Please reselect');      
