@@ -49,18 +49,34 @@
             <el-form label-width="160px" class="d_flex" :model="house" :rules="rules" ref="ruleForm" >
                 <el-form-item prop="projectMainImg">
                     <span slot="label"> {{$t('projectImg')}}1:</span>
-                    <el-upload  name="submitFile"  class="avatar-uploader" action="/api/pc/file/upload"
+                    <!-- <el-upload  name="submitFile"  class="avatar-uploader" action="/api/pc/file/upload"
                         :show-file-list="false" :on-success="handImgOneSuccess">
                         <img v-if="imageUrl1" :src="imageUrl1" class="avatar">
                         <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+                    </el-upload> -->
+                    <el-upload name="submitFile" :file-list="projectMainImgList" action="/api/pc/file/upload" list-type="picture-card"
+                        :before-upload="beforeUploadPocImg" :on-success="handleSuccessPocImg"
+                        :on-remove="handleRemovePocImg"
+                        :limit="1"
+                        :class="projectMainImgList.length==1?'no-uploadIcon':''"
+                        :on-preview="previewPocImg">
+                        <i class="el-icon-plus"></i>
                     </el-upload>
                 </el-form-item>
                 <el-form-item prop="projectMainImg2">
                     <span slot="label">{{$t('projectImg')}}2:</span>
-                    <el-upload  name="submitFile" class="avatar-uploader" action="/api/pc/file/upload"
+                    <!-- <el-upload  name="submitFile" class="avatar-uploader" action="/api/pc/file/upload"
                         :show-file-list="false" :on-success="handImgTwoSuccess" >
                         <img v-if="imageUrl2" :src="imageUrl2" class="avatar">
                         <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+                    </el-upload> -->
+                    <el-upload name="submitFile" :file-list="projectMainImgList2" action="/api/pc/file/upload" list-type="picture-card"
+                        :before-upload="beforeUploadPocImg2" :on-success="handleSuccessPocImg2"
+                        :on-remove="handleRemovePocImg2"
+                        :limit="1"
+                        :class="projectMainImgList2.length==1?'no-uploadIcon':''"
+                        :on-preview="previewPocImg2">
+                        <i class="el-icon-plus"></i>
                     </el-upload>
                 </el-form-item>
                 <el-form-item prop="projectName">
@@ -112,7 +128,7 @@
                 </el-form-item>
                 <el-form-item prop="openingTime">
                     <span slot="label">{{$t('theOpeningTime')}}:</span>
-                    <el-date-picker v-model="house.openingTime" type="datetime" value-format="yyyy-MM-dd HH:mm:ss":placeholder="$t('PleaseSelect')"></el-date-picker>
+                    <el-date-picker v-model="house.openingTime" type="datetime" value-format="yyyy-MM-dd HH:mm:ss" :placeholder="$t('PleaseSelect')"></el-date-picker>
                 </el-form-item>
                 <el-form-item prop="bedroomNum">
                     <span slot="label">{{$t('bedroomNumber')}}:</span>
@@ -132,6 +148,11 @@
                 <el-button type="primary" @click="submit('ruleForm')">{{$t('confirm')}}</el-button>
             </span>
         </el-dialog>
+
+        <el-dialog :visible.sync="dialogVisible_pImg" :modal="true">
+            <img width="100%" :src="dialogImageUrl_pImg" alt="">
+        </el-dialog>
+
     </div>
 </template>
 <script>
@@ -199,7 +220,13 @@
                     openingTime: [{ required: true,message: `${this.$t("choose")} ${this.$t("theOpeningTime")}`,trigger: "change"}],
                     bedroomNum: [{ required: true,message: `${this.$t("choose")} ${this.$t("housePlan")}`,trigger: "change"}],
                     reraPermitNo: [{ required: true,message: `${this.$t("PleaseEnter")} RERA permit NO`,trigger: "blur"}],
-                }
+                },
+                dialogVisible_pImg:false,
+                dialogImageUrl_pImg:'',
+                projectMainImgList:[],
+                projectMainImgList2:[],
+                removeImgArr:[]
+
             }
         },
         watch:{
@@ -237,8 +264,8 @@
             openDialog() {
                 this.dialogVisible = true;
                /** 重置房源信息 */
-                this.$set(this,'imageUrl1','');
-                this.$set(this,'imageUrl2','');
+                this.$set(this,'projectMainImgList',[]);
+                this.$set(this,'projectMainImgList2',[]);
                 this.$set(this,'houseLocation',[]);
                 this.$set(this,'bedroom',[]);
                 this.house = {
@@ -268,13 +295,21 @@
                 this.loadList();
             },
             view(row) {//编辑查看
+                this.projectMainImgList =[];
+                this.projectMainImgList2 =[];
+                this.removeImgArr = [];
+
                 this.$axios.post('/api/pc/house/getDirectSalesDetails',this.$qs.stringify({id:row.id}))
                     .then(res => {
                         this.house = res.dataSet;
                         this.$set(this,'houseLocation',[res.dataSet.city,res.dataSet.community,res.dataSet.subCommunity]);
                         this.$set(this,'bedroom',res.dataSet.bedroomNum?res.dataSet.bedroomNum.split(','):[]);
-                        this.$set(this,'imageUrl1',res.dataSet.projectMainImg);
-                        this.$set(this,'imageUrl2',res.dataSet.projectMainImg2);
+                        
+                        this.projectMainImgList.push({url:res.dataSet.projectMainImg}) ;
+                        this.projectMainImgList2.push({url:res.dataSet.projectMainImg2}) ;
+
+                        this.projectMainImgList = this.projectMainImgList.filter(v => Boolean(v.url) == true); 
+                        this.projectMainImgList2 = this.projectMainImgList2.filter(v => Boolean(v.url) == true);    
                         this.dialogVisible = true;
                     })
                     .catch(err => this.$message.error(err.message));
@@ -302,6 +337,63 @@
                 this.imageUrl2 = URL.createObjectURL(file.raw);
                 this.$set(this.house,'projectMainImg2',res.fid);
             },
+
+            //projectMainImgList
+            beforeUploadPocImg(file) {
+         
+            },
+            handleSuccessPocImg(res,file,fileList) {
+                this.projectMainImgList = fileList;
+                this.$set(this.house,'projectMainImg',res.url);//校验图片必填
+            },
+            handleRemovePocImg(file,fileList) {
+                this.getNeedRemoveImg(file);
+                this.projectMainImgList = fileList;
+                this.$set(this.house,'projectMainImg',fileList.length>0?fileList[0].url:'');//校验图片必填
+            },
+            previewPocImg(file){ //预览
+                this.dialogVisible_pImg = true;
+                this.dialogImageUrl_pImg = file.url;
+            },
+            
+            beforeUploadPocImg2(file) {
+         
+            },
+            handleSuccessPocImg2(res,file,fileList) {
+                this.projectMainImgList2 = fileList;
+                this.$set(this.house,'projectMainImg2',res.url);//校验图片必填
+            },
+            handleRemovePocImg2(file,fileList) {
+                this.getNeedRemoveImg(file);
+                this.projectMainImgList2 = fileList;
+                this.$set(this.house,'projectMainImg2',fileList.length>0?fileList[0].url:'');//校验图片必填
+            },
+            previewPocImg2(file){ //预览
+                this.dialogVisible_pImg = true;
+                this.dialogImageUrl_pImg = file.url;
+            }, 
+            // 点击删除按钮后的图片fid保存
+            getNeedRemoveImg( file ){
+                var str = ''
+                console.log(file.response)
+                if(file.response){
+                    str = file.response.fid;
+                }else{
+                    str = file.url.substr(file.url.indexOf('/group')+1);
+                }
+                this.removeImgArr.push(str);
+            },
+            //点提交后统一删除
+            deleteImgFun(str){
+                this.$axios.post('/api/pc/file/delete', 
+                    this.$qs.stringify({fid: str}))
+                    .then((res) => {
+                        
+                    }).catch((err)=>{
+
+                    });
+            },
+            
             // beforeAvatarUpload(file) {
             //     const isJPG = file.type === 'image/jpeg';
             //     const isLt2M = file.size / 1024 / 1024 < 2;
@@ -315,9 +407,16 @@
             //     return isJPG && isLt2M;
             // },
             submit(formName) {
-                
                 this.$refs[formName].validate((valid) => {
                 if (valid) {
+
+                    // 删除的图片统一走接口
+                    if(this.removeImgArr.length>0 ){
+                        for(let i=0;i<this.removeImgArr.length;i++){
+                            this.deleteImgFun(this.removeImgArr[i]);
+                        }
+                    }
+
                     this.$axios.post('/api/pc/house/updateDirectSalesDetails', this.$qs.stringify(this.house))
                         .then(res => {
                             this.dialogVisible = false;
@@ -335,12 +434,12 @@
                 //code==0 maxHouseRent  code==1 最低租金 minHouseRent
                 if(code==1){
                     if(val> Number(this.house.maxHouseRent) ){
-                        this.$message.warning('最低金额不得高于最高金额，请重新输入');
+                        this.$message.warning('The minimum rent must not exceed the expected rent. Please re-enter');
                         this.house.minHouseRent = 0;
                     }
                 }else{
                     if(val< Number(this.house.minHouseRent) ){
-                    this.$message.warning('最高金额不得低于最低金额，请重新输入');
+                    this.$message.warning('The expected rent must not be lower than the minimum rent. Please re-enter');
                     this.house.maxHouseRent = this.house.minHouseRent;
                 }
             }

@@ -992,6 +992,7 @@ export default {
           this.$set(this, "reoPassportImgList", []);
           this.$set(this, "houseHoldImgList", []);
           this.$set(this,'houseRentContractImgList',[])
+          this.$set(this,'removeImgArr',[]); //把需要删除的文件fid数组也清空
 
           //------>房屋详情
           //console.log('回显数据', resList[0].dataSet);
@@ -1577,7 +1578,7 @@ export default {
       this.dialogImageUrl_houseRentContract = file.url;
     },
 
-    // 删除图片
+    // 需要删除图片的fid
     handleRemove(file){
       var str = ''
       if(file.response){
