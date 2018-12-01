@@ -11,15 +11,15 @@
                 <li><span class="font-s12">{{$t('ClinchAdealTheOrder')}}：</span>   {{orderDetail.orderCode}}</li>
                 <li><span class="font-s12">{{$t('HouseNumber1')}}：        </span>   {{orderDetail.houseCode}}</li>
                 <li><span class="font-s12">{{$t('HousingTypes')}}：       </span>  
-                    <i v-if="orderDetail.order.orderType==0">{{$t('Rent')}}</i>
-                    <i v-if="orderDetail.order.orderType==1">{{$t('Sale')}}</i>
+                    <i v-if="orderDetail.orderType==0">{{$t('Rent')}}</i>
+                    <i v-if="orderDetail.orderType==1">{{$t('Sale')}}</i>
                 </li>
                 <li><span class="font-s12">{{$t('TotalMoney')}}：</span>  {{orderDetail.platformServiceAmount}}</li>
                 <li><span class="font-s12">{{$t('MethodOfPayment')}}：</span>
-                    <i v-if="orderDetail.order.payWay==0">{{$t('unPay')}}</i>
-                    <i v-if="orderDetail.order.payWay==1">{{$t('Online')}}</i>
-                    <i v-if="orderDetail.order.payWay==2">{{$t('Case')}}</i>
-                    <i v-if="orderDetail.order.payWay==3">{{$t('pursePay')}}</i>
+                    <i v-if="orderDetail.payWay==0">{{$t('unPay')}}</i>
+                    <i v-if="orderDetail.payWay==1">{{$t('Online')}}</i>
+                    <i v-if="orderDetail.payWay==2">{{$t('Case')}}</i>
+                    <i v-if="orderDetail.payWay==3">{{$t('pursePay')}}</i>
                 </li>
             </ul>            
         </div>

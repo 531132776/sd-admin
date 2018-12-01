@@ -18,8 +18,8 @@
                 <li><span class="font-s12">{{$t('ClinchAdealTheOrder')}}：</span>   {{orderDetail.orderCode}}</li>
                 <li><span class="font-s12">{{$t('HouseNumber')}}：        </span>   {{orderDetail.houseCode}}</li>
                 <li><span class="font-s12">{{$t('HousingTypes')}}：       </span>  
-                    <i v-if="orderDetail.order.orderType==0">{{$t('Rent')}}</i>
-                    <i v-if="orderDetail.order.orderType==1">{{$t('Sale')}}</i>
+                    <i v-if="orderDetail.orderType==0">{{$t('Rent')}}</i>
+                    <i v-if="orderDetail.orderType==1">{{$t('Sale')}}</i>
                 </li>
                 <li><span class="font-s12">{{$t('TotalMoney')}}：</span>  {{orderDetail.platformServiceAmount}}</li>
                 <li><span class="font-s12">{{$t('company')}}：</span>  {{companyAmount}}</li>

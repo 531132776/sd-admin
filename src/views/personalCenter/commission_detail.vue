@@ -12,8 +12,8 @@
                 <li><span class="font-s12">{{$t('orderCode')}}：</span>   {{orderDetail.orderCode}}</li>
                 <li><span class="font-s12">{{$t('HouseNumber1')}}： </span>   {{orderDetail.houseCode}}</li>
                 <li><span class="font-s12">{{$t('HousingTypes')}}：</span>  
-                    <i v-if="orderDetail.order.orderType==0">{{$t('Rent')}}</i>
-                    <i v-if="orderDetail.order.orderType==1">{{$t('Sale')}}</i> 
+                    <i v-if="orderDetail.orderType==0">{{$t('Rent')}}</i>
+                    <i v-if="orderDetail.orderType==1">{{$t('Sale')}}</i> 
                 </li>
                 <li><span class="font-s12">{{$t('SourceInfo')}}：</span>APP</li>
                 <li><span class="font-s12">{{$t('telephone')}}：{{orderDetail.memberMoble}}</span>  </li>

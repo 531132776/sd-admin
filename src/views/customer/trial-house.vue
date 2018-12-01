@@ -1500,13 +1500,14 @@ export default {
     },
 
     //产权证明 pocImgList
-    beforeUploadPocImg() {
+    beforeUploadPocImg(file) {
       if(this.pocImgList[2]){
           return false;
       } 
       else return true;
     },
     handleSuccessPocImg(res,file,fileList) {
+      
       this.pocImgList = fileList;
       this.$set(this.housingApplication,'pocImg',res.url);//校验图片必填
     },
