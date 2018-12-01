@@ -927,6 +927,7 @@
                 this.$set(this, 'houseSourceImgList', []);
                 this.$set(this, 'FormAImgList', []);
                 this.$set(this,'houseRentContractImgList',[])
+                this.$set(this,'removeImgArr',[]); //把需要删除的文件fid数组也清空
 
                 //房屋详情信息
                 let houseDetailPro = this.$axios.post(`/api/pc/house/detail/${this.$props.id}`);

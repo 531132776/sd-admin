@@ -1,0 +1,1827 @@
+{
+    "extension": "linecounter",
+    "version": "0.2.2",
+    "workspace": "f:\\Jammy\\20180925_\\20181126_PC",
+    "linecount": [
+        {
+            "version": "0.2.2",
+            "counttime": "2018-12-01 17:51:09",
+            "filesum": 291,
+            "codesum": 36355,
+            "commentsum": 1691,
+            "blanksum": 2495,
+            "statistics": {
+                ".json": {
+                    "code": 12491,
+                    "comment": 0,
+                    "blank": 1
+                },
+                ".js": {
+                    "code": 1633,
+                    "comment": 298,
+                    "blank": 124
+                },
+                ".md": {
+                    "code": 13,
+                    "comment": 0,
+                    "blank": 3
+                },
+                ".vue": {
+                    "code": 15981,
+                    "comment": 1365,
+                    "blank": 1046
+                },
+                ".html": {
+                    "code": 17,
+                    "comment": 1,
+                    "blank": 0
+                },
+                ".lock": {
+                    "code": 5501,
+                    "comment": 0,
+                    "blank": 1290
+                },
+                ".css": {
+                    "code": 47,
+                    "comment": 0,
+                    "blank": 0
+                },
+                ".scss": {
+                    "code": 590,
+                    "comment": 27,
+                    "blank": 30
+                },
+                ".map": {
+                    "code": 68,
+                    "comment": 0,
+                    "blank": 0
+                },
+                "": {
+                    "code": 14,
+                    "comment": 0,
+                    "blank": 1
+                }
+            },
+            "filelist": [
+                {
+                    "blank": 1,
+                    "code": 14,
+                    "comment": 0,
+                    "filename": ".gitignore"
+                },
+                {
+                    "blank": 1,
+                    "code": 4,
+                    "comment": 0,
+                    "filename": "babel.config.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "dist\\css\\about.6e07a7ef.css"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "dist\\css\\app.584a6087.css"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "dist\\css\\chunk-00208c42.c26d89af.css"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "dist\\css\\chunk-02492e47.fa67c303.css"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "dist\\css\\chunk-0642d3ac.2b3386ed.css"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "dist\\css\\chunk-0bd54a86.cc2fb28e.css"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "dist\\css\\chunk-0c4f9775.a870705c.css"
+                },
+                {
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0,
+                    "filename": "dist\\css\\chunk-0c6cb0f8.a7bf79e3.css"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "dist\\css\\chunk-13e809ce.5aef06c3.css"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "dist\\css\\chunk-154bb23c.c5d8db6a.css"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "dist\\css\\chunk-1a56521f.a5b76cf7.css"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "dist\\css\\chunk-1bf45ebe.fdab833e.css"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "dist\\css\\chunk-1c43390f.df61f8db.css"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "dist\\css\\chunk-1ced7598.79ef6161.css"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "dist\\css\\chunk-1d7acf48.94809d50.css"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "dist\\css\\chunk-20babf42.56c6af1e.css"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "dist\\css\\chunk-2857a60e.ebe0815f.css"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "dist\\css\\chunk-3e4e4310.88711a02.css"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "dist\\css\\chunk-40a6f65b.8a0e8b4b.css"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "dist\\css\\chunk-40c9a70b.737386d1.css"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "dist\\css\\chunk-4120dcd6.9c261e8f.css"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "dist\\css\\chunk-49db654f.7bbad1ea.css"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "dist\\css\\chunk-4e22ecdc.1b4d35d7.css"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "dist\\css\\chunk-524e0632.91e79ee0.css"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "dist\\css\\chunk-528b1c3f.23f5c33c.css"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "dist\\css\\chunk-5417f2cc.e397c5f8.css"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "dist\\css\\chunk-54c7220a.6dffaea5.css"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "dist\\css\\chunk-5aa8d0e1.086cf9c1.css"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "dist\\css\\chunk-5c8f8c79.ce92cb9b.css"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "dist\\css\\chunk-5d13645c.7c2afe25.css"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "dist\\css\\chunk-5d5699a4.e484da38.css"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "dist\\css\\chunk-5f5fc7bd.792dadcf.css"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "dist\\css\\chunk-6a0c3604.6307fd97.css"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "dist\\css\\chunk-6ff4526b.446adf19.css"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "dist\\css\\chunk-7326d8af.9bae9e3a.css"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "dist\\css\\chunk-7cd8ab70.5e263d28.css"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "dist\\css\\chunk-7ebc3a16.f0df3219.css"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "dist\\css\\chunk-836adc20.d95bbe0f.css"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "dist\\css\\chunk-854ff5d4.dcc63c45.css"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "dist\\css\\chunk-9e88ea72.acb8fdeb.css"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "dist\\css\\chunk-b285e2b6.319b7941.css"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "dist\\css\\chunk-c2e4d48c.d917a92e.css"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "dist\\css\\chunk-d5241004.28e282a9.css"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "dist\\css\\chunk-d8933a2a.f8a51a7d.css"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "dist\\css\\chunk-dc006c20.112782f6.css"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "dist\\css\\chunk-dc161aa0.c0693e10.css"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "dist\\css\\chunk-e46b0108.a335a1d6.css"
+                },
+                {
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0,
+                    "filename": "dist\\css\\chunk-e7a7ec1c.f13fd13d.css"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "dist\\css\\chunk-vendors.976ee29b.css"
+                },
+                {
+                    "filename": "dist\\favicon.ico",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "dist\\fonts\\element-icons.2fad952a.woff",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "dist\\fonts\\element-icons.6f0a7632.ttf",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "dist\\img\\company-a.d441ea2e.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "dist\\img\\company-b.29816e12.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "dist\\img\\login.06de7c04.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "dist\\index.html"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 1,
+                    "filename": "dist\\js\\about.2435fcba.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "dist\\js\\about.2435fcba.js.map"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 1,
+                    "filename": "dist\\js\\app.826c30b5.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "dist\\js\\app.826c30b5.js.map"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 1,
+                    "filename": "dist\\js\\chunk-00208c42.75751e1c.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "dist\\js\\chunk-00208c42.75751e1c.js.map"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 1,
+                    "filename": "dist\\js\\chunk-02492e47.b870ab11.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "dist\\js\\chunk-02492e47.b870ab11.js.map"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 1,
+                    "filename": "dist\\js\\chunk-0642d3ac.bf4d374d.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "dist\\js\\chunk-0642d3ac.bf4d374d.js.map"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 1,
+                    "filename": "dist\\js\\chunk-07abd62c.78216889.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "dist\\js\\chunk-07abd62c.78216889.js.map"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 1,
+                    "filename": "dist\\js\\chunk-0bd54a86.249a42c5.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "dist\\js\\chunk-0bd54a86.249a42c5.js.map"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 1,
+                    "filename": "dist\\js\\chunk-0c4f9775.75390ce9.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "dist\\js\\chunk-0c4f9775.75390ce9.js.map"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 1,
+                    "filename": "dist\\js\\chunk-0c6cb0f8.c5d2af37.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "dist\\js\\chunk-0c6cb0f8.c5d2af37.js.map"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 1,
+                    "filename": "dist\\js\\chunk-13e809ce.0c300c72.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "dist\\js\\chunk-13e809ce.0c300c72.js.map"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 1,
+                    "filename": "dist\\js\\chunk-154bb23c.23b340d8.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "dist\\js\\chunk-154bb23c.23b340d8.js.map"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 1,
+                    "filename": "dist\\js\\chunk-1a56521f.5b31c77f.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "dist\\js\\chunk-1a56521f.5b31c77f.js.map"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 1,
+                    "filename": "dist\\js\\chunk-1bf45ebe.68d6c366.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "dist\\js\\chunk-1bf45ebe.68d6c366.js.map"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 1,
+                    "filename": "dist\\js\\chunk-1c2ed406.dff76660.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "dist\\js\\chunk-1c2ed406.dff76660.js.map"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 1,
+                    "filename": "dist\\js\\chunk-1c43390f.7b223491.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "dist\\js\\chunk-1c43390f.7b223491.js.map"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 1,
+                    "filename": "dist\\js\\chunk-1ced7598.1742222f.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "dist\\js\\chunk-1ced7598.1742222f.js.map"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 1,
+                    "filename": "dist\\js\\chunk-1d7acf48.06aea2ca.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "dist\\js\\chunk-1d7acf48.06aea2ca.js.map"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 1,
+                    "filename": "dist\\js\\chunk-20babf42.7b4ed924.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "dist\\js\\chunk-20babf42.7b4ed924.js.map"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 1,
+                    "filename": "dist\\js\\chunk-2857a60e.aa10c25a.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "dist\\js\\chunk-2857a60e.aa10c25a.js.map"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 1,
+                    "filename": "dist\\js\\chunk-2d0b30b7.a7b4f3fa.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "dist\\js\\chunk-2d0b30b7.a7b4f3fa.js.map"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 1,
+                    "filename": "dist\\js\\chunk-2d0b5984.14cc8db8.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "dist\\js\\chunk-2d0b5984.14cc8db8.js.map"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 1,
+                    "filename": "dist\\js\\chunk-2d0b6aa0.929562bd.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "dist\\js\\chunk-2d0b6aa0.929562bd.js.map"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 1,
+                    "filename": "dist\\js\\chunk-2d0c1f28.dcc0b46a.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "dist\\js\\chunk-2d0c1f28.dcc0b46a.js.map"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 1,
+                    "filename": "dist\\js\\chunk-2d0c885f.3087b742.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "dist\\js\\chunk-2d0c885f.3087b742.js.map"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 1,
+                    "filename": "dist\\js\\chunk-2d0daeb6.5954a269.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "dist\\js\\chunk-2d0daeb6.5954a269.js.map"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 1,
+                    "filename": "dist\\js\\chunk-2d0df835.98d41037.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "dist\\js\\chunk-2d0df835.98d41037.js.map"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 1,
+                    "filename": "dist\\js\\chunk-2d207aae.974cbb6b.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "dist\\js\\chunk-2d207aae.974cbb6b.js.map"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 1,
+                    "filename": "dist\\js\\chunk-2d2097cb.90d2bc10.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "dist\\js\\chunk-2d2097cb.90d2bc10.js.map"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 1,
+                    "filename": "dist\\js\\chunk-2d2221f3.7270bcf4.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "dist\\js\\chunk-2d2221f3.7270bcf4.js.map"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 1,
+                    "filename": "dist\\js\\chunk-2d225f65.ccd5b082.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "dist\\js\\chunk-2d225f65.ccd5b082.js.map"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 1,
+                    "filename": "dist\\js\\chunk-2f94a9e1.12eed4ea.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "dist\\js\\chunk-2f94a9e1.12eed4ea.js.map"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 1,
+                    "filename": "dist\\js\\chunk-3e4e4310.f3999d21.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "dist\\js\\chunk-3e4e4310.f3999d21.js.map"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 1,
+                    "filename": "dist\\js\\chunk-40a6f65b.a8f021b9.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "dist\\js\\chunk-40a6f65b.a8f021b9.js.map"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 1,
+                    "filename": "dist\\js\\chunk-40c9a70b.b6874d9e.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "dist\\js\\chunk-40c9a70b.b6874d9e.js.map"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 1,
+                    "filename": "dist\\js\\chunk-4120dcd6.6a3738f2.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "dist\\js\\chunk-4120dcd6.6a3738f2.js.map"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 1,
+                    "filename": "dist\\js\\chunk-49db654f.dba2ebd1.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "dist\\js\\chunk-49db654f.dba2ebd1.js.map"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 1,
+                    "filename": "dist\\js\\chunk-4e22ecdc.0e7b8141.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "dist\\js\\chunk-4e22ecdc.0e7b8141.js.map"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 1,
+                    "filename": "dist\\js\\chunk-524e0632.a7508620.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "dist\\js\\chunk-524e0632.a7508620.js.map"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 1,
+                    "filename": "dist\\js\\chunk-528b1c3f.7f97950b.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "dist\\js\\chunk-528b1c3f.7f97950b.js.map"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 1,
+                    "filename": "dist\\js\\chunk-5417f2cc.8c2531a4.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "dist\\js\\chunk-5417f2cc.8c2531a4.js.map"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 1,
+                    "filename": "dist\\js\\chunk-54c7220a.53a0f22f.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "dist\\js\\chunk-54c7220a.53a0f22f.js.map"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 1,
+                    "filename": "dist\\js\\chunk-5aa8d0e1.598091d8.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "dist\\js\\chunk-5aa8d0e1.598091d8.js.map"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "dist\\js\\chunk-5c8f8c79.73195c93.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "dist\\js\\chunk-5c8f8c79.73195c93.js.map"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 1,
+                    "filename": "dist\\js\\chunk-5d13645c.8214b115.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "dist\\js\\chunk-5d13645c.8214b115.js.map"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 1,
+                    "filename": "dist\\js\\chunk-5d5699a4.5c03fde1.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "dist\\js\\chunk-5d5699a4.5c03fde1.js.map"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 1,
+                    "filename": "dist\\js\\chunk-5f5fc7bd.3d7454ea.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "dist\\js\\chunk-5f5fc7bd.3d7454ea.js.map"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 1,
+                    "filename": "dist\\js\\chunk-6a0c3604.861c8a41.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "dist\\js\\chunk-6a0c3604.861c8a41.js.map"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 1,
+                    "filename": "dist\\js\\chunk-6ff4526b.e445479a.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "dist\\js\\chunk-6ff4526b.e445479a.js.map"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 1,
+                    "filename": "dist\\js\\chunk-7326d8af.b10a1b5c.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "dist\\js\\chunk-7326d8af.b10a1b5c.js.map"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 1,
+                    "filename": "dist\\js\\chunk-74f1e6e6.4ed9cf6b.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "dist\\js\\chunk-74f1e6e6.4ed9cf6b.js.map"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 1,
+                    "filename": "dist\\js\\chunk-7cd8ab70.63f15c9c.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "dist\\js\\chunk-7cd8ab70.63f15c9c.js.map"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 1,
+                    "filename": "dist\\js\\chunk-7dca3702.44740675.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "dist\\js\\chunk-7dca3702.44740675.js.map"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 1,
+                    "filename": "dist\\js\\chunk-7ebc3a16.66dfa4db.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "dist\\js\\chunk-7ebc3a16.66dfa4db.js.map"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 1,
+                    "filename": "dist\\js\\chunk-836adc20.c9ac06f3.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "dist\\js\\chunk-836adc20.c9ac06f3.js.map"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 1,
+                    "filename": "dist\\js\\chunk-854ff5d4.6d98d94d.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "dist\\js\\chunk-854ff5d4.6d98d94d.js.map"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 1,
+                    "filename": "dist\\js\\chunk-9e88ea72.53ade207.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "dist\\js\\chunk-9e88ea72.53ade207.js.map"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 1,
+                    "filename": "dist\\js\\chunk-a2d8d0a4.9d3ca768.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "dist\\js\\chunk-a2d8d0a4.9d3ca768.js.map"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 1,
+                    "filename": "dist\\js\\chunk-b285e2b6.c10f2840.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "dist\\js\\chunk-b285e2b6.c10f2840.js.map"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 1,
+                    "filename": "dist\\js\\chunk-bba83064.764ffeab.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "dist\\js\\chunk-bba83064.764ffeab.js.map"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 1,
+                    "filename": "dist\\js\\chunk-c2a189bc.34935ec8.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "dist\\js\\chunk-c2a189bc.34935ec8.js.map"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 1,
+                    "filename": "dist\\js\\chunk-c2e4d48c.0601d944.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "dist\\js\\chunk-c2e4d48c.0601d944.js.map"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 1,
+                    "filename": "dist\\js\\chunk-d5241004.fecd59de.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "dist\\js\\chunk-d5241004.fecd59de.js.map"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 1,
+                    "filename": "dist\\js\\chunk-d8933a2a.e46042a9.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "dist\\js\\chunk-d8933a2a.e46042a9.js.map"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 1,
+                    "filename": "dist\\js\\chunk-dc006c20.b2097122.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "dist\\js\\chunk-dc006c20.b2097122.js.map"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 1,
+                    "filename": "dist\\js\\chunk-dc161aa0.bfc5f86e.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "dist\\js\\chunk-dc161aa0.bfc5f86e.js.map"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "dist\\js\\chunk-e46b0108.fa743942.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "dist\\js\\chunk-e46b0108.fa743942.js.map"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 1,
+                    "filename": "dist\\js\\chunk-e7a7ec1c.713d76fa.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "dist\\js\\chunk-e7a7ec1c.713d76fa.js.map"
+                },
+                {
+                    "blank": 0,
+                    "code": 7,
+                    "comment": 40,
+                    "filename": "dist\\js\\chunk-vendors.e9e87016.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "dist\\js\\chunk-vendors.e9e87016.js.map"
+                },
+                {
+                    "blank": 0,
+                    "code": 12454,
+                    "comment": 0,
+                    "filename": "package-lock.json"
+                },
+                {
+                    "blank": 1,
+                    "code": 37,
+                    "comment": 0,
+                    "filename": "package.json"
+                },
+                {
+                    "filename": "public\\favicon.ico",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 0,
+                    "code": 16,
+                    "comment": 1,
+                    "filename": "public\\index.html"
+                },
+                {
+                    "blank": 3,
+                    "code": 13,
+                    "comment": 0,
+                    "filename": "README.md"
+                },
+                {
+                    "blank": 6,
+                    "code": 28,
+                    "comment": 4,
+                    "filename": "src\\App.vue"
+                },
+                {
+                    "filename": "src\\assets\\images\\company-a.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\assets\\images\\company-b.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\assets\\images\\login.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\assets\\images\\map.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "src\\assets\\images\\placeholder.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 2,
+                    "code": 145,
+                    "comment": 5,
+                    "filename": "src\\assets\\scss\\backStageMgt.scss"
+                },
+                {
+                    "blank": 0,
+                    "code": 19,
+                    "comment": 2,
+                    "filename": "src\\assets\\scss\\customer.scss"
+                },
+                {
+                    "blank": 1,
+                    "code": 67,
+                    "comment": 4,
+                    "filename": "src\\assets\\scss\\finance.scss"
+                },
+                {
+                    "blank": 5,
+                    "code": 69,
+                    "comment": 4,
+                    "filename": "src\\assets\\scss\\main.scss"
+                },
+                {
+                    "blank": 6,
+                    "code": 205,
+                    "comment": 10,
+                    "filename": "src\\assets\\scss\\personal.scss"
+                },
+                {
+                    "blank": 16,
+                    "code": 85,
+                    "comment": 2,
+                    "filename": "src\\assets\\scss\\variables.scss"
+                },
+                {
+                    "blank": 11,
+                    "code": 66,
+                    "comment": 9,
+                    "filename": "src\\common\\filter.js"
+                },
+                {
+                    "blank": 63,
+                    "code": 634,
+                    "comment": 67,
+                    "filename": "src\\common\\lang\\en.js"
+                },
+                {
+                    "blank": 24,
+                    "code": 514,
+                    "comment": 83,
+                    "filename": "src\\common\\lang\\zh.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 130,
+                    "comment": 0,
+                    "filename": "src\\common\\treeMenu.js"
+                },
+                {
+                    "blank": 3,
+                    "code": 15,
+                    "comment": 0,
+                    "filename": "src\\components\\HelloWorld.vue"
+                },
+                {
+                    "blank": 19,
+                    "code": 83,
+                    "comment": 18,
+                    "filename": "src\\main.js"
+                },
+                {
+                    "blank": 2,
+                    "code": 22,
+                    "comment": 3,
+                    "filename": "src\\router.js"
+                },
+                {
+                    "blank": 2,
+                    "code": 84,
+                    "comment": 11,
+                    "filename": "src\\store.js"
+                },
+                {
+                    "blank": 21,
+                    "code": 345,
+                    "comment": 19,
+                    "filename": "src\\views\\backOffice\\complain-detail.vue"
+                },
+                {
+                    "blank": 9,
+                    "code": 120,
+                    "comment": 6,
+                    "filename": "src\\views\\backOffice\\complain.vue"
+                },
+                {
+                    "blank": 1,
+                    "code": 159,
+                    "comment": 0,
+                    "filename": "src\\views\\backOffice\\contractDetail_rent.vue"
+                },
+                {
+                    "blank": 17,
+                    "code": 640,
+                    "comment": 133,
+                    "filename": "src\\views\\backOffice\\contractDetail_sale.vue"
+                },
+                {
+                    "blank": 14,
+                    "code": 141,
+                    "comment": 6,
+                    "filename": "src\\views\\backOffice\\contractList.vue"
+                },
+                {
+                    "blank": 6,
+                    "code": 107,
+                    "comment": 8,
+                    "filename": "src\\views\\backOffice\\developer-sale-detail.vue"
+                },
+                {
+                    "blank": 20,
+                    "code": 198,
+                    "comment": 12,
+                    "filename": "src\\views\\backOffice\\developer-sale.vue"
+                },
+                {
+                    "blank": 25,
+                    "code": 332,
+                    "comment": 10,
+                    "filename": "src\\views\\backOffice\\edit-progress.vue"
+                },
+                {
+                    "blank": 16,
+                    "code": 160,
+                    "comment": 3,
+                    "filename": "src\\views\\backOffice\\financial-borrowing-detail.vue"
+                },
+                {
+                    "blank": 19,
+                    "code": 187,
+                    "comment": 7,
+                    "filename": "src\\views\\backOffice\\financial-borrowing.vue"
+                },
+                {
+                    "blank": 18,
+                    "code": 204,
+                    "comment": 15,
+                    "filename": "src\\views\\backOffice\\online-rental.vue"
+                },
+                {
+                    "blank": 21,
+                    "code": 204,
+                    "comment": 15,
+                    "filename": "src\\views\\backOffice\\online-sale.vue"
+                },
+                {
+                    "blank": 25,
+                    "code": 260,
+                    "comment": 5,
+                    "filename": "src\\views\\backOffice\\refund-approval-edit.vue"
+                },
+                {
+                    "blank": 18,
+                    "code": 204,
+                    "comment": 12,
+                    "filename": "src\\views\\backOffice\\refund-approval.vue"
+                },
+                {
+                    "blank": 7,
+                    "code": 335,
+                    "comment": 27,
+                    "filename": "src\\views\\backStage\\advert.vue"
+                },
+                {
+                    "blank": 11,
+                    "code": 321,
+                    "comment": 7,
+                    "filename": "src\\views\\backStage\\article.vue"
+                },
+                {
+                    "blank": 4,
+                    "code": 296,
+                    "comment": 14,
+                    "filename": "src\\views\\backStage\\channel.vue"
+                },
+                {
+                    "blank": 0,
+                    "code": 67,
+                    "comment": 14,
+                    "filename": "src\\views\\backStage\\city.vue"
+                },
+                {
+                    "blank": 32,
+                    "code": 612,
+                    "comment": 91,
+                    "filename": "src\\views\\backStage\\developerEntry.vue"
+                },
+                {
+                    "blank": 30,
+                    "code": 442,
+                    "comment": 36,
+                    "filename": "src\\views\\backStage\\inner-user-list.vue"
+                },
+                {
+                    "blank": 5,
+                    "code": 58,
+                    "comment": 0,
+                    "filename": "src\\views\\backStage\\outer-user-detail.vue"
+                },
+                {
+                    "blank": 7,
+                    "code": 97,
+                    "comment": 1,
+                    "filename": "src\\views\\backStage\\outer-user-list.vue"
+                },
+                {
+                    "blank": 3,
+                    "code": 143,
+                    "comment": 2,
+                    "filename": "src\\views\\backStage\\permissionDetail.vue"
+                },
+                {
+                    "blank": 6,
+                    "code": 108,
+                    "comment": 8,
+                    "filename": "src\\views\\backStage\\permissionList.vue"
+                },
+                {
+                    "blank": 3,
+                    "code": 14,
+                    "comment": 0,
+                    "filename": "src\\views\\backStage\\resource.vue"
+                },
+                {
+                    "blank": 3,
+                    "code": 14,
+                    "comment": 0,
+                    "filename": "src\\views\\backStage\\role.vue"
+                },
+                {
+                    "blank": 4,
+                    "code": 218,
+                    "comment": 8,
+                    "filename": "src\\views\\backStage\\roleDetail.vue"
+                },
+                {
+                    "blank": 16,
+                    "code": 175,
+                    "comment": 18,
+                    "filename": "src\\views\\backStage\\roleMgt.vue"
+                },
+                {
+                    "blank": 4,
+                    "code": 303,
+                    "comment": 7,
+                    "filename": "src\\views\\backStage\\stand.vue"
+                },
+                {
+                    "blank": 13,
+                    "code": 121,
+                    "comment": 25,
+                    "filename": "src\\views\\backStage\\store.vue"
+                },
+                {
+                    "blank": 27,
+                    "code": 363,
+                    "comment": 28,
+                    "filename": "src\\views\\customer\\appoint.vue"
+                },
+                {
+                    "blank": 8,
+                    "code": 126,
+                    "comment": 10,
+                    "filename": "src\\views\\customer\\contract.vue"
+                },
+                {
+                    "blank": 4,
+                    "code": 275,
+                    "comment": 2,
+                    "filename": "src\\views\\customer\\contractDetail_rent.vue"
+                },
+                {
+                    "blank": 9,
+                    "code": 106,
+                    "comment": 0,
+                    "filename": "src\\views\\customer\\contractDetail_sale.vue"
+                },
+                {
+                    "blank": 42,
+                    "code": 495,
+                    "comment": 20,
+                    "filename": "src\\views\\customer\\customer-complain-detail.vue"
+                },
+                {
+                    "blank": 10,
+                    "code": 134,
+                    "comment": 6,
+                    "filename": "src\\views\\customer\\customer-complain.vue"
+                },
+                {
+                    "blank": 24,
+                    "code": 236,
+                    "comment": 2,
+                    "filename": "src\\views\\customer\\customer-feedback-detail.vue"
+                },
+                {
+                    "blank": 11,
+                    "code": 106,
+                    "comment": 6,
+                    "filename": "src\\views\\customer\\customer-feedback.vue"
+                },
+                {
+                    "blank": 10,
+                    "code": 200,
+                    "comment": 3,
+                    "filename": "src\\views\\customer\\customer-withdraw-detail.vue"
+                },
+                {
+                    "blank": 7,
+                    "code": 137,
+                    "comment": 5,
+                    "filename": "src\\views\\customer\\customer-withdraw.vue"
+                },
+                {
+                    "blank": 28,
+                    "code": 311,
+                    "comment": 0,
+                    "filename": "src\\views\\customer\\final-house.vue"
+                },
+                {
+                    "blank": 32,
+                    "code": 336,
+                    "comment": 41,
+                    "filename": "src\\views\\customer\\house-audit.vue"
+                },
+                {
+                    "blank": 1,
+                    "code": 14,
+                    "comment": 0,
+                    "filename": "src\\views\\customer\\house-final-check.vue"
+                },
+                {
+                    "blank": 1,
+                    "code": 14,
+                    "comment": 0,
+                    "filename": "src\\views\\customer\\house-primary-check.vue"
+                },
+                {
+                    "blank": 32,
+                    "code": 267,
+                    "comment": 42,
+                    "filename": "src\\views\\customer\\house-upload.vue"
+                },
+                {
+                    "blank": 25,
+                    "code": 242,
+                    "comment": 2,
+                    "filename": "src\\views\\customer\\order.vue"
+                },
+                {
+                    "blank": 3,
+                    "code": 207,
+                    "comment": 64,
+                    "filename": "src\\views\\customer\\outside-edit.vue"
+                },
+                {
+                    "blank": 14,
+                    "code": 279,
+                    "comment": 29,
+                    "filename": "src\\views\\customer\\outside-upload.vue"
+                },
+                {
+                    "blank": 105,
+                    "code": 1502,
+                    "comment": 286,
+                    "filename": "src\\views\\customer\\trial-house.vue"
+                },
+                {
+                    "blank": 30,
+                    "code": 587,
+                    "comment": 95,
+                    "filename": "src\\views\\customer\\upload-house.vue"
+                },
+                {
+                    "blank": 2,
+                    "code": 114,
+                    "comment": 1,
+                    "filename": "src\\views\\customer\\withdraw-list.vue"
+                },
+                {
+                    "blank": 2,
+                    "code": 221,
+                    "comment": 6,
+                    "filename": "src\\views\\customer\\withdraw-search-detail.vue"
+                },
+                {
+                    "blank": 18,
+                    "code": 120,
+                    "comment": 2,
+                    "filename": "src\\views\\finance\\commission_detail.vue"
+                },
+                {
+                    "blank": 12,
+                    "code": 143,
+                    "comment": 5,
+                    "filename": "src\\views\\finance\\commission_list.vue"
+                },
+                {
+                    "blank": 6,
+                    "code": 119,
+                    "comment": 7,
+                    "filename": "src\\views\\finance\\finance-complain.vue"
+                },
+                {
+                    "blank": 10,
+                    "code": 115,
+                    "comment": 0,
+                    "filename": "src\\views\\finance\\refund_detail.vue"
+                },
+                {
+                    "blank": 13,
+                    "code": 157,
+                    "comment": 5,
+                    "filename": "src\\views\\finance\\refund_lis.vue"
+                },
+                {
+                    "blank": 8,
+                    "code": 106,
+                    "comment": 0,
+                    "filename": "src\\views\\finance\\transaction_detail.vue"
+                },
+                {
+                    "blank": 14,
+                    "code": 168,
+                    "comment": 6,
+                    "filename": "src\\views\\finance\\transaction_list.vue"
+                },
+                {
+                    "blank": 7,
+                    "code": 210,
+                    "comment": 19,
+                    "filename": "src\\views\\Home.vue"
+                },
+                {
+                    "blank": 22,
+                    "code": 306,
+                    "comment": 24,
+                    "filename": "src\\views\\Login.vue"
+                },
+                {
+                    "blank": 9,
+                    "code": 77,
+                    "comment": 0,
+                    "filename": "src\\views\\personalCenter\\commission_detail.vue"
+                },
+                {
+                    "blank": 13,
+                    "code": 137,
+                    "comment": 6,
+                    "filename": "src\\views\\personalCenter\\commission_list.vue"
+                },
+                {
+                    "blank": 19,
+                    "code": 267,
+                    "comment": 9,
+                    "filename": "src\\views\\personalCenter\\personal_center.vue"
+                },
+                {
+                    "blank": 14,
+                    "code": 133,
+                    "comment": 2,
+                    "filename": "src\\views\\personalCenter\\personal_close.vue"
+                },
+                {
+                    "blank": 24,
+                    "code": 229,
+                    "comment": 0,
+                    "filename": "src\\views\\personalCenter\\personal_close_feedback.vue"
+                },
+                {
+                    "blank": 14,
+                    "code": 204,
+                    "comment": 17,
+                    "filename": "src\\views\\personalCenter\\personal_close_list.vue"
+                },
+                {
+                    "blank": 22,
+                    "code": 513,
+                    "comment": 98,
+                    "filename": "src\\views\\personalCenter\\personal_schedule.vue"
+                },
+                {
+                    "blank": 2,
+                    "code": 34,
+                    "comment": 1,
+                    "filename": "src\\views\\personalCenter\\userInfo.vue"
+                },
+                {
+                    "blank": 5,
+                    "code": 43,
+                    "comment": 3,
+                    "filename": "src\\views\\test.vue"
+                },
+                {
+                    "blank": 2,
+                    "code": 22,
+                    "comment": 2,
+                    "filename": "vue.config.js"
+                },
+                {
+                    "blank": 1290,
+                    "code": 5501,
+                    "comment": 0,
+                    "filename": "yarn.lock"
+                }
+            ]
+        }
+    ]
+}

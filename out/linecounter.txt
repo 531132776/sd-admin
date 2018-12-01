@@ -1,0 +1,317 @@
+===============================================================================
+EXTENSION NAME : linecounter
+EXTENSION VERSION : 0.2.2
+-------------------------------------------------------------------------------
+count time : 2018-12-01 17:51:09
+count workspace : f:\Jammy\20180925_\20181126_PC
+total files : 291
+total code lines : 36355
+total comment lines : 1691
+total blank lines : 2495
+
+    statistics
+   |      extension|     total code|  total comment|    total blank|percent|
+   -------------------------------------------------------------------------
+   |          .json|          12491|              0|              1|     34|
+   |            .js|           1633|            298|            124|    4.5|
+   |            .md|             13|              0|              3|  0.036|
+   |           .vue|          15981|           1365|           1046|     44|
+   |          .html|             17|              1|              0|  0.047|
+   |          .lock|           5501|              0|           1290|     15|
+   |           .css|             47|              0|              0|   0.13|
+   |          .scss|            590|             27|             30|    1.6|
+   |           .map|             68|              0|              0|   0.19|
+   |               |             14|              0|              1|  0.039|
+   -------------------------------------------------------------------------
+.gitignore, code is 14, comment is 0, blank is 1.
+babel.config.js, code is 4, comment is 0, blank is 1.
+dist\css\about.6e07a7ef.css, code is 1, comment is 0, blank is 0.
+dist\css\app.584a6087.css, code is 1, comment is 0, blank is 0.
+dist\css\chunk-00208c42.c26d89af.css, code is 1, comment is 0, blank is 0.
+dist\css\chunk-02492e47.fa67c303.css, code is 1, comment is 0, blank is 0.
+dist\css\chunk-0642d3ac.2b3386ed.css, code is 1, comment is 0, blank is 0.
+dist\css\chunk-0bd54a86.cc2fb28e.css, code is 1, comment is 0, blank is 0.
+dist\css\chunk-0c4f9775.a870705c.css, code is 1, comment is 0, blank is 0.
+dist\css\chunk-0c6cb0f8.a7bf79e3.css, code is 0, comment is 0, blank is 0.
+dist\css\chunk-13e809ce.5aef06c3.css, code is 1, comment is 0, blank is 0.
+dist\css\chunk-154bb23c.c5d8db6a.css, code is 1, comment is 0, blank is 0.
+dist\css\chunk-1a56521f.a5b76cf7.css, code is 1, comment is 0, blank is 0.
+dist\css\chunk-1bf45ebe.fdab833e.css, code is 1, comment is 0, blank is 0.
+dist\css\chunk-1c43390f.df61f8db.css, code is 1, comment is 0, blank is 0.
+dist\css\chunk-1ced7598.79ef6161.css, code is 1, comment is 0, blank is 0.
+dist\css\chunk-1d7acf48.94809d50.css, code is 1, comment is 0, blank is 0.
+dist\css\chunk-20babf42.56c6af1e.css, code is 1, comment is 0, blank is 0.
+dist\css\chunk-2857a60e.ebe0815f.css, code is 1, comment is 0, blank is 0.
+dist\css\chunk-3e4e4310.88711a02.css, code is 1, comment is 0, blank is 0.
+dist\css\chunk-40a6f65b.8a0e8b4b.css, code is 1, comment is 0, blank is 0.
+dist\css\chunk-40c9a70b.737386d1.css, code is 1, comment is 0, blank is 0.
+dist\css\chunk-4120dcd6.9c261e8f.css, code is 1, comment is 0, blank is 0.
+dist\css\chunk-49db654f.7bbad1ea.css, code is 1, comment is 0, blank is 0.
+dist\css\chunk-4e22ecdc.1b4d35d7.css, code is 1, comment is 0, blank is 0.
+dist\css\chunk-524e0632.91e79ee0.css, code is 1, comment is 0, blank is 0.
+dist\css\chunk-528b1c3f.23f5c33c.css, code is 1, comment is 0, blank is 0.
+dist\css\chunk-5417f2cc.e397c5f8.css, code is 1, comment is 0, blank is 0.
+dist\css\chunk-54c7220a.6dffaea5.css, code is 1, comment is 0, blank is 0.
+dist\css\chunk-5aa8d0e1.086cf9c1.css, code is 1, comment is 0, blank is 0.
+dist\css\chunk-5c8f8c79.ce92cb9b.css, code is 1, comment is 0, blank is 0.
+dist\css\chunk-5d13645c.7c2afe25.css, code is 1, comment is 0, blank is 0.
+dist\css\chunk-5d5699a4.e484da38.css, code is 1, comment is 0, blank is 0.
+dist\css\chunk-5f5fc7bd.792dadcf.css, code is 1, comment is 0, blank is 0.
+dist\css\chunk-6a0c3604.6307fd97.css, code is 1, comment is 0, blank is 0.
+dist\css\chunk-6ff4526b.446adf19.css, code is 1, comment is 0, blank is 0.
+dist\css\chunk-7326d8af.9bae9e3a.css, code is 1, comment is 0, blank is 0.
+dist\css\chunk-7cd8ab70.5e263d28.css, code is 1, comment is 0, blank is 0.
+dist\css\chunk-7ebc3a16.f0df3219.css, code is 1, comment is 0, blank is 0.
+dist\css\chunk-836adc20.d95bbe0f.css, code is 1, comment is 0, blank is 0.
+dist\css\chunk-854ff5d4.dcc63c45.css, code is 1, comment is 0, blank is 0.
+dist\css\chunk-9e88ea72.acb8fdeb.css, code is 1, comment is 0, blank is 0.
+dist\css\chunk-b285e2b6.319b7941.css, code is 1, comment is 0, blank is 0.
+dist\css\chunk-c2e4d48c.d917a92e.css, code is 1, comment is 0, blank is 0.
+dist\css\chunk-d5241004.28e282a9.css, code is 1, comment is 0, blank is 0.
+dist\css\chunk-d8933a2a.f8a51a7d.css, code is 1, comment is 0, blank is 0.
+dist\css\chunk-dc006c20.112782f6.css, code is 1, comment is 0, blank is 0.
+dist\css\chunk-dc161aa0.c0693e10.css, code is 1, comment is 0, blank is 0.
+dist\css\chunk-e46b0108.a335a1d6.css, code is 1, comment is 0, blank is 0.
+dist\css\chunk-e7a7ec1c.f13fd13d.css, code is 0, comment is 0, blank is 0.
+dist\css\chunk-vendors.976ee29b.css, code is 1, comment is 0, blank is 0.
+dist\favicon.ico, it is a binary file.
+dist\fonts\element-icons.2fad952a.woff, it is a binary file.
+dist\fonts\element-icons.6f0a7632.ttf, it is a binary file.
+dist\img\company-a.d441ea2e.png, it is a binary file.
+dist\img\company-b.29816e12.png, it is a binary file.
+dist\img\login.06de7c04.png, it is a binary file.
+dist\index.html, code is 1, comment is 0, blank is 0.
+dist\js\about.2435fcba.js, code is 1, comment is 1, blank is 0.
+dist\js\about.2435fcba.js.map, code is 1, comment is 0, blank is 0.
+dist\js\app.826c30b5.js, code is 1, comment is 1, blank is 0.
+dist\js\app.826c30b5.js.map, code is 1, comment is 0, blank is 0.
+dist\js\chunk-00208c42.75751e1c.js, code is 1, comment is 1, blank is 0.
+dist\js\chunk-00208c42.75751e1c.js.map, code is 1, comment is 0, blank is 0.
+dist\js\chunk-02492e47.b870ab11.js, code is 1, comment is 1, blank is 0.
+dist\js\chunk-02492e47.b870ab11.js.map, code is 1, comment is 0, blank is 0.
+dist\js\chunk-0642d3ac.bf4d374d.js, code is 1, comment is 1, blank is 0.
+dist\js\chunk-0642d3ac.bf4d374d.js.map, code is 1, comment is 0, blank is 0.
+dist\js\chunk-07abd62c.78216889.js, code is 1, comment is 1, blank is 0.
+dist\js\chunk-07abd62c.78216889.js.map, code is 1, comment is 0, blank is 0.
+dist\js\chunk-0bd54a86.249a42c5.js, code is 1, comment is 1, blank is 0.
+dist\js\chunk-0bd54a86.249a42c5.js.map, code is 1, comment is 0, blank is 0.
+dist\js\chunk-0c4f9775.75390ce9.js, code is 1, comment is 1, blank is 0.
+dist\js\chunk-0c4f9775.75390ce9.js.map, code is 1, comment is 0, blank is 0.
+dist\js\chunk-0c6cb0f8.c5d2af37.js, code is 1, comment is 1, blank is 0.
+dist\js\chunk-0c6cb0f8.c5d2af37.js.map, code is 1, comment is 0, blank is 0.
+dist\js\chunk-13e809ce.0c300c72.js, code is 1, comment is 1, blank is 0.
+dist\js\chunk-13e809ce.0c300c72.js.map, code is 1, comment is 0, blank is 0.
+dist\js\chunk-154bb23c.23b340d8.js, code is 1, comment is 1, blank is 0.
+dist\js\chunk-154bb23c.23b340d8.js.map, code is 1, comment is 0, blank is 0.
+dist\js\chunk-1a56521f.5b31c77f.js, code is 1, comment is 1, blank is 0.
+dist\js\chunk-1a56521f.5b31c77f.js.map, code is 1, comment is 0, blank is 0.
+dist\js\chunk-1bf45ebe.68d6c366.js, code is 1, comment is 1, blank is 0.
+dist\js\chunk-1bf45ebe.68d6c366.js.map, code is 1, comment is 0, blank is 0.
+dist\js\chunk-1c2ed406.dff76660.js, code is 1, comment is 1, blank is 0.
+dist\js\chunk-1c2ed406.dff76660.js.map, code is 1, comment is 0, blank is 0.
+dist\js\chunk-1c43390f.7b223491.js, code is 1, comment is 1, blank is 0.
+dist\js\chunk-1c43390f.7b223491.js.map, code is 1, comment is 0, blank is 0.
+dist\js\chunk-1ced7598.1742222f.js, code is 1, comment is 1, blank is 0.
+dist\js\chunk-1ced7598.1742222f.js.map, code is 1, comment is 0, blank is 0.
+dist\js\chunk-1d7acf48.06aea2ca.js, code is 1, comment is 1, blank is 0.
+dist\js\chunk-1d7acf48.06aea2ca.js.map, code is 1, comment is 0, blank is 0.
+dist\js\chunk-20babf42.7b4ed924.js, code is 1, comment is 1, blank is 0.
+dist\js\chunk-20babf42.7b4ed924.js.map, code is 1, comment is 0, blank is 0.
+dist\js\chunk-2857a60e.aa10c25a.js, code is 1, comment is 1, blank is 0.
+dist\js\chunk-2857a60e.aa10c25a.js.map, code is 1, comment is 0, blank is 0.
+dist\js\chunk-2d0b30b7.a7b4f3fa.js, code is 1, comment is 1, blank is 0.
+dist\js\chunk-2d0b30b7.a7b4f3fa.js.map, code is 1, comment is 0, blank is 0.
+dist\js\chunk-2d0b5984.14cc8db8.js, code is 1, comment is 1, blank is 0.
+dist\js\chunk-2d0b5984.14cc8db8.js.map, code is 1, comment is 0, blank is 0.
+dist\js\chunk-2d0b6aa0.929562bd.js, code is 1, comment is 1, blank is 0.
+dist\js\chunk-2d0b6aa0.929562bd.js.map, code is 1, comment is 0, blank is 0.
+dist\js\chunk-2d0c1f28.dcc0b46a.js, code is 1, comment is 1, blank is 0.
+dist\js\chunk-2d0c1f28.dcc0b46a.js.map, code is 1, comment is 0, blank is 0.
+dist\js\chunk-2d0c885f.3087b742.js, code is 1, comment is 1, blank is 0.
+dist\js\chunk-2d0c885f.3087b742.js.map, code is 1, comment is 0, blank is 0.
+dist\js\chunk-2d0daeb6.5954a269.js, code is 1, comment is 1, blank is 0.
+dist\js\chunk-2d0daeb6.5954a269.js.map, code is 1, comment is 0, blank is 0.
+dist\js\chunk-2d0df835.98d41037.js, code is 1, comment is 1, blank is 0.
+dist\js\chunk-2d0df835.98d41037.js.map, code is 1, comment is 0, blank is 0.
+dist\js\chunk-2d207aae.974cbb6b.js, code is 1, comment is 1, blank is 0.
+dist\js\chunk-2d207aae.974cbb6b.js.map, code is 1, comment is 0, blank is 0.
+dist\js\chunk-2d2097cb.90d2bc10.js, code is 1, comment is 1, blank is 0.
+dist\js\chunk-2d2097cb.90d2bc10.js.map, code is 1, comment is 0, blank is 0.
+dist\js\chunk-2d2221f3.7270bcf4.js, code is 1, comment is 1, blank is 0.
+dist\js\chunk-2d2221f3.7270bcf4.js.map, code is 1, comment is 0, blank is 0.
+dist\js\chunk-2d225f65.ccd5b082.js, code is 1, comment is 1, blank is 0.
+dist\js\chunk-2d225f65.ccd5b082.js.map, code is 1, comment is 0, blank is 0.
+dist\js\chunk-2f94a9e1.12eed4ea.js, code is 1, comment is 1, blank is 0.
+dist\js\chunk-2f94a9e1.12eed4ea.js.map, code is 1, comment is 0, blank is 0.
+dist\js\chunk-3e4e4310.f3999d21.js, code is 1, comment is 1, blank is 0.
+dist\js\chunk-3e4e4310.f3999d21.js.map, code is 1, comment is 0, blank is 0.
+dist\js\chunk-40a6f65b.a8f021b9.js, code is 1, comment is 1, blank is 0.
+dist\js\chunk-40a6f65b.a8f021b9.js.map, code is 1, comment is 0, blank is 0.
+dist\js\chunk-40c9a70b.b6874d9e.js, code is 1, comment is 1, blank is 0.
+dist\js\chunk-40c9a70b.b6874d9e.js.map, code is 1, comment is 0, blank is 0.
+dist\js\chunk-4120dcd6.6a3738f2.js, code is 1, comment is 1, blank is 0.
+dist\js\chunk-4120dcd6.6a3738f2.js.map, code is 1, comment is 0, blank is 0.
+dist\js\chunk-49db654f.dba2ebd1.js, code is 1, comment is 1, blank is 0.
+dist\js\chunk-49db654f.dba2ebd1.js.map, code is 1, comment is 0, blank is 0.
+dist\js\chunk-4e22ecdc.0e7b8141.js, code is 1, comment is 1, blank is 0.
+dist\js\chunk-4e22ecdc.0e7b8141.js.map, code is 1, comment is 0, blank is 0.
+dist\js\chunk-524e0632.a7508620.js, code is 1, comment is 1, blank is 0.
+dist\js\chunk-524e0632.a7508620.js.map, code is 1, comment is 0, blank is 0.
+dist\js\chunk-528b1c3f.7f97950b.js, code is 1, comment is 1, blank is 0.
+dist\js\chunk-528b1c3f.7f97950b.js.map, code is 1, comment is 0, blank is 0.
+dist\js\chunk-5417f2cc.8c2531a4.js, code is 1, comment is 1, blank is 0.
+dist\js\chunk-5417f2cc.8c2531a4.js.map, code is 1, comment is 0, blank is 0.
+dist\js\chunk-54c7220a.53a0f22f.js, code is 1, comment is 1, blank is 0.
+dist\js\chunk-54c7220a.53a0f22f.js.map, code is 1, comment is 0, blank is 0.
+dist\js\chunk-5aa8d0e1.598091d8.js, code is 1, comment is 1, blank is 0.
+dist\js\chunk-5aa8d0e1.598091d8.js.map, code is 1, comment is 0, blank is 0.
+dist\js\chunk-5c8f8c79.73195c93.js, code is 1, comment is 0, blank is 0.
+dist\js\chunk-5c8f8c79.73195c93.js.map, code is 1, comment is 0, blank is 0.
+dist\js\chunk-5d13645c.8214b115.js, code is 1, comment is 1, blank is 0.
+dist\js\chunk-5d13645c.8214b115.js.map, code is 1, comment is 0, blank is 0.
+dist\js\chunk-5d5699a4.5c03fde1.js, code is 1, comment is 1, blank is 0.
+dist\js\chunk-5d5699a4.5c03fde1.js.map, code is 1, comment is 0, blank is 0.
+dist\js\chunk-5f5fc7bd.3d7454ea.js, code is 1, comment is 1, blank is 0.
+dist\js\chunk-5f5fc7bd.3d7454ea.js.map, code is 1, comment is 0, blank is 0.
+dist\js\chunk-6a0c3604.861c8a41.js, code is 1, comment is 1, blank is 0.
+dist\js\chunk-6a0c3604.861c8a41.js.map, code is 1, comment is 0, blank is 0.
+dist\js\chunk-6ff4526b.e445479a.js, code is 1, comment is 1, blank is 0.
+dist\js\chunk-6ff4526b.e445479a.js.map, code is 1, comment is 0, blank is 0.
+dist\js\chunk-7326d8af.b10a1b5c.js, code is 1, comment is 1, blank is 0.
+dist\js\chunk-7326d8af.b10a1b5c.js.map, code is 1, comment is 0, blank is 0.
+dist\js\chunk-74f1e6e6.4ed9cf6b.js, code is 1, comment is 1, blank is 0.
+dist\js\chunk-74f1e6e6.4ed9cf6b.js.map, code is 1, comment is 0, blank is 0.
+dist\js\chunk-7cd8ab70.63f15c9c.js, code is 1, comment is 1, blank is 0.
+dist\js\chunk-7cd8ab70.63f15c9c.js.map, code is 1, comment is 0, blank is 0.
+dist\js\chunk-7dca3702.44740675.js, code is 1, comment is 1, blank is 0.
+dist\js\chunk-7dca3702.44740675.js.map, code is 1, comment is 0, blank is 0.
+dist\js\chunk-7ebc3a16.66dfa4db.js, code is 1, comment is 1, blank is 0.
+dist\js\chunk-7ebc3a16.66dfa4db.js.map, code is 1, comment is 0, blank is 0.
+dist\js\chunk-836adc20.c9ac06f3.js, code is 1, comment is 1, blank is 0.
+dist\js\chunk-836adc20.c9ac06f3.js.map, code is 1, comment is 0, blank is 0.
+dist\js\chunk-854ff5d4.6d98d94d.js, code is 1, comment is 1, blank is 0.
+dist\js\chunk-854ff5d4.6d98d94d.js.map, code is 1, comment is 0, blank is 0.
+dist\js\chunk-9e88ea72.53ade207.js, code is 1, comment is 1, blank is 0.
+dist\js\chunk-9e88ea72.53ade207.js.map, code is 1, comment is 0, blank is 0.
+dist\js\chunk-a2d8d0a4.9d3ca768.js, code is 1, comment is 1, blank is 0.
+dist\js\chunk-a2d8d0a4.9d3ca768.js.map, code is 1, comment is 0, blank is 0.
+dist\js\chunk-b285e2b6.c10f2840.js, code is 1, comment is 1, blank is 0.
+dist\js\chunk-b285e2b6.c10f2840.js.map, code is 1, comment is 0, blank is 0.
+dist\js\chunk-bba83064.764ffeab.js, code is 1, comment is 1, blank is 0.
+dist\js\chunk-bba83064.764ffeab.js.map, code is 1, comment is 0, blank is 0.
+dist\js\chunk-c2a189bc.34935ec8.js, code is 1, comment is 1, blank is 0.
+dist\js\chunk-c2a189bc.34935ec8.js.map, code is 1, comment is 0, blank is 0.
+dist\js\chunk-c2e4d48c.0601d944.js, code is 1, comment is 1, blank is 0.
+dist\js\chunk-c2e4d48c.0601d944.js.map, code is 1, comment is 0, blank is 0.
+dist\js\chunk-d5241004.fecd59de.js, code is 1, comment is 1, blank is 0.
+dist\js\chunk-d5241004.fecd59de.js.map, code is 1, comment is 0, blank is 0.
+dist\js\chunk-d8933a2a.e46042a9.js, code is 1, comment is 1, blank is 0.
+dist\js\chunk-d8933a2a.e46042a9.js.map, code is 1, comment is 0, blank is 0.
+dist\js\chunk-dc006c20.b2097122.js, code is 1, comment is 1, blank is 0.
+dist\js\chunk-dc006c20.b2097122.js.map, code is 1, comment is 0, blank is 0.
+dist\js\chunk-dc161aa0.bfc5f86e.js, code is 1, comment is 1, blank is 0.
+dist\js\chunk-dc161aa0.bfc5f86e.js.map, code is 1, comment is 0, blank is 0.
+dist\js\chunk-e46b0108.fa743942.js, code is 1, comment is 0, blank is 0.
+dist\js\chunk-e46b0108.fa743942.js.map, code is 1, comment is 0, blank is 0.
+dist\js\chunk-e7a7ec1c.713d76fa.js, code is 1, comment is 1, blank is 0.
+dist\js\chunk-e7a7ec1c.713d76fa.js.map, code is 1, comment is 0, blank is 0.
+dist\js\chunk-vendors.e9e87016.js, code is 7, comment is 40, blank is 0.
+dist\js\chunk-vendors.e9e87016.js.map, code is 1, comment is 0, blank is 0.
+package-lock.json, code is 12454, comment is 0, blank is 0.
+package.json, code is 37, comment is 0, blank is 1.
+public\favicon.ico, it is a binary file.
+public\index.html, code is 16, comment is 1, blank is 0.
+README.md, code is 13, comment is 0, blank is 3.
+src\App.vue, code is 28, comment is 4, blank is 6.
+src\assets\images\company-a.png, it is a binary file.
+src\assets\images\company-b.png, it is a binary file.
+src\assets\images\login.png, it is a binary file.
+src\assets\images\map.png, it is a binary file.
+src\assets\images\placeholder.png, it is a binary file.
+src\assets\scss\backStageMgt.scss, code is 145, comment is 5, blank is 2.
+src\assets\scss\customer.scss, code is 19, comment is 2, blank is 0.
+src\assets\scss\finance.scss, code is 67, comment is 4, blank is 1.
+src\assets\scss\main.scss, code is 69, comment is 4, blank is 5.
+src\assets\scss\personal.scss, code is 205, comment is 10, blank is 6.
+src\assets\scss\variables.scss, code is 85, comment is 2, blank is 16.
+src\common\filter.js, code is 66, comment is 9, blank is 11.
+src\common\lang\en.js, code is 634, comment is 67, blank is 63.
+src\common\lang\zh.js, code is 514, comment is 83, blank is 24.
+src\common\treeMenu.js, code is 130, comment is 0, blank is 0.
+src\components\HelloWorld.vue, code is 15, comment is 0, blank is 3.
+src\main.js, code is 83, comment is 18, blank is 19.
+src\router.js, code is 22, comment is 3, blank is 2.
+src\store.js, code is 84, comment is 11, blank is 2.
+src\views\backOffice\complain-detail.vue, code is 345, comment is 19, blank is 21.
+src\views\backOffice\complain.vue, code is 120, comment is 6, blank is 9.
+src\views\backOffice\contractDetail_rent.vue, code is 159, comment is 0, blank is 1.
+src\views\backOffice\contractDetail_sale.vue, code is 640, comment is 133, blank is 17.
+src\views\backOffice\contractList.vue, code is 141, comment is 6, blank is 14.
+src\views\backOffice\developer-sale-detail.vue, code is 107, comment is 8, blank is 6.
+src\views\backOffice\developer-sale.vue, code is 198, comment is 12, blank is 20.
+src\views\backOffice\edit-progress.vue, code is 332, comment is 10, blank is 25.
+src\views\backOffice\financial-borrowing-detail.vue, code is 160, comment is 3, blank is 16.
+src\views\backOffice\financial-borrowing.vue, code is 187, comment is 7, blank is 19.
+src\views\backOffice\online-rental.vue, code is 204, comment is 15, blank is 18.
+src\views\backOffice\online-sale.vue, code is 204, comment is 15, blank is 21.
+src\views\backOffice\refund-approval-edit.vue, code is 260, comment is 5, blank is 25.
+src\views\backOffice\refund-approval.vue, code is 204, comment is 12, blank is 18.
+src\views\backStage\advert.vue, code is 335, comment is 27, blank is 7.
+src\views\backStage\article.vue, code is 321, comment is 7, blank is 11.
+src\views\backStage\channel.vue, code is 296, comment is 14, blank is 4.
+src\views\backStage\city.vue, code is 67, comment is 14, blank is 0.
+src\views\backStage\developerEntry.vue, code is 612, comment is 91, blank is 32.
+src\views\backStage\inner-user-list.vue, code is 442, comment is 36, blank is 30.
+src\views\backStage\outer-user-detail.vue, code is 58, comment is 0, blank is 5.
+src\views\backStage\outer-user-list.vue, code is 97, comment is 1, blank is 7.
+src\views\backStage\permissionDetail.vue, code is 143, comment is 2, blank is 3.
+src\views\backStage\permissionList.vue, code is 108, comment is 8, blank is 6.
+src\views\backStage\resource.vue, code is 14, comment is 0, blank is 3.
+src\views\backStage\role.vue, code is 14, comment is 0, blank is 3.
+src\views\backStage\roleDetail.vue, code is 218, comment is 8, blank is 4.
+src\views\backStage\roleMgt.vue, code is 175, comment is 18, blank is 16.
+src\views\backStage\stand.vue, code is 303, comment is 7, blank is 4.
+src\views\backStage\store.vue, code is 121, comment is 25, blank is 13.
+src\views\customer\appoint.vue, code is 363, comment is 28, blank is 27.
+src\views\customer\contract.vue, code is 126, comment is 10, blank is 8.
+src\views\customer\contractDetail_rent.vue, code is 275, comment is 2, blank is 4.
+src\views\customer\contractDetail_sale.vue, code is 106, comment is 0, blank is 9.
+src\views\customer\customer-complain-detail.vue, code is 495, comment is 20, blank is 42.
+src\views\customer\customer-complain.vue, code is 134, comment is 6, blank is 10.
+src\views\customer\customer-feedback-detail.vue, code is 236, comment is 2, blank is 24.
+src\views\customer\customer-feedback.vue, code is 106, comment is 6, blank is 11.
+src\views\customer\customer-withdraw-detail.vue, code is 200, comment is 3, blank is 10.
+src\views\customer\customer-withdraw.vue, code is 137, comment is 5, blank is 7.
+src\views\customer\final-house.vue, code is 311, comment is 0, blank is 28.
+src\views\customer\house-audit.vue, code is 336, comment is 41, blank is 32.
+src\views\customer\house-final-check.vue, code is 14, comment is 0, blank is 1.
+src\views\customer\house-primary-check.vue, code is 14, comment is 0, blank is 1.
+src\views\customer\house-upload.vue, code is 267, comment is 42, blank is 32.
+src\views\customer\order.vue, code is 242, comment is 2, blank is 25.
+src\views\customer\outside-edit.vue, code is 207, comment is 64, blank is 3.
+src\views\customer\outside-upload.vue, code is 279, comment is 29, blank is 14.
+src\views\customer\trial-house.vue, code is 1502, comment is 286, blank is 105.
+src\views\customer\upload-house.vue, code is 587, comment is 95, blank is 30.
+src\views\customer\withdraw-list.vue, code is 114, comment is 1, blank is 2.
+src\views\customer\withdraw-search-detail.vue, code is 221, comment is 6, blank is 2.
+src\views\finance\commission_detail.vue, code is 120, comment is 2, blank is 18.
+src\views\finance\commission_list.vue, code is 143, comment is 5, blank is 12.
+src\views\finance\finance-complain.vue, code is 119, comment is 7, blank is 6.
+src\views\finance\refund_detail.vue, code is 115, comment is 0, blank is 10.
+src\views\finance\refund_lis.vue, code is 157, comment is 5, blank is 13.
+src\views\finance\transaction_detail.vue, code is 106, comment is 0, blank is 8.
+src\views\finance\transaction_list.vue, code is 168, comment is 6, blank is 14.
+src\views\Home.vue, code is 210, comment is 19, blank is 7.
+src\views\Login.vue, code is 306, comment is 24, blank is 22.
+src\views\personalCenter\commission_detail.vue, code is 77, comment is 0, blank is 9.
+src\views\personalCenter\commission_list.vue, code is 137, comment is 6, blank is 13.
+src\views\personalCenter\personal_center.vue, code is 267, comment is 9, blank is 19.
+src\views\personalCenter\personal_close.vue, code is 133, comment is 2, blank is 14.
+src\views\personalCenter\personal_close_feedback.vue, code is 229, comment is 0, blank is 24.
+src\views\personalCenter\personal_close_list.vue, code is 204, comment is 17, blank is 14.
+src\views\personalCenter\personal_schedule.vue, code is 513, comment is 98, blank is 22.
+src\views\personalCenter\userInfo.vue, code is 34, comment is 1, blank is 2.
+src\views\test.vue, code is 43, comment is 3, blank is 5.
+vue.config.js, code is 22, comment is 2, blank is 2.
+yarn.lock, code is 5501, comment is 0, blank is 1290.
+===============================================================================
