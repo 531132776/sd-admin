@@ -87,7 +87,7 @@
                 </el-form-item>
                 <el-form-item>
                     <span slot="label">{{$t('HousingSourceAddress')}}:</span>
-                    <span >{{house.city+house.community+house.subCommunity+house.houseName}}</span>
+                    <span >{{house.city+house.community+house.subCommunity+house.address}}</span>
                 </el-form-item>
                 <el-form-item>
                     <span slot="label">{{$t('customerCalls')}}:</span>
