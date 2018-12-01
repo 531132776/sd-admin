@@ -57,42 +57,42 @@
 
 
         <!-- 修改手机号弹窗 -->
-        <el-dialog title="修改手机号" :visible.sync="phone_dialog" >
+        <el-dialog :title="$t('Modifycellphonenumber')" :visible.sync="phone_dialog" >
             <el-form :model="phoneData" :label-position="labelPosition">
-                <el-form-item label="请输入密码" :label-width="formLabelWidth" v-if="editPhone_show!==true">
+                <el-form-item :label="$t('Pleaseinputapassword')" :label-width="formLabelWidth" v-if="editPhone_show!==true">
                     <el-input v-model="phoneData.password" type="password" autocomplete="off"></el-input>
                 </el-form-item>
                 
-                <el-form-item label="请输入新手机号" :label-width="formLabelWidth" v-if="editPhone_show==true">
+                <el-form-item :label="$t('Pleaseenteryournewcellphonenumber')" :label-width="formLabelWidth" v-if="editPhone_show==true">
                     <el-input v-model="phoneDataphone" autocomplete="off"></el-input>
                 </el-form-item>
-                <el-form-item class="validateCode_input" label="请输验证码" :label-width="formLabelWidth" v-if="editPhone_show==true">
+                <el-form-item class="validateCode_input" :label="$t('Pleasecheckthecode')" :label-width="formLabelWidth" v-if="editPhone_show==true">
                     <el-input v-model="phoneDatavalidateCode" autocomplete="off"></el-input>
-                    <el-button type="success" @click="sendCode()">发送验证码</el-button>
+                    <el-button type="success" @click="sendCode()">{{$t('Sendverificationcode')}}</el-button>
                 </el-form-item>
             </el-form>
             <div slot="footer" class="dialog-footer">
-                <el-button type="primary" @click="checkPassword(phoneData.password)" v-if="editPhone_show!==true">下一步</el-button>
-                <el-button type="primary" @click="updatePhone()" v-if="editPhone_show==true">确定</el-button>
+                <el-button type="primary" @click="checkPassword(phoneData.password)" v-if="editPhone_show!==true">{{$t('Nextstep')}}</el-button>
+                <el-button type="primary" @click="updatePhone()" v-if="editPhone_show==true">{{$t('confirm')}}</el-button>
             </div>
         </el-dialog>
 
         <!-- 修改密码弹窗 -->
-        <el-dialog title="修改密码" :visible.sync="pwd_dialog" >
+        <el-dialog :title="$t('Changepassword')" :visible.sync="pwd_dialog" >
             <el-form :model="pwdData" status-icon :label-position="labelPosition" :rules="pwd_rules" ref="pwdData">
-                <el-form-item label="当前密码" :label-width="formLabelWidth" prop="oldPassword">
+                <el-form-item :label="$t('Currentpassword')" :label-width="formLabelWidth" prop="oldPassword">
                     <el-input v-model="pwdData.oldPassword" type="password" autocomplete="off"></el-input>
                 </el-form-item>
                 
-                <el-form-item label="新密码" :label-width="formLabelWidth" prop="password">
+                <el-form-item :label="$t('Newpassword')" :label-width="formLabelWidth" prop="password">
                     <el-input v-model="pwdData.password" autocomplete="off"></el-input>
                 </el-form-item>
-                <el-form-item label="确认新密码" :label-width="formLabelWidth"  prop="password_confirm">
+                <el-form-item :label="$t('Confirmnewpassword')" :label-width="formLabelWidth"  prop="password_confirm">
                     <el-input v-model="pwdData.password_confirm" autocomplete="off"></el-input>
                 </el-form-item>
             </el-form>
             <div slot="footer" class="dialog-footer">
-                <el-button type="primary" @click="updatePwd('pwdData')" >保存</el-button>
+                <el-button type="primary" @click="updatePwd('pwdData')" >{{$t('save')}}</el-button>
             </div>
         </el-dialog>
 
@@ -117,7 +117,7 @@ export default {
   data() {
     var validatePass = (rule, value, callback) => {
       if (value === "") {
-        callback(new Error("请输入密码"));
+        callback(new Error(this.$t("Pleaseinputapassword")));
       } else {
         if (this.pwdData.password_confirm !== "") {
           this.$refs.pwdData.validateField("password_confirm");
@@ -127,9 +127,9 @@ export default {
     };
     var validatePass2 = (rule, value, callback) => {
       if (value === "") {
-        callback(new Error("请再次输入密码"));
+        callback(new Error(this.$t("Pleaseenteryourpasswordagain")));
       } else if (value !== this.pwdData.password) {
-        callback(new Error("两次输入密码不一致!"));
+        callback(new Error(this.$t("Twoinconsistentpasswords")));
       } else {
         callback();
       }
@@ -190,7 +190,7 @@ export default {
             this.editPhone_show = true;
           }
         })
-        .catch(err => this.$message.error(err.message));
+        .catch(err => this.$message.error(this.$t('Originalpassworderror')));
     },
     // 发送短信验证码
     sendCode() {

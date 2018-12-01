@@ -88,7 +88,7 @@ export default {
         checkRefund(){
             if(this.orderDetail.isCheck==1){
                 if( this.orderDetail.remark =="" ){
-                    this.$message.error('请输入备注');
+                    this.$message.error(this.$t('Pleaseentertheremark'));
                     return;
                 }
             }
@@ -104,7 +104,7 @@ export default {
                 )
                 .then(res => {
                     if(res.result==0){
-                        this.$message.success('已审核');
+                        this.$message.success(this.$t('Verified'));
                         this.$router.push('/home/refundList')
                     }
                 })

@@ -73,7 +73,7 @@ export default {
                 )
                 .then(res => {
                     if(res.result==0){
-                        this.$message.success('修改成功！');
+                        this.$message.success(this.$t('Modifiedsuccessfully'));
                         this.$router.push('/home/commissionList')
                     }
                 })

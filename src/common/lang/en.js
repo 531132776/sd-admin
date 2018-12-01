@@ -760,5 +760,17 @@ adManagement:'Ad management',
 storeManagement:'Store management',
 cityManagement:'City management',
 permissionManager0:'Permission manager',
-
+Modifycellphonenumber: 'Modify cell phone number',
+Pleaseinputapassword: 'Please input a password',
+Nextstep: 'Next step',
+Currentpassword: 'Current password',
+Pleaseenteryournewcellphonenumber:'Please enter your new cell phone number',
+Pleasecheckthecode:'Please check the code',
+Sendverificationcode: 'Send verification code',
+Newpassword:'New password',
+Confirmnewpassword:'Confirm new password',
+Changepassword: 'Change password',
+Originalpassworderror: 'Original password error',
+Pleaseenteryourpasswordagain:'Please enter your password again',
+Twoinconsistentpasswords:'Two inconsistent passwords'
 } 
