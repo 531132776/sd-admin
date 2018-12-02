@@ -12,7 +12,7 @@
         <!-- 列表 -->
         <el-table class="tablelist_close" :fit="true"
                     :data="tableData"  
-                    max-height="800"
+                    max-height="600"
                     :header-cell-style="{'background':'#E5E5E5','color:':'#333333'}"
                     :row-style="{'backgroundColor':'#F7F7F7'}"
                     size="mini" 

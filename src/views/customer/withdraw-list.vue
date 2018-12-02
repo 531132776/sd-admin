@@ -9,7 +9,7 @@
           <el-table
               :data="withdrawList"
               :header-cell-style="{'background':'#E5E5E5','color:':'#333333'}" 
-              max-height="500" 
+              max-height="600" 
               size="mini" 
               v-loading="loading" 
               element-loading-text="loading" 

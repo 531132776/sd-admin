@@ -7,7 +7,7 @@
           </el-input>
 
     </div>
-    <el-table :data="feedbackList" max-height="500" size="mini" :header-cell-style="{'background':'#E5E5E5','color:':'#333333'}"
+    <el-table :data="feedbackList" max-height="600" size="mini" :header-cell-style="{'background':'#E5E5E5','color:':'#333333'}"
       v-loading="loading" element-loading-text="loading" element-loading-spinner="el-icon-loading"
       element-loading-background="rgba(0, 0, 0, 0.8)">
       <el-table-column prop="feedbackCode" :label="$t('feedbackNumber')" header-align="center" align="center">

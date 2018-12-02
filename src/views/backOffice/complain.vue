@@ -20,7 +20,7 @@
 
           </div>
           <div class="body">
-            <el-table :data="complainList" max-height="500" :header-cell-style="{'background':'#E5E5E5','color:':'#333333'}"
+            <el-table :data="complainList" max-height="600" :header-cell-style="{'background':'#E5E5E5','color:':'#333333'}"
               :row-style="{'backgroundColor':'#F7F7F7'}" size="mini" v-loading="loading" element-loading-text="loading"
               element-loading-spinner="el-icon-loading" element-loading-background="rgba(0, 0, 0, 0.8)">
               <el-table-column prop="date" :label="$t('info')" header-align="center" align="center">

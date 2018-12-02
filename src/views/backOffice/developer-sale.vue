@@ -14,7 +14,7 @@
 
         </div>
         <el-table :data="developerSaleList" :header-cell-style="{'background':'#E5E5E5','color:':'#333333'}" stripe
-            max-height="622" size="mini" v-loading="loading" element-loading-text="loading" element-loading-spinner="el-icon-loading"
+            max-height="600" size="mini" v-loading="loading" element-loading-text="loading" element-loading-spinner="el-icon-loading"
             element-loading-background="rgba(0, 0, 0, 0.8)">
             <el-table-column prop="date" :label="$t('info')" header-align="center" align="center" width="500">
                 <template slot-scope="scope">
