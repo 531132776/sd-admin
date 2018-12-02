@@ -1,7 +1,7 @@
 <template>
     <div class="refund-approval">
         <div class="header">
-            <el-button @click="addBooth">新增展位</el-button>
+            <el-button type="success" @click="addBooth">{{$t('Newbooth')}}</el-button>
             <!-- <el-button class="add">默认排序</el-button> -->
             <!-- <el-select v-model="pagination.orderType" @change="changeStatus" :placeholder="$t('choose')"
                 style="width:120px;font-size:12px;margin:0 10px;">
@@ -150,7 +150,7 @@
                     </el-col>
                     <el-col :span="10" :offset="1">
                         <el-form-item>
-                            <span slot="label"> 展位专属:</span>
+                            <span slot="label"> {{$t('Exclusivebooth')}}:</span>
                             <el-select v-model="booth.boothExclusive">
                                 <el-option label="PC" :value="1"></el-option>
                                 <el-option label="TC" :value="2"></el-option>

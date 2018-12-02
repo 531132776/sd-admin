@@ -41,7 +41,7 @@
       <el-table-column prop="nickname" :label="$t('operation')" header-align="center" align="center">
         <template slot-scope="scope">
           <el-button @click="view(scope.row)" type="text" size="small">{{$t('edit')}}</el-button>
-          <el-button @click="deleteAdvert(scope.row)" type="text" size="small">{{$t('delete')}}</el-button>
+          <el-button @click="deleteAdvert(scope.row)" type="text" size="small" style="color:#333">{{$t('delete')}}</el-button>
         </template>
       </el-table-column>
     </el-table>

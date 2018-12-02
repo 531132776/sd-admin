@@ -45,7 +45,7 @@
       <el-table-column prop="nickname" :label="$t('operation')" header-align="center" align="center">
         <template slot-scope="scope">
           <el-button @click="view(scope.row)" type="text" size="small">{{$t('edit')}}</el-button>
-          <el-button @click="deleteArticle(scope.row)" type="text" size="small">{{$t('delete')}}</el-button>
+          <el-button @click="deleteArticle(scope.row)" type="text" size="small" style="color:#333">{{$t('delete')}}</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -56,7 +56,7 @@
       </el-pagination>
     </div>
     <!-- 查看，编辑,新增 -->
-    <el-dialog :title="article.id ? '编辑文章' : '新增文章'" :visible.sync="dialogVisible" width="50%">
+    <el-dialog :title="article.id ? $t('Editingarticles') : $t('Newarticles')" :visible.sync="dialogVisible" width="50%">
       <el-form label-width="100px">
         <el-row>
           <el-col :span="10">

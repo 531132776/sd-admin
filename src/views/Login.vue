@@ -217,13 +217,17 @@ export default {
 }
 </script>
 <style lang="less">
-  .forget > label .el-checkbox__input.is-checked .el-checkbox__inner{
-            background-color: rgba(0,182,96,1);
-            border-color: rgba(0,182,96,1);
-          }
-         
+  .forget .el-checkbox__input.is-focus .el-checkbox__inner,
+  .forget .el-checkbox__input .el-checkbox__inner:hover{
+    border-color: #dcdfe6;
+  } 
+  .forget .el-checkbox__input.is-checked .el-checkbox__inner{
+              background-color: rgba(0,182,96,1);
+              border-color: rgba(0,182,96,1);
+            }
   .password > .el-input__inner:focus,
-  .password > .el-input__inner:hover{
+  .password > .el-input__inner:hover,
+  .forget .el-checkbox__input.is-checked .el-checkbox__inner:hover{
     border-color: #00b660
   }
    .username > .el-input__inner, .password > .el-input__inner{
@@ -268,8 +272,6 @@ export default {
       >.in{
         .username{
           .el-input__inner{
-
-          
             width:418px;
             height:61px;
             border-radius:8px;

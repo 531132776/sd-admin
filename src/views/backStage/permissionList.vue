@@ -23,13 +23,13 @@
                         <el-button
                             type="text"
                             size="mini"
-                            @click="() => goToDetail(data)">
+                            @click="() => goToDetail(data)" style="color: #F39700">
                             {{$t('Detail')}}
                         </el-button>
                         <el-button
                             type="text"
                             size="mini"
-                            @click="() => remove(node, data)">
+                            @click="() => remove(node, data)" style="color: #333">
                             {{$t('delete')}}
                         </el-button>
                     </span>

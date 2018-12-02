@@ -2,7 +2,7 @@
 <template>
   <div class="channel">
     <div class="header">
-      <el-button @click="addChannel">{{$t('addBtnNew')}}</el-button>
+      <el-button type="success" @click="addChannel">{{$t('addBtnNew')}}</el-button>
       <!-- <el-button class="add">默认排序</el-button> -->
       <!-- <el-select v-model="pagination.orderType" @change="changeStatus" :placeholder="$t('choose')"
                     style="width:120px;font-size:12px;margin:0 10px;">
@@ -46,7 +46,7 @@
     </div>
 
     <!-- 查看，编辑,新增 -->
-    <el-dialog title="提示" :visible.sync="dialogVisible" width="50%">
+    <el-dialog :title="$t('prompt')" :visible.sync="dialogVisible" width="50%">
       <el-form label-width="100px">
         <el-row>
           <el-col :span="10">

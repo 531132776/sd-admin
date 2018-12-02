@@ -47,7 +47,7 @@
             <el-table-column prop="nickname" :label="$t('operation')" header-align="center" align="center">
                 <template slot-scope="scope">
                     <router-link :to="{name:'roleDetail',params:{'id':scope.row.id}}" class="mr-20 color-primary">{{$t('edit')}}</router-link>
-                    <el-button type="text" size="small" @click="deleteRole(scope.row)">{{$t('delete')}}</el-button>
+                    <el-button type="text" size="small" @click="deleteRole(scope.row)" style="color: #333">{{$t('delete')}}</el-button>
                 </template>
             </el-table-column>
 
