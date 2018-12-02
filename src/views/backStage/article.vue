@@ -21,7 +21,7 @@
           </el-select>
 
     </div>
-    <el-table :data="articleList" :header-cell-style="{'background':'#E5E5E5','color:':'#333333'}" stripe max-height="622"
+    <el-table :data="articleList" :header-cell-style="{'background':'#E5E5E5','color:':'#333333'}" stripe max-height="600"
       size="mini" v-loading="loading" element-loading-text="loading" element-loading-spinner="el-icon-loading"
       element-loading-background="rgba(0, 0, 0, 0.8)">
       <el-table-column prop="articleName" :label="$t('articleName')" header-align="center" align="center">

@@ -14,7 +14,7 @@
                 </el-select>
             </div>
         <!-- 列表 -->
-        <el-table class="tablelist_close" :fit="true" :data="tableData" max-height="800" :header-cell-style="{'background':'#E5E5E5','color:':'#333333'}"
+        <el-table class="tablelist_close" :fit="true" :data="tableData" max-height="600" :header-cell-style="{'background':'#E5E5E5','color:':'#333333'}"
             :row-style="{'backgroundColor':'#F7F7F7'}" size="mini" v-loading="table_loading" element-loading-text="loading"
             element-loading-spinner="el-icon-loading" element-loading-background="rgba(0, 0, 0, 0.8)">
 

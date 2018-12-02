@@ -14,7 +14,7 @@
                     <i slot="suffix" @click="search" class="el-input__icon el-icon-search"></i>
                 </el-input> -->
     </div>
-    <el-table :data="channelList" :header-cell-style="{'background':'#E5E5E5','color:':'#333333'}" stripe max-height="622"
+    <el-table :data="channelList" :header-cell-style="{'background':'#E5E5E5','color:':'#333333'}" stripe max-height="600"
       size="mini" v-loading="loading" element-loading-text="loading" element-loading-spinner="el-icon-loading"
       element-loading-background="rgba(0, 0, 0, 0.8)">
       <el-table-column prop="channelName" :label="$t('channelName')" header-align="center" align="center">

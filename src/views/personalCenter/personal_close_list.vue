@@ -167,9 +167,9 @@ export default {
                 .catch(err => this.$message.error(err.message));
         },
         refreshList(val){
-            if(this.moduleType==0){
+            if(this.moduleType==0 ){
                 this.searchVal.leaseType = val;
-            }else if( this.moduleType==2 ){
+            }else if( this.moduleType==2 || this.moduleType==1){
                 this.searchVal.orderType = val;
             }
             this.table_loading = true;

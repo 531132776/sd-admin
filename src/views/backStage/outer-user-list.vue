@@ -7,7 +7,7 @@
         </el-input>
     </div>
 
-    <el-table :data="outerUserList" :header-cell-style="{'background':'#E5E5E5','color:':'#333333'}" stripe max-height="622"
+    <el-table :data="outerUserList" :header-cell-style="{'background':'#E5E5E5','color:':'#333333'}" stripe max-height="600"
        v-loading="table_loading" element-loading-text="loading" element-loading-spinner="el-icon-loading"
       element-loading-background="rgba(0, 0, 0, 0.8)">
       <el-table-column prop="memberCode" :label="$t('memberNumber')" header-align="center" align="center" width="277">
