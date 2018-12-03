@@ -50,11 +50,11 @@
                 <el-form-item prop="projectMainImg">
                     <span slot="label"> {{$t('projectImg')}}1:</span>
                     <!-- <el-upload  name="submitFile"  class="avatar-uploader" action="/api/pc/file/upload"
-                        :show-file-list="false" :on-success="handImgOneSuccess">
+                         :on-success="handImgOneSuccess">
                         <img v-if="imageUrl1" :src="imageUrl1" class="avatar">
                         <i v-else class="el-icon-plus avatar-uploader-icon"></i>
                     </el-upload> -->
-                    <el-upload name="submitFile" :file-list="projectMainImgList" action="/api/pc/file/upload" list-type="picture-card"
+                    <el-upload name="submitFile" :file-list="projectMainImgList" action="/api/pc/file/upload" list-type="picture"
                         :before-upload="beforeUploadPocImg" :on-success="handleSuccessPocImg"
                         :on-remove="handleRemovePocImg"
                         :limit="1"
@@ -70,7 +70,7 @@
                         <img v-if="imageUrl2" :src="imageUrl2" class="avatar">
                         <i v-else class="el-icon-plus avatar-uploader-icon"></i>
                     </el-upload> -->
-                    <el-upload name="submitFile" :file-list="projectMainImgList2" action="/api/pc/file/upload" list-type="picture-card"
+                    <el-upload name="submitFile" :file-list="projectMainImgList2" action="/api/pc/file/upload" list-type="picture"
                         :before-upload="beforeUploadPocImg2" :on-success="handleSuccessPocImg2"
                         :on-remove="handleRemovePocImg2"
                         :limit="1"
@@ -264,6 +264,8 @@
             openDialog() {
                 this.dialogVisible = true;
                /** 重置房源信息 */
+                this.$set(this,'imageUrl1',"");
+                this.$set(this,'imageUrl2',"");
                 this.$set(this,'projectMainImgList',[]);
                 this.$set(this,'projectMainImgList2',[]);
                 this.$set(this,'houseLocation',[]);
@@ -304,12 +306,21 @@
                         this.house = res.dataSet;
                         this.$set(this,'houseLocation',[res.dataSet.city,res.dataSet.community,res.dataSet.subCommunity]);
                         this.$set(this,'bedroom',res.dataSet.bedroomNum?res.dataSet.bedroomNum.split(','):[]);
-                        
+                        this.$set(this,'imageUrl1',res.dataSet.projectMainImg);
+                        this.$set(this,'imageUrl2',res.dataSet.projectMainImg2);
+
                         this.projectMainImgList.push({url:res.dataSet.projectMainImg}) ;
                         this.projectMainImgList2.push({url:res.dataSet.projectMainImg2}) ;
 
                         this.projectMainImgList = this.projectMainImgList.filter(v => Boolean(v.url) == true); 
+                        this.projectMainImgList.forEach(ele=>{
+                            ele.name = ele.url.substr(-7);
+                        })
                         this.projectMainImgList2 = this.projectMainImgList2.filter(v => Boolean(v.url) == true);    
+                        this.projectMainImgList2.forEach(ele=>{
+                            ele.name = ele.url.substr(-7);
+                        })
+                        console.log( this.projectMainImgList,this.projectMainImgList2  )
                         this.dialogVisible = true;
                     })
                     .catch(err => this.$message.error(err.message));
