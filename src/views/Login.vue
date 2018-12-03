@@ -245,7 +245,8 @@ export default {
   .login{
     width:100vw;
     height:100vh;
-    background:url('../assets/images/login.png');
+    background:url('../assets/images/login.png') no-repeat;
+    background-size: 100% 100%;
     display: flex;
     justify-content: center;
     align-items: center;
