@@ -320,7 +320,7 @@
                         this.projectMainImgList2.forEach(ele=>{
                             ele.name = ele.url.substr(-7);
                         })
-                        console.log( this.projectMainImgList,this.projectMainImgList2  )
+                        // console.log( this.projectMainImgList,this.projectMainImgList2  )
                         this.dialogVisible = true;
                     })
                     .catch(err => this.$message.error(err.message));
