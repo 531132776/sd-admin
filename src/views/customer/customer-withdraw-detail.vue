@@ -23,7 +23,7 @@
         </div>
       </div>
     </div>
-    <div class="remarks" v-if="detail.platform!=1">
+    <div class="remarks" >
       <p>{{$t('note')}}</p>
       <div class="remarks-info">
         <textarea v-model="detail.content"></textarea>

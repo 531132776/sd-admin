@@ -169,7 +169,10 @@
                       <img width="100%" :src="dialogImageUrl_houseSource" alt="">
                     </el-dialog>
                 </el-form-item>
-
+                <!-- 区域长房源未上传图片的备注 -->
+                <el-form-item :label="$t('note')" v-if="housingApplication.keysManagerRemark">
+                    {{housingApplication.keysManagerRemark}}
+                </el-form-item>
                 <!-- 房屋租赁代理同意书 10 -->
                 <el-form-item :label="$t('housingLeasingAgency')" prop="rentAuthorizationSignImg"  v-if="housingApplication.leaseType===0">
                     <el-upload name="submitFile" :file-list="rentAuthorizationSignImgList" action="/api/pc/file/upload" list-type="picture-card"
@@ -545,11 +548,13 @@
                                     <span slot="label">{{$t('payNode')}}</span>
                                     <el-select  v-model="autoAnswer.payNode"
                                         style="width: 150px;">
+                                        <el-option :label="$t('choose')" :value="-1"  v-if="autoAnswer.payNode==-1"></el-option>
                                         <el-option label="One payments a year" :value="1"></el-option>
                                         <el-option label="Two payments a year" :value="2"></el-option>
                                         <el-option label="Four payments a year" :value="4"></el-option>
                                         <el-option label="Six payments a year" :value="6"></el-option>
                                         <el-option label="Twelve Payment per Year" :value="12"></el-option>
+                                        
                                     </el-select>
                                 </el-form-item>
                             </el-col>

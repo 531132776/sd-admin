@@ -7,12 +7,21 @@
         <div class="mb-10">
             <el-button type="success" class="mr-10" @click="defaultData()">Default sort</el-button>
             <el-select v-model="searchVal.orderType" @change="changeType" :placeholder="$t('choose')" style="width:100px;"  class="mr-10">
-                <el-option v-for="item in orderTypeSelect" :key="item.value"
+                <el-option v-for="item in [
+                {value:0,label:this.$t('Rent')},
+                {value:1,label:this.$t('Sale')},
+                {value:null,label:this.$t('all')}
+            ]" :key="item.value"
                     :label="item.label" :value="item.value">
                 </el-option>
             </el-select>    
             <el-select v-model="searchVal.payWay" @change="changePayWay" :placeholder="$t('choose')" style="width:100px;"  class="mr-10">
-                <el-option v-for="item in payWaySelect" :key="item.value"
+                <el-option v-for="item in [
+                {value:0,label:this.$t('unPay')},
+                {value:1,label:this.$t('Online')},
+                {value:2,label:this.$t('Case')},
+                {value:null,label:this.$t('all')}
+            ]" :key="item.value"
                     :label="item.label" :value="item.value">
                 </el-option>
             </el-select>         

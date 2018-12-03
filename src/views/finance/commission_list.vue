@@ -7,8 +7,13 @@
         <div class="mb-10">
             <el-button type="success" class="mr-10" @click="defaultData">Default sort</el-button>
             <el-select v-model="searchVal.orderType" @change="changeType" :placeholder="$t('choose')" style="width:100px;"  class="mr-10">
-                <el-option v-for="item in [{value:0,label:$t('Rent')},{value:1,label:$t('Sale')},{value:null,label:$t('all')}]" :key="item.value"
-                    :label="item.label" :value="item.value">
+                <el-option v-for="item in [
+                {value:0,label:$t('Rent')},
+                {value:1,label:$t('Sale')},
+                {value:null,label:$t('all')}]" 
+                :key="item.value"
+                :label="item.label" 
+                :value="item.value">
                 </el-option>
             </el-select>           
         </div>

@@ -90,7 +90,7 @@
                     this.detail = res.dataSet ? res.dataSet : this.detail;
                     if (!res.dataSet) {
                         this.$set(this.detail, 'order', {});
-                        throw Error('订单不存在');
+                        throw Error('This order does not exist!');
                     }
                     // 进度列表(50内勤(出租) 51内勤(出售))
                     res = await this.$axios.post('/api/pc/get/progress/list', this.$qs.stringify({ type: this.detail.order.orderType === 0 ? 50 : 51 }));

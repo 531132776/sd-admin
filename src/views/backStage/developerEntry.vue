@@ -145,7 +145,10 @@
             </el-form>
             <span slot="footer" class="dialog-footer">
                 <el-button @click="dialogVisible = false">{{$t('cancel')}}</el-button>
-                <el-button type="primary" @click="submit('ruleForm')">{{$t('confirm')}}</el-button>
+                <el-button type="primary"  @click="submit('ruleForm')" :disabled="submitButtonBool">
+                   {{$t('confirm')}}
+                    <i class="el-icon-loading" v-if="submitButtonBool"></i>
+                </el-button>
             </span>
         </el-dialog>
 
@@ -225,7 +228,8 @@
                 dialogImageUrl_pImg:'',
                 projectMainImgList:[],
                 projectMainImgList2:[],
-                removeImgArr:[]
+                removeImgArr:[],
+                submitButtonBool:false
 
             }
         },
@@ -297,6 +301,7 @@
                 this.loadList();
             },
             view(row) {//编辑查看
+                this.submitButtonBool = false;
                 this.projectMainImgList =[];
                 this.projectMainImgList2 =[];
                 this.removeImgArr = [];
@@ -420,7 +425,7 @@
             submit(formName) {
                 this.$refs[formName].validate((valid) => {
                 if (valid) {
-
+                    this.submitButtonBool = true;
                     // 删除的图片统一走接口
                     if(this.removeImgArr.length>0 ){
                         for(let i=0;i<this.removeImgArr.length;i++){

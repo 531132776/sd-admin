@@ -59,13 +59,13 @@ export default {
         var pass=this.loginInfo.password;
         if(name==''||name==null){
           this.$message({
-          message: '请输入正确的用户名',
+          message: 'Please enter the correct user name',
           type: 'warning'
         });
           return
         }else if(pass==''||pass==null) {
           this.$message({
-          message: '请输入正确的密码',
+          message: 'Please enter the correct password',
           type: 'warning'
         });
           return
@@ -82,7 +82,7 @@ export default {
             sessionStorage.setItem('accessToken','DFSAGHJKFHSDJKG');
             if(res.result !== 1002){
              this.$message({
-                message: '用户名或密码错误,请重新输入',
+                message: 'Incorrect user name or password. Please re-enter',
                 type: 'warning'
               });
               this.loginInfo.username='';
@@ -90,7 +90,7 @@ export default {
               return
             } else{
               this.$message({
-                message: '登入成功',
+                message: res.message,
                 type: 'success'
               });
               this.getPermissionList();
