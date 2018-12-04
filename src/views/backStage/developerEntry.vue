@@ -267,6 +267,7 @@
             },
             openDialog() {
                 this.dialogVisible = true;
+                this.submitButtonBool = false;
                /** 重置房源信息 */
                 this.$set(this,'imageUrl1',"");
                 this.$set(this,'imageUrl2',"");
@@ -438,6 +439,7 @@
                             this.dialogVisible = false;
                             this.$message({ type: 'success', message: res.message });
                             this.loadList();
+                            
                         })
                         .catch(err => this.$message.error(err.message));
                 } else {
