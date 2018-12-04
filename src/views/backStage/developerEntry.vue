@@ -133,10 +133,13 @@
                 <el-form-item prop="bedroomNum">
                     <span slot="label">{{$t('bedroomNumber')}}:</span>
                     <el-select v-model="bedroom" multiple :placeholder="$t('choose')">
-                        <el-option v-for="item in [1,2,3,4,5,6,7,8,9,10]" :key="item" :label="item"
-                                            :value="item">
+                        <el-option 
+                        v-for="item in ['1','2','3','4','5','6','7','8','9','10']" 
+                        :key="item" 
+                        :label="item"
+                        :value="item">
                         </el-option>
-                        <el-option  :label="$t('studio')" :value="100"></el-option>
+                        <el-option :label="$t('studio')" :value="'100'"></el-option>
                     </el-select>
                 </el-form-item>
                 <el-form-item prop="reraPermitNo">
