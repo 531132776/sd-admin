@@ -136,6 +136,7 @@
                         <el-option v-for="item in [1,2,3,4,5,6,7,8,9,10]" :key="item" :label="item"
                                             :value="item">
                         </el-option>
+                        <el-option  :label="$t('studio')" :value="100"></el-option>
                     </el-select>
                 </el-form-item>
                 <el-form-item prop="reraPermitNo">
@@ -471,7 +472,7 @@
             this.loadList();
             // let loadingInstance = this.$Loading.service({ fullscreen: true, text: 'loading', spinner: 'el-icon-loading', background: 'rgba(56, 53, 53, 0.6)' });
             //获取房源区域三级联动列表 
-            let locationsPro=this.$axios.post('/api/pc/support/cities');
+            let locationsPro=this.$axios.post('/api/pc/support/cities',this.$qs.stringify({isAll:'all'}));
             //房屋类型字典
             let houseTypeMapPro = this.$axios.post(`/api/pc/dict/get/1`);
             this.$axios.all([locationsPro,houseTypeMapPro])
