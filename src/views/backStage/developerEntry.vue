@@ -16,7 +16,7 @@
             element-loading-background="rgba(0, 0, 0, 0.8)">
             <el-table-column :label="$t('projectImg')" header-align="center" align="center">
                 <template slot-scope="scope">
-                    <img class="mainImg" v-bind:src="scope.row.projectMainImg" alt="">
+                    <img class="mainImg" v-lazy="scope.row.projectMainImg" alt="" :key="scope.row.projectMainImg">
                 </template>
             </el-table-column>
             <el-table-column prop="developers" :label="$t('developer')" header-align="center" align="center">
