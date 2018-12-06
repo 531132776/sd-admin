@@ -301,7 +301,6 @@
       confirm() {//新增，编辑，查看用户详情,根据userId区分
         this.dialogVisible=false;
         let loadingInstance = this.$Loading.service({ fullscreen: true, text: 'loading', spinner: 'el-icon-loading', background: 'rgba(56, 53, 53, 0.6)' });
-
         this.currentUser.roles = this.currentUser.roleId;
 
         //校验参数

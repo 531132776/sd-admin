@@ -241,7 +241,12 @@
             houseLocation(newValue,oldValue){//房源区域
                 this.$set(this.house,'city',newValue[0]);
                 this.$set(this.house,'community',newValue[1]);
-                this.$set(this.house,'subCommunity',newValue[2]);
+                if(newValue[2]){
+                    this.$set(this.house,'subCommunity',newValue[2]);
+                }else{
+                    this.$set(this.house,'subCommunity',"");
+                }
+                
             },
             bedroom(newValue,oldValue){//卧室数量
                 this.$set(this.house,'bedroomNum',newValue.toString());
@@ -428,6 +433,7 @@
             //     return isJPG && isLt2M;
             // },
             submit(formName) {
+                console.log(this.house)
                 this.$refs[formName].validate((valid) => {
                 if (valid) {
                     this.submitButtonBool = true;
