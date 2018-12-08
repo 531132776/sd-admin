@@ -39,10 +39,10 @@
     </div>
     <!-- 新增，查看，修改 内部用户 -->
     <el-dialog :title="$t('User')" :visible.sync="dialogVisible" >
-      <el-form :data="currentUser" ref="formsd" label-width="150px">
+      <el-form :model="currentUser" ref="UserForm" label-width="150px" :rules="rules">
         <el-row>
           <el-col>
-            <el-form-item>
+            <el-form-item prop="userLogo">
               <span slot="label">{{$t('avatar')}}</span>
               <el-upload name="submitFile" class="avatar-uploader" action="/api/pc/file/upload" :show-file-list="false"
                 :on-success="handleAvatarSuccess" :before-upload="beforeAvatarUpload">
@@ -54,13 +54,13 @@
         </el-row>
         <el-row>
           <el-col :span="11">
-            <el-form-item>
+            <el-form-item prop="usercode">
               <span slot="label">{{$t('account')}}</span>
               <el-input v-model="currentUser.usercode"></el-input>
             </el-form-item>
           </el-col>
           <el-col :span="11" :offset="1">
-            <el-form-item>
+            <el-form-item  prop="username">
               <span slot="label">{{$t('name')}}</span>
               <el-input v-model="currentUser.username"></el-input>
             </el-form-item>
@@ -68,13 +68,13 @@
         </el-row>
         <el-row>
           <el-col :span="11">
-            <el-form-item>
+            <el-form-item prop="mobile">
               <span slot="label">{{$t('telephone')}}</span>
               <el-input v-model="currentUser.mobile"></el-input>
             </el-form-item>
           </el-col>
           <el-col :span="11" :offset="1">
-            <el-form-item>
+            <el-form-item prop="locked">
               <span slot="label">{{$t('lockAccount')}}</span>
               <el-select v-model="currentUser.locked">
                 <el-option :label="$t('Unlocked')" :value="0"></el-option>
@@ -85,7 +85,7 @@
         </el-row>
         <el-row>
           <el-col :span="11">
-            <el-form-item>
+            <el-form-item prop="city">
               <span slot="label">{{$t('city')}}</span>
               <!-- <el-input v-model="currentUser.city"></el-input> -->
               <el-select v-model="currentUser.city" :placeholder="$t('choose')" @change="getCityIndex" >
@@ -100,7 +100,7 @@
             </el-form-item>
           </el-col>
           <el-col :span="11" :offset="1">
-            <el-form-item>
+            <el-form-item prop="community">
               <span slot="label">{{$t('community')}}</span>
               <!-- <el-input v-model="currentUser.community"></el-input> -->
               <el-select v-model="currentUser.community" :placeholder="$t('choose')" @change="getCommuIndex">
@@ -116,7 +116,7 @@
         </el-row>
         <el-row>
           <el-col :span="11">
-            <el-form-item>
+            <el-form-item prop="subCommunity">
               <span slot="label">{{$t('subCommunity')}}</span>
               <el-select v-model="currentUser.subCommunity" :placeholder="$t('choose')"  >
                   <el-option
@@ -129,7 +129,7 @@
             </el-form-item>
           </el-col>
           <el-col :span="11" :offset="1">
-            <el-form-item>
+            <el-form-item prop="gold">
               <span slot="label">{{$t('integral')}}</span>
               <el-input v-model="currentUser.gold"></el-input>
             </el-form-item>
@@ -137,7 +137,7 @@
         </el-row>
         <el-row>
           <el-col :span="11">
-            <el-form-item>
+            <el-form-item prop="roleId">
               <span slot="label">{{$t('role')}}</span>
                 <el-select v-model="currentUser.roleId" :placeholder="$t('choose')" >
                   <el-option
@@ -153,7 +153,7 @@
       </el-form>
       <span slot="footer" class="dialog-footer">
         <el-button @click="cancel">{{$t('cancel')}}</el-button>
-        <el-button type="primary" @click="confirm">{{$t('confirm')}}</el-button>
+        <el-button type="primary" @click="confirm('UserForm')">{{$t('confirm')}}</el-button>
       </span>
     </el-dialog>
   </div>
@@ -187,7 +187,7 @@
         imgSrc: '',//头像
         roleList:[],
         searchVal:{
-            isForbidden:null,
+            isForbidden:0,
             // pageIndex:1,
             // pageSize:100,
             // total:100,
@@ -200,7 +200,16 @@
           update:!this.$store.state.update,
           detail:!this.$store.state.detail,
           delete:!this.$store.state.delete
-          }
+        },
+        rules:{
+          // userLogo: [{ required: true,message: `please upload ${this.$t("avatar")}`,trigger: "blur"}],
+          usercode: [{ required: true,message: `${this.$t("PleaseEnter")} ${this.$t("account")}`,trigger: "blur"}],
+          username: [{ required: true,message: `${this.$t("PleaseEnter")} ${this.$t("name")}`,trigger: "blur"}],
+          mobile: [{ required: true,message: `${this.$t("PleaseEnter")} ${this.$t("telephone")}`,trigger: "blur"}],
+          city: [{ required: true,message: `${this.$t("PleaseSelect")} ${this.$t("city")}`,trigger: "blur"}],
+          community: [{ required: true,message: `${this.$t("PleaseSelect")} ${this.$t("community")}`,trigger: "blur"}],
+          roleId: [{ required: true,message: `${this.$t("PleaseSelect")} ${this.$t("role")}`,trigger: "blur"}],
+        }
       }
     },
     mounted(){
@@ -224,6 +233,7 @@
       addInnerUser() {//新增内部用户
         this.dialogVisible = true;
         this.currentUser = {};
+        this.$set(this, 'imgSrc', "");
 
       },
       edit(row) {//查看,编辑内部用户
@@ -231,7 +241,14 @@
         this.$axios.post(`/api/pc/user/detail/${row.userId}`)
           .then(res => {
             this.currentUser = res.dataSet;
-            this.$set(this, 'imgSrc', res.dataSet.userLogo);
+
+            if(res.dataSet.userLogo.indexOf('/null')!=-1){
+              this.$set(this, 'imgSrc', "");
+              this.$set(this.currentUser, 'userLogo', "");
+            }else{
+              this.$set(this, 'imgSrc', res.dataSet.userLogo);
+            }
+            
           });
       },
       deleteUser(row) {
@@ -298,35 +315,45 @@
           mobile: ''
         }
       },
-      confirm() {//新增，编辑，查看用户详情,根据userId区分
-        this.dialogVisible=false;
-        let loadingInstance = this.$Loading.service({ fullscreen: true, text: 'loading', spinner: 'el-icon-loading', background: 'rgba(56, 53, 53, 0.6)' });
-        this.currentUser.roles = this.currentUser.roleId;
+      confirm(formName) {//新增，编辑，查看用户详情,根据userId区分
+        this.$refs[formName].validate((valid) => {
+          if (valid) {
+            this.dialogVisible=false;
+            let loadingInstance = this.$Loading.service({ fullscreen: true, text: 'loading', spinner: 'el-icon-loading', background: 'rgba(56, 53, 53, 0.6)' });
+            this.currentUser.roles = this.currentUser.roleId;
 
-        //校验参数
-        if (this.currentUser.userId) {//编辑, 查看
-          this.$axios.post('/api/pc/user/update', this.$qs.stringify(Object.assign(this.currentUser,{id:this.currentUser.userId})))
-            .then(res => { 
-              this.$message({type:'success',message:res.message});
-              this.loadInnerUserList();
-            })
-            .catch(err =>this.$message.error(err.message))
-            .finally(() => this.$nextTick(() => {
-              loadingInstance.close();
+            //校验参数
+            if (this.currentUser.userId) {//编辑, 查看
+              if( this.currentUser.userLogo.indexOf('http://')!=-1){
+                this.currentUser.userLogo =  this.currentUser.userLogo.substr(this.currentUser.userLogo.indexOf('group1/'))  ;
+              }
 
-            }));
-        } else {//新增
-          this.$axios.post('/api/pc/user/add', this.$qs.stringify(this.currentUser))
-            .then(res => {
-              this.$message({type:'success',message:res.message});
-              this.loadInnerUserList();
-             })
-            .catch(err =>this.$message.error(err.message))
-            .finally(() => this.$nextTick(() => {
-              loadingInstance.close();
-            }));
-        }
+              this.$axios.post('/api/pc/user/update', this.$qs.stringify(Object.assign(this.currentUser,{id:this.currentUser.userId})))
+                .then(res => { 
+                  this.$message({type:'success',message:res.message});
+                  this.loadInnerUserList();
+                })
+                .catch(err =>this.$message.error(err.message))
+                .finally(() => this.$nextTick(() => {
+                  loadingInstance.close();
 
+                }));
+            } else {//新增
+              this.$axios.post('/api/pc/user/add', this.$qs.stringify(this.currentUser))
+                .then(res => {
+                  this.$message({type:'success',message:res.message});
+                  this.loadInnerUserList();
+                })
+                .catch(err =>this.$message.error(err.message))
+                .finally(() => this.$nextTick(() => {
+                  loadingInstance.close();
+                }));
+            }
+          } else {
+            this.$message.warning("Please complete the information!");
+            return false;
+          }
+        });
       },
               // 请求角色列表
       queryRoleList(){
