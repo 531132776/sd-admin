@@ -302,21 +302,21 @@
                             </el-select>
                         </el-form-item>
 
-                        <!-- 房屋状态 -->
+                        <!-- 房屋状态 20181208吴萌确认终审不允许修改 -->
                     <el-form-item prop="housingStatus" v-if="housingApplication.isPromissoryBuild==1 || housingApplication.leaseType===0">
                         <span slot="label">{{$t('homeState')}}</span>
-                        <el-select v-model="housingApplication.housingStatus" :placeholder="$t('PleaseSelect')">
+                        <el-select disabled v-model="housingApplication.housingStatus" :placeholder="$t('PleaseSelect')">
                             <el-option v-for="item in houseStatusMap" :key="item.id" :label="$i18n.locale=='zh'?item.itemValue:item.itemValueEn"
                                 :value="item.id.toString()">
                             </el-option>
                         </el-select>
                     </el-form-item> 
 
-                    <!-- 是否有钥匙 -->
+                    <!-- 是否有钥匙 20181208吴萌确认终审不允许修改 -->
                     <el-form-item prop="haveKeyValue" 
                     v-if="housingApplication.leaseType==0&& housingApplication.housingStatus!=20076&&housingApplication.housingStatus!=''&&housingApplication.housingStatus!=null || housingApplication.leaseType==1&& housingApplication.housingStatus!=20076&&housingApplication.housingStatus!=''&& housingApplication.housingStatus!=null&&housingApplication.isPromissoryBuild==1">
                         <span slot="label">{{$t('haveKey')}}</span>
-                        <el-select v-model="housingApplication.haveKeyValue" :placeholder="$t('PleaseSelect')">
+                        <el-select disabled v-model="housingApplication.haveKeyValue" :placeholder="$t('PleaseSelect')">
                             <el-option :label="housingApplication.housingStatus==20074?$t('vacantOption1'):$t('rentedOption1')" :value="1"></el-option>
                             <el-option :label="housingApplication.housingStatus==20074?$t('vacantOption2'):$t('rentedOption2')" :value="0"></el-option>
                         </el-select>
