@@ -2,9 +2,23 @@
     <div class="contract-detail">
         <div class="nav">
             <el-breadcrumb separator="/">
-                <el-breadcrumb-item :to="{path:'/home/contractList'  }"><span class="">{{$t('AmendingContract')}}</span></el-breadcrumb-item>
+                <el-breadcrumb-item :to="{path:$route.query.type ==1?'/home/contractList/1': '/home/contractList/0' }"><span class="">{{$t('AmendingContract')}}</span></el-breadcrumb-item>
                 <el-breadcrumb-item>{{$t('Rentalcontractdetails')}}<br> Details of lease contract</el-breadcrumb-item>
             </el-breadcrumb>
+        </div>
+
+        <div class="passport-wrap">
+            <div>
+                
+                <!-- <el-select v-model="detail.leaseType" :placeholder="$t('choose')" >  
+                    <el-option
+                    v-for="item in [{'value':'rent','label':$t('Rent')},{'value':'sale','label':$t('Sale')}]"
+                    :key="item.value"
+                    :label="item.label"
+                    :value="item.value">
+                    </el-option>
+                </el-select> -->
+            </div>
         </div>
         <div class="company-stamp">
             <img src="../../assets/images/company-b.png" alt="">
@@ -33,29 +47,29 @@
         </ul>
         <ul class="contract-from">
             <li>
-                <span>Owner Name： <input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.ownerName"> </span>   
+                <span>Owner Name： <input v-if="$route.query.type ==1" type="text" :placeholder="$t('PleaseEnter')" v-model="detail.ownerName"> </span>   
             </li>
             <li>
-                <span>Landlord Name：<input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.landlordName"></span> 
+                <span>Landlord Name：<input v-if="$route.query.type ==1" type="text" :placeholder="$t('PleaseEnter')" v-model="detail.landlordName"></span> 
             </li>
             <li>
-                <span>Tenant Name：<input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.tenantName"> </span> 
+                <span>Tenant Name：<input v-if="$route.query.type ==1" type="text" :placeholder="$t('PleaseEnter')" v-model="detail.tenantName"> </span> 
             </li>
             <li>
-                <span>Tenant Email：<input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.tenantEmail"> </span> 
-                <span>Landlord Email：<input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.landlordEmail"> </span>
+                <span>Tenant Email：<input v-if="$route.query.type ==1" type="text" :placeholder="$t('PleaseEnter')" v-model="detail.tenantEmail"> </span> 
+                <span>Landlord Email：<input v-if="$route.query.type ==1" type="text" :placeholder="$t('PleaseEnter')" v-model="detail.landlordEmail"> </span>
             </li>
             <li>
-                <span>Tenant Phone：<input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.tenantPhone"> </span> 
-                <span>Landlord Phone：<input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.landlordPhone"> </span> 
+                <span>Tenant Phone：<input v-if="$route.query.type ==1" type="text" :placeholder="$t('PleaseEnter')" v-model="detail.tenantPhone"> </span> 
+                <span>Landlord Phone：<input v-if="$route.query.type ==1" type="text" :placeholder="$t('PleaseEnter')" v-model="detail.landlordPhone"> </span> 
             </li>
             <li>
-                <span>Building Name：<input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.buildingName"></span> 
-                <span>Location：<input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.address"></span>
+                <span>building name：<input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.buildingName"></span> 
+                <span>Property location：<input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.address"></span>
             </li>
             <li>
-                <span>Property Siz：<input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.houseAcreage"></span> 
-                <span>Property Type：
+                <span>building area：<input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.houseAcreage"></span> 
+                <span>Unit Type：
                       <el-select v-model="detail.leaseType" :placeholder="$t('choose')">
                         <el-option
                         v-for="item in [{'value':'rent','label':$t('Rent')},{'value':'sale','label':$t('Sale')}]"
@@ -65,25 +79,41 @@
                         </el-option>
                     </el-select>
                 </span> 
-                <span>Property NO：<input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.roomName"></span>
+                <span>Unit number：<input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.roomName"></span>
             </li>
             <li>
-                <span>Property NO(DWWA)：<input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.propertyNo"></span>
+                <span>Premises No (DEWA)：<input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.propertyNo"></span>
                 <span>Plot No：<input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.plotNo"></span>
             </li>
             <li>
                 <span>Premises Period To：<input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.premisesPeriodTo"></span>
-                <span>From：<input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.leaseStartDate"></span>
+                <span>From：
+                    <!-- <input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.leaseStartDate"> -->
+                    {{detail.leaseStartDate}}
+                </span>
             </li>
             <li>
-                <span>Annual Rent：<input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.leasePrice"></span>
+                <span>Annual Rent：
+                    <!-- <input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.leasePrice"> -->
+                    AED{{detail.leasePrice}} Only
+                </span>
             </li>
             <li>
-                <span>Contract Value：<input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.contractValue"></span>
+                <!-- 合同有效期年限，不可更改，显示格式为1 Year /3 Years -->
+                <span>Contract Value：
+                    <!-- <input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.contractValue"> -->
+                    <i v-if="detail.contractValue==1">1 Year</i>
+                    <i v-else>{{detail.payNode}} Years</i>
+                </span>
             </li>
             <li>
                 <span>Security Deposit Amount：<input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.securityDepositAmount"></span> 
-                <span>Mode of payment：<input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.payNode"></span>
+                <span>Mode of payment：
+                    <!-- 支付节点，不可修改 -->
+                    <!-- <input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.payNode"> -->
+                    <i v-if="detail.payNode==1">1 cheque</i>
+                    <i v-else>{{detail.payNode}} cheques</i>
+                </span>
             </li>
         </ul>
         <div class="color-bar">Terms & Conditions:</div>
@@ -139,10 +169,16 @@
                     <el-radio :label="2">Arabic</el-radio>
                 </el-radio-group>
         </div> -->
-        <el-row>
+        <el-row v-if="$route.query.type ==1">
             <el-button v-if="isDelivery" type="success" @click="GenerateContract()">{{$t('save')}}</el-button>
             <el-button v-else type="success" @click="confirmBool=true">{{$t('Generatethecontract')}}</el-button>
         </el-row>
+
+        <el-row v-else>
+            <el-button type="warning" @click="editContract()" :disabled="detail.orderStatus==-3 || detail.orderStatus==-2?false:true">{{$t('AmendingContract')}}</el-button>
+            <!--  detail.orderStatus==-3或-2的时候才可以修改合同单 -->
+        </el-row>
+
 
         <!-- 弹窗 - 是否生成合同单 生成/不生成 -->
         <el-dialog :title="$t('prompt')" :visible.sync="confirmBool">
@@ -244,6 +280,7 @@ export default {
             estimatedTime:"",
             appointmentMeetPlace:"",  
             isDelivery:'',
+            orderStatus:'',
        },
        confirmBool:false,
        isDelivery:''
@@ -323,7 +360,7 @@ export default {
               if(res.result==0){
                     loading.close();
                     this.$message.success( this.$t('GeneratethecontractSuccess'));
-                    this.$router.push('/home/contractList')
+                    this.$router.push('/home/contractList/1');
               }
           }).catch(err => this.$message.error(err.message)); 
     },
@@ -346,7 +383,23 @@ export default {
                 this.$set(this.detail,'estimatedTime','');     
             }
         }  
-    }
+    },
+    editContract(){
+        // if( this.detail.additionalTerms.length >0){
+        //     this.detail.additionalTerms.forEach((ele,i)=>{
+        //         this.detail['additionalTerm'+(i+1)] = ele
+        //     })
+        // }
+        this.$axios.post('/api/pc/contract/update',
+          
+          this.$qs.stringify({orderId:this.$route.query.id,additionalTerms:JSON.stringify(this.detail.additionalTerms)}) 
+          ).then(res=>{
+              if(res.result==0){
+                    this.$message.success(this.$t('Modifiedsuccessfully'));
+                    this.queryDetail();
+              }
+          }).catch(err => this.$message.error(err.message));
+      }
   }
 };
 </script>

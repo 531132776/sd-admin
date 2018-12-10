@@ -1,5 +1,11 @@
 <template>
     <div class="finance_page transaction_list">
+        <el-select class="mr-5" v-model="searchVal.orderType" @change="changeType" :placeholder="$t('PleaseSelect')" >
+            <el-option v-for="item in [{value:0,label:$t('Rent')},{value:1,label:$t('Sale')},{value:null,label:$t('all')}]" :key="item.value"
+                            :label="item.label" :value="item.value">
+            </el-option>
+        </el-select>
+
         <el-input class="mb-10" style="width:350px;" v-model.trim="searchVal.orderCode" :placeholder="$t('PleaseEnterOrder')"  @change="searchOrder">
             <el-button slot="append" icon="el-icon-search"  @click="searchOrder()"></el-button>
         </el-input>
@@ -42,7 +48,7 @@
                     <!-- <router-link v-if="scope.row.orderType==0" :to="{name:'back_contractDetail_rent',query:{'id':scope.row.id}}">edit</router-link>
                     <router-link v-if="scope.row.orderType==1" :to="{name:'back_contractDetail_sale',query:{'id':scope.row.id}}">edit</router-link> -->
                     <a href="javascript:;" @click="view(scope.row)">{{$t('edit')}}</a>    
-                    <a class="ml-10" v-if="scope.row.standby2!=''" :href="scope.row.standby2" target="blank" :style="{'color':'#333333'}">{{$t('preview')}}</a>
+                    <a class="ml-10" v-if="scope.row.standby2!=''&& $route.params.type ==1" :href="scope.row.standby2" target="blank" :style="{'color':'#333333'}">{{$t('preview')}}</a>
                 </template>
             </el-table-column>
 
@@ -68,14 +74,14 @@ export default {
                 pageIndex:1,
                 pageSize:10,
                 total:100,
-                orderStatus:'2,3,4,5',//固定传值
+                orderStatus: this.$route.params.type ==0? -2:'2,3,4,5',//固定传值
                 tradingStatus :0
             },
             tableData:[],
         }
     },
     created(){
-
+        console.log( this.$route.params.type ==0)
     },
     mounted(){
         this.queryContractList()
@@ -106,6 +112,10 @@ export default {
             this.table_loading = true;
             this.queryContractList();
         },
+        changeType() {//切换出租-出售
+            this.loading=true;
+            this.queryContractList();
+        },
         defaultData(){  //默认排序，清除查询条件
             this.table_loading = true;
             this.searchVal = {
@@ -127,16 +137,16 @@ export default {
                     type: 'warning'
                 }).then(() => {
                     if(item.orderType==0){
-                        this.$router.push({name:'back_contractDetail_rent',query:{'id':item.id,'isDelivery':1}})
+                        this.$router.push({name:'back_contractDetail_rent',query:{'id':item.id,'isDelivery':1,type:this.$route.params.type}})
                     }else if(item.orderType==1 ){
-                        this.$router.push({name:'back_contractDetail_sale',query:{'id':item.id,'isDelivery':1}})
+                        this.$router.push({name:'back_contractDetail_sale',query:{'id':item.id,'isDelivery':1,type:this.$route.params.type}})
                     }        
                 }).catch(() => {});            
             }else{
                 if(item.orderType==0){
-                    this.$router.push({name:'back_contractDetail_rent',query:{'id':item.id}})
+                    this.$router.push({name:'back_contractDetail_rent',query:{'id':item.id,type:this.$route.params.type}})
                 }else if(item.orderType==1 ){
-                    this.$router.push({name:'back_contractDetail_sale',query:{'id':item.id}})
+                    this.$router.push({name:'back_contractDetail_sale',query:{'id':item.id,type:this.$route.params.type}})
                 }
             }
         },

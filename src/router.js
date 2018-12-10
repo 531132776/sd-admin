@@ -401,8 +401,8 @@ export default new Router({
           component:()=>import('./views/backOffice/complain-detail.vue'),
           meta: { requireAuth: true }
         },
-        {/**合同列表 */
-          path:'contractList',
+        {/**合同列表  type=0-客服合同，type=1-内勤合同 */
+          path:'contractList/:type',
           name:'contractList',
           props:true,
           component:()=>import('./views/backOffice/contractList.vue'),

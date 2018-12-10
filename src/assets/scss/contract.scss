@@ -1,0 +1,154 @@
+.contract {
+
+    //合同列表
+    >.header {
+        margin: 5px 0;
+    }
+
+    >.body {
+        .order-detail {
+            width: 100%
+        }
+    }
+
+    >.page {
+        text-align: right;
+        padding: 10px 0;
+    }
+}
+
+//合同详情
+.contract-detail {
+    color: #333;
+
+    .company-stamp {
+        height: 40px;
+        margin: 5px 40px;
+        margin-bottom: 15px;
+        display: flex;
+        justify-content: space-between;
+
+        span.black_s {
+            color: #030303;
+            font-size: 14px;
+            font-weight: 500;
+        }
+    }
+
+    .contract-from {
+        padding-left: 20px;
+
+        &.margin20 {
+            margin-top: 40px;
+        }
+
+        >li {
+            margin-bottom: 10px;
+            display: flex;
+            input{
+                border: none;
+                width: 70%;
+            }    
+            >span {
+                width: 50%;
+            }
+        }
+    }
+
+    .color-bar {
+        height: 36px;
+        line-height: 36px;
+        color: #fff;
+        background: #80ba6b;
+        padding-left: 22px;
+        margin: 20px 0;
+
+        &.dark-green {
+            background: #679753;
+            padding-left: 30px;
+            margin-bottom: -20px;
+        }
+    }
+
+    .contract-clause {
+        padding-left: 20px;
+
+        &.color-black {
+            color: #000;
+        }
+
+        li {
+            line-height: 20px;
+            margin-bottom: 10px;
+
+            i.dot {
+                display: inline-block;
+                width: 10px;
+                height: 10px;
+                background: #000;
+                border-radius: 50%;
+                margin-right: 10px;
+            }
+
+            input {
+                border: none;
+                outline: none;
+                font-size: 14px;
+
+                &:focus {
+                    outline: none;
+                }
+
+                &::-webkit-input-placeholder {
+                    color: #ccc;
+                    font-size: 14px;
+                }
+            }
+
+            textarea {
+                border: none;
+                outline: none;
+                font-size: 14px;
+                line-height: 20px;
+                width: 90%;
+                font-family: 'micosoft yahei';
+                margin-top: -3px;
+                vertical-align: top;
+
+                &:focus {
+                    outline: none;
+                }
+
+                &::-webkit-input-placeholder {
+                    color: #ccc;
+                    font-size: 14px;
+                }
+            }
+
+            i.text {
+                color: #ccc;
+                font-style: normal;
+            }
+        }
+    }
+
+    .sign-position {
+        padding-left: 20px;
+        margin: 40px 0;
+
+        li:nth-of-type(1) {
+            margin-bottom: 20px;
+        }
+    }
+
+    .el-row {
+        text-align: center;
+        margin-bottom: 84px;
+
+        button {
+            width: 240px;
+            height: 44px;
+            font-size: 16px;
+        }
+    }
+}
