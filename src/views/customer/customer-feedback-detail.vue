@@ -36,13 +36,13 @@
       </div>
     </div>
     <div class="supplement">
-      <p>{{$t('added')}}</p>
+      <p>{{$t('external')}}{{$t('added')}}</p>
       <div class="supplement-info">
         <textarea v-model="detail.feedbackContent"></textarea>
       </div>
     </div>
     <div class="remarks">
-      <p><span>{{$t('niwtoc')}}</span></p>
+      <p>{{$t('noteOfTheService')}}</p>
       <div class="remarks-info">
         <textarea v-model="detail.remark"></textarea>
       </div>
@@ -231,11 +231,11 @@
         font-size: 14px;
         margin: 40px 0 20px 0;
 
-        >span {
-          color: #E21010;
-          font-size: 12px;
-          margin-left: 17px;
-        }
+        // >span {
+        //   color: #E21010;
+        //   font-size: 12px;
+        //   margin-left: 17px;
+        // }
       }
 
       >.remarks-info {
