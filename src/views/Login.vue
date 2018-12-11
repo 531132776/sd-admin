@@ -25,6 +25,7 @@
 <script>
 // @ is an alias to /src
 // import HelloWorld from '@/components/HelloWorld.vue'
+import md5 from 'crypto-js'
 export default {
   name: 'Login',
   components: {
@@ -74,6 +75,9 @@ export default {
         if(this.remember==true){
             //传入账号名，密码，和保存天数3个参数
           this.setCookie(name,pass,7);
+        }else{
+          //清空cookie
+          this.clearCookie();
         }
         //接口
         this.$axios.post('/api/pc/login',this.$qs.stringify(this.loginInfo))
@@ -100,11 +104,13 @@ export default {
     },
 //设置cookie
   setCookie(c_name,c_pwd,exdays) {
+    var pwdSceretkey = md5.AES.encrypt(c_pwd+'', "secretkey111").toString();
+    console.log(pwdSceretkey)
     var exdate=new Date();//获取时间
     exdate.setTime(exdate.getTime() + 24*60*60*1000*exdays);//保存的天数
     //字符串拼接cookie
     window.document.cookie="userName"+ "=" +c_name+";path=/;expires="+exdate.toGMTString();
-    window.document.cookie="userPwd"+"="+c_pwd+";path=/;expires="+exdate.toGMTString();
+    window.document.cookie="userPwd"+"="+pwdSceretkey+";path=/;expires="+exdate.toGMTString();
   },
   //读取cookie
   getCookie:function () {
@@ -117,7 +123,9 @@ export default {
         if(arr2[0]=='userName'){
           this.loginInfo.username=arr2[1];//保存到保存数据的地方
         }else if(arr2[0]=='userPwd'){
-          this.loginInfo.password=arr2[1];
+          // this.loginInfo.password=arr2[1];
+          var bytes = md5.AES.decrypt(arr2[1], "secretkey111");
+          this.loginInfo.password = bytes.toString(md5.enc.Utf8);
         }
       }
     }
