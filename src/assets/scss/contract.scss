@@ -47,7 +47,7 @@
             display: flex;
             input{
                 border: none;
-                width: 70%;
+                // width: 70%;
             }    
             >span {
                 width: 50%;
@@ -149,6 +149,20 @@
             width: 240px;
             height: 44px;
             font-size: 16px;
+        }
+    }
+    //护照展示
+    ul.passport-wrap{
+        margin: 20px;
+        .img-box{
+            margin: 20px 50px;
+            img{
+                width: 350px;
+                height: 250px;
+                &:nth-child(1){
+                    margin-right: 40px;
+                }
+            }
         }
     }
 }

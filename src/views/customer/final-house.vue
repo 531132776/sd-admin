@@ -211,12 +211,21 @@
                         <!-- 房屋类型 -->
                         <el-form-item prop="housingTypeDictcode">
                             <span slot="label">{{$t('HousingTypes')}}</span>
-                            <el-select v-model="housingApplication.housingTypeDictcode" :placeholder="$t('PleaseSelect')">
+                            <!-- <el-select v-model="housingApplication.housingTypeDictcode" :placeholder="$t('PleaseSelect')">
                                 <el-option v-for="item in houseTypeMap" :key="item.id" :label="$i18n.locale=='zh'?item.itemValue:item.itemValueEn"
                                     :value="item.id+''">
                                 </el-option>
                                 <el-option :label="$t('PleaseSelect')" :value="''"></el-option>
-                            </el-select>
+                            </el-select> -->
+
+                            <el-cascader :placeholder="$t('PleaseSelect')" 
+                            v-model="housingTypeDictcode" 
+                            :options="houseTypeMap" 
+                            :props="{'label':$i18n.locale=='zh'?'itemValue':'itemValueEn','children':'sub',value:'id'}"
+                            filterable
+                            :show-all-levels="false" >
+                            </el-cascader> 
+
                         </el-form-item>
 
                         <!-- 房源区域 -->
@@ -701,7 +710,20 @@
                 city: [],
                 cities: [],
                 dialogVisible: false,
-                houseTypeMap: [],//房屋类型字典
+                // houseTypeMap: [],//房屋类型字典
+                //房屋类型   
+                houseTypeMap: [
+                    {   id:0,
+                        itemValue: "商用",
+                        itemValueEn: "commercial",
+                        sub:[]
+                    },
+                    {   id:1,
+                        itemValue: "非商用",
+                        itemValueEn: "Non-commercial",
+                        sub:[]
+                    }
+                ],  
                 houseStatusMap: [],//房屋状态字典
                 houseSourceMap: [],//房源状态字典
                 houseMatchingMap: [],//房间配套字典
@@ -909,6 +931,7 @@
                 rentAuthorizationSignImgList:[],
                 dialogImageUrl_rentAuthorizationSign:'',
                 dialogVisible_rentAuthorizationSign:false, 
+                housingTypeDictcode:[]
             }
         },
         watch: {
@@ -916,6 +939,10 @@
                 this.$set(this.housingApplication, 'city', newValue[0]);
                 this.$set(this.housingApplication, 'community', newValue[1]);
                 this.$set(this.housingApplication, 'subCommunity', newValue[2]);
+            },
+            housingTypeDictcode(val){
+                this.$set(this.housingApplication, 'housingTypeDictcode', val[1]);
+                        // console.log(this.house.housingTypeDictcode)
             }
         },
         methods: {
@@ -1024,8 +1051,19 @@
                         this.city = [this.housingApplication.city, this.housingApplication.community, this.housingApplication.subCommunity];
 
                         //------>房屋类型字典
-                        this.houseTypeMap = resList[1].dataSet.items;
+                        // this.houseTypeMap = resList[1].dataSet.items;
                         // console.log("houseTypeMap:",resList[1].dataSet.items)
+                        let arr = resList[1].dataSet.items;
+                        if( arr && arr!=0){
+                                arr.forEach(ele=>{
+                                this.houseTypeMap[ele.standby1].sub.push(ele);//房屋类型;
+                            })
+                        }
+                        arr.forEach(ele=>{
+                            if(ele.id == this.housingApplication.housingTypeDictcode){
+                            this.housingTypeDictcode = [+ele.standby1,+this.housingApplication.housingTypeDictcode];//商用，非商用的区别            
+                            }
+                        })
 
                         //------->房屋状态字典
                         this.houseStatusMap = resList[2].dataSet.items;

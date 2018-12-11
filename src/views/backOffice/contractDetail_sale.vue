@@ -360,6 +360,7 @@
         <ul class="contract-clause">
             <li>   
                <el-date-picker
+                            format="dd/MM/yyyy"
                             v-model="signDate"
                             type="date"
                             :placeholder="$t('PleaseSelect')"
@@ -371,10 +372,11 @@
             <li>2.The "Seller" undertakes to provide all documents proving that he is the current owner of the property, Also the "Seller" undertakes to complete all procedures and requirements to transfer the property to the buyer's name at Dubai Land Department immediately after taking possession of the agreed price under this contract ,and not later than.
 
                 <el-date-picker
+                    format="dd/MM/yyyy"
                     v-model="detail.transferDate"
                     type="date"
                     :placeholder="$t('PleaseSelect')"
-                    value-format="yyyy-MM-dd HH:mm:ss">
+                    value-format="dd/MM/yyyy">
                     </el-date-picker>
             </li>
             <li>3.The "Buyer" agrees to pay to the seller:</li>
@@ -685,6 +687,9 @@ export default {
             }
             this.detail.ownerMobile = res.dataSet.memberMoble;
             this.detail.nameOfOwner = res.dataSet.memberName;
+            this.detail.transferDate = `${new Date(this.detail.transferDate).getDate()}/${new Date(this.detail.transferDate).getMonth()+1}/${new Date(this.detail.transferDate).getFullYear()}`;
+            console.log( this.detail.transferDate )
+
             //购房人员信息
             if(res.dataSet.memberPurchase ){
                 this.detail.nameOfBuyer = res.dataSet.memberPurchase.memberName;
@@ -753,6 +758,7 @@ export default {
     getSignTime(val){
         // console.log(val,this.signDate);
         this.signDate = val;
+        console.log( val )
         this.detail.signYear = val.split('/')[2];
         this.detail.signMonth = val.split('/')[1];
         this.detail.signDay = val.split('/')[0];

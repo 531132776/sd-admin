@@ -7,19 +7,45 @@
             </el-breadcrumb>
         </div>
 
-        <div class="passport-wrap">
-            <div>
-                
-                <!-- <el-select v-model="detail.leaseType" :placeholder="$t('choose')" >  
+        <ul class="passport-wrap" v-if="false">
+            <li>
+                landlord passport：
+                <el-select v-model="detail.leaseType" :placeholder="$t('choose')" > 
+                    <el-option
+                    v-for="item in [
+                    {'value':0,'label':$t('copyOfPOAImg')},
+                    {'value':1,'label':$t('principalPassportImg')},
+                    {'value':2,'label':$t('clientVisaImg')},
+                    {'value':3,'label':$t('IDCardOfPrincipalImg')},
+                    {'value':4,'label':$t('CertificateImg')},
+                    {'value':5,'label':$t('ownerPassportImg')},
+                    ]"
+                    :key="item.value"
+                    :label="item.label"
+                    :value="item.value">
+                    </el-option>
+                </el-select>
+                <div class="img-box">
+                    <img v-lazy="detail.img1" alt="">
+                    <img v-lazy="detail.img1" alt="">
+                </div>
+            </li>
+            <li>
+                tenant passport：
+                <el-select v-model="detail.leaseType" :placeholder="$t('choose')" > 
                     <el-option
                     v-for="item in [{'value':'rent','label':$t('Rent')},{'value':'sale','label':$t('Sale')}]"
                     :key="item.value"
                     :label="item.label"
                     :value="item.value">
                     </el-option>
-                </el-select> -->
-            </div>
-        </div>
+                </el-select>
+                <div class="img-box">
+                    <img v-lazy="detail.img1" alt="">
+                    <img v-lazy="detail.img1" alt="">
+                </div>
+            </li>
+        </ul>
         <div class="company-stamp">
             <img src="../../assets/images/company-b.png" alt="">
             <img src="../../assets/images/company-a.png" alt="">
