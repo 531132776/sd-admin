@@ -6,6 +6,43 @@
                 <el-breadcrumb-item>{{$t('Salescontractdetails')}}<br> Details of lease contract</el-breadcrumb-item>
             </el-breadcrumb>
         </div>
+
+        <!-- 20181212新增内勤合同-业主/租客护照图片 -->
+        <ul class="passport-wrap" v-if="$route.query.type ==1">
+            <li>
+                <!-- ownerImgs -->
+                landlord passport：
+                <el-select v-model="detail.ownerImgsPick" :placeholder="$t('choose')" @change="selectOwnerImgs"> 
+                    <el-option
+                    v-for="(item,key) in detail.ownerImgs"
+                    :key="key"
+                    :value-key="key"
+                    :label="key"
+                    :value="key">
+                    </el-option>
+                </el-select>
+                <div class="img-box">
+                    <img v-for="(item) in ownerImgsList" v-lazy="item" alt="" :key="item">
+                </div>
+            </li>
+            <li>
+                <!-- buyerImgs -->
+                tenant passport：
+                <el-select v-model="detail.buyerImgsPick" :placeholder="$t('choose')" @change="selectBuyerImgs" > 
+                    <el-option
+                    v-for="(item,key) in detail.buyerImgs"
+                    :key="key"
+                    :value-key="key"
+                    :label="key"
+                    :value="key">
+                    </el-option>
+                </el-select>
+                <div class="img-box">
+                    <img v-for="(item) in buyerImgsList" v-lazy="item" alt="" :key="item">
+                </div>
+            </li>
+        </ul>
+
         <div class="company-stamp">
             <img src="../../assets/images/company-a.png" alt="">
             <div>
@@ -20,62 +57,124 @@
         <div class="color-bar">THE PROPERTY OWNER'S DETAILS (FIRST PARTY)</div>
         <ul class="contract-from">
             <li>
-                <span>Name Of Owner：<input v-if="$route.query.type ==1"  type="text" :placeholder="$t('PleaseEnter')" v-model="detail.nameOfOwner"></span>    
+                <span>Name Of Owner：<el-input v-if="$route.query.type ==1"  type="text" :placeholder="$t('PleaseEnter')" v-model="detail.nameOfOwner"></el-input>
+                <i v-else class="color-light">******</i>
+                </span>    
             </li>
             <li>
-                <span>Nationality：<input v-if="$route.query.type ==1"  type="text" :placeholder="$t('PleaseEnter')" v-model="detail.ownerNationality"></span> 
+                <span>Nationality：<el-input v-if="$route.query.type ==1"  type="text" :placeholder="$t('PleaseEnter')" v-model="detail.ownerNationality"></el-input>
+                <i v-else class="color-light">******</i>
+                </span> 
             </li>
             <li>
-                <span>ID Card Number：<input v-if="$route.query.type ==1"  type="text" :placeholder="$t('PleaseEnter')" v-model="detail.ownerIDCardNumber"></span> 
+                <span>ID Card Number：<el-input v-if="$route.query.type ==1"  type="text" :placeholder="$t('PleaseEnter')" v-model="detail.ownerIDCardNumber"></el-input>
+                <i v-else class="color-light">******</i>
+                </span> 
             </li>
             <li>
-                <span>Passport No：<input v-if="$route.query.type ==1"  type="text" :placeholder="$t('PleaseEnter')" v-model="detail.ownerPassportNo"></span> 
-                <span>Expiry Date：<input v-if="$route.query.type ==1"  type="text" :placeholder="$t('PleaseEnter')" v-model="detail.ownerExpiryDate"></span>
+                <span>Passport No：<el-input v-if="$route.query.type ==1"  type="text" :placeholder="$t('PleaseEnter')" v-model="detail.ownerPassportNo"></el-input>
+                <i v-else class="color-light">******</i>
+                </span> 
+                <span>Expiry Date：
+                    <!-- <el-input   type="text" v-if="$route.query.type ==1" :placeholder="$t('PleaseEnter')" v-model="detail.ownerExpiryDate"></el-input> -->
+                    <el-date-picker
+                        v-if="$route.query.type ==1"
+                        format="dd/MM/yyyy"
+                        v-model="detail.ownerExpiryDate"
+                        type="date"
+                        :placeholder="$t('PleaseSelect')"
+                        value-format="yyyy-MM-dd">
+                    </el-date-picker>
+                    <i v-else class="color-light">******</i>
+                </span>
             </li>
             <li>
-                <span>Mobile：<input v-if="$route.query.type ==1"  type="text" :placeholder="$t('PleaseEnter')" v-model="detail.ownerMobile"></span> 
-                <span>P.O.Box：<input v-if="$route.query.type ==1"  type="text" :placeholder="$t('PleaseEnter')" v-model="detail.ownerPOBox"></span> 
+                <span>Mobile：<el-input v-if="$route.query.type ==1"  type="text" :placeholder="$t('PleaseEnter')" v-model="detail.ownerMobile"></el-input>
+                <i v-else class="color-light">******</i>
+                </span> 
+                <span>P.O.Box：<el-input v-if="$route.query.type ==1"  type="text" :placeholder="$t('PleaseEnter')" v-model="detail.ownerPOBox"></el-input>
+                <i v-else class="color-light">******</i>
+                </span> 
             </li>
             <li>
-                <span>Phone：<input v-if="$route.query.type ==1"  type="text" :placeholder="$t('PleaseEnter')" v-model="detail.ownerPhone"></span> 
-                <span>Fax：<input v-if="$route.query.type ==1"  type="text" :placeholder="$t('PleaseEnter')" v-model="detail.ownerFax"></span>
+                <span>Phone：<el-input v-if="$route.query.type ==1"  type="text" :placeholder="$t('PleaseEnter')" v-model="detail.ownerPhone"></el-input>
+                <i v-else class="color-light">******</i>
+                </span> 
+                <span>Fax：<el-input v-if="$route.query.type ==1"  type="text" :placeholder="$t('PleaseEnter')" v-model="detail.ownerFax"></el-input>
+                <i v-else class="color-light">******</i>
+                </span>
             </li>
             <li>
-                <span>Address：<input v-if="$route.query.type ==1"   type="text" :placeholder="$t('PleaseEnter')" v-model="detail.ownerAddress"></span>
+                <span>Address：<el-input v-if="$route.query.type ==1"   type="text" :placeholder="$t('PleaseEnter')" v-model="detail.ownerAddress"></el-input>
+                <i v-else class="color-light">******</i>
+                </span>
             </li>
             <li>
-                <span>Email：<input v-if="$route.query.type ==1"  type="text" :placeholder="$t('PleaseEnter')" v-model="detail.ownerEmail"></span>
+                <span>Email：<el-input v-if="$route.query.type ==1"  type="text" :placeholder="$t('PleaseEnter')" v-model="detail.ownerEmail"></el-input>
+                <i v-else class="color-light">******</i>
+                </span>
             </li>
         </ul>
 
         <div class="color-bar">THE BUYER'S DETAILS (SECOND PARTY)</div>
         <ul class="contract-from">
             <li>
-                <span>Name Of Buyer: <input v-if="$route.query.type ==1"  type="text" :placeholder="$t('PleaseEnter')" v-model="detail.nameOfBuyer"></span>    
+                <span>Name Of Buyer: <el-input v-if="$route.query.type ==1"  type="text" :placeholder="$t('PleaseEnter')" v-model="detail.nameOfBuyer"></el-input>
+                <i v-else class="color-light">******</i>
+                </span>    
             </li>
             <li>
-                <span>Nationality：<input v-if="$route.query.type ==1"  type="text" :placeholder="$t('PleaseEnter')" v-model="detail.buyerNationality"></span> 
+                <span>Nationality：<el-input v-if="$route.query.type ==1"  type="text" :placeholder="$t('PleaseEnter')" v-model="detail.buyerNationality"></el-input>
+                <i v-else class="color-light">******</i>
+                </span> 
             </li>
             <li>
-                <span>ID Card Number：<input v-if="$route.query.type ==1"  type="text" :placeholder="$t('PleaseEnter')" v-model="detail.buyerIDCardNumber"></span> 
+                <span>ID Card Number：<el-input v-if="$route.query.type ==1"  type="text" :placeholder="$t('PleaseEnter')" v-model="detail.buyerIDCardNumber"></el-input>
+                <i v-else class="color-light">******</i>
+                </span> 
             </li>
             <li>
-                <span>Passport No：<input v-if="$route.query.type ==1"  type="text" :placeholder="$t('PleaseEnter')" v-model="detail.buyerPassportNo"></span> 
-                <span>Expiry Date：<input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.buyerExpiryDate"></span>
+                <span>Passport No：<el-input v-if="$route.query.type ==1"  type="text" :placeholder="$t('PleaseEnter')" v-model="detail.buyerPassportNo"></el-input>
+                <i v-else class="color-light">******</i>
+                </span> 
+                <span>Expiry Date：
+                    <!-- <el-input v-if="$route.query.type ==1" type="text" :placeholder="$t('PleaseEnter')" v-model="detail.buyerExpiryDate"></el-input> -->
+                    <el-date-picker
+                        v-if="$route.query.type ==1"
+                        format="dd/MM/yyyy"
+                        v-model="detail.buyerExpiryDate"
+                        type="date"
+                        :placeholder="$t('PleaseSelect')"
+                        value-format="yyyy-MM-dd">
+                    </el-date-picker>
+                    <i v-else class="color-light">******</i>
+                </span>
             </li>
             <li>
-                <span>Mobile：<input v-if="$route.query.type ==1"  type="text" :placeholder="$t('PleaseEnter')" v-model="detail.buyerMobile"></span> 
-                <span>P.O.Box：<input v-if="$route.query.type ==1"  type="text" :placeholder="$t('PleaseEnter')" v-model="detail.buyerPOBox"></span> 
+                <span>Mobile：<el-input v-if="$route.query.type ==1"  type="text" :placeholder="$t('PleaseEnter')" v-model="detail.buyerMobile"></el-input>
+                <i v-else class="color-light">******</i>
+                </span> 
+                <span>P.O.Box：<el-input v-if="$route.query.type ==1"  type="text" :placeholder="$t('PleaseEnter')" v-model="detail.buyerPOBox"></el-input>
+                <i v-else class="color-light">******</i>
+                </span> 
             </li>
             <li>
-                <span>Phone：<input v-if="$route.query.type ==1"  type="text" :placeholder="$t('PleaseEnter') " v-model="detail.buyerPhone"></span> 
-                <span>Fax：<input v-if="$route.query.type ==1"  type="text" :placeholder="$t('PleaseEnter')" v-model="detail.buyerFax"></span>
+                <span>Phone：<el-input v-if="$route.query.type ==1"  type="text" :placeholder="$t('PleaseEnter') " v-model="detail.buyerPhone"></el-input>
+                <i v-else class="color-light">******</i>
+                </span> 
+                <span>Fax：<el-input v-if="$route.query.type ==1"  type="text" :placeholder="$t('PleaseEnter')" v-model="detail.buyerFax"></el-input>
+                <i v-else class="color-light">******</i>
+                </span>
             </li>
             <li>
-                <span>Address：<input v-if="$route.query.type ==1"  type="text" :placeholder="$t('PleaseEnter')" v-model="detail.buyerAddress"></span>
+                <span>Address：<el-input v-if="$route.query.type ==1"  type="text" :placeholder="$t('PleaseEnter')" v-model="detail.buyerAddress"></el-input>
+                <i v-else class="color-light">******</i>
+                </span>
             </li>
             <li>
-                <span>Email：<input v-if="$route.query.type ==1"  type="text" :placeholder="$t('PleaseEnter')" v-model="detail.buyerEmail"></span>
+                <span>Email：<el-input v-if="$route.query.type ==1"  type="text" :placeholder="$t('PleaseEnter')" v-model="detail.buyerEmail"></el-input>
+                <i v-else class="color-light">******</i>
+                </span>
             </li>
         </ul>
 
@@ -83,8 +182,8 @@
         <div class="color-bar">THE PROPERTY DETAILS</div>
         <ul class="contract-from">
             <li>
-                <span>Unit Status：<input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.propertyStatus"></span>  
-                <span>Plot Number：<input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.plotNumber"></span>  
+                <span>Unit Status：<el-input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.propertyStatus"></el-input></span>  
+                <span>Plot Number：<el-input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.plotNumber"></el-input></span>  
             </li>
             <li>
                 <span>Type of Area：
@@ -99,16 +198,16 @@
                     </el-select>
                 </span>
                 <span>Title Deed Number：
-                    <input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.titleDeedNumber">
+                    <el-input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.titleDeedNumber"></el-input>
                 </span> 
             </li>
             <li>
-                <span>Property location：<input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.titleDeedNumber"></span> 
-                <span>Property Number：<input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.propertyNumber"></span>
+                <span>Property location：<el-input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.address"></el-input></span> 
+                <span>Property Number：<el-input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.propertyNumber"></el-input></span>
             </li>
             <li>
                 <span>Property type：
-                    <el-select v-model="detail.typeOfProperty" placeholder="请选择">
+                    <el-select v-model="detail.typeOfProperty" :placeholder="$t('PleaseSelect')">
                         <el-option
                         v-for="item in [{'value':'rent','label':$t('Rent')},{'value':'sale','label':$t('Sale')}]"
                         :key="item.value"
@@ -117,48 +216,47 @@
                         </el-option>
                     </el-select>
                 </span> 
-                <span>Project Name：<input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.subCommunity"></span>
+                <span>Project Name：<el-input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.subCommunity"></el-input></span>
             </li>
             <li>
-                <span>Buildup area：<input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.area"></span> 
-                <span>Master Developer Name：<input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.masterDevelpoerName"></span> 
+                <span>Buildup area：<el-input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.area"></el-input></span> 
+                <span>Master Developer Name：<el-input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.masterDevelpoerName"></el-input></span> 
             </li>
             <li>
-                <span>Present Use：<input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.presentUse"></span> 
-                <span>Community Number：<input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.communityNumber"></span>
+                <span>Present Use：<el-input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.presentUse"></el-input></span> 
+                <span>Community Number：<el-input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.communityNumber"></el-input></span>
             </li>
             <li>
-                <span>Additional Information：<input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.additionalInformation"></span>
+                <span>Additional Information：<el-input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.additionalInformation"></el-input></span>
             </li>
             <li>
-                <span>Type Of Sale：<input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.typeofSale"></span> 
-                <span>NOC from Developer：<input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.NOCFromDeveloper"></span>
+                <span>Type Of Sale：<el-input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.typeofSale"></el-input></span> 
+                <span>NOC from Developer：<el-input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.NOCFromDeveloper"></el-input></span>
             </li>
         </ul>
 
         <div class="color-bar">PROPERTY FINANCIALS</div>
         <ul class="contract-from">
             <li>
-                <span>Listed Price：<input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.listedPrice"></span> 
-                <span>Original Price：<input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.originalPrice"></span>
+                <span>Listed Price：<el-input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.listedPrice"></el-input></span> 
+                <span>Original Price：<el-input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.originalPrice"></el-input></span>
             </li>
             <li>
-                <span>Paid Amount：<input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.paidAmount"></span> 
+                <span>Paid Amount：<el-input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.paidAmount"></el-input></span> 
                 <span>Sell Price：
-                    <!-- <input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.sellPrice"> -->
-                    {{detail.sellPric}}
+                    <el-input disabled type="text"  v-model="detail.sellPrice"></el-input>
                 </span> 
             </li>
             <li>
-                <span>Service Charge：<input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.serviceCharge"></span> 
-                <span>Balance Amount：<input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.balanceAmount"></span>
+                <span>Service Charge：<el-input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.serviceCharge"></el-input></span> 
+                <span>Balance Amount：<el-input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.balanceAmount"></el-input></span>
             </li>
         </ul>
         <div class="color-bar dark-green">PART 3. COMMISSION & DURATION OF THE AGREEMENT</div>
         <ul class="contract-from margin20">
             <li>
-                <span>Seller's Agent's Commission：{{detail.sellerAgentCommission}}</span> 
-                <span>Buyer's Agent's Commission：<input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.buyerAgentCommission"></span>
+                <span>Seller's Agent's Commission：<el-input disabled type="text" :placeholder="$t('PleaseEnter')" v-model="detail.sellerAgentCommission"></el-input></span> 
+                <span>Buyer's Agent's Commission：<el-input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.buyerAgentCommission"></el-input></span>
             </li>
         </ul>
         <!--固定信息 -->
@@ -166,51 +264,51 @@
         <ul class="contract-from">
             <li>
                 <span>Office Name：
-                    <input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.sellerOfficeName">
+                    <el-input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.sellerOfficeName"></el-input>
                 </span>
             </li>
             <li>
                 <span>License Authority：
-                    <input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.sellerLicenseAuthority">
+                    <el-input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.sellerLicenseAuthority"></el-input>
                 </span>
             </li>
             <li>
                 <span>ORN：
-                    <input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.sellerORN">
+                    <el-input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.sellerORN"></el-input>
                 </span> 
                 <span>License Number：
-                    <input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.sellerLicenseNumber">
+                    <el-input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.sellerLicenseNumber"></el-input>
                 </span>
             </li>
             <li>
                 <span>Fax：
-                    <input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.sellerFax">
+                    <el-input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.sellerFax"></el-input>
                 </span> 
                 <span>Phone：
-                    <input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.sellerPhone">
+                    <el-input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.sellerPhone"></el-input>
                 </span>
             </li>
             <li>
                 <span>Address：
-                    <input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.sellerAddress">
+                    <el-input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.sellerAddress"></el-input>
                 </span> 
             </li>
             <li>
                 <span>Email：
-                    <input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.sellerEmail">
+                    <el-input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.sellerEmail"></el-input>
                 </span>
             </li>
             <li>
                 <span>Agent Name：
-                    <input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.sellerAgentName">
+                    <el-input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.sellerAgentName"></el-input>
                 </span>
             </li>
             <li>
                 <span>BRN：
-                    <input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.sellerBRN">
+                    <el-input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.sellerBRN"></el-input>
                 </span> 
                 <span>Mobile：
-                    <input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.sellerMobile">
+                    <el-input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.sellerMobile"></el-input>
                 </span>
             </li>
         </ul>
@@ -219,51 +317,51 @@
         <ul class="contract-from">
             <li>
                 <span>Office Name：
-                    <input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.buyerOfficeName">
+                    <el-input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.buyerOfficeName"></el-input>
                 </span>
             </li>
             <li>
                 <span>License Authority：
-                    <input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.buyerLicenseAuthority">
+                    <el-input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.buyerLicenseAuthority"></el-input>
                 </span>
             </li>
             <li>
                 <span>ORN：
-                    <input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.sellerORN">
+                    <el-input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.sellerORN"></el-input>
                 </span> 
                 <span>License Number：
-                    <input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.buyerLicenseNumber">
+                    <el-input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.buyerLicenseNumber"></el-input>
                 </span>
             </li>
             <li>
                 <span>Fax：
-                    <input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.buyerFax2">
+                    <el-input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.buyerFax2"></el-input>
                 </span> 
                 <span>Phone：
-                    <input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.buyerPhone2">
+                    <el-input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.buyerPhone2"></el-input>
                 </span>
             </li>
             <li>
                 <span>Address：
-                    <input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.buyerAddress2">
+                    <el-input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.buyerAddress2"></el-input>
                 </span> 
             </li>
             <li>
                 <span>Email：
-                    <input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.buyerEmail2">
+                    <el-input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.buyerEmail2"></el-input>
                 </span>
             </li>
             <li>
                 <span>Agent Name：
-                    <input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.buyerAgentName">
+                    <el-input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.buyerAgentName"></el-input>
                 </span>
             </li>
             <li>
                 <span>BRN：
-                    <input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.buyerBRN">
+                    <el-input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.buyerBRN"></el-input>
                 </span> 
                 <span>Mobile：
-                    <input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.buyerMobile2">
+                    <el-input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.buyerMobile2"></el-input>
                 </span>
             </li>
         </ul>
@@ -272,25 +370,25 @@
         <div class="color-bar">MORTGAGE INFORMATION</div>
         <ul class="contract-from">
             <li>
-                <span>Mortgagee：<input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.mortgagee"></span>  
+                <span>Mortgagee：<el-input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.mortgagee"></el-input></span>  
             </li>
             <li>
-                <span>Mortgage Amount：<input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.mortgageAmoun"></span>  
+                <span>Mortgage Amount：<el-input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.mortgageAmoun"></el-input></span>  
             </li>
             <li>
-                <span>Paid Amount：<input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.paidAmount2"></span>  
+                <span>Paid Amount：<el-input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.paidAmount2"></el-input></span>  
             </li>
             <li>
-                <span>Mortgage Period From：<input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.mortgagePeriodFrom"></span>  
+                <span>Mortgage Period From：<el-input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.mortgagePeriodFrom"></el-input></span>  
             </li>
             <li>
-                <span>Mortgage Period To：<input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.mortgagePeriodTo"></span>  
+                <span>Mortgage Period To：<el-input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.mortgagePeriodTo"></el-input></span>  
             </li>
             <li>
-                <span>Mortgage Level：<input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.mortgageLevel"></span>  
+                <span>Mortgage Level：<el-input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.mortgageLevel"></el-input></span>  
             </li>
             <li>
-                <span>NOC Attachred：<input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.NOCAttachred"></span>  
+                <span>NOC Attachred：<el-input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.NOCAttachred"></el-input></span>  
             </li>
         </ul>
 
@@ -298,10 +396,10 @@
         <div class="color-bar">TENANCY CONTRACT INFORMATION</div>
         <ul class="contract-from">
             <li>
-                <span>Property Rented：<input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.propertyRented"></span>  
+                <span>Property Rented：<el-input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.propertyRented"></el-input></span>  
             </li>
             <li>
-                <span>Number of Rented Properties：<input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.numberOfRentedProperties"></span>  
+                <span>Number of Rented Properties：<el-input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.numberOfRentedProperties"></el-input></span>  
             </li>
         </ul>
 
@@ -309,50 +407,78 @@
         <div class="color-bar">FIRST PARTY : THE OWNERS(S)</div>
         <ul class="contract-from">
             <li>
-                <span>Name(English)：<input v-if="$route.query.type ==1"  type="text" :placeholder="$t('PleaseEnter')" v-model="detail.ownerNameEnglish"></span>  
+                <span>Name(English)：<el-input v-if="$route.query.type ==1"  type="text" :placeholder="$t('PleaseEnter')" v-model="detail.ownerNameEnglish"></el-input>
+                <i v-else class="color-light">******</i>
+                </span>  
             </li>
             <li>
-                <span>Name (Arabic)：<input v-if="$route.query.type ==1"  type="text" :placeholder="$t('PleaseEnter')" v-model="detail.ownerNameArabic"></span>  
+                <span>Name (Arabic)：<el-input v-if="$route.query.type ==1"  type="text" :placeholder="$t('PleaseEnter')" v-model="detail.ownerNameArabic"></el-input>
+                <i v-else class="color-light">******</i>
+                </span>  
             </li>
             <li>
-                <span>Legal Representative Name(English)：<input v-if="$route.query.type ==1"  type="text" :placeholder="$t('PleaseEnter')" v-model="detail.ownerLegalRepresentativeNameEnglish"></span>  
+                <span>Legal Representative Name(English)：<el-input v-if="$route.query.type ==1"  type="text" :placeholder="$t('PleaseEnter')" v-model="detail.ownerLegalRepresentativeNameEnglish"></el-input>
+                <i v-else class="color-light">******</i>
+                </span>  
             </li>
             <li>
-                <span>Legal Representative Name(Arabic)：<input v-if="$route.query.type ==1"  type="text" :placeholder="$t('PleaseEnter')" v-model="detail.ownerLegalRepresentativeNameArabic"></span>  
+                <span>Legal Representative Name(Arabic)：<el-input v-if="$route.query.type ==1"  type="text" :placeholder="$t('PleaseEnter')" v-model="detail.ownerLegalRepresentativeNameArabic"></el-input>
+                <i v-else class="color-light">******</i>
+                </span>  
             </li>
             <li>
-                <span>Representing Type：<input v-if="$route.query.type ==1"  type="text" :placeholder="$t('PleaseEnter')" v-model="detail.ownerRepresentingType"></span>  
+                <span>Representing Type：<el-input v-if="$route.query.type ==1"  type="text" :placeholder="$t('PleaseEnter')" v-model="detail.ownerRepresentingType"></el-input>
+                <i v-else class="color-light">******</i>
+                </span>  
             </li>
             <li>
-                <span>Power of attorney number：<input v-if="$route.query.type ==1"  type="text" :placeholder="$t('PleaseEnter')" v-model="detail.ownerPowerOfAttorneyNumber"></span>  
+                <span>Power of attorney number：<el-input v-if="$route.query.type ==1"  type="text" :placeholder="$t('PleaseEnter')" v-model="detail.ownerPowerOfAttorneyNumber"></el-input>
+                <i v-else class="color-light">******</i>
+                </span>  
             </li>
             <li>
-                <span>Signature：<input v-if="$route.query.type ==1"  type="text" :placeholder="$t('PleaseEnter')" v-model="detail.ownerSignature"></span>
+                <span>Signature：<el-input v-if="$route.query.type ==1"  type="text" :placeholder="$t('PleaseEnter')" v-model="detail.ownerSignature"></el-input>
+                <i v-else class="color-light">******</i>
+                </span>
             </li>
         </ul>
 
         <div class="color-bar">SECOND PARTY : THE BUYER(S)</div>
         <ul class="contract-from">
             <li>
-                <span>Name(English)：<input v-if="$route.query.type ==1"  type="text" :placeholder="$t('PleaseEnter')" v-model="detail.buyerNameEnglish"></span>  
+                <span>Name(English)：<el-input v-if="$route.query.type ==1"  type="text" :placeholder="$t('PleaseEnter')" v-model="detail.buyerNameEnglish"></el-input>
+                <i v-else class="color-light">******</i>
+                </span>  
             </li>
             <li>
-                <span>Name (Arabic)：<input v-if="$route.query.type ==1"  type="text" :placeholder="$t('PleaseEnter')" v-model="detail.buyerNameArabic"></span>  
+                <span>Name (Arabic)：<el-input v-if="$route.query.type ==1"  type="text" :placeholder="$t('PleaseEnter')" v-model="detail.buyerNameArabic"></el-input>
+                <i v-else class="color-light">******</i>
+                </span>  
             </li>
             <li>
-                <span>Legal Representative Name(English)：<input v-if="$route.query.type ==1"  type="text" :placeholder="$t('PleaseEnter')" v-model="detail.buyerLegalRepresentativeNameEnglish"></span>  
+                <span>Legal Representative Name(English)：<el-input v-if="$route.query.type ==1"  type="text" :placeholder="$t('PleaseEnter')" v-model="detail.buyerLegalRepresentativeNameEnglish"></el-input>
+                <i v-else class="color-light">******</i>
+                </span>  
             </li>
             <li>
-                <span>Legal Representative Name(Arabic)：<input v-if="$route.query.type ==1"  type="text" :placeholder="$t('PleaseEnter')" v-model="detail.buyerLegalRepresentativeNameArabic"></span>  
+                <span>Legal Representative Name(Arabic)：<el-input v-if="$route.query.type ==1"  type="text" :placeholder="$t('PleaseEnter')" v-model="detail.buyerLegalRepresentativeNameArabic"></el-input>
+                <i v-else class="color-light">******</i>
+                </span>  
             </li>
             <li>
-                <span>Representing Type：<input v-if="$route.query.type ==1"  type="text" :placeholder="$t('PleaseEnter')" v-model="detail.buyerRepresentingType"></span>  
+                <span>Representing Type：<el-input v-if="$route.query.type ==1"  type="text" :placeholder="$t('PleaseEnter')" v-model="detail.buyerRepresentingType"></el-input>
+                <i v-else class="color-light">******</i>
+                </span>  
             </li>
             <li>
-                <span>Power of attorney number：<input v-if="$route.query.type ==1"  type="text" :placeholder="$t('PleaseEnter')" v-model="detail.buyerPowerOfAttorneyNumber"></span>  
+                <span>Power of attorney number：<el-input v-if="$route.query.type ==1"  type="text" :placeholder="$t('PleaseEnter')" v-model="detail.buyerPowerOfAttorneyNumber"></el-input>
+                <i v-else class="color-light">******</i>
+                </span>  
             </li>
             <li>
-                <span>Signature：<input v-if="$route.query.type ==1"  type="text" :placeholder="$t('PleaseEnter')" v-model="detail.buyerSignature"></span>
+                <span>Signature：<el-input v-if="$route.query.type ==1"  type="text" :placeholder="$t('PleaseEnter')" v-model="detail.buyerSignature"></el-input>
+                <i v-else class="color-light">******</i>
+                </span>
             </li>
         </ul>
 
@@ -364,7 +490,7 @@
                             v-model="signDate"
                             type="date"
                             :placeholder="$t('PleaseSelect')"
-                            value-format="dd/MM/yyyy" @change="getSignTime">
+                            value-format="yyyy-MM-dd" @change="getSignTime">
                         </el-date-picker> Both parties have agreed with full legal capacity as follows:  
                 
             </li>
@@ -376,12 +502,12 @@
                     v-model="detail.transferDate"
                     type="date"
                     :placeholder="$t('PleaseSelect')"
-                    value-format="dd/MM/yyyy">
-                    </el-date-picker>
+                    value-format="yyyy-MM-dd">
+                </el-date-picker>
             </li>
             <li>3.The "Buyer" agrees to pay to the seller:</li>
-            <li>A.A deposit Cheque of AED ( <input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.serviceFee"> ) simultaneously with signing this contract.</li>
-            <li>B.Balance amount of the sale price, AED ( <input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.totalSellingPrice" >  ) by Manager Cheque or any other guaranteed method of payment that is acceptable by the Dubai Land Department, as follows:</li>
+            <li>A.A deposit Cheque of AED ( <el-input style="width:150px" type="text" :placeholder="$t('PleaseEnter')" v-model="detail.serviceFee"></el-input> ) simultaneously with signing this contract.</li>
+            <li>B.Balance amount of the sale price, AED ( <el-input style="width:150px" type="text" :placeholder="$t('PleaseEnter')" v-model="detail.totalSellingPrice" ></el-input>  ) by Manager Cheque or any other guaranteed method of payment that is acceptable by the Dubai Land Department, as follows:</li>
             <!-- <li>
                 
                 <div class="block">
@@ -421,8 +547,8 @@
         <div class="color-bar">Additional Terms:</div>
         <ul class="contract-clause">
             <li v-for="(item,idx) in 8" :key="idx">
-                <!-- {{idx+1}}. <input type="text" placeholder="请输入添加条款内容" v-model="detail.additionalTerms[idx]">  -->
-                {{idx+1}}.<textarea name="" id="" rows="3" :placeholder="$t('Pleasefillintheadditionalterms')" v-model="detail.additionalTerms[idx]"></textarea>  
+                <!-- {{idx+1}}. <el-input type="text" placeholder="请输入添加条款内容" v-model="detail.additionalTerms[idx]"></el-input>  -->
+                {{idx+1}}.<el-input type="textarea" name="" id="" rows="3" :placeholder="$t('Pleasefillintheadditionalterms')" v-model="detail.additionalTerms[idx]"></el-input>  
             </li>
         </ul>
         <ul class="sign-position color-black">
@@ -448,14 +574,18 @@
         </el-row>
 
         <el-row v-else>
-            <el-button type="warning" @click="editContract()" :disabled="detail.orderStatus==-3 || detail.orderStatus==-2?false:true">{{$t('AmendingContract')}}</el-button>
+            <!-- 没有合同ID的时候需要走创建合同的接口 -->
+            <el-button v-if="$route.query.contractId ==''" type="warning" @click="createContract()" >{{$t('AmendingContract')}}</el-button>
+
+            <el-button v-else type="warning" @click="updateContract()" :disabled="detail.orderStatus==-3 || detail.orderStatus==-2?false:true">{{$t('AmendingContract')}}</el-button>
             <!--  detail.orderStatus==-3或-2的时候才可以修改合同单 -->
         </el-row>
 
         <!-- 弹窗 - 是否生成合同单 生成/不生成 -->
         <el-dialog :title="$t('prompt')" :visible.sync="confirmBool">
-            <div>
-                {{$t('Ifneedgenerateacontractticket')}}
+            <div class="mb-10">
+                <p class="mb-10">{{$t('Ifneedgenerateacontractticket')}}</p>
+                
                 <el-radio-group v-model="detail.isDelivery">
                     <el-radio :label="0">{{$t('Generatethecontractwithdeliveryticket')}}</el-radio>
                     <el-radio :label="1">{{$t('Generatethecontractwithoutdeliveryticket')}}</el-radio>
@@ -465,9 +595,12 @@
                 <p class="">{{$t('meetingTimeAndMeetingPlace')}}:</p>
                 <ul class="contract-from">
                     <li>
-                        <span>owner's name:{{detail.memberName}}</span>
+                        <span>owner's name:
+                            <el-input type="text" disabled v-model="detail.nameOfOwner"></el-input>
+                        </span>
                         <span>estimated time: 
                         <el-date-picker
+                            format="dd/MM/yyyy HH:mm:ss"
                             v-model="detail.estimatedTime"
                             type="datetime"
                             :placeholder="$t('PleaseSelect')"
@@ -484,10 +617,12 @@
                         </span>
                     </li>
                     <li>
-                        <span>phone:{{detail.memberMoble}}</span>
+                        <span>phone:
+                            <el-input type="text" disabled v-model="detail.ownerMobile"></el-input>
+                        </span>
                         <span>
                             appointment Meet Place:
-                            <input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.appointmentMeetPlace">
+                            <el-input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.appointmentMeetPlace"></el-input>
                         </span>
                     </li>
                 </ul>
@@ -518,7 +653,9 @@ export default {
 
         signDate:'',
         detail:{
-            orderId	                           :this.$route.query.id, //string	是	订单id		
+            orderId	                           :this.$route.query.id, //string	是	订单id
+            contractId	                       :this.$route.query.contractId, //string	是合同id	
+            orderType	                       :this.$route.query.orderType, //string	是合同id	
             languageVersion	                   :2, //string	否	语言版本 0中文 1英文 2阿拉伯语		
             propertyUsage	                   :"industrial", //string	否	财产的使用 Industrial工业 Commercial商业 Residential住宅		
             ownerName	                       :"", //string	否	业主名称		
@@ -649,14 +786,20 @@ export default {
             // signYear:'',
             // signMonth:'',
             // signDay:''
+            orderStatus:'',
+            ownerImgs:{},
+            buyerImgs:{}
        },
         value1:'',
         confirmBool:false,
-        isDelivery:''
+        isDelivery:'',
+        ownerImgsList:[],//业主护照等
+        buyerImgsList:[],//租客/买家护照
+
     };
   },
   beforeMount() {
-    this.queryDetail();
+    // this.queryDetail();
     if(this.$route.query.isDelivery){
         this.isDelivery = this.$route.query.isDelivery;
     }else{
@@ -668,10 +811,10 @@ export default {
       console.log(this.$route.query)
   },
   mounted(){
-      
+      this.getContract();
   },
   methods:{
-      queryDetail(){
+    queryDetail(){////------------------------暂时弃用20181212
         //   console.log(this.$route,'id'  )
         this.$axios
         .post(
@@ -682,13 +825,11 @@ export default {
             if(res.dataSet.additionalTerms==null ){
                 res.dataSet.additionalTerms = [];
             }
-            for(let k in res.dataSet){
-                this.detail[k] = res.dataSet[k];
+            for(let k in this.detail){
+                this.detail[k] = res.dataSet[k]?res.dataSet[k]:this.detail[k];
             }
             this.detail.ownerMobile = res.dataSet.memberMoble;
             this.detail.nameOfOwner = res.dataSet.memberName;
-            this.detail.transferDate = `${new Date(this.detail.transferDate).getDate()}/${new Date(this.detail.transferDate).getMonth()+1}/${new Date(this.detail.transferDate).getFullYear()}`;
-            console.log( this.detail.transferDate )
 
             //购房人员信息
             if(res.dataSet.memberPurchase ){
@@ -700,12 +841,118 @@ export default {
                 this.detail.buyerNationality = res.dataSet.memberPurchase.nationality;
                 this.detail.buyerIDCardNumber = res.dataSet.memberPurchase.passportNumber;
             }
+            console.log( this.detail ,'detail;');
 
             // console.log( this.detail ,'detail;');            
         })
         .catch(err => this.$message.error(err.message));
-      },
+    },
+    // 获取合同信息----20181212更新
+    getContract(){
+        const loading = this.$loading({
+          lock: true,
+          text: 'Loading',
+          spinner: 'el-icon-loading',
+          background: 'rgba(0, 0, 0, 0.7)'
+        });
 
+        this.$axios
+        .post(
+            "/api/pc/get/contract",
+            this.$qs.stringify({ orderId: this.$route.query.id,contractId:this.$route.query.contractId })
+        )
+        .then(res => {
+            // this.detail = res.dataSet;
+            if(res.dataSet.additionalTerms==null ){
+                res.dataSet.additionalTerms = [];
+            }
+
+            for(let i=1;i<=8;i++){
+                res.dataSet.additionalTerms[i-1] = res.dataSet[`additionalTerm${i}`]
+            }
+            for(let k in this.detail){
+                this.detail[k] = res.dataSet[k]?res.dataSet[k]:this.detail[k];
+            }
+            
+            if(this.$route.query.contractId==""){
+                this.detail.ownerMobile = res.dataSet.memberMoble;
+                this.detail.ownerName = res.dataSet.memberName;
+                //租房人员信息
+                if(res.dataSet.memberPurchase ){
+                    this.detail.nameOfBuyer = res.dataSet.memberPurchase.memberName;
+                    this.detail.buyerMobile = res.dataSet.memberPurchase.phone;
+                    this.detail.buyerEmail = res.dataSet.memberPurchase.email;
+                    this.detail.buyerIDCardNumber = res.dataSet.memberPurchase.idCard;
+                    this.detail.buyerIDCardNumber = res.dataSet.memberPurchase.idCard;
+                    this.detail.buyerNationality = res.dataSet.memberPurchase.nationality;
+                    this.detail.buyerIDCardNumber = res.dataSet.memberPurchase.passportNumber;
+                }
+            }
+            if(res.dataSet.signDay ){
+                this.signDate = `${res.dataSet.signYear}-${res.dataSet.signMonth}-${res.dataSet.signDay}`;
+            }
+            // if(res.dataSet.transferDate.split('/').length>=3){
+            //     this.detail.transferDate = `${res.dataSet.transferDate.split('/')[2]}-${res.dataSet.transferDate.split('/')[1]}-${res.dataSet.transferDate.split('/')[0]}`
+            // }
+            // 处理业主图片
+
+            console.log( this.detail ,'detail;');
+        })
+        .catch(err => this.$message.error(err.message)).finally(() => loading.close());;
+    },
+    //-客服合同20181212新增 合同id没有值的时候，第一次保存走创建合同接口 
+    createContract(){
+        if( this.detail.additionalTerms.length >0){
+            this.detail.additionalTerms.forEach((ele,i)=>{
+                this.detail['additionalTerm'+(i+1)] = ele
+            })
+        }        
+        const loading = this.$loading({
+          lock: true,
+          text: 'Loading',
+          spinner: 'el-icon-loading',
+          background: 'rgba(0, 0, 0, 0.7)'
+        });
+        this.$axios.post('/api/pc/create/contract',
+          this.$qs.stringify(this.detail) 
+          ).then(res=>{
+              if(res.result==0){
+                    this.$message.success( res.message );
+                    if(this.$route.query.type==0){
+                        this.$router.push('/home/contractList/0');
+                    }else{
+                        this.$router.push('/home/contractList/1');
+                    }  
+              }
+          }).catch(err => this.$message.error(err.message)).finally(() => loading.close());         
+    },
+    //-客服合同20181212新增 修改接口 
+    updateContract(){
+        console.log( this.detail )
+        if( this.detail.additionalTerms.length >0){
+            this.detail.additionalTerms.forEach((ele,i)=>{
+                this.detail['additionalTerm'+(i+1)] = ele
+            })
+        }        
+        const loading = this.$loading({
+          lock: true,
+          text: 'Loading',
+          spinner: 'el-icon-loading',
+          background: 'rgba(0, 0, 0, 0.7)'
+        });
+        this.$axios.post('/api/pc/update/contract',
+          this.$qs.stringify(this.detail) 
+          ).then(res=>{
+              if(res.result==0){
+                    this.$message.success( res.message );
+                    if(this.$route.query.type==0){
+                        this.$router.push('/home/contractList/0');
+                    }else{
+                        this.$router.push('/home/contractList/1');
+                    }  
+              }
+          }).catch(err => this.$message.error(err.message)).finally(() => loading.close());         
+    },
     GenerateContract(){
         if(this.isDelivery){
             this.detail.isDelivery = this.isDelivery;
@@ -745,15 +992,15 @@ export default {
           background: 'rgba(0, 0, 0, 0.7)'
         });
 
+
         this.$axios.post('/api/pc/generating/contract',
           this.$qs.stringify(this.detail) 
           ).then(res=>{
               if(res.result==0){
-                    loading.close();
                     this.$message.success(this.$t('GeneratethecontractSuccess'));
                     this.$router.push('/home/contractList/1');
               }
-          }).catch(err => this.$message.error(err.message));
+          }).catch(err => this.$message.error(err.message)).finally(() => loading.close());
     },
     getSignTime(val){
         // console.log(val,this.signDate);
@@ -783,7 +1030,7 @@ export default {
             }
         }  
     },
-    editContract(){
+    editContract(){////------------------------暂时弃用20181212
         // if( this.detail.additionalTerms.length >0){
         //     this.detail.additionalTerms.forEach((ele,i)=>{
         //         this.detail['additionalTerm'+(i+1)] = ele
@@ -798,133 +1045,14 @@ export default {
                     this.queryDetail();
               }
           }).catch(err => this.$message.error(err.message));
-    },   
+    },
+    selectOwnerImgs(val){
+        this.ownerImgsList = this.detail.ownerImgs[val];
+    }, 
+    selectBuyerImgs(val){
+        this.buyerImgsList = this.detail.buyerImgs[val];
+    },  
   }
 };
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped lang="scss">
-.contract-detail {
-  color: #333;
-  input{border: none;&:focus{outline: none;}}
-}
-.company-stamp {
-  height: 40px;
-  margin: 5px 40px;
-  margin-bottom: 15px;
-  display: flex;
-  justify-content: space-between;
-  span.black_s{
-      color: #030303;
-      font-size: 14px;
-      font-weight:500;
-  }
-}
-.contract-from {
-  padding-left: 20px;
-  &.margin20{margin-top: 40px;}
-  > li {
-    margin-bottom: 10px;
-    display: flex;
-    > span {
-      width: 50%;
-      input{
-          font-size: 14px;
-          font-weight: 500;
-          color: #333;
-      }
-      b{
-          font-size: 14px;
-          color: #333;
-          font-weight: 500;
-      }
-    }
-  }
-}
-.color-bar {
-  height: 36px;
-  line-height: 36px;
-  color: #fff;
-  background: #80ba6b;
-  padding-left: 22px;
-  margin: 20px 0;
-  &.dark-green{
-      background: #679753;
-      padding-left: 30px;
-      margin-bottom: -20px;
-  }
-}
-.contract-clause {
-  padding-left: 20px;
-  &.color-black {
-    color: #000;
-  }
-  li {
-    line-height: 20px;
-    margin-bottom: 10px;
-    i.dot {
-      display: inline-block;
-      width: 10px;
-      height: 10px;
-      background: #000;
-      border-radius: 50%;
-      margin-right: 10px;
-    }
-    input {
-      border: none;
-      outline: none;
-      font-size: 14px;
-      &:focus {
-        outline: none;
-      }
-      &::-webkit-input-placeholder {
-        color: #ccc;
-        font-size: 14px;
-      }
-    }
-    textarea{
-        border: none;
-        outline: none;
-        font-size: 14px;
-        line-height: 20px;
-        width: 90%;
-        font-family: 'micosoft yahei';
-        margin-top: -3px;
-        vertical-align: top;
-        &:focus {
-            outline: none;
-        }
-        &::-webkit-input-placeholder {
-            color: #ccc;
-            font-size: 14px;
-        }
-    }
-    i.text {
-      color: #ccc;
-      font-style: normal;
-    }
-  }
-}
-.sign-position {
-  padding-left: 20px;
-  margin: 40px 0;
-  li:nth-of-type(1){margin-bottom: 20px;}
-}
-.el-row {
-  text-align: center;
-  margin-bottom: 84px;
-  button {
-    width: 240px;
-    height: 44px;
-    font-size: 16px;
-  }
-}
-.el-dialog{
-    .contract-from{
-        li{
-            span:nth-child(1){width: 30%}
-            span:nth-child(2){width: 70%;}
-        }
-    }
-}
-</style>

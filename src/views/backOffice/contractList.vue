@@ -137,16 +137,44 @@ export default {
                     type: 'warning'
                 }).then(() => {
                     if(item.orderType==0){
-                        this.$router.push({name:'back_contractDetail_rent',query:{'id':item.id,'isDelivery':1,type:this.$route.params.type}})
+                        this.$router.push(
+                            {name:'back_contractDetail_rent',
+                            query:{
+                            'id':item.id,'isDelivery':1,
+                            type:this.$route.params.type,
+                            contractId:item.contractId?item.contractId:"",
+                            orderType:item.orderType
+                            }
+                            })
                     }else if(item.orderType==1 ){
-                        this.$router.push({name:'back_contractDetail_sale',query:{'id':item.id,'isDelivery':1,type:this.$route.params.type}})
+                        this.$router.push(
+                            {name:'back_contractDetail_sale',
+                            query:{
+                                'id':item.id,'isDelivery':1,
+                                type:this.$route.params.type,
+                                contractId:item.contractId?item.contractId:"",
+                                orderType:item.orderType
+                                }
+                            })
                     }        
                 }).catch(() => {});            
             }else{
                 if(item.orderType==0){
-                    this.$router.push({name:'back_contractDetail_rent',query:{'id':item.id,type:this.$route.params.type}})
+                    this.$router.push({
+                        name:'back_contractDetail_rent',
+                        query:{
+                            'id':item.id,type:this.$route.params.type,
+                            contractId:item.contractId?item.contractId:"",
+                            orderType:item.orderType
+                            }})
                 }else if(item.orderType==1 ){
-                    this.$router.push({name:'back_contractDetail_sale',query:{'id':item.id,type:this.$route.params.type}})
+                    this.$router.push({
+                        name:'back_contractDetail_sale',
+                        query:{
+                            'id':item.id,type:this.$route.params.type,
+                            contractId:item.contractId?item.contractId:"",
+                            orderType:item.orderType
+                            }})
                 }
             }
         },

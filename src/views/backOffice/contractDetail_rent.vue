@@ -7,7 +7,8 @@
             </el-breadcrumb>
         </div>
 
-        <ul class="passport-wrap" v-if="false">
+        <!-- 20181212新增内勤合同-业主/租客护照图片 -->
+        <ul class="passport-wrap" v-if="$route.query.type ==1">
             <li>
                 landlord passport：
                 <el-select v-model="detail.leaseType" :placeholder="$t('choose')" > 
@@ -73,28 +74,49 @@
         </ul>
         <ul class="contract-from">
             <li>
-                <span>Owner Name： <input v-if="$route.query.type ==1" type="text" :placeholder="$t('PleaseEnter')" v-model="detail.ownerName"> </span>   
+                <span>Owner Name： 
+                    <el-input v-if="$route.query.type ==1" type="text" :placeholder="$t('PleaseEnter')" v-model="detail.ownerName"></el-input> 
+                    <i v-else class="color-light">******</i>
+                </span>   
             </li>
             <li>
-                <span>Landlord Name：<input v-if="$route.query.type ==1" type="text" :placeholder="$t('PleaseEnter')" v-model="detail.landlordName"></span> 
+                <span>Landlord Name：
+                    <el-input v-if="$route.query.type ==1" type="text" :placeholder="$t('PleaseEnter')" v-model="detail.landlordName"></el-input>
+                    <i v-else class="color-light">******</i>
+                </span> 
             </li>
             <li>
-                <span>Tenant Name：<input v-if="$route.query.type ==1" type="text" :placeholder="$t('PleaseEnter')" v-model="detail.tenantName"> </span> 
+                <span>Tenant Name：
+                    <el-input v-if="$route.query.type ==1" type="text" :placeholder="$t('PleaseEnter')" v-model="detail.tenantName"></el-input>
+                    <i v-else class="color-light">******</i> 
+                </span> 
             </li>
             <li>
-                <span>Tenant Email：<input v-if="$route.query.type ==1" type="text" :placeholder="$t('PleaseEnter')" v-model="detail.tenantEmail"> </span> 
-                <span>Landlord Email：<input v-if="$route.query.type ==1" type="text" :placeholder="$t('PleaseEnter')" v-model="detail.landlordEmail"> </span>
+                <span>Tenant Email：
+                    <el-input v-if="$route.query.type ==1" type="text" :placeholder="$t('PleaseEnter')" v-model="detail.tenantEmail"></el-input> 
+                    <i v-else class="color-light">******</i> 
+                </span> 
+                <span>Landlord Email：
+                    <el-input v-if="$route.query.type ==1" type="text" :placeholder="$t('PleaseEnter')" v-model="detail.landlordEmail"></el-input>
+                    <i v-else class="color-light">******</i> 
+                </span>
             </li>
             <li>
-                <span>Tenant Phone：<input v-if="$route.query.type ==1" type="text" :placeholder="$t('PleaseEnter')" v-model="detail.tenantPhone"> </span> 
-                <span>Landlord Phone：<input v-if="$route.query.type ==1" type="text" :placeholder="$t('PleaseEnter')" v-model="detail.landlordPhone"> </span> 
+                <span>Tenant Phone：
+                    <el-input v-if="$route.query.type ==1" type="text" :placeholder="$t('PleaseEnter')" v-model="detail.tenantPhone"></el-input> 
+                    <i v-else class="color-light">******</i> 
+                </span> 
+                <span>Landlord Phone：
+                    <el-input v-if="$route.query.type ==1" type="text" :placeholder="$t('PleaseEnter')" v-model="detail.landlordPhone"></el-input> 
+                    <i v-else class="color-light">******</i> 
+                </span> 
             </li>
             <li>
-                <span>building name：<input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.buildingName"></span> 
-                <span>Property location：<input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.address"></span>
+                <span>building name：<el-input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.buildingName"></el-input></span> 
+                <span>Property location：<el-input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.address"></el-input></span>
             </li>
             <li>
-                <span>building area：<input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.houseAcreage"></span> 
+                <span>building area：<el-input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.houseAcreage"></el-input></span> 
                 <span>Unit Type：
                       <el-select v-model="detail.leaseType" :placeholder="$t('choose')">
                         <el-option
@@ -105,40 +127,46 @@
                         </el-option>
                     </el-select>
                 </span> 
-                <span>Unit number：<input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.roomName"></span>
+                <span>Unit number：<el-input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.roomName"></el-input></span>
             </li>
             <li>
-                <span>Premises No (DEWA)：<input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.propertyNo"></span>
-                <span>Plot No：<input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.plotNo"></span>
+                <span>Premises No (DEWA)：<el-input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.propertyNo"></el-input></span>
+                <span>Plot No：<el-input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.plotNo"></el-input></span>
             </li>
             <li>
-                <span>Premises Period To：<input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.premisesPeriodTo"></span>
+                <span>Premises Period To：<el-input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.premisesPeriodTo"></el-input></span>
                 <span>From：
-                    <!-- <input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.leaseStartDate"> -->
-                    {{detail.leaseStartDate}}
+                    <!-- <el-input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.leaseStartDate"> -->
+                    <el-date-picker
+                    format="dd/MM/yyyy"
+                    v-model="detail.leaseStartDate"
+                    type="date"
+                    value-format="yyyy-MM-dd" disabled>
+                    </el-date-picker>
                 </span>
             </li>
             <li>
                 <span>Annual Rent：
-                    <!-- <input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.leasePrice"> -->
-                    AED{{detail.leasePrice}} Only
+                    <el-input type="text" disabled  v-model="detail.leasePrice"></el-input>
+                    <!-- <i>AED{{detail.leasePrice}} Only</i> -->
+                    
                 </span>
             </li>
             <li>
                 <!-- 合同有效期年限，不可更改，显示格式为1 Year /3 Years -->
                 <span>Contract Value：
-                    <!-- <input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.contractValue"> -->
-                    <i v-if="detail.contractValue==1">1 Year</i>
-                    <i v-else>{{detail.payNode}} Years</i>
+                    <el-input type="text" disabled  v-model="detail.contractValue"></el-input>
+                    <!-- <i v-if="detail.contractValue==1">1 Year</i>
+                    <i v-else>{{detail.payNode}} Years</i> -->
                 </span>
             </li>
             <li>
-                <span>Security Deposit Amount：<input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.securityDepositAmount"></span> 
+                <span>Security Deposit Amount：<el-input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.securityDepositAmount"></el-input></span> 
                 <span>Mode of payment：
                     <!-- 支付节点，不可修改 -->
-                    <!-- <input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.payNode"> -->
-                    <i v-if="detail.payNode==1">1 cheque</i>
-                    <i v-else>{{detail.payNode}} cheques</i>
+                    <el-input type="text" disabled  v-model="detail.payNode"></el-input>
+                    <!-- <i v-if="detail.payNode==1">1 cheque</i>
+                    <i v-else>{{detail.payNode}} cheques</i> -->
                 </span>
             </li>
         </ul>
@@ -175,8 +203,7 @@
         <div class="color-bar">Additional Terms:</div>
         <ul class="contract-clause">
             <li v-for="(item,idx) in 8" :key="idx">
-                <!-- {{idx+1}}. <input type="text" :placeholder="$t('Pleasefillintheadditionalterms')" v-model="detail.additionalTerms[idx]">  -->
-                {{idx+1}}.<textarea name="" id="" rows="3" :placeholder="$t('Pleasefillintheadditionalterms')" v-model="detail.additionalTerms[idx]"></textarea>                  
+                {{idx+1}}.<el-input type="textarea" name="" id="" rows="3" :placeholder="$t('Pleasefillintheadditionalterms')" v-model="detail.additionalTerms[idx]"></el-input>                  
             </li>
             <p class="color-black">Note: You may add an addendum to this tenancy contract in case you have additional terms while it needs to be signed by all parties.</p>
         </ul>
@@ -201,15 +228,18 @@
         </el-row>
 
         <el-row v-else>
-            <el-button type="warning" @click="editContract()" :disabled="detail.orderStatus==-3 || detail.orderStatus==-2?false:true">{{$t('AmendingContract')}}</el-button>
+            <!-- 没有合同ID的时候需要走创建合同的接口 -->
+            <el-button v-if="$route.query.contractId ==''" type="warning" @click="createContract()" >{{$t('AmendingContract')}}</el-button>
+
+            <el-button v-else type="warning" @click="updateContract()" :disabled="detail.orderStatus==-3 || detail.orderStatus==-2 ?false:true">{{$t('AmendingContract')}}</el-button>
             <!--  detail.orderStatus==-3或-2的时候才可以修改合同单 -->
         </el-row>
 
 
         <!-- 弹窗 - 是否生成合同单 生成/不生成 -->
         <el-dialog :title="$t('prompt')" :visible.sync="confirmBool">
-            <div>
-                {{$t('Ifneedgenerateacontractticket')}}
+            <div class="mb-10">
+                <p class="mb-10">{{$t('Ifneedgenerateacontractticket')}}</p>
                 <el-radio-group v-model="detail.isDelivery">
                     <el-radio :label="0">{{$t('Generatethecontractwithdeliveryticket')}}</el-radio>
                     <el-radio :label="1">{{$t('Generatethecontractwithoutdeliveryticket')}}</el-radio>
@@ -219,7 +249,9 @@
                 <p class="">{{$t('meetingTimeAndMeetingPlace')}}</p>
                 <ul class="contract-from">
                     <li>
-                        <span>owner's name:{{detail.memberName}}</span>
+                        <span>owner's name:
+                            <el-input type="text" disabled v-model="detail.ownerName"></el-input>
+                        </span>
                         <span>estimated time: 
                         <el-date-picker
                             v-model="detail.estimatedTime"
@@ -238,10 +270,12 @@
                         </span>
                     </li>
                     <li>
-                        <span>phone:{{detail.memberMoble}}</span>
+                        <span>phone:
+                            <el-input type="text" disabled v-model="detail.ownerMobile"></el-input>
+                        </span>
                         <span>
                             appointment Meet Place:
-                            <input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.appointmentMeetPlace">
+                            <el-input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.appointmentMeetPlace"></el-input>
                         </span>
                     </li>
                 </ul>
@@ -270,7 +304,9 @@ export default {
             }
         },        
         detail:{
-            orderId	                           :this.$route.query.id, //string	是	订单id		
+            orderId	                           :this.$route.query.id, //string	是	订单id	
+            contractId	                       :this.$route.query.contractId, //string	是合同id
+            orderType	                       :this.$route.query.orderType, //string	是合同id
             languageVersion	                   :2, //string	否	语言版本 0中文 1英文 2阿拉伯语		
             propertyUsage	                   :"industrial", //string	否	财产的使用 Industrial工业 Commercial商业 Residential住宅		
             ownerName	                       :"", //string	否	业主名称		
@@ -307,22 +343,30 @@ export default {
             appointmentMeetPlace:"",  
             isDelivery:'',
             orderStatus:'',
+            ownerImgs:{},
+            buyerImgs:{}
        },
-       confirmBool:false,
-       isDelivery:''
+        confirmBool:false,
+        isDelivery:'',
+        ownerImgsList:[],//业主护照等
+        buyerImgsList:[],//租客/买家护照
     };
   },
   mounted(){
-      this.queryDetail();
+
+    //   this.queryDetail();
+      this.getContract();
     //   console.log( this.$route.query.id ,this.$route.query.isDelivery)
       if(this.$route.query.isDelivery){
           this.isDelivery = this.$route.query.isDelivery;
       }else{
           this.isDelivery = null;
       }
+
+     
   },
   methods:{
-    queryDetail(){
+    queryDetail(){ ////------------------------暂时弃用20181212
         this.$axios
         .post(
             "/api/pc/contract/detail",
@@ -333,14 +377,128 @@ export default {
             if(res.dataSet.additionalTerms==null ){
                 res.dataSet.additionalTerms = [];
             }
-            for(let k in res.dataSet){
-                this.detail[k] = res.dataSet[k];
+            for(let k in this.detail){
+                this.detail[k] = res.dataSet[k]?res.dataSet[k]:this.detail[k];
             }
+            
+            this.detail.leaseStartDate = `${new Date(this.detail.leaseStartDate).getDate()}/${new Date(this.detail.leaseStartDate).getMonth()+1}/${new Date(this.detail.leaseStartDate).getFullYear()}`;
+            
             this.detail.ownerMobile = res.dataSet.memberMoble;
+            this.detail.ownerName = res.dataSet.memberName;
+            this.detail.landlordName = res.dataSet.memberName;
+            this.detail.landlordPhone = res.dataSet.memberMoble;
+            //租房人员信息
+            if(res.dataSet.memberPurchase ){
+                this.detail.tenantName = res.dataSet.memberPurchase.memberName;
+                this.detail.tenantPhone = res.dataSet.memberPurchase.phone;
+                this.detail.tenantEmail = res.dataSet.memberPurchase.email;
+            }
+
             console.log( this.detail ,'detail;');
         })
         .catch(err => this.$message.error(err.message));
-      },
+    },
+    // 获取合同信息----20181212更新
+    getContract(){
+        const loading = this.$loading({
+          lock: true,
+          text: 'Loading',
+          spinner: 'el-icon-loading',
+          background: 'rgba(0, 0, 0, 0.7)'
+        });
+
+        this.$axios
+        .post(
+            "/api/pc/get/contract",
+            this.$qs.stringify({ orderId: this.$route.query.id,contractId:this.$route.query.contractId })
+        )
+        .then(res => {
+            // this.detail = res.dataSet;
+            if(res.dataSet.additionalTerms==null ){
+                res.dataSet.additionalTerms = [];
+            }
+
+            for(let i=1;i<=8;i++){
+                res.dataSet.additionalTerms[i-1] = res.dataSet[`additionalTerm${i}`]
+            }
+            for(let k in this.detail){
+                this.detail[k] = res.dataSet[k]?res.dataSet[k]:this.detail[k];
+            }
+            
+            if(this.$route.query.contractId==""){
+                this.detail.ownerMobile = res.dataSet.memberMoble;
+                this.detail.ownerName = res.dataSet.memberName;
+                this.detail.landlordName = res.dataSet.memberName;
+                this.detail.landlordPhone = res.dataSet.memberMoble;
+                //租房人员信息
+                if(res.dataSet.memberPurchase ){
+                    this.detail.tenantName = res.dataSet.memberPurchase.memberName;
+                    this.detail.tenantPhone = res.dataSet.memberPurchase.phone;
+                    this.detail.tenantEmail = res.dataSet.memberPurchase.email;
+                }
+            }
+            this.detail.leasePrice = `AED${this.detail.leasePrice} Only`;
+            if( this.detail.contractValue!="" ){
+                this.detail.contractValue = this.detail.contractValue==1? `1 Year`:`${this.detail.contractValue} Years`;
+            }
+            
+            this.detail.payNode = this.detail.payNode==1?`1 cheque`:`${this.detail.payNode} cheques`;
+            console.log( this.detail ,'detail;');
+        })
+        .catch(err => this.$message.error(err.message)).finally(() => loading.close());;
+    },
+    //-客服合同20181212新增 合同id没有值的时候，第一次保存走创建合同接口 
+    createContract(){
+        if( this.detail.additionalTerms.length >0){
+            this.detail.additionalTerms.forEach((ele,i)=>{
+                this.detail['additionalTerm'+(i+1)] = ele
+            })
+        }        
+        const loading = this.$loading({
+          lock: true,
+          text: 'Loading',
+          spinner: 'el-icon-loading',
+          background: 'rgba(0, 0, 0, 0.7)'
+        });
+        this.$axios.post('/api/pc/create/contract',
+          this.$qs.stringify(this.detail) 
+          ).then(res=>{
+              if(res.result==0){
+                    this.$message.success( res.message );
+                    if(this.$route.query.type==0){
+                        this.$router.push('/home/contractList/0');
+                    }else{
+                        this.$router.push('/home/contractList/1');
+                    }  
+              }
+          }).catch(err => this.$message.error(err.message)).finally(() => loading.close());         
+    },
+    //-客服合同20181212新增 修改接口 
+    updateContract(){
+        if( this.detail.additionalTerms.length >0){
+            this.detail.additionalTerms.forEach((ele,i)=>{
+                this.detail['additionalTerm'+(i+1)] = ele
+            })
+        }        
+        const loading = this.$loading({
+          lock: true,
+          text: 'Loading',
+          spinner: 'el-icon-loading',
+          background: 'rgba(0, 0, 0, 0.7)'
+        });
+        this.$axios.post('/api/pc/update/contract',
+          this.$qs.stringify(this.detail) 
+          ).then(res=>{
+              if(res.result==0){
+                    this.$message.success( res.message );
+                    if(this.$route.query.type==0){
+                        this.$router.push('/home/contractList/0');
+                    }else{
+                        this.$router.push('/home/contractList/1');
+                    }  
+              }
+          }).catch(err => this.$message.error(err.message)).finally(() => loading.close());         
+    },
     GenerateContract(){
         if(this.isDelivery){
             this.detail.isDelivery = this.isDelivery;
@@ -370,9 +528,9 @@ export default {
                 this.detail['additionalTerm'+(i+1)] = ele
             })
         }
-
-        delete this.detail.additionalTerms ;
         
+        // delete this.detail.additionalTerms ;
+
         const loading = this.$loading({
           lock: true,
           text: 'Loading',
@@ -384,11 +542,11 @@ export default {
           this.$qs.stringify(this.detail) 
           ).then(res=>{
               if(res.result==0){
-                    loading.close();
+                    
                     this.$message.success( this.$t('GeneratethecontractSuccess'));
                     this.$router.push('/home/contractList/1');
               }
-          }).catch(err => this.$message.error(err.message)); 
+          }).catch(err => this.$message.error(err.message)).finally(() => loading.close()); 
     },
     getTESTtime(val){
         // 48小时内
@@ -410,7 +568,7 @@ export default {
             }
         }  
     },
-    editContract(){
+    editContract(){ ////------------------------暂时弃用20181212
         // if( this.detail.additionalTerms.length >0){
         //     this.detail.additionalTerms.forEach((ele,i)=>{
         //         this.detail['additionalTerm'+(i+1)] = ele
@@ -430,133 +588,3 @@ export default {
 };
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped lang="scss">
-.contract-detail{
-    color:#333;
-    input{border: none;&:focus{outline: none;}}
-}
-.company-stamp{
-    height: 40px;
-    margin: 5px 40px;
-    margin-bottom: 15px;
-    display: flex;
-    justify-content: space-between;  
-}
-.header{
-    position: relative;
-    margin-bottom: 35px;
-    padding-left: 20px;
-    .position{
-        position: absolute;
-        left: 20px;
-        span{
-            &:nth-of-type(1){
-                display: inline-block;
-                margin-bottom: 7px;
-            }
-        }
-    }
-    p{
-        color: #030303;
-        font-weight: 500;
-        text-align: center;
-        padding: 22px 0;
-    }
-}
-.contart-header{
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
-    padding-left: 20px;
-    .light-dot{
-        display: inline-block;
-        width: 20px;
-        height: 20px;
-        border-radius: 50%;
-        background: #D8D8D8;
-        vertical-align: bottom;
-    }
-}
-.contract-from{
-    padding-left: 20px;
-    >li{
-        margin-bottom: 10px;
-        display: flex;
-        >span{ width: 33%;}
-    }
-}
-.color-bar{
-    height: 36px;
-    line-height: 36px;
-    color: #fff;
-    background: #80BA6B;
-    padding-left: 22px;
-    margin: 20px 0;
-}
-.contract-clause{
-    padding-left: 20px;
-    &.color-black{color: #000;}
-    li{
-        line-height: 20px;
-        margin-bottom: 10px;
-        i.dot{
-            display: inline-block;
-            width: 10px;
-            height: 10px;
-            background: #000;
-            border-radius: 50%;
-            margin-right: 10px;
-        }
-        input{
-            border: none;
-            outline:none;
-            font-size: 14px;
-            &:focus{ outline:none}
-            &::-webkit-input-placeholder {color: #ccc; font-size: 14px;}
-        }
-    textarea{
-        border: none;
-        outline: none;
-        font-size: 14px;
-        line-height: 20px;
-        width: 90%;
-        font-family: 'micosoft yahei';
-        margin-top: -3px;
-        vertical-align: top;
-        &:focus {
-            outline: none;
-        }
-        &::-webkit-input-placeholder {
-            color: #ccc;
-            font-size: 14px;
-        }
-    }        
-        i.text{color: #ccc;font-style: normal;}
-    }
-}
-.sign-position{
-    display: flex;
-    padding-left: 20px;
-    margin: 40px 0;
-    li{
-        width: 50%;
-    }
-}
-.el-row{
-    text-align: center;
-    margin-bottom: 84px;
-    button{
-        width: 240px;
-        height: 44px;
-        font-size: 16px;
-    }
-}
-.el-dialog{
-    .contract-from{
-        li{
-            span:nth-child(1){width: 30%}
-            span:nth-child(2){width: 70%;}
-        }
-    }
-}
-</style>

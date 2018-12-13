@@ -20,7 +20,6 @@
 //合同详情
 .contract-detail {
     color: #333;
-
     .company-stamp {
         height: 40px;
         margin: 5px 40px;
@@ -34,7 +33,41 @@
             font-weight: 500;
         }
     }
-
+    .header{
+        position: relative;
+        margin-bottom: 35px;
+        padding-left: 20px;
+        .position{
+            position: absolute;
+            left: 20px;
+            span{
+                &:nth-of-type(1){
+                    display: inline-block;
+                    margin-bottom: 7px;
+                }
+            }
+        }
+        p{
+            color: #030303;
+            font-weight: 500;
+            text-align: center;
+            padding: 22px 0;
+        }
+    }
+    .contart-header{
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 20px;
+        padding-left: 20px;
+        .light-dot{
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #D8D8D8;
+            vertical-align: bottom;
+        }
+    }
     .contract-from {
         padding-left: 20px;
 
@@ -45,8 +78,11 @@
         >li {
             margin-bottom: 10px;
             display: flex;
+            .el-input{
+                width: auto;
+            }
             input{
-                border: none;
+                // border: none;
                 // width: 70%;
             }    
             >span {
@@ -89,39 +125,12 @@
                 border-radius: 50%;
                 margin-right: 10px;
             }
-
-            input {
-                border: none;
-                outline: none;
-                font-size: 14px;
-
-                &:focus {
-                    outline: none;
-                }
-
-                &::-webkit-input-placeholder {
-                    color: #ccc;
-                    font-size: 14px;
-                }
-            }
-
-            textarea {
-                border: none;
-                outline: none;
-                font-size: 14px;
-                line-height: 20px;
-                width: 90%;
-                font-family: 'micosoft yahei';
-                margin-top: -3px;
-                vertical-align: top;
-
-                &:focus {
-                    outline: none;
-                }
-
-                &::-webkit-input-placeholder {
-                    color: #ccc;
-                    font-size: 14px;
+            .el-textarea{
+                margin-left: 10px;
+                vertical-align: text-top;
+                width: 98%;
+                textarea{
+                    font-family: micosoft yahei;
                 }
             }
 
