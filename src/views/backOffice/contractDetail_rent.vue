@@ -10,40 +10,35 @@
         <!-- 20181212新增内勤合同-业主/租客护照图片 -->
         <ul class="passport-wrap" v-if="$route.query.type ==1">
             <li>
+                <!-- ownerImgs -->
                 landlord passport：
-                <el-select v-model="detail.leaseType" :placeholder="$t('choose')" > 
+                <el-select v-model="ownerImgsPick" :placeholder="$t('PleaseSelect')" @change="selectOwnerImgs"> 
                     <el-option
-                    v-for="item in [
-                    {'value':0,'label':$t('copyOfPOAImg')},
-                    {'value':1,'label':$t('principalPassportImg')},
-                    {'value':2,'label':$t('clientVisaImg')},
-                    {'value':3,'label':$t('IDCardOfPrincipalImg')},
-                    {'value':4,'label':$t('CertificateImg')},
-                    {'value':5,'label':$t('ownerPassportImg')},
-                    ]"
-                    :key="item.value"
-                    :label="item.label"
-                    :value="item.value">
+                    v-for="(item,key) in detail.ownerImgs"
+                    :key="key"
+                    :value-key="key"
+                    :label="key=='propertyHolderPassport'?$t('ownerPassportImg'):$t('CertificateImg')"
+                    :value="key">
                     </el-option>
                 </el-select>
                 <div class="img-box">
-                    <img v-lazy="detail.img1" alt="">
-                    <img v-lazy="detail.img1" alt="">
+                    <img v-for="(item) in ownerImgsList" v-lazy="item" alt="" :key="item">
                 </div>
             </li>
             <li>
+                <!-- buyerImgs -->
                 tenant passport：
-                <el-select v-model="detail.leaseType" :placeholder="$t('choose')" > 
+                <el-select v-model="buyerImgsPick" :placeholder="$t('PleaseSelect')" @change="selectBuyerImgs" > 
                     <el-option
-                    v-for="item in [{'value':'rent','label':$t('Rent')},{'value':'sale','label':$t('Sale')}]"
-                    :key="item.value"
-                    :label="item.label"
-                    :value="item.value">
+                    v-for="(item,key) in detail.buyerImgs"
+                    :key="key"
+                    :value-key="key"
+                    :label="key"
+                    :value="key">
                     </el-option>
                 </el-select>
                 <div class="img-box">
-                    <img v-lazy="detail.img1" alt="">
-                    <img v-lazy="detail.img1" alt="">
+                    <img v-for="(item) in buyerImgsList" v-lazy="item" alt="" :key="item">
                 </div>
             </li>
         </ul>
@@ -54,10 +49,10 @@
         <div class="header">
             <div class="position">
                 <span>
-                    Date <span v-for="(item,idx) in 3" :key="idx"> <i class="color-light">____</i> <i v-if="idx!=2"> /</i> </span>
+                    Date: <span v-if="detail.dateStr">{{detail.dateStr}}</span> <span v-else v-for="(item,idx) in 3" :key="idx"> <i class="color-light">____</i> <i v-if="idx!=2"> /</i> </span>
                 </span>
                 <br>
-                <span> No <i class="color-light">_____________</i> </span>
+                <span> No: <span v-if="detail.no">{{detail.no}}</span><i v-else class="color-light">_____________</i> </span>
             </div>
             <p>TENANCY CONTRACT</p>
         </div>
@@ -100,6 +95,7 @@
                     <el-input v-if="$route.query.type ==1" type="text" :placeholder="$t('PleaseEnter')" v-model="detail.landlordEmail"></el-input>
                     <i v-else class="color-light">******</i> 
                 </span>
+                <span></span>
             </li>
             <li>
                 <span>Tenant Phone：
@@ -110,15 +106,17 @@
                     <el-input v-if="$route.query.type ==1" type="text" :placeholder="$t('PleaseEnter')" v-model="detail.landlordPhone"></el-input> 
                     <i v-else class="color-light">******</i> 
                 </span> 
+                <span></span>
             </li>
             <li>
                 <span>building name：<el-input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.buildingName"></el-input></span> 
                 <span>Property location：<el-input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.address"></el-input></span>
+                <span></span>
             </li>
             <li>
                 <span>building area：<el-input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.houseAcreage"></el-input></span> 
                 <span>Unit Type：
-                      <el-select v-model="detail.leaseType" :placeholder="$t('choose')">
+                      <el-select v-model="detail.leaseType" :placeholder="$t('PleaseSelect')">
                         <el-option
                         v-for="item in [{'value':'rent','label':$t('Rent')},{'value':'sale','label':$t('Sale')}]"
                         :key="item.value"
@@ -132,6 +130,7 @@
             <li>
                 <span>Premises No (DEWA)：<el-input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.propertyNo"></el-input></span>
                 <span>Plot No：<el-input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.plotNo"></el-input></span>
+                <span></span>
             </li>
             <li>
                 <span>Premises Period To：<el-input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.premisesPeriodTo"></el-input></span>
@@ -144,13 +143,15 @@
                     value-format="yyyy-MM-dd" disabled>
                     </el-date-picker>
                 </span>
+                <span></span>
             </li>
             <li>
                 <span>Annual Rent：
                     <el-input type="text" disabled  v-model="detail.leasePrice"></el-input>
                     <!-- <i>AED{{detail.leasePrice}} Only</i> -->
-                    
                 </span>
+                <span></span>
+                <span></span>
             </li>
             <li>
                 <!-- 合同有效期年限，不可更改，显示格式为1 Year /3 Years -->
@@ -159,15 +160,16 @@
                     <!-- <i v-if="detail.contractValue==1">1 Year</i>
                     <i v-else>{{detail.payNode}} Years</i> -->
                 </span>
+                <span></span>
+                <span></span>
             </li>
             <li>
                 <span>Security Deposit Amount：<el-input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.securityDepositAmount"></el-input></span> 
                 <span>Mode of payment：
                     <!-- 支付节点，不可修改 -->
                     <el-input type="text" disabled  v-model="detail.payNode"></el-input>
-                    <!-- <i v-if="detail.payNode==1">1 cheque</i>
-                    <i v-else>{{detail.payNode}} cheques</i> -->
                 </span>
+                <span></span>
             </li>
         </ul>
         <div class="color-bar">Terms & Conditions:</div>
@@ -207,8 +209,8 @@
             </li>
             <p class="color-black">Note: You may add an addendum to this tenancy contract in case you have additional terms while it needs to be signed by all parties.</p>
         </ul>
-        <ul class="sign-position color-black">
-            <li>Tenant Signature:</li>
+        <ul class="sign-position color-black d_flex">
+            <li >Tenant Signature:</li>
             <li>Landlord Signature:</li>
         </ul>
         <!-- <div class="section mb-20">
@@ -344,12 +346,16 @@ export default {
             isDelivery:'',
             orderStatus:'',
             ownerImgs:{},
-            buyerImgs:{}
+            buyerImgs:{},
+            dateStr:'',
+            no:''
        },
         confirmBool:false,
         isDelivery:'',
         ownerImgsList:[],//业主护照等
         buyerImgsList:[],//租客/买家护照
+        ownerImgsPick:'',
+        buyerImgsPick:'',
     };
   },
   mounted(){
@@ -424,31 +430,39 @@ export default {
             for(let k in this.detail){
                 this.detail[k] = res.dataSet[k]?res.dataSet[k]:this.detail[k];
             }
-            
-            if(this.$route.query.contractId==""){
-                this.detail.ownerMobile = res.dataSet.memberMoble;
-                this.detail.ownerName = res.dataSet.memberName;
-                this.detail.landlordName = res.dataSet.memberName;
-                this.detail.landlordPhone = res.dataSet.memberMoble;
-                //租房人员信息
-                if(res.dataSet.memberPurchase ){
-                    this.detail.tenantName = res.dataSet.memberPurchase.memberName;
-                    this.detail.tenantPhone = res.dataSet.memberPurchase.phone;
-                    this.detail.tenantEmail = res.dataSet.memberPurchase.email;
-                }
-            }
-            this.detail.leasePrice = `AED${this.detail.leasePrice} Only`;
+
+            this.detail.leasePrice = !isNaN(res.dataSet.leasePrice)?`AED${ res.dataSet.leasePrice.toLocaleString('en-US')} Only`: res.dataSet.leasePrice.indexOf('AED')!=-1?res.dataSet.leasePrice:`AED${res.dataSet.leasePrice} Only`;
+
             if( this.detail.contractValue!="" ){
                 this.detail.contractValue = this.detail.contractValue==1? `1 Year`:`${this.detail.contractValue} Years`;
             }
             
             this.detail.payNode = this.detail.payNode==1?`1 cheque`:`${this.detail.payNode} cheques`;
-            console.log( this.detail ,'detail;');
+
+            // 处理业主/租客图片
+            /**
+                业主：房屋产权证明deeds，产权人护照propertyHolderPassport
+                租客：护照复印件passports，签证复印件visas，EID eids
+                买家：护照复印件passports，签证复印件visas
+            */ 
+            for(let key in this.detail.ownerImgs){
+                if(key!=='propertyHolderPassport' || key!=="deeds"){
+                    delete res.dataSet.ownerImgs[key];
+                }
+            }
+            
+            this.ownerImgsPick = Object.keys(this.detail.ownerImgs)[0];
+            this.buyerImgsPick = Object.keys(this.detail.buyerImgs)[0];
+            this.ownerImgsList = this.detail.ownerImgs[Object.keys(this.detail.ownerImgs)[0]];
+            this.buyerImgsList = this.buyerImgsPick?this.detail.buyerImgs[Object.keys(this.detail.buyerImgs)[0]]:[];            
+
         })
         .catch(err => this.$message.error(err.message)).finally(() => loading.close());;
     },
     //-客服合同20181212新增 合同id没有值的时候，第一次保存走创建合同接口 
     createContract(){
+
+        
         if( this.detail.additionalTerms.length >0){
             this.detail.additionalTerms.forEach((ele,i)=>{
                 this.detail['additionalTerm'+(i+1)] = ele
@@ -583,7 +597,13 @@ export default {
                     this.queryDetail();
               }
           }).catch(err => this.$message.error(err.message));
-      }
+    },
+    selectOwnerImgs(val){
+        this.ownerImgsList = this.detail.ownerImgs[val];
+    }, 
+    selectBuyerImgs(val){
+        this.buyerImgsList = this.detail.buyerImgs[val];
+    },
   }
 };
 </script>

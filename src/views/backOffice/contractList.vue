@@ -48,7 +48,7 @@
                     <!-- <router-link v-if="scope.row.orderType==0" :to="{name:'back_contractDetail_rent',query:{'id':scope.row.id}}">edit</router-link>
                     <router-link v-if="scope.row.orderType==1" :to="{name:'back_contractDetail_sale',query:{'id':scope.row.id}}">edit</router-link> -->
                     <a href="javascript:;" @click="view(scope.row)">{{$t('edit')}}</a>    
-                    <a class="ml-10" v-if="scope.row.standby2!=''&& $route.params.type ==1" :href="scope.row.standby2" target="blank" :style="{'color':'#333333'}">{{$t('preview')}}</a>
+                    <a class="ml-10" v-if="scope.row.contractId && $route.params.type ==1" :href="scope.row.standby2" target="blank" :style="{'color':'#333333'}">{{$t('preview')}}</a>
                 </template>
             </el-table-column>
 
@@ -130,7 +130,7 @@ export default {
         },
         view(item){
             // console.log(item.standby2)
-            if(item.standby2!=''){
+            if(item.contractId&&this.$route.params.type==1){
                 this.$confirm(this.$t('Thecontractisexisting'), this.$t('prompt'), {
                     confirmButtonText: this.$t('confirm'),
                     cancelButtonText: this.$t('cancel'),

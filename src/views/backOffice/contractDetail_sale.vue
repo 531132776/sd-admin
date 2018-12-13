@@ -12,12 +12,12 @@
             <li>
                 <!-- ownerImgs -->
                 landlord passport：
-                <el-select v-model="detail.ownerImgsPick" :placeholder="$t('choose')" @change="selectOwnerImgs"> 
+                <el-select v-model="ownerImgsPick" :placeholder="$t('PleaseSelect')" @change="selectOwnerImgs"> 
                     <el-option
                     v-for="(item,key) in detail.ownerImgs"
                     :key="key"
                     :value-key="key"
-                    :label="key"
+                    :label="key=='propertyHolderPassport'?$t('ownerPassportImg'):$t('CertificateImg')"
                     :value="key">
                     </el-option>
                 </el-select>
@@ -27,8 +27,8 @@
             </li>
             <li>
                 <!-- buyerImgs -->
-                tenant passport：
-                <el-select v-model="detail.buyerImgsPick" :placeholder="$t('choose')" @change="selectBuyerImgs" > 
+                buyer passport：
+                <el-select v-model="buyerImgsPick" :placeholder="$t('PleaseSelect')" @change="selectBuyerImgs" > 
                     <el-option
                     v-for="(item,key) in detail.buyerImgs"
                     :key="key"
@@ -188,7 +188,7 @@
             <li>
                 <span>Type of Area：
                     <!-- detail.typeOfArea===0?"Free Hold":"Lease Hold" -->
-                    <el-select v-model="detail.typeOfArea" placeholder="choose">
+                    <el-select v-model="detail.typeOfArea" placeholder="PleaseSelect">
                         <el-option
                         v-for="item in [{'value':0,'label':'Free Hold'},{'value':1,'label':'Lease Hold'}]"
                         :key="item.value"
@@ -407,11 +407,13 @@
         <div class="color-bar">FIRST PARTY : THE OWNERS(S)</div>
         <ul class="contract-from">
             <li>
-                <span>Name(English)：<el-input v-if="$route.query.type ==1"  type="text" :placeholder="$t('PleaseEnter')" v-model="detail.ownerNameEnglish"></el-input>
+                <!-- ownerNameEnglish word文档上需要显示为 nameOfOwner -->
+                <span>Name(English)：<el-input v-if="$route.query.type ==1"  type="text" :placeholder="$t('PleaseEnter')" v-model="detail.nameOfOwner"></el-input>
                 <i v-else class="color-light">******</i>
                 </span>  
             </li>
             <li>
+                
                 <span>Name (Arabic)：<el-input v-if="$route.query.type ==1"  type="text" :placeholder="$t('PleaseEnter')" v-model="detail.ownerNameArabic"></el-input>
                 <i v-else class="color-light">******</i>
                 </span>  
@@ -446,7 +448,8 @@
         <div class="color-bar">SECOND PARTY : THE BUYER(S)</div>
         <ul class="contract-from">
             <li>
-                <span>Name(English)：<el-input v-if="$route.query.type ==1"  type="text" :placeholder="$t('PleaseEnter')" v-model="detail.buyerNameEnglish"></el-input>
+                <!-- buyerNameEnglish word文档上需要显示为 nameOfBuyer -->
+                <span>Name(English)：<el-input v-if="$route.query.type ==1"  type="text" :placeholder="$t('PleaseEnter')" v-model="detail.nameOfBuyer"></el-input>
                 <i v-else class="color-light">******</i>
                 </span>  
             </li>
@@ -698,18 +701,19 @@ export default {
             ownerEmail	                       :"", //string	否			
             ownerExpiryDate	                   :"", //string	否			
             ownerPOBox	                       :"", //string	否			
-            ownerFax	                       :"", //string	否			
+            ownerFax	                       :"", //string	否	
+            nameOfBuyer	                       :"", //string	否
+            buyerNationality	               :"", //string	否
+            buyerIDCardNumber	               :"", //string	否
+            buyerPassportNo	                   :"", //string	否	
+            buyerMobile	                       :"", //string	否
+            buyerPOBox	                       :"", //string	否		
+            buyerPhone	                       :"", //string	否
             buyerFax	                       :"", //string	否			
-            buyerPOBox	                       :"", //string	否			
+            buyerAddress	                   :"", //string	否	
             buyerExpiryDate	                   :"", //string	否			
             buyerEmail	                       :"", //string	否			
-            buyerAddress	                   :"", //string	否			
-            buyerPhone	                       :"", //string	否			
-            buyerMobile	                       :"", //string	否			
-            buyerPassportNo	                   :"", //string	否			
-            buyerIDCardNumber	               :"", //string	否			
-            buyerNationality	               :"", //string	否			
-            nameOfBuyer	                       :"", //string	否			
+            			            		
             propertyStatus	                   :"", //string	否			
             typeOfArea	                       :"", //string	否			
             typeOfProperty	                   :"", //string	否			
@@ -795,6 +799,8 @@ export default {
         isDelivery:'',
         ownerImgsList:[],//业主护照等
         buyerImgsList:[],//租客/买家护照
+        ownerImgsPick:'',
+        buyerImgsPick:'',
 
     };
   },
@@ -874,27 +880,31 @@ export default {
                 this.detail[k] = res.dataSet[k]?res.dataSet[k]:this.detail[k];
             }
             
-            if(this.$route.query.contractId==""){
-                this.detail.ownerMobile = res.dataSet.memberMoble;
-                this.detail.ownerName = res.dataSet.memberName;
-                //租房人员信息
-                if(res.dataSet.memberPurchase ){
-                    this.detail.nameOfBuyer = res.dataSet.memberPurchase.memberName;
-                    this.detail.buyerMobile = res.dataSet.memberPurchase.phone;
-                    this.detail.buyerEmail = res.dataSet.memberPurchase.email;
-                    this.detail.buyerIDCardNumber = res.dataSet.memberPurchase.idCard;
-                    this.detail.buyerIDCardNumber = res.dataSet.memberPurchase.idCard;
-                    this.detail.buyerNationality = res.dataSet.memberPurchase.nationality;
-                    this.detail.buyerIDCardNumber = res.dataSet.memberPurchase.passportNumber;
-                }
-            }
             if(res.dataSet.signDay ){
                 this.signDate = `${res.dataSet.signYear}-${res.dataSet.signMonth}-${res.dataSet.signDay}`;
             }
             // if(res.dataSet.transferDate.split('/').length>=3){
             //     this.detail.transferDate = `${res.dataSet.transferDate.split('/')[2]}-${res.dataSet.transferDate.split('/')[1]}-${res.dataSet.transferDate.split('/')[0]}`
             // }
-            // 处理业主图片
+            // 处理业主/租客图片
+            /**
+                业主：房屋产权证明deeds，产权人护照propertyHolderPassport
+                租客：护照复印件passports，签证复印件visas，EID eids
+                买家：护照复印件passports，签证复印件visas
+            */ 
+            for(let key in this.detail.ownerImgs){
+                if(key=='propertyHolderPassport' || key=="deeds"){
+    
+                }else{
+                    delete res.dataSet.ownerImgs[key]
+                }
+            }
+            
+            console.log( this.detail.ownerImgs , this.detail.buyerImgs )
+            this.ownerImgsPick = Object.keys(this.detail.ownerImgs)[0];
+            this.buyerImgsPick = Object.keys(this.detail.buyerImgs)[0];
+            this.ownerImgsList = this.detail.ownerImgs[Object.keys(this.detail.ownerImgs)[0]];
+            this.buyerImgsList = this.buyerImgsPick?this.detail.buyerImgs[Object.keys(this.detail.buyerImgs)[0]]:[];
 
             console.log( this.detail ,'detail;');
         })
