@@ -172,6 +172,7 @@
             margin: 20px 50px;
             display: flex;
             justify-content: flex-start;
+            .el-upload-list__item-delete{display: none;}
             img{
                 width: 350px;
                 height: 250px; 

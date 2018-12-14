@@ -22,7 +22,14 @@
                     </el-option>
                 </el-select>
                 <div class="img-box">
-                    <img v-for="(item) in ownerImgsList" v-lazy="item" alt="" :key="item">
+                    <!-- <img v-for="(item) in ownerImgsList" v-lazy="item.url" alt="" :key="item.url"> -->
+                    <el-upload
+                        action=""
+                        :file-list="ownerImgsList"
+                        list-type="picture-card"
+                        :on-preview="imgPreview"
+                        class="no-uploadIcon">
+                    </el-upload>
                 </div>
             </li>
             <li>
@@ -38,7 +45,15 @@
                     </el-option>
                 </el-select>
                 <div class="img-box">
-                    <img v-for="(item) in buyerImgsList" v-lazy="item" alt="" :key="item">
+                    <!-- <img v-for="(item) in buyerImgsList" v-lazy="item" alt="" :key="item.url"> -->
+                    <el-upload
+                        action=""
+                        :file-list="buyerImgsList"
+                        list-type="picture-card"
+                        :on-preview="imgPreview"
+                        class="no-uploadIcon">
+                        <!-- <i class="el-icon-plus"></i> -->
+                    </el-upload>
                 </div>
             </li>
         </ul>
@@ -147,8 +162,8 @@
             </li>
             <li>
                 <span>Annual Rent：
-                    <el-input type="text" disabled  v-model="detail.leasePrice"></el-input>
-                    <!-- <i>AED{{detail.leasePrice}} Only</i> -->
+                    <!-- <el-input type="text" disabled  v-model="detail.leasePrice"></el-input> -->
+                    <i>AED{{detail.leasePrice}} Only</i>
                 </span>
                 <span></span>
                 <span></span>
@@ -156,9 +171,9 @@
             <li>
                 <!-- 合同有效期年限，不可更改，显示格式为1 Year /3 Years -->
                 <span>Contract Value：
-                    <el-input type="text" disabled  v-model="detail.contractValue"></el-input>
-                    <!-- <i v-if="detail.contractValue==1">1 Year</i>
-                    <i v-else>{{detail.payNode}} Years</i> -->
+                    <!-- <el-input type="text" disabled  v-model="detail.contractValue"></el-input> -->
+                    <i v-if="detail.contractValue==1">1 Year</i>
+                    <i v-else-if="detail.contractValue!=''">{{detail.contractValue}} Years</i>
                 </span>
                 <span></span>
                 <span></span>
@@ -167,7 +182,9 @@
                 <span>Security Deposit Amount：<el-input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.securityDepositAmount"></el-input></span> 
                 <span>Mode of payment：
                     <!-- 支付节点，不可修改 -->
-                    <el-input type="text" disabled  v-model="detail.payNode"></el-input>
+                    <!-- <el-input type="text" disabled  v-model="detail.payNode"></el-input> -->
+                    <i v-if="detail.payNode==1">1 cheque</i>
+                    <i v-else>{{detail.payNode}} cheques</i>
                 </span>
                 <span></span>
             </li>
@@ -288,7 +305,9 @@
             </div>
         </el-dialog>
 
-
+        <el-dialog :visible.sync="dialogVisible">
+            <img width="100%" :src="dialogImageUrl" alt="">
+        </el-dialog>
     </div>
 </template>
 
@@ -356,6 +375,8 @@ export default {
         buyerImgsList:[],//租客/买家护照
         ownerImgsPick:'',
         buyerImgsPick:'',
+        dialogVisible:false,
+        dialogImageUrl:''
     };
   },
   mounted(){
@@ -430,14 +451,15 @@ export default {
             for(let k in this.detail){
                 this.detail[k] = res.dataSet[k]?res.dataSet[k]:this.detail[k];
             }
+            this.detail.leasePrice = !isNaN(res.dataSet.leasePrice)?res.dataSet.leasePrice.toLocaleString('en-US'):res.dataSet.leasePrice;
 
-            this.detail.leasePrice = !isNaN(res.dataSet.leasePrice)?`AED${ res.dataSet.leasePrice.toLocaleString('en-US')} Only`: res.dataSet.leasePrice.indexOf('AED')!=-1?res.dataSet.leasePrice:`AED${res.dataSet.leasePrice} Only`;
+            // this.detail.leasePrice = !isNaN(res.dataSet.leasePrice)?`AED${ res.dataSet.leasePrice.toLocaleString('en-US')} Only`: res.dataSet.leasePrice.indexOf('AED')!=-1?res.dataSet.leasePrice:`AED${res.dataSet.leasePrice} Only`;
 
-            if( this.detail.contractValue!="" ){
-                this.detail.contractValue = this.detail.contractValue==1? `1 Year`:`${this.detail.contractValue} Years`;
-            }
+            // if( this.detail.contractValue!="" ){
+            //     this.detail.contractValue = this.detail.contractValue==1? `1 Year`:`${this.detail.contractValue} Years`;
+            // }
             
-            this.detail.payNode = this.detail.payNode==1?`1 cheque`:`${this.detail.payNode} cheques`;
+            // this.detail.payNode = this.detail.payNode==1?`1 cheque`:`${this.detail.payNode} cheques`;
 
             // 处理业主/租客图片
             /**
@@ -453,8 +475,23 @@ export default {
             
             this.ownerImgsPick = Object.keys(this.detail.ownerImgs)[0];
             this.buyerImgsPick = Object.keys(this.detail.buyerImgs)[0];
-            this.ownerImgsList = this.detail.ownerImgs[Object.keys(this.detail.ownerImgs)[0]];
-            this.buyerImgsList = this.buyerImgsPick?this.detail.buyerImgs[Object.keys(this.detail.buyerImgs)[0]]:[];            
+            let arr1 = this.ownerImgsPick?this.detail.ownerImgs[Object.keys(this.detail.ownerImgs)[0]]:[];
+            let arr2 = this.buyerImgsPick?this.detail.buyerImgs[Object.keys(this.detail.buyerImgs)[0]]:[];
+            // this.ownerImgsList = this.detail.ownerImgs[Object.keys(this.detail.ownerImgs)[0]];
+            if(arr1){
+                arr1.forEach(ele=>{
+                    this.ownerImgsList.push({url: ele})
+                })
+                this.ownerImgsList = this.ownerImgsList.filter(v => Boolean(v.url) == true);
+            }
+            if(arr2){
+                arr1.forEach(ele=>{
+                    this.buyerImgsList.push({url: ele})
+                })
+                this.buyerImgsList = this.buyerImgsList.filter(v => Boolean(v.url) == true);                
+            }
+
+            // this.buyerImgsList = this.buyerImgsPick?this.detail.buyerImgs[Object.keys(this.detail.buyerImgs)[0]]:[];            
 
         })
         .catch(err => this.$message.error(err.message)).finally(() => loading.close());;
@@ -599,11 +636,31 @@ export default {
           }).catch(err => this.$message.error(err.message));
     },
     selectOwnerImgs(val){
-        this.ownerImgsList = this.detail.ownerImgs[val];
+            this.$set(this,'ownerImgsList',[])
+
+            let arr = this.detail.ownerImgs[val];
+            arr.forEach(ele=>{
+                this.ownerImgsList.push({url: ele})
+            })
+            this.ownerImgsList = this.ownerImgsList.filter(v => Boolean(v.url) == true);
+
+
+        // this.ownerImgsList = this.detail.ownerImgs[val];
     }, 
     selectBuyerImgs(val){
-        this.buyerImgsList = this.detail.buyerImgs[val];
+            this.$set(this,'buyerImgsList',[])
+            // this.buyerImgsList = [];
+            let arr = this.detail.buyerImgs[val];
+            arr.forEach(ele=>{
+                this.buyerImgsList.push({url: ele})
+            })
+            this.buyerImgsList = this.buyerImgsList.filter(v => Boolean(v.url) == true);
+
     },
+    imgPreview(file){
+        this.dialogVisible = true;
+        this.dialogImageUrl = file.url;
+    }
   }
 };
 </script>

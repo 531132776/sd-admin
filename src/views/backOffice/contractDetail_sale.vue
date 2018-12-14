@@ -22,7 +22,14 @@
                     </el-option>
                 </el-select>
                 <div class="img-box">
-                    <img v-for="(item) in ownerImgsList" v-lazy="item" alt="" :key="item">
+                    <!-- <img v-for="(item) in ownerImgsList" v-lazy="item" alt="" :key="item"> -->
+                    <el-upload
+                        action=""
+                        :file-list="ownerImgsList"
+                        list-type="picture-card"
+                        :on-preview="imgPreview"
+                        class="no-uploadIcon">
+                    </el-upload>
                 </div>
             </li>
             <li>
@@ -38,7 +45,15 @@
                     </el-option>
                 </el-select>
                 <div class="img-box">
-                    <img v-for="(item) in buyerImgsList" v-lazy="item" alt="" :key="item">
+                    <!-- <img v-for="(item) in buyerImgsList" v-lazy="item" alt="" :key="item"> -->
+                    <el-upload
+                        action=""
+                        :file-list="buyerImgsList"
+                        list-type="picture-card"
+                        :on-preview="imgPreview"
+                        class="no-uploadIcon">
+                        <!-- <i class="el-icon-plus"></i> -->
+                    </el-upload>
                 </div>
             </li>
         </ul>
@@ -636,7 +651,9 @@
             </div>
         </el-dialog>
 
-
+        <el-dialog :visible.sync="dialogVisible">
+            <img width="100%" :src="dialogImageUrl" alt="">
+        </el-dialog>
     </div>
 </template>
 
@@ -801,6 +818,8 @@ export default {
         buyerImgsList:[],//租客/买家护照
         ownerImgsPick:'',
         buyerImgsPick:'',
+        dialogVisible:false,
+        dialogImageUrl:''
 
     };
   },
@@ -903,8 +922,21 @@ export default {
             console.log( this.detail.ownerImgs , this.detail.buyerImgs )
             this.ownerImgsPick = Object.keys(this.detail.ownerImgs)[0];
             this.buyerImgsPick = Object.keys(this.detail.buyerImgs)[0];
-            this.ownerImgsList = this.detail.ownerImgs[Object.keys(this.detail.ownerImgs)[0]];
-            this.buyerImgsList = this.buyerImgsPick?this.detail.buyerImgs[Object.keys(this.detail.buyerImgs)[0]]:[];
+            let arr1 = this.ownerImgsPick?this.detail.ownerImgs[Object.keys(this.detail.ownerImgs)[0]]:[];
+            let arr2 = this.buyerImgsPick?this.detail.buyerImgs[Object.keys(this.detail.buyerImgs)[0]]:[];
+            // this.ownerImgsList = this.detail.ownerImgs[Object.keys(this.detail.ownerImgs)[0]];
+            if(arr1){
+                arr1.forEach(ele=>{
+                    this.ownerImgsList.push({url: ele})
+                })
+                this.ownerImgsList = this.ownerImgsList.filter(v => Boolean(v.url) == true);
+            }
+            if(arr2){
+                arr1.forEach(ele=>{
+                    this.buyerImgsList.push({url: ele})
+                })
+                this.buyerImgsList = this.buyerImgsList.filter(v => Boolean(v.url) == true);                
+            }
 
             console.log( this.detail ,'detail;');
         })
@@ -1057,11 +1089,31 @@ export default {
           }).catch(err => this.$message.error(err.message));
     },
     selectOwnerImgs(val){
-        this.ownerImgsList = this.detail.ownerImgs[val];
+            this.$set(this,'ownerImgsList',[])
+
+            let arr = this.detail.ownerImgs[val];
+            arr.forEach(ele=>{
+                this.ownerImgsList.push({url: ele})
+            })
+            this.ownerImgsList = this.ownerImgsList.filter(v => Boolean(v.url) == true);
+
+
+        // this.ownerImgsList = this.detail.ownerImgs[val];
     }, 
     selectBuyerImgs(val){
-        this.buyerImgsList = this.detail.buyerImgs[val];
-    },  
+            this.$set(this,'buyerImgsList',[])
+            // this.buyerImgsList = [];
+            let arr = this.detail.buyerImgs[val];
+            arr.forEach(ele=>{
+                this.buyerImgsList.push({url: ele})
+            })
+            this.buyerImgsList = this.buyerImgsList.filter(v => Boolean(v.url) == true);
+
+    },
+    imgPreview(file){
+        this.dialogVisible = true;
+        this.dialogImageUrl = file.url;
+    } 
   }
 };
 </script>
