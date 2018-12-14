@@ -13,7 +13,7 @@
             <el-radio v-model="housingApplication.leaseType" :label="1" :disabled="housingApplication.leaseType===0 ? true : false">{{$t('Sale')}}</el-radio>
         </el-radio-group>
 
-        <el-form :inline="true" :model="housingApplication" :rules="rules" ref="ruleForm" class="demo-form-inline" label-width="160px" label-position="left">
+        <el-form :inline="true" :model="housingApplication" :rules="rules" ref="ruleForm" class="demo-form-inline addTriak_house_name" label-width="160px" label-position="left">
             <div class="meetingTime d_flex">
                 <el-form-item :label="$t('housingAssociation')" >
                     <el-input v-model="housingApplication.memberMobile" :placeholder="$t('housingAssociation')" disabled></el-input>
@@ -344,7 +344,7 @@
                         <span slot="label">{{$t('tenantsPhone')}}</span>
                         <el-input v-model="housingApplication.rentCustomerPhone"></el-input>
                     </el-form-item>
-                    <el-row >
+                    <el-row class="add_multiple_check_all">
                         <el-col :span="20">
                             <!-- 业主设置预约时间 -->
                             <!-- 
@@ -415,7 +415,7 @@
                             <el-input v-model="housingApplication.masterDevelpoerName"></el-input>
                         </el-form-item>
 
-                    <el-row>
+                    <el-row class="add_el_row">
                         <el-col :span="20">
                             <el-form-item prop="region">
                                 <span slot="label">{{$t('houseingFacilities')}}</span>
@@ -428,7 +428,7 @@
                         </el-col>
                     </el-row>
 
-                    <el-row>
+                    <el-row class="add_el_row">
                         <el-col :span="20">
                             <el-form-item prop="region">
                                 <span slot="label">{{$t('housingAllocation')}}</span>
@@ -534,7 +534,7 @@
                     <span slot="label">{{$t('autoAnswer')}}</span>
                     <!-- 出租模式 -->
                     <div v-if="housingApplication.leaseType===0">
-                        <el-row type="flex" v-for="(autoAnswer,idx) in autoAnswerList" :key="idx">
+                        <el-row type="flex" v-for="(autoAnswer,idx) in autoAnswerList" :key="idx" class="add_sale_mode">
                             <el-col :span="3">
                                 <el-form-item>
                                     <span slot="label">{{$t('rentStartDate')}}</span>
@@ -623,7 +623,7 @@
                     </div>
                     <!-- 出售模式 -->
                     <div v-if="housingApplication.leaseType===1">
-                        <el-row v-for="(autoAnswer,idx) in autoAnswerList" :key="idx">
+                        <el-row v-for="(autoAnswer,idx) in autoAnswerList" :key="idx" class="add_sale_mode">
                             <el-col :span="5">
                                 <el-form-item>
                                     <span slot="label">{{$t('MethodOfPayment')}}</span>

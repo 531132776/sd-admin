@@ -14,7 +14,7 @@
             <el-radio v-model="housingApplication.leaseType" :label="0" >{{$t('Rent')}}</el-radio>
             <el-radio v-model="housingApplication.leaseType" :label="1" >{{$t('Sale')}}</el-radio>
         </el-radio-group>
-        <el-form :inline="true" label-position="left" label-width="160px"  :model="housingApplication" :rules="rules" ref="ruleForm" class="demo-form-inline">
+        <el-form :inline="true" label-position="left" label-width="160px"  :model="housingApplication" :rules="rules" ref="ruleForm" class="demo-form-inline addTriak_house_name">
             <!-- 见面时间，见面地点 -->
             <div class="d_flex meetingTime">
                 <el-form-item :label="$t('MeetingTime')" prop="appointmentDoorTime">
@@ -299,7 +299,7 @@
                         <span slot="label">{{$t('tenantsPhone')}}</span>
                         <el-input v-model="housingApplication.rentCustomerPhone"></el-input>
                     </el-form-item>
-                    <el-row >
+                    <el-row class="add_el_row">
                         <el-col :span="20">
                             <!-- 业主设置预约时间 -->
 
@@ -308,7 +308,7 @@
                                 <span slot="label">{{$t('appointmentTime')}}</span>
                                 <el-input class="hidden" type="hidden" v-model="housingApplication.appointmentLookTime"></el-input>
                                 <div class="appointmentLookTime_div mb-20">
-                                    <el-checkbox v-model="appointmentLookTime_checkall" @change='changeAppointmentLookTime()'>全选</el-checkbox>
+                                    <el-checkbox v-model="appointmentLookTime_checkall" @change='changeAppointmentLookTime()'>{{$t('checkAll')}}</el-checkbox>
                                     <ul class="d_flex header mt-10">
                                         <li>Sun</li>
                                         <li>Mon</li>
@@ -336,7 +336,7 @@
                         </el-col>
                     </el-row>
 
-                    <el-row>
+                    <el-row class="add_el_row">
                         <el-col :span="20">
                             <el-form-item>
                                 <span slot="label">{{$t('houseingFacilities')}}</span>
@@ -348,7 +348,7 @@
                             </el-form-item>
                         </el-col>
                     </el-row>
-                    <el-row>
+                    <el-row class="add_el_row">
                         <el-col :span="20">
                             <el-form-item>
                                 <span slot="label">{{$t('housingAllocation')}}</span>
