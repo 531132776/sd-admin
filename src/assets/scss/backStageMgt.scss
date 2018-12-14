@@ -143,6 +143,43 @@
         margin-left:0px !important;
         float:left;
     }
+    .el-breadcrumb > span:last-child > .el-breadcrumb__inner{
+        color: #00B660;
+    }
+    .el-breadcrumb__separator{
+        color: #666666;
+    }
+    .qutside_f_btn{
+        width:100% !important;
+        text-align:center;
+        margin-top:15%;
+        padding:0px 30px;
+        .el-form-item__content{
+            margin-left: 0px !important;
+        }
+    }
+    .addTriak_house_name.el-form--label-left .el-form-item__label{
+        text-align: right !important;
+    }
+    .add_el_row .el-form-item__label{
+        text-align: left;
+        width: auto !important;
+    }
+    .addTriak_house_name .el-input__inner{
+        width: 230px;
+    }
+    .add_el_row .el-input__inner, .add_multiple_check_all .el-input__inner{
+        width: 100%;
+    }
+    .add_sale_mode .el-form-item .el-form-item__label{
+        text-align: left !important;
+    }
+    .add_sale_mode .el-input__inner{
+        width: 100%;
+    }
+    .add_sale_mode .el-form-item{
+        width: auto !important;
+    }
 }
 body{
     .el-select-dropdown__item.selected,

@@ -1,8 +1,8 @@
 <template>
   <div class="complain-detail">
     <div class="nav">
-      <el-breadcrumb separator="/">
-        <el-breadcrumb-item :to="{  }"><span class="">{{$t('orderService')}}</span></el-breadcrumb-item>
+      <el-breadcrumb separator-class="el-icon-arrow-right">
+        <el-breadcrumb-item :to="{ path: '/home/complain' }"><span class="">{{$t('orderService')}}</span></el-breadcrumb-item>
         <el-breadcrumb-item>{{$t('complaints')}}</el-breadcrumb-item>
       </el-breadcrumb>
     </div>
@@ -27,11 +27,25 @@
     <div class="complain-info">
       <p>{{$t('ComplaintsContent')}}</p>
       <div class="complain-content d_flex" v-if="detail.complainType==0">
-        <el-radio v-model="detail.complainReason" :label="0" disabled><span>{{$t('housingStockLeased')}}</span></el-radio>
-        <el-radio v-model="detail.complainReason" :label="1" disabled><span>{{$t('priceOfFalse')}}</span></el-radio>
-        <el-radio v-model="detail.complainReason" :label="2" disabled><span>{{$t('picturesOfFalse')}}</span></el-radio>
-        <el-radio v-model="detail.complainReason" :label="3" disabled><span>{{$t('propertiesOfFalse')}}</span></el-radio>
-        <el-radio v-model="detail.complainReason" :label="4" disabled><span>{{$t('other')}}</span></el-radio>
+        <ul>
+          <li>
+              <el-radio v-model="detail.complainReason" :label="0" disabled><span>{{$t('housingStockLeased')}}</span></el-radio>
+          </li>
+          <li>
+              <el-radio v-model="detail.complainReason" :label="2" disabled><span>{{$t('picturesOfFalse')}}</span></el-radio>
+          </li>
+          <li>
+              <el-radio v-model="detail.complainReason" :label="4" disabled><span>{{$t('other')}}</span></el-radio>
+          </li>
+        </ul>
+        <ul>
+          <li>
+              <el-radio v-model="detail.complainReason" :label="1" disabled><span>{{$t('priceOfFalse')}}</span></el-radio>
+          </li>
+          <li>
+              <el-radio v-model="detail.complainReason" :label="3" disabled><span>{{$t('propertiesOfFalse')}}</span></el-radio>
+          </li>
+        </ul>
       </div>
       <div class="complain-content d_flex" v-if="detail.complainType==1">
           <el-radio v-model="detail.complainReason" :label="5" disabled><span>{{$t('salesmanTime')}}</span></el-radio>
@@ -455,6 +469,12 @@
           >span {
             color: #333333;
             font-size: 14px;
+          }
+        }
+        ul{
+          margin-right: 120px;
+          li{
+            line-height: 40px;
           }
         }
       }

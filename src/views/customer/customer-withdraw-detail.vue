@@ -1,8 +1,8 @@
 <template>
   <div class="withdraw-detail">
     <div class="nav">
-      <el-breadcrumb separator="/">
-        <el-breadcrumb-item :to="{  }"><span class="">{{$t('orderService')}}</span></el-breadcrumb-item>
+      <el-breadcrumb separator-class="el-icon-arrow-right">
+        <el-breadcrumb-item :to="{ path:'/home/withdraw' }"><span class="">{{$t('orderService')}}</span></el-breadcrumb-item>
         <el-breadcrumb-item>{{$t('obtained')}}</el-breadcrumb-item>
       </el-breadcrumb>
     </div>

@@ -2,8 +2,8 @@
   <div class="feedback-detail">
 
     <div class="nav">
-      <el-breadcrumb separator="/">
-        <el-breadcrumb-item :to="{  }"><span class="">{{$t('orderService')}}</span></el-breadcrumb-item>
+      <el-breadcrumb separator-class="el-icon-arrow-right">
+        <el-breadcrumb-item :to="{ path: '/home/feedback' }"><span class="">{{$t('orderService')}}</span></el-breadcrumb-item>
         <el-breadcrumb-item>{{$t('feedback')}}</el-breadcrumb-item>
       </el-breadcrumb>
     </div>
@@ -25,14 +25,35 @@
     <div class="feedback-info">
       <p>{{$t('feedback')}}</p>
       <div class="feedback-content d_flex">
-          <el-radio v-model="detail.feedbackType"  :label="0" disabled>{{$t('housingStatusComplaints')}}</el-radio>
-          <el-radio v-model="detail.feedbackType"  :label="1" disabled><span>{{$t('feeComplaint')}}</span></el-radio>
-          <el-radio v-model="detail.feedbackType"  :label="2" disabled><span>{{$t('financialLoans')}}</span></el-radio>
-          <el-radio v-model="detail.feedbackType"  :label="3" disabled><span>{{$t('serviceRelated')}}</span></el-radio>
-          <el-radio v-model="detail.feedbackType"  :label="4" disabled><span>{{$t('whi')}}</span></el-radio>
-          <el-radio v-model="detail.feedbackType"  :label="5" disabled><span>{{$t('sstcp')}}</span></el-radio>
-          <el-radio v-model="detail.feedbackType"  :label="6" disabled><span>{{$t('affb')}}</span></el-radio>
-          <el-radio v-model="detail.feedbackType"  :label="7" disabled><span>{{$t('other')}}</span></el-radio>
+        <ul>
+          <li>
+              <el-radio v-model="detail.feedbackType"  :label="0" disabled>{{$t('housingStatusComplaints')}}</el-radio>
+          </li>
+          <li>
+              <el-radio v-model="detail.feedbackType"  :label="2" disabled><span>{{$t('financialLoans')}}</span></el-radio>
+          </li>
+          <li>
+              <el-radio v-model="detail.feedbackType"  :label="4" disabled><span>{{$t('whi')}}</span></el-radio>
+          </li>
+          <li>
+              <el-radio v-model="detail.feedbackType"  :label="6" disabled><span>{{$t('affb')}}</span></el-radio>
+          </li>
+          <li></li>
+        </ul>
+        <ul>
+          <li>
+              <el-radio v-model="detail.feedbackType"  :label="1" disabled><span>{{$t('feeComplaint')}}</span></el-radio>
+          </li>
+          <li>
+              <el-radio v-model="detail.feedbackType"  :label="3" disabled><span>{{$t('serviceRelated')}}</span></el-radio>
+          </li>
+          <li>
+              <el-radio v-model="detail.feedbackType"  :label="5" disabled><span>{{$t('sstcp')}}</span></el-radio>
+          </li>
+          <li>
+              <el-radio v-model="detail.feedbackType"  :label="7" disabled><span>{{$t('other')}}</span></el-radio>
+          </li>
+        </ul>  
       </div>
     </div>
     <div class="supplement">
@@ -130,7 +151,7 @@
       }
 
       >.houseInfo {
-        height: 200px;
+        height: 120px;
         background: rgba(247, 247, 247, 1);
         border-radius: 3px;
         margin-left: 6px;
@@ -144,6 +165,8 @@
           margin-right: 120px;
 
           >p {
+            margin: 0;
+            line-height: 40px;
             >.key {
               color: #666666;
               font-size: 12px;
@@ -191,12 +214,11 @@
         height: 14px;
         display: flex;
         align-items: center;
-        ;
         border-left: 2px solid #00B660;
         text-indent: 3px;
         color: #333333;
         font-size: 14px;
-        margin: 40px 0 20px 0;
+        margin: 20px 0 20px 0;
       }
 
       >.feedback-content {
@@ -218,6 +240,12 @@
           }
         }
       }
+      ul{
+        margin-right: 120px;
+        li{
+          line-height: 40px;
+        }
+      }
     }
 
     >.remarks {
@@ -231,11 +259,11 @@
         font-size: 14px;
         margin: 40px 0 20px 0;
 
-        // >span {
+        /* // >span {
         //   color: #E21010;
         //   font-size: 12px;
         //   margin-left: 17px;
-        // }
+        // } */
       }
 
       >.remarks-info {

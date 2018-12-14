@@ -34,14 +34,14 @@
                     </el-form-item>
                     <el-form-item prop="housingTypeDictcode">
                         <span slot="label">{{$t('HousingTypes')}}</span>
-                        <el-cascader placeholder="search" v-model="housingTypeDictcode" :options="houseTypeMap" :props="{'label':$i18n.locale=='zh'?'itemValue':'itemValueEn','children':'sub',value:'id'}"
+                        <el-cascader style="width:300px;" placeholder="search" v-model="housingTypeDictcode" :options="houseTypeMap" :props="{'label':$i18n.locale=='zh'?'itemValue':'itemValueEn','children':'sub',value:'id'}"
                                     filterable
                                     :show-all-levels="false" ></el-cascader>
                     </el-form-item>
                     
                     <el-form-item prop="city">
                         <span slot="label">{{$t('housingArea')}}</span>
-                        <el-cascader placeholder="search" v-model="city" :options="cities" :props="{'label':'cityNameCn','children':'sub','value':'cityNameCn'}"
+                        <el-cascader style="width:300px;" placeholder="search" v-model="city" :options="cities" :props="{'label':'cityNameCn','children':'sub','value':'cityNameCn'}"
                                     filterable>
                         </el-cascader>
                     </el-form-item>
@@ -68,9 +68,9 @@
                                     :placeholder="$t('PleaseSelect')" @change="getTESTtime" ref="datePicker">
                         </el-date-picker>
                     </el-form-item>
-                    <el-form-item >
+                    <el-form-item class="qutside_f_btn">
                         <span slot="label"></span>
-                        <el-button type="success" @click="submit('ruleForm')">{{$t('submit')}}</el-button>
+                        <el-button type="success" style="width:240px;" @click="submit('ruleForm')">{{$t('submit')}}</el-button>
                     </el-form-item>                            
                 </el-form>
             </div>
@@ -297,14 +297,14 @@
             }
 
             >.content {
-                padding-left: 70px;
-
+                /* padding-left: 70px; */
+                padding: 0 30px;
             }
         }
         .d_flex{
             flex-wrap: wrap;
             .el-form-item{
-                width: 45%;
+                width: 48%;
                 .el-input{
                     width: 300px!important;
                 }
