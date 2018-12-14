@@ -19,3 +19,193 @@
 .el-table th>.cell {
     line-height: 40px;
 }
+
+//-------------------------------合同页面
+.contract {
+    //合同列表
+    >.header {
+        margin: 5px 0;
+    }
+
+    >.body {
+        .order-detail {
+            width: 100%
+        }
+    }
+
+    >.page {
+        text-align: right;
+        padding: 10px 0;
+    }
+}
+
+//合同详情
+.contract-detail {
+    color: #333;
+    // 图
+    .company-stamp {
+        height: 40px;
+        margin: 5px 40px;
+        margin-bottom: 15px;
+        display: flex;
+        justify-content: space-between;
+
+        span.black_s {
+            color: #030303;
+            font-size: 14px;
+            font-weight: 500;
+        }
+    }
+    .header{
+        position: relative;
+        margin-bottom: 35px;
+        padding-left: 20px;
+        .position{
+            position: absolute;
+            left: 20px;
+            span{
+                &:nth-of-type(1){
+                    display: inline-block;
+                    margin-bottom: 7px;
+                }
+            }
+        }
+        p{
+            color: #030303;
+            font-weight: 500;
+            text-align: center;
+            padding: 22px 0;
+        }
+    }
+    .contart-header{
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 20px;
+        padding-left: 20px;
+        .light-dot{
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #D8D8D8;
+            vertical-align: bottom;
+        }
+    }
+    .contract-from {
+        padding-left: 20px;
+        &.margin20 {
+            margin-top: 40px;
+        }
+
+        >li {
+            margin-bottom: 10px;
+            display: flex;
+            .el-input{
+                width: auto;
+            }
+            input{
+                // border: none;
+                // width: 70%;
+            }    
+            >span {
+                width: 50%;
+                >.el-input{width: 50%;}
+                >.el-select{width: 50%;}
+            }
+        }
+    }
+
+    .color-bar {
+        height: 36px;
+        line-height: 36px;
+        color: #fff;
+        background: #80ba6b;
+        padding-left: 22px;
+        margin: 20px 0;
+
+        &.dark-green {
+            background: #679753;
+            padding-left: 30px;
+            margin-bottom: -20px;
+        }
+    }
+
+    .contract-clause {
+        padding-left: 20px;
+
+        &.color-black {
+            color: #000;
+        }
+
+        li {
+            line-height: 20px;
+            margin-bottom: 10px;
+
+            i.dot {
+                display: inline-block;
+                width: 10px;
+                height: 10px;
+                background: #000;
+                border-radius: 50%;
+                margin-right: 10px;
+            }
+            .el-textarea{
+                margin-left: 10px;
+                vertical-align: text-top;
+                width: 98%;
+                textarea{
+                    font-family: micosoft yahei;
+                }
+            }
+
+            i.text {
+                color: #ccc;
+                font-style: normal;
+            }
+        }
+    }
+
+    .sign-position {
+        padding-left: 20px;
+        margin: 40px 0;
+
+        li:nth-of-type(1) {
+            margin-bottom: 20px;
+        }
+        &.d_flex{
+            li{width: 50%;}
+        }
+    }
+
+    .el-row {
+        text-align: center;
+        margin-bottom: 84px;
+
+        button {
+            width: 240px;
+            height: 44px;
+            font-size: 16px;
+        }
+    }
+    //护照展示
+    ul.passport-wrap{
+        margin: 20px;
+        .img-box{
+            margin: 20px 50px;
+            display: flex;
+            justify-content: flex-start;
+            .el-upload-list{
+                .el-upload-list__item{
+                    width: 350px;
+                    height: 250px;                     
+                }
+            }
+            .el-upload-list__item-delete{display: none;}
+            img{
+                width: 350px;
+                height: 250px; 
+                margin-right: 10px;
+            }
+        }
+    }
+}

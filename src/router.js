@@ -108,12 +108,6 @@ export default new Router({
           component: () => import('./views/backStage/city.vue'),
           meta: { requireAuth: true },
         },
-        // {/**权限管理-用户列表*/
-        //   path: 'admins',
-        //   name: 'admins',
-        //   component: () => import('./views/backStage/admin-list.vue'),
-        //   meta: { requireAuth: true },
-        // },
         {/**权限管理-角色管理*/
           path: 'role',
           name: 'role',
@@ -159,25 +153,11 @@ export default new Router({
           component: () => import('./views/customer/final-house.vue'),
           meta: { requireAuth: true },
         },
-         {/**房源管理-客服上传*/
-          path: 'uploadHouse/:memberId',
-          name: 'uploadHouse',
-          props: true,
-          component: () => import('./views/customer/upload-house.vue'),
-          meta: { requireAuth: true },
-        },
         {/**房源管理-外获上传*/
           path: 'outsideUpload',
           name: 'outsideUpload',
           props: true,
           component: () => import('./views/customer/outside-upload.vue'),
-          meta: { requireAuth: true },
-        },
-         {/**房源管理-外获上传-编辑*/
-          path: 'outsideEdit/:id',
-          name: 'outsideEdit',
-          props: true,
-          component: () => import('./views/customer/outside-edit.vue'),
           meta: { requireAuth: true },
         },
         {/**客服接单-投诉列表 */
@@ -236,27 +216,6 @@ export default new Router({
           component: () => import('./views/customer/order.vue'),
           meta: { requireAuth: true },
         },
-        // {/**修改合同-合同列表 */
-        //   path: 'contract',
-        //   name: 'contract',
-        //   props: true,
-        //   component: () => import('./views/customer/contract.vue'),
-        //   meta: { requireAuth: true },
-        // },
-        // {/**修改合同-合同详情-出租 */
-        //   path: 'contractDetail_rent/:id',
-        //   name: 'contractDetail_rent',
-        //   props: true,
-        //   component: () => import('./views/customer/contractDetail_rent.vue'),
-        //   meta: { requireAuth: true },
-        // },
-        // {/**修改合同-合同详情-出售 */
-        //   path: 'contractDetail_sale/:id',
-        //   name: 'contractDetail_sale',
-        //   props: true,
-        //   component: () => import('./views/customer/contractDetail_sale.vue'),
-        //   meta: { requireAuth: true },
-        // },
         {/**下架搜索 */
           path: 'withdrawSearch',
           name: 'withdrawSearch',

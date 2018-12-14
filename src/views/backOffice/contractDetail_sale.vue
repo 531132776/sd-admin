@@ -911,15 +911,13 @@ export default {
                 租客：护照复印件passports，签证复印件visas，EID eids
                 买家：护照复印件passports，签证复印件visas
             */ 
-            for(let key in this.detail.ownerImgs){
-                if(key=='propertyHolderPassport' || key=="deeds"){
-    
-                }else{
-                    delete res.dataSet.ownerImgs[key]
+            this.$set(this.detail,'ownerImgs',{})
+            for(let key in res.dataSet.ownerImgs){
+                if(key=='propertyHolderPassport' ||  key=='deeds'){
+                    this.detail.ownerImgs[key] = res.dataSet.ownerImgs[key];
                 }
             }
             
-            console.log( this.detail.ownerImgs , this.detail.buyerImgs )
             this.ownerImgsPick = Object.keys(this.detail.ownerImgs)[0];
             this.buyerImgsPick = Object.keys(this.detail.buyerImgs)[0];
             let arr1 = this.ownerImgsPick?this.detail.ownerImgs[Object.keys(this.detail.ownerImgs)[0]]:[];
@@ -932,7 +930,7 @@ export default {
                 this.ownerImgsList = this.ownerImgsList.filter(v => Boolean(v.url) == true);
             }
             if(arr2){
-                arr1.forEach(ele=>{
+                arr2.forEach(ele=>{
                     this.buyerImgsList.push({url: ele})
                 })
                 this.buyerImgsList = this.buyerImgsList.filter(v => Boolean(v.url) == true);                

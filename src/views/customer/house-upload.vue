@@ -200,9 +200,6 @@
           }).catch(err => {
             this.$alert(err.message, this.$t('reminder'), {
               confirmButtonText: this.$t('confirm'),
-              callback: action => {
-                this.checkVisible = false;
-              }
             });
           })
       }
