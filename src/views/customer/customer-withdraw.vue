@@ -2,7 +2,6 @@
 <template>
   <div class="customer-withdraw">
     <div class="header d_flex flex_wrap20">
-
              <el-select v-model="pagination.status" @change="changeType" :placeholder="$t('choose')">
                  <el-option v-for="item in [{value:0,label:$t('applyObtained')},{value:2,label:$t('obtainedSuccess')},{value:null,label:$t('all')}]" :key="item.value"
                    :label="item.label" :value="item.value">
@@ -12,9 +11,6 @@
              <el-input v-model.trim="pagination.obtainedCode" @keyup.enter.native="searchComplaint" :placeholder="$t('obtainedNumber')">
                  <el-button slot="append" icon="el-icon-search"  @click="searchComplaint"></el-button>
              </el-input>
-
-             <el-button type="success" @click="setWithdraw">{{$t('obtained')}}</el-button>
-
     </div>
     <el-table
         :data="withdrawList"
@@ -25,15 +21,15 @@
         element-loading-text="loading" 
         element-loading-spinner="el-icon-loading" 
         element-loading-background="rgba(0, 0, 0, 0.8)">
-        <el-table-column prop="date" :label="$t('info')" header-align="center" align="center" width="550">
+        <el-table-column prop="date" :label="$t('info')" header-align="center" align="center" width="500">
             <template slot-scope="scope">
               <img class="float-left" v-lazy="scope.row.houseMainImg" alt="" :key="scope.row.houseMainImg">
               <div class="float-left order-detail">
-                <span class="color-primary">
+                <span class="color-primary house_number_span">
                   {{$t('obtainedNumber')}}: {{scope.row.obtainedCode}}
                 </span> 
                 <br>
-                <span>
+                <span class="house_address_span">
                   <img class="map_pic" src="../../assets/images/map.png" alt="">
                   {{scope.row.city}}{{scope.row.community}}{{scope.row.subCommunity}}{{scope.row.address}}
                 </span>
@@ -63,6 +59,9 @@
         :page-sizes="[10, 20, 30, 50]" :page-size="pagination.pageSize*1" layout="total, sizes, prev, pager, next, jumper"
         :total="pagination.total">
       </el-pagination>
+    </div>
+    <div style="text-align:center">
+        <el-button type="success" @click="setWithdraw" :style="{width: '240px'}">{{$t('obtained')}}</el-button>
     </div>
   </div>
 </template>
@@ -134,6 +133,11 @@ export default {
 }
 </script>
 <style scoped lang="less">
+  .house_number_span,
+  .house_address_span{
+    display: inline-block;
+    width: 80%;
+  }
     .customer-withdraw{
         >.header{
             margin:5px 0;

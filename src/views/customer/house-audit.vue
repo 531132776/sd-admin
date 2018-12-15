@@ -6,9 +6,14 @@
     <el-tabs v-model="auditType" @tab-click="getHouseList">
       <!-- 初审列表 -->
       <el-tab-pane :label="$t('trialHouse')" name="trial">
-        <p class="header d_flex flex_wrap20">
-
-               <el-select v-model="pagination.leaseType" @change="changeType" :placeholder="$t('choose')">
+        <div class="header d_flex flex_wrap20">
+            <el-input v-model.trim="pagination.applyCode" @keyup.enter.native="searchHouse" :placeholder="$t('UploadNumber')" style="width:380px;">
+                <el-button slot="append" icon="el-icon-search"  @click="searchHouse"></el-button>
+              </el-input>
+            </div>
+       <div class="mb-10 mt-10">
+              <el-button type="success" class="mr-10" @click="defaultData">{{$t('Defaultsort')}}</el-button>
+               <el-select class="mr-10" v-model="pagination.leaseType" @change="changeType" :placeholder="$t('choose')">
                  <el-option v-for="item in [{value:0,label:$t('Rent')},{value:1,label:$t('Sale')},{value:null,label:$t('all')}]"
                    :key="item.value" :label="item.label" :value="item.value">
                  </el-option>
@@ -19,13 +24,7 @@
                    :key="item.value" :label="item.label" :value="item.value">
                  </el-option>
                </el-select>
-
-               <el-input v-model.trim="pagination.applyCode" @keyup.enter.native="searchHouse" :placeholder="$t('UploadNumber')" >
-                 <el-button slot="append" icon="el-icon-search"  @click="searchHouse"></el-button>
-               </el-input>
-
-        </p>
-
+               </div>
         <el-table :data="trialHouseList" :header-cell-style="{'background':'#E5E5E5','color:':'#333333'}" stripe
           max-height="600" size="mini" v-loading="loading" element-loading-text="loading" element-loading-spinner="el-icon-loading"
           element-loading-background="rgba(0, 0, 0, 0.8)">
@@ -66,9 +65,15 @@
       <!-- 终审列表 -->
       <el-tab-pane :label="$t('finalHouse')" name="final">
 
-        <p class="header d_flex flex_wrap20">
+        <div class="header d_flex flex_wrap20">
+            <el-input v-model.trim="pagination.houseCode" @keyup.enter.native="searchHouse"  :placeholder="$t('UploadNumber')" style="width:380px;">
+                <el-button slot="append" icon="el-icon-search"  @click="searchHouse"></el-button>
+              </el-input>
 
-              <el-select v-model="pagination.leaseType" @change="changeType" :placeholder="$t('choose')" >
+            </div>
+            <div class="mb-10 mt-10">
+                <el-button type="success" class="mr-10" @click="defaultData">{{$t('Defaultsort')}}</el-button>
+              <el-select class="mr-10" v-model="pagination.leaseType" @change="changeType" :placeholder="$t('choose')" >
                 <el-option v-for="item in [{value:0,label:$t('Rent')},{value:1,label:$t('Sale')},{value:null,label:$t('all')}]"
                   :key="item.value" :label="item.label" :value="item.value">
                 </el-option>
@@ -79,18 +84,13 @@
                    :key="item.value" :label="item.label" :value="item.value">
                  </el-option>
                </el-select>
-
+               </div>
               <!-- <el-select v-model="pagination.applicantType" @change="ChangeApplicantType" :placeholder="$t('choose')">
                 <el-option v-for="item in [{value:'0',label:$t('CompleteOwner')},{value:'1',label:'POA上传'},{value:'',label:$t('all')}]"
                   :key="item.value" :label="item.label" :value="item.value">
                 </el-option>
               </el-select> -->
-
-              <el-input v-model.trim="pagination.houseCode" @keyup.enter.native="searchHouse"  :placeholder="$t('UploadNumber')">
-                <el-button slot="append" icon="el-icon-search"  @click="searchHouse"></el-button>
-              </el-input>
-
-        </p>
+              
         <el-table :data="finalHouseList" :header-cell-style="{'background':'#E5E5E5','color:':'#333333'}" stripe max-height="600"
           size="mini" v-loading="loading" element-loading-text="loading" element-loading-spinner="el-icon-loading"
           element-loading-background="rgba(0, 0, 0, 0.8)">
@@ -280,6 +280,21 @@
           })
           .catch(error => this.$message.error(error.message))
           .finally(() => this.loading = false);
+      },
+      defaultData(){//默认排序，清除查询条件
+        this.loading = true;
+        this.pagination = {
+            pageIndex: 1,
+            pageSize: 10,
+            total: 0,
+            leaseType: null,
+            houseCode: null,
+            applyCode:null,
+            applyTypes: "0,1,2"
+          };
+        if (this.auditType === "trial"){this.reloadTrailHouseList();}else{
+          this.reloadFinalHouseList();
+        } 
       },
       selectArea() {
         //级联选择地区

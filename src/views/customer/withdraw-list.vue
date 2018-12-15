@@ -15,15 +15,15 @@
               element-loading-text="loading" 
               element-loading-spinner="el-icon-loading" 
               element-loading-background="rgba(0, 0, 0, 0.8)">
-              <el-table-column prop="date" :label="$t('info')" header-align="center" align="center" width="400">
+              <el-table-column prop="date" :label="$t('info')" header-align="center" align="center" width="500">
                   <template slot-scope="scope">
                     <img class="float-left" v-lazy="scope.row.houseMainImg" alt="" :key="scope.row.houseMainImg">
                     <div class="float-left order-detail">
-                      <span class="color-primary">
+                      <span class="color-primary house_number_span">
                         {{$t('UploadNumber')}}: {{scope.row.houseCode}}
                       </span> 
                       <br>
-                      <span>
+                      <span class="house_address_span">
                         <img class="map_pic" src="../../assets/images/map.png" alt="">
                         {{scope.row.city}}{{scope.row.community}}{{scope.row.subCommunity}}{{scope.row.address}}
                       </span>
@@ -32,13 +32,13 @@
                     </div>
                   </template>
               </el-table-column>
-              <el-table-column prop="memberMobile" :label="$t('telephone')">
+              <el-table-column prop="memberMobile" :label="$t('telephone')" align="center">
               </el-table-column>
-              <el-table-column prop="createTime" :label="$t('SourceInfo')">
+              <el-table-column prop="createTime" :label="$t('SourceInfo')" align="center">
               </el-table-column>
-              <el-table-column prop="createTime" :label="$t('applyTime')">
+              <el-table-column prop="createTime" :label="$t('applyTime')" align="center">
               </el-table-column>
-              <el-table-column prop="nickname" :label="$t('operation')" width="100">
+              <el-table-column prop="nickname" :label="$t('operation')" width="100" align="center">
                   <template slot-scope="scope">
                     <el-button @click="view(scope.row)" type="text" size="small">{{$t('view')}}</el-button>
                   </template>
@@ -104,6 +104,11 @@
       }
       </script>
       <style scoped lang="less">
+        .house_number_span,
+        .house_address_span{
+          display: inline-block;
+          width: 80%;
+        }
           .customer-withdraw{
               >.header{
                   margin:5px 0;
