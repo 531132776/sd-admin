@@ -45,8 +45,8 @@
             </el-pagination>
         </div>
         <!-- 查看，编辑,新增 弹窗 -->
-        <el-dialog :title="$t('prompt')" :visible.sync="dialogVisible" width="60%">
-            <el-form label-width="160px" class="d_flex" :model="house" :rules="rules" ref="ruleForm" >
+        <el-dialog :title="$t('prompt')" :visible.sync="dialogVisible" width="60%" class="developerEntry_dialog">
+            <el-form label-width="160px" class="d_flex developerEntry_dialog_form" :model="house" :rules="rules" ref="ruleForm" >
                 <el-form-item prop="projectMainImg">
                     <span slot="label"> {{$t('projectImg')}}1:</span>
                     <!-- <el-upload  name="submitFile"  class="avatar-uploader" action="/api/pc/file/upload"
@@ -540,8 +540,17 @@
         .el-form.d_flex{
             flex-wrap: wrap;
             .el-form-item{
-                width: 45%;
+                width: 47%;
             }
+        }
+        .developerEntry_dialog .developerEntry_dialog_form 
+        {
+            .el-input,
+            .el-cascader,
+            .el-select{
+                width: 200px;
+            }
+            
         }
     }
 </style>

@@ -1,14 +1,18 @@
 <template>
     <div class="finance_page transaction_list">
-        <el-select class="mr-5" v-model="searchVal.orderType" @change="changeType" :placeholder="$t('PleaseSelect')" >
-            <el-option v-for="item in [{value:0,label:$t('Rent')},{value:1,label:$t('Sale')},{value:null,label:$t('all')}]" :key="item.value"
-                            :label="item.label" :value="item.value">
-            </el-option>
-        </el-select>
-
-        <el-input class="mb-10" style="width:350px;" v-model.trim="searchVal.orderCode" :placeholder="$t('PleaseEnterOrder')"  @change="searchOrder">
-            <el-button slot="append" icon="el-icon-search"  @click="searchOrder()"></el-button>
-        </el-input>
+        <div class="mb-10">
+                <el-input  style="width:350px;" v-model.trim="searchVal.orderCode" :placeholder="$t('PleaseEnterOrder')"  @change="searchOrder">
+                        <el-button slot="append" icon="el-icon-search"  @click="searchOrder()"></el-button>
+                    </el-input>
+        </div>
+        <div class="mb-10">
+                <el-button type="success" class="mr-10" @click="defaultData">{{$t('Defaultsort')}}</el-button>
+                <el-select class="mr-5" v-model="searchVal.orderType" @change="changeType" :placeholder="$t('PleaseSelect')" >
+                        <el-option v-for="item in [{value:0,label:$t('Rent')},{value:1,label:$t('Sale')},{value:null,label:$t('all')}]" :key="item.value"
+                                        :label="item.label" :value="item.value">
+                        </el-option>
+                    </el-select>
+        </div>
 
         <!-- 列表 -->
         <el-table class="tablelist_close" :fit="true"
@@ -124,7 +128,8 @@ export default {
                 pageIndex:1,
                 pageSize:10,
                 total:100,
-                payWay:null
+                orderStatus: this.$route.params.type ==0? -2:'2,3,4,5',//固定传值
+                tradingStatus :0
             }
             this.queryContractList();
         },

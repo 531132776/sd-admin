@@ -2,15 +2,19 @@
 <template>
   <div class="customer-withdraw">
     <div class="header d_flex flex_wrap20">
-             <el-select v-model="pagination.status" @change="changeType" :placeholder="$t('choose')">
-                 <el-option v-for="item in [{value:0,label:$t('applyObtained')},{value:2,label:$t('obtainedSuccess')},{value:null,label:$t('all')}]" :key="item.value"
-                   :label="item.label" :value="item.value">
-                 </el-option>
-             </el-select>
-
-             <el-input v-model.trim="pagination.obtainedCode" @keyup.enter.native="searchComplaint" :placeholder="$t('obtainedNumber')">
-                 <el-button slot="append" icon="el-icon-search"  @click="searchComplaint"></el-button>
-             </el-input>
+        <div class="mb-10" style="width:100%">
+            <el-input v-model.trim="pagination.obtainedCode" @keyup.enter.native="searchComplaint" :placeholder="$t('obtainedNumber')" style="width:380px">
+                <el-button slot="append" icon="el-icon-search"  @click="searchComplaint"></el-button>
+            </el-input>
+        </div>
+      <div class="mb-10" style="width:100%">
+          <el-button type="success" class="mr-10" @click="defaultData">{{$t('Defaultsort')}}</el-button>
+          <el-select v-model="pagination.status" @change="changeType" :placeholder="$t('choose')">
+              <el-option v-for="item in [{value:0,label:$t('applyObtained')},{value:2,label:$t('obtainedSuccess')},{value:null,label:$t('all')}]" :key="item.value"
+                :label="item.label" :value="item.value">
+              </el-option>
+          </el-select>
+      </div>
     </div>
     <el-table
         :data="withdrawList"
@@ -125,6 +129,17 @@ export default {
     },
     view(row){
       this.$router.push({name:'withdrawDetail',params:{id:row.id}});
+    },
+    defaultData(){
+      this.loading = true;
+      this.pagination = {
+        pageIndex: 1,
+        pageSize: 10,
+        total: 0,
+        status:null,
+        obtainedCode:''//下架code
+      }
+      this.loadWithdrawList();
     }
   },
   beforeMount(){

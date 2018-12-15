@@ -2,7 +2,7 @@
 <template>
     <div class="financial-borrowing-detail">
         <div class="nav">
-            <el-breadcrumb separator="/">
+            <el-breadcrumb separator-class="el-icon-arrow-right">
                 <el-breadcrumb-item :to="{  }"><span class="first-nav">{{$t('financialBorrowing')}}</span></el-breadcrumb-item>
                 <el-breadcrumb-item><span class="second-nav">{{$t('borrowingDetails')}}</span></el-breadcrumb-item>
             </el-breadcrumb>
