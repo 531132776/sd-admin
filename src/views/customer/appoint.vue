@@ -60,13 +60,13 @@
             </el-table-column>
             <el-table-column prop="createTime" :label="$t('applyTime')" header-align="center" align="center" width="260">
             </el-table-column>
-            <el-table-column :label="$t('status')" header-align="center" align="center" width="220">
+            <el-table-column :label="$t('status')" header-align="center" align="center" >
                 <template slot-scope="scope">
                     <span v-if="scope.row.standby1" class="status-success">{{$t('haveToDealWith')}}</span>
                     <span v-else class="status-fail">{{$t('untreated')}}</span>
                 </template>
             </el-table-column>
-            <el-table-column prop="nickname" :label="$t('operation')" header-align="center" align="center" width="200">
+            <el-table-column prop="nickname" :label="$t('operation')" header-align="center" align="center" >
                 <template slot-scope="scope">
                     <el-button @click="view(scope.row)" type="text" size="small" :disabled="scope.row.standby1 ? true : false">{{$t('edit')}}</el-button>
                 </template>
@@ -80,7 +80,7 @@
         </div>
         <!-- 编辑 -->
         <el-dialog :title="$t('prompt')" :visible.sync="dialogVisible" width="60%">
-            <el-form label-width="100px" class="d_flex flex_wrap">
+            <el-form label-width="180px" class="d_flex flex_wrap">
                 <el-form-item>
                     <span slot="label">{{$t('HouseNumber1')}}:</span>
                     <span >{{house.houseCode}}</span>

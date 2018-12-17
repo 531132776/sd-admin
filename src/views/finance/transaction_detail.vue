@@ -1,6 +1,6 @@
 <template>
     <div class="finance_page transaction_detail" v-if="orderDetail.order"> 
-        <el-breadcrumb separator="/">
+        <el-breadcrumb separator-class="el-icon-arrow-right">
             <el-breadcrumb-item :to="{ path:'/home/transactionList' }"><span class="">{{$t('RealEstateTransaction')}}</span></el-breadcrumb-item>
             <el-breadcrumb-item>{{$t('Detail')}}</el-breadcrumb-item>
         </el-breadcrumb>    
