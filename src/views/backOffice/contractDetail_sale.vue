@@ -614,7 +614,7 @@
                 <ul class="contract-from">
                     <li>
                         <span>owner's name:
-                            <el-input type="text" disabled v-model="detail.nameOfOwner"></el-input>
+                            <el-input type="text" disabled v-model="detail.ownerName"></el-input>
                         </span>
                         <span>estimated time: 
                         <el-date-picker
@@ -636,7 +636,7 @@
                     </li>
                     <li>
                         <span>phone:
-                            <el-input type="text" disabled v-model="detail.ownerMobile"></el-input>
+                            <el-input type="text" disabled v-model="detail.ownerPhone"></el-input>
                         </span>
                         <span>
                             appointment Meet Place:
@@ -824,7 +824,7 @@ export default {
     };
   },
   beforeMount() {
-    // this.queryDetail();
+
     if(this.$route.query.isDelivery){
         this.isDelivery = this.$route.query.isDelivery;
     }else{
@@ -839,39 +839,7 @@ export default {
       this.getContract();
   },
   methods:{
-    queryDetail(){////------------------------暂时弃用20181212
-        //   console.log(this.$route,'id'  )
-        this.$axios
-        .post(
-            "/api/pc/contract/detail",
-            this.$qs.stringify({ orderId: this.$route.query.id })
-        )
-        .then(res => {
-            if(res.dataSet.additionalTerms==null ){
-                res.dataSet.additionalTerms = [];
-            }
-            for(let k in this.detail){
-                this.detail[k] = res.dataSet[k]?res.dataSet[k]:this.detail[k];
-            }
-            this.detail.ownerMobile = res.dataSet.memberMoble;
-            this.detail.nameOfOwner = res.dataSet.memberName;
 
-            //购房人员信息
-            if(res.dataSet.memberPurchase ){
-                this.detail.nameOfBuyer = res.dataSet.memberPurchase.memberName;
-                this.detail.buyerMobile = res.dataSet.memberPurchase.phone;
-                this.detail.buyerEmail = res.dataSet.memberPurchase.email;
-                this.detail.buyerIDCardNumber = res.dataSet.memberPurchase.idCard;
-                this.detail.buyerIDCardNumber = res.dataSet.memberPurchase.idCard;
-                this.detail.buyerNationality = res.dataSet.memberPurchase.nationality;
-                this.detail.buyerIDCardNumber = res.dataSet.memberPurchase.passportNumber;
-            }
-            console.log( this.detail ,'detail;');
-
-            // console.log( this.detail ,'detail;');            
-        })
-        .catch(err => this.$message.error(err.message));
-    },
     // 获取合同信息----20181212更新
     getContract(){
         const loading = this.$loading({

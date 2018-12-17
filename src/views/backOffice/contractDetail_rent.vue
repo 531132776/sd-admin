@@ -269,7 +269,7 @@
                 <ul class="contract-from">
                     <li>
                         <span>owner's name:
-                            <el-input type="text" disabled v-model="detail.ownerName"></el-input>
+                            <el-input type="text" disabled v-model="detail.landlordName"></el-input>
                         </span>
                         <span>estimated time: 
                         <el-date-picker
@@ -290,7 +290,7 @@
                     </li>
                     <li>
                         <span>phone:
-                            <el-input type="text" disabled v-model="detail.ownerMobile"></el-input>
+                            <el-input type="text" disabled v-model="detail.landlordPhone"></el-input>
                         </span>
                         <span>
                             appointment Meet Place:
@@ -330,7 +330,8 @@ export default {
             orderType	                       :this.$route.query.orderType, //string	是合同id
             languageVersion	                   :2, //string	否	语言版本 0中文 1英文 2阿拉伯语		
             propertyUsage	                   :"industrial", //string	否	财产的使用 Industrial工业 Commercial商业 Residential住宅		
-            ownerName	                       :"", //string	否	业主名称		
+            ownerName	                       :"", //string	否	业主名称
+            ownerPhone		                   :"", //string	否	
             landlordName	                   :"", //string	否	房东名称		
             tenantName	                       :"", //string	否	租客名称		
             tenantEmail	                       :"", //string	否	租客Email		
@@ -380,8 +381,6 @@ export default {
     };
   },
   mounted(){
-
-    //   this.queryDetail();
       this.getContract();
     //   console.log( this.$route.query.id ,this.$route.query.isDelivery)
       if(this.$route.query.isDelivery){
@@ -393,38 +392,7 @@ export default {
      
   },
   methods:{
-    queryDetail(){ ////------------------------暂时弃用20181212
-        this.$axios
-        .post(
-            "/api/pc/contract/detail",
-            this.$qs.stringify({ orderId: this.$route.query.id })
-        )
-        .then(res => {
-            // this.detail = res.dataSet;
-            if(res.dataSet.additionalTerms==null ){
-                res.dataSet.additionalTerms = [];
-            }
-            for(let k in this.detail){
-                this.detail[k] = res.dataSet[k]?res.dataSet[k]:this.detail[k];
-            }
-            
-            this.detail.leaseStartDate = `${new Date(this.detail.leaseStartDate).getDate()}/${new Date(this.detail.leaseStartDate).getMonth()+1}/${new Date(this.detail.leaseStartDate).getFullYear()}`;
-            
-            this.detail.ownerMobile = res.dataSet.memberMoble;
-            this.detail.ownerName = res.dataSet.memberName;
-            this.detail.landlordName = res.dataSet.memberName;
-            this.detail.landlordPhone = res.dataSet.memberMoble;
-            //租房人员信息
-            if(res.dataSet.memberPurchase ){
-                this.detail.tenantName = res.dataSet.memberPurchase.memberName;
-                this.detail.tenantPhone = res.dataSet.memberPurchase.phone;
-                this.detail.tenantEmail = res.dataSet.memberPurchase.email;
-            }
 
-            console.log( this.detail ,'detail;');
-        })
-        .catch(err => this.$message.error(err.message));
-    },
     // 获取合同信息----20181212更新
     getContract(){
         const loading = this.$loading({

@@ -53,13 +53,9 @@
                         :on-remove="handleRemoveAvatar" 
                         :limit="10"
                         :class="mandataryCopiesImgList.length>=10?'no-uploadIcon':''"
-                        :on-preview="previewMandataryCopies">
+                        :on-preview="previewImg">
                         <i class="el-icon-plus"></i>
                     </el-upload>
-                    
-                    <el-dialog :visible.sync="dialogVisible_mandataryCopies">
-                      <img width="100%" :src="dialogImageUrl_mandataryCopies" alt="">
-                    </el-dialog>
                 </el-form-item>
                 <!--被委托人的护照 3  -->
                 <el-form-item :label="$t('principalPassportImg')" prop="mandataryPassportImg" v-if="housingApplication.applicantType===1">
@@ -70,12 +66,9 @@
                         :on-remove="handleRemoveMandataryPassportImg"
                         :limit="3"
                         :class="mandataryPassportImgList.length>=3?'no-uploadIcon':''"
-                        :on-preview="previewMandataryPassport">
+                        :on-preview="previewImg">
                         <i class="el-icon-plus"></i>
                     </el-upload>
-                    <el-dialog :visible.sync="dialogVisible_mandataryPassport">
-                      <img width="100%" :src="dialogImageUrl_mandataryPassport" alt="">
-                    </el-dialog>
                 </el-form-item>
                 <!-- 被委托人的签证 3 -->
                     <!-- <span>{{$t('clientVisaImg')}}*</span> -->
@@ -85,12 +78,9 @@
                         :on-remove="handleRemoveMandataryVisaImg"
                         :limit="3"
                         :class="mandataryVisaImgList.length>=3?'no-uploadIcon':''"
-                        :on-preview="previewMandataryVisa">
+                        :on-preview="previewImg">
                         <i class="el-icon-plus"></i>
                     </el-upload>
-                    <el-dialog :visible.sync="dialogVisible_mandataryVisa">
-                      <img width="100%" :src="dialogImageUrl_mandataryVisa" alt="">
-                    </el-dialog>
                     </el-form-item>
                 <!-- 被委托人的ID卡 4 -->
                     <!-- <span>{{$t('IDCardOfPrincipalImg')}}*</span> -->
@@ -100,12 +90,9 @@
                         :on-remove="handleRemoveMandataryIdcardImg"
                         :limit="4"
                         :class="mandataryIdcardImgList.length>=4?'no-uploadIcon':''"
-                        :on-preview="previewMandataryIdcard">
+                        :on-preview="previewImg">
                         <i class="el-icon-plus"></i>
                     </el-upload>
-                    <el-dialog :visible.sync="dialogVisible_mandataryIdcard">
-                      <img width="100%" :src="dialogImageUrl_mandataryIdcard" alt="">
-                    </el-dialog>
                     </el-form-item>
                 <!-- 房屋产权证明 3 -->
                 <el-form-item :label="$t('CertificateImg')" prop="pocImg">
@@ -115,12 +102,9 @@
                         :on-remove="handleRemovePocImg"
                         :limit="3"
                         :class="pocImgList.length>=3?'no-uploadIcon':''"
-                        :on-preview="previewPocImg">
+                        :on-preview="previewImg">
                         <i class="el-icon-plus"></i>
                     </el-upload>
-                    <el-dialog :visible.sync="dialogVisible_pocImg">
-                      <img width="100%" :src="dialogImageUrl_pocImg" alt="">
-                    </el-dialog>
                 </el-form-item>
 
                 <!-- 房屋产权人护照复印件 3 -->
@@ -131,12 +115,9 @@
                         :on-remove="handleRemoveReoPassportImg"
                         :limit="3"
                         :class="reoPassportImgList.length>=3?'no-uploadIcon':''"
-                        :on-preview="previewReoPassport">
+                        :on-preview="previewImg">
                         <i class="el-icon-plus"></i>
                     </el-upload>
-                    <el-dialog :visible.sync="dialogVisible_reoPassport">
-                      <img width="100%" :src="dialogImageUrl_reoPassport" alt="">
-                    </el-dialog>
                 </el-form-item>
 
                 <!-- 房屋户型图（选填）10 -->
@@ -147,12 +128,9 @@
                         :on-remove="handleRemoveHouseHoldImg"
                         :limit="10"
                         :class="reoPassportImgList.length>=10?'no-uploadIcon':''"
-                        :on-preview="previewHouseHold">
+                        :on-preview="previewImg">
                         <i class="el-icon-plus"></i>
                     </el-upload>
-                    <el-dialog :visible.sync="dialogVisible_houseHold">
-                      <img width="100%" :src="dialogImageUrl_houseHold" alt="">
-                    </el-dialog>
                 </el-form-item>
 
                 <!-- 房屋租赁合同 houserentalagreement 4 -->
@@ -163,12 +141,9 @@
                         :on-remove="handleRemoveletterAuthor"
                         :limit="4"
                         :class="houseRentContractImgList.length>=4?'no-uploadIcon':''"
-                        :on-preview="previewHouseRentContract">
+                        :on-preview="previewImg">
                         <i class="el-icon-plus"></i>
                     </el-upload>
-                    <el-dialog :visible.sync="dialogVisible_houseRentContract">
-                      <img width="100%" :src="dialogImageUrl_houseRentContract" alt="">
-                    </el-dialog>
                 </el-form-item>
             </div>
             <el-tabs v-model="activeName"  class="infoTabs" :stretch="false">
@@ -581,6 +556,12 @@
                 <el-button type="primary" @click="checkHouse('ruleForm',3)">{{$t('confirm')}}</el-button>
             </span>
         </el-dialog>
+
+        <!-- 图片预览 -->
+        <el-dialog :visible.sync="dialogVisible">
+          <img width="100%" :src="dialogImageUrl" alt="">
+        </el-dialog>
+
     </div>
 </template>
 <script>
@@ -938,33 +919,11 @@ export default {
       routeType:'',//路由从哪里跳转过来的,
       submitData:{},
       removeImgArr:[],
-      // 图片预览---
-      // POA复印件  mandataryCopiesImgList
-      dialogImageUrl_mandataryCopies:'',
-      dialogVisible_mandataryCopies:false,
-      // 被委托人的护照 mandataryPassportImgList
-      dialogImageUrl_mandataryPassport:'',
-      dialogVisible_mandataryPassport:false,
-      //被委托人的签证 mandataryVisaImgList
-      dialogImageUrl_mandataryVisa:'',
-      dialogVisible_mandataryVisa:false,
-      //被委托人的ID卡 mandataryIdcardImgList
-      dialogImageUrl_mandataryIdcard:'',
-      dialogVisible_mandataryIdcard:false,
-      //房屋产权证明 pocImgList
-      dialogImageUrl_pocImg:'',
-      dialogVisible_pocImg:false,
-      // 产权人护照  reoPassportImgList
-      dialogImageUrl_reoPassport:'',
-      dialogVisible_reoPassport:false,
-      //房屋户型图 houseHoldImgList
-      dialogImageUrl_houseHold:'',
-      dialogVisible_houseHold:false,
-      //房屋租赁合同  houseRentContractImg1
-      dialogImageUrl_houseRentContract:'',
-      dialogVisible_houseRentContract:false,
       defaultTime:`${new Date().getHours()<10?`0${new Date().getHours()}`:new Date().getHours()}:${new Date().getMinutes()<10?`0${new Date().getMinutes()}`:new Date().getMinutes()}:${new Date().getSeconds()<10?`0${new Date().getSeconds()}`:new Date().getSeconds()}`,
-      housingTypeDictcode:[]
+      housingTypeDictcode:[],
+      // 图片预览-------
+      dialogVisible:false,
+      dialogImageUrl:''
     };
   },
   watch: {
@@ -1477,10 +1436,7 @@ export default {
       this.handleRemove(file);
       this.$set(this.housingApplication,'mandataryCopiesImg',fileList.length>0?fileList[0].url:'');//校验图片必填
     },
-    previewMandataryCopies(file){ //预览
-      this.dialogVisible_mandataryCopies = true;
-      this.dialogImageUrl_mandataryCopies = file.url;
-    },
+
 
     //被委托人的护照 mandataryPassportImgList
     beforeUploadMandataryPassportImg() {
@@ -1495,10 +1451,6 @@ export default {
       this.mandataryPassportImgList = fileList;
       this.handleRemove(file);
       this.$set(this.housingApplication,'mandataryPassportImg',fileList.length>0?fileList[0].url:'');//校验图片必填
-    },
-    previewMandataryPassport(file){ //预览
-      this.dialogVisible_mandataryPassport = true;
-      this.dialogImageUrl_mandataryPassport = file.url;
     },
 
     //被委托人的签证 mandataryVisaImgList
@@ -1515,10 +1467,6 @@ export default {
       this.handleRemove(file);
       this.$set(this.housingApplication,'mandataryVisaImg',fileList.length>0?fileList[0].url:'');//校验图片必填
     },
-    previewMandataryVisa(file){ //预览
-      this.dialogVisible_mandataryVisa = true;
-      this.dialogImageUrl_mandataryVisa = file.url;
-    },
 
     //被委托人的ID卡 mandataryIdcardImgList
     beforeUploadMandataryIdcardImg() {
@@ -1533,10 +1481,6 @@ export default {
       this.mandataryIdcardImgList = fileList;
       this.handleRemove(file);
       this.$set(this.housingApplication,'mandataryIdcardImg',fileList.length>0?fileList[0].url:'');//校验图片必填
-    },
-    previewMandataryIdcard(file){ //预览
-      this.dialogVisible_mandataryIdcard = true;
-      this.dialogImageUrl_mandataryIdcard = file.url;
     },
 
     //产权证明 pocImgList
@@ -1556,10 +1500,6 @@ export default {
       this.handleRemove(file);
       this.$set(this.housingApplication,'pocImg',fileList.length>0?fileList[0].url:'');//校验图片必填
     },
-    previewPocImg(file){ //预览
-      this.dialogVisible_pocImg = true;
-      this.dialogImageUrl_pocImg = file.url;
-    },
 
     // 产权人护照  reoPassportImgList
     beforeUploadReoPassportImg() {
@@ -1575,10 +1515,6 @@ export default {
       this.handleRemove(file);
       this.$set(this.housingApplication,'reoPassportImg',fileList.length>0?fileList[0].url:'');//校验图片必填
     },
-    previewReoPassport(file){ //预览
-      this.dialogVisible_reoPassport = true;
-      this.dialogImageUrl_reoPassport = file.url;
-    },
 
     //房屋户型图 houseHoldImgList
     beforeUploadHouseHoldImg() {
@@ -1591,10 +1527,6 @@ export default {
     handleRemoveHouseHoldImg(file,fileList) {
       this.houseHoldImgList = fileList;
       this.handleRemove(file);
-    },
-    previewHouseHold(file){ //预览
-      this.dialogVisible_houseHold = true;
-      this.dialogImageUrl_houseHold = file.url;
     },
 
 
@@ -1612,9 +1544,11 @@ export default {
       this.handleRemove(file);
       this.$set(this.housingApplication,'houseRentContractImg',fileList.length>0?fileList[0].url:'');//校验图片必填
     },    
-    previewHouseRentContract(file){ //预览
-      this.dialogVisible_houseRentContract = true;
-      this.dialogImageUrl_houseRentContract = file.url;
+
+    // 图片预览-----------------------------------------
+    previewImg(file){ //预览
+      this.dialogVisible = true;
+      this.dialogImageUrl = file.url;
     },
 
     // 需要删除图片的fid

@@ -18,6 +18,8 @@
             </el-table-column>
             <el-table-column prop="contactWay" :label="$t('contact')" header-align="center" align="center">
             </el-table-column>
+            <el-table-column prop="email" :label="$t('email')" header-align="center" align="center">
+            </el-table-column>
         </el-table>
 
         <div class="page">
