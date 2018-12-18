@@ -233,6 +233,7 @@
                             <el-option :label="$t('halfFurniture')" value="2"></el-option>
                         </el-select>
                     </el-form-item>  
+                    
                     <!-- 房源状态 -->
                     <el-form-item v-if="housingApplication.leaseType===1" prop="isPromissoryBuild">
                         <span slot="label">{{$t('housingCondition')}}</span>
