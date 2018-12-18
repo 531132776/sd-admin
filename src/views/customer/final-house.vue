@@ -272,7 +272,7 @@
                         <!-- 房源状态 -->
                         <el-form-item v-if="housingApplication.leaseType===1" prop="isPromissoryBuild">
                             <span slot="label">{{$t('housingCondition')}}</span>
-                            <el-select v-model="housingApplication.isPromissoryBuild" :placeholder="$t('PleaseSelect')">
+                            <el-select disabled v-model="housingApplication.isPromissoryBuild" :placeholder="$t('PleaseSelect')">
                                 <el-option :label="$t('periodRoom')" :value="0"></el-option>
                                 <el-option :label="$t('existingHome')" :value="1"></el-option>
                             </el-select>
