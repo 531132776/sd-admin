@@ -133,7 +133,7 @@
                 <span>Unit Type：
                       <el-select v-model="detail.leaseType" :placeholder="$t('PleaseSelect')">
                         <el-option
-                        v-for="item in [{'value':'rent','label':$t('Rent')},{'value':'sale','label':$t('Sale')}]"
+                        v-for="item in [{'value':0,'label':$t('Rent')},{'value':1,'label':$t('Sale')}]"
                         :key="item.value"
                         :label="item.label"
                         :value="item.value">
@@ -417,7 +417,8 @@ export default {
                 res.dataSet.additionalTerms[i-1] = res.dataSet[`additionalTerm${i}`]
             }
             for(let k in this.detail){
-                this.detail[k] = res.dataSet[k]?res.dataSet[k]:this.detail[k];
+                this.detail[k] = res.dataSet[k]!==""&&res.dataSet[k]!==undefined&&res.dataSet[k]!==null?res.dataSet[k]:this.detail[k];
+                this.detail.leaseType =this.detail.leaseType!==""? +this.detail.leaseType:this.detail.leaseType;
             }
             this.detail.leasePrice = !isNaN(res.dataSet.leasePrice)?res.dataSet.leasePrice.toLocaleString('en-US'):res.dataSet.leasePrice;
 
@@ -443,7 +444,7 @@ export default {
                     this.detail.ownerImgs[key] = res.dataSet.ownerImgs[key];
                 }
             }
-            console.log( this.detail.ownerImgs )
+            // console.log( this.detail.ownerImgs )
             this.ownerImgsPick = Object.keys(this.detail.ownerImgs)[0];
             this.buyerImgsPick = Object.keys(this.detail.buyerImgs)[0];
             let arr1 = this.ownerImgsPick?this.detail.ownerImgs[Object.keys(this.detail.ownerImgs)[0]]:[];
@@ -462,7 +463,8 @@ export default {
                 this.buyerImgsList = this.buyerImgsList.filter(v => Boolean(v.url) == true);                
             }
 
-            // this.buyerImgsList = this.buyerImgsPick?this.detail.buyerImgs[Object.keys(this.detail.buyerImgs)[0]]:[];            
+            // this.buyerImgsList = this.buyerImgsPick?this.detail.buyerImgs[Object.keys(this.detail.buyerImgs)[0]]:[];     
+            console.log(this.detail)       
 
         })
         .catch(err => this.$message.error(err.message)).finally(() => loading.close());;

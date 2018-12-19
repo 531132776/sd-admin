@@ -690,21 +690,21 @@ export default {
         ],
         housingStatus: [
           {
-            required: true,
+            required: this.$route.query.memberMobile ? true : false,
             message: `${this.$t("choose")} ${this.$t("homeState")}`,
             trigger: "change"
           }
         ],
         isPromissoryBuild: [
           {
-            required: true,
+            required: this.$route.query.memberMobile ? true : false,
             message: `${this.$t("choose")} ${this.$t("housingCondition")}`,
             trigger: "change"
           }
         ],
         haveKeyValue: [
           {
-            required: true,
+            required: this.$route.query.memberMobile ? true : false,
             message: `${this.$t("choose")} ${this.$t("haveKey")}`,
             trigger: "change"
           }
@@ -813,7 +813,7 @@ export default {
         ],
         rentCustomerName: [
           {
-            required: true,
+            required: this.$route.query.memberMobile ? true : false,
             message: `${this.$t("PleaseEnter")} ${this.$t(
               "tenantsName"
             )}`,
@@ -822,7 +822,7 @@ export default {
         ],
         rentCustomerPhone: [
           {
-            required: true,
+            required: this.$route.query.memberMobile ? true : false,
             message: `${this.$t("PleaseEnter")} ${this.$t(
               "tenantsPhone"
             )}`,

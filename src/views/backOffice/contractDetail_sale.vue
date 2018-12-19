@@ -222,14 +222,22 @@
             </li>
             <li>
                 <span>Property type：
-                    <el-select v-model="detail.typeOfProperty" :placeholder="$t('PleaseSelect')">
+                    <!-- <el-select v-model="detail.typeOfProperty" :placeholder="$t('PleaseSelect')">
                         <el-option
-                        v-for="item in [{'value':'rent','label':$t('Rent')},{'value':'sale','label':$t('Sale')}]"
+                        v-for="item in [{'value':0,'label':$t('Rent')},{'value':1,'label':$t('Sale')}]"
                         :key="item.value"
                         :label="item.label"
                         :value="item.value">
                         </el-option>
-                    </el-select>
+                    </el-select> -->
+
+                    <el-cascader :placeholder="$t('PleaseSelect')" 
+                        v-model="typeOfProperty" 
+                        :options="houseTypeMap" 
+                        :props="{'label':$i18n.locale=='zh'?'itemValue':'itemValueEn','children':'sub',value:'id'}"
+                        filterable
+                        :show-all-levels="false" >
+                    </el-cascader>
                 </span> 
                 <span>Project Name：<el-input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.subCommunity"></el-input></span>
             </li>
@@ -246,7 +254,7 @@
             </li>
             <li>
                 <span>Type Of Sale：<el-input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.typeofSale"></el-input></span> 
-                <span>NOC from Developer：<el-input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.NOCFromDeveloper"></el-input></span>
+                <span>NOC from Developer：<el-input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.nOCFromDeveloper"></el-input></span>
             </li>
         </ul>
 
@@ -403,7 +411,7 @@
                 <span>Mortgage Level：<el-input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.mortgageLevel"></el-input></span>  
             </li>
             <li>
-                <span>NOC Attachred：<el-input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.NOCAttachred"></el-input></span>  
+                <span>NOC Attachred：<el-input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.nOCAttachred"></el-input></span>  
             </li>
         </ul>
 
@@ -744,7 +752,7 @@ export default {
             subCommunity	                   :"", //string	否			
             masterDevelpoerName	               :"", //string	否			
             communityNumber	                   :"", //string	否			
-            NOCFromDeveloper	               :"", //string	否			
+            nOCFromDeveloper	               :"", //string	否			
             listedPrice	                       :"", //string	否			
             paidAmount	                       :"", //string	否			
             serviceCharge	                   :"", //string	否			
@@ -781,7 +789,7 @@ export default {
             mortgagePeriodFrom	               :"", //string	否			
             mortgagePeriodTo	               :"", //string	否			
             mortgageLevel	                   :"", //string	否			
-            NOCAttachred	                   :"", //string	否			
+            nOCAttachred	                   :"", //string	否			
             propertyRented	                   :"", //string	否			
             numberOfRentedProperties	       :"", //string	否			
             ownerNameEnglish	               :"", //string	否			
@@ -819,7 +827,21 @@ export default {
         ownerImgsPick:'',
         buyerImgsPick:'',
         dialogVisible:false,
-        dialogImageUrl:''
+        dialogImageUrl:'',
+        //房屋类型   
+        houseTypeMap: [
+            {   id:0,
+                itemValue: "商用",
+                itemValueEn: "commercial",
+                sub:[]
+            },
+            {   id:1,
+                itemValue: "非商用",
+                itemValueEn: "Non-commercial",
+                sub:[]
+            }
+        ],
+        typeOfProperty:[]
 
     };
   },
@@ -837,6 +859,12 @@ export default {
   },
   mounted(){
       this.getContract();
+      console.log(this.detail.orderId)
+  },
+  watch:{
+    typeOfProperty(val){
+        this.$set(this.detail, 'typeOfProperty', val[1]);
+    }
   },
   methods:{
 
@@ -864,8 +892,13 @@ export default {
                 res.dataSet.additionalTerms[i-1] = res.dataSet[`additionalTerm${i}`]
             }
             for(let k in this.detail){
-                this.detail[k] = res.dataSet[k]?res.dataSet[k]:this.detail[k];
+                // this.detail[k] = res.dataSet[k]?res.dataSet[k]:this.detail[k];
+                this.detail[k] = res.dataSet[k]!==""&&res.dataSet[k]!==undefined&&res.dataSet[k]!==null?res.dataSet[k]:this.detail[k];      
+                
+                this.detail.typeOfArea = this.detail.typeOfArea!==""? +this.detail.typeOfArea:this.detail.typeOfArea;
             }
+            console.log(this.detail.estimatedTime)
+            this.getHouseTypeMap();
             
             if(res.dataSet.signDay ){
                 this.signDate = `${res.dataSet.signYear}-${res.dataSet.signMonth}-${res.dataSet.signDay}`;
@@ -879,6 +912,7 @@ export default {
                 租客：护照复印件passports，签证复印件visas，EID eids
                 买家：护照复印件passports，签证复印件visas
             */ 
+
             this.$set(this.detail,'ownerImgs',{})
             for(let key in res.dataSet.ownerImgs){
                 if(key=='propertyHolderPassport' ||  key=='deeds'){
@@ -1079,7 +1113,27 @@ export default {
     imgPreview(file){
         this.dialogVisible = true;
         this.dialogImageUrl = file.url;
-    } 
+    },
+    getHouseTypeMap(){ //获取房屋类型
+        this.$axios.post('/api/pc/dict/get/1' 
+          ).then(res=>{
+              if(res.result==0){
+                    let arr = res.dataSet.items;
+                    if( arr && arr!=0){
+                            arr.forEach(ele=>{
+                            this.houseTypeMap[ele.standby1].sub.push(ele);//房屋类型;
+                        })
+                    }
+                    arr.forEach(ele=>{
+                        if(ele.id == this.detail.typeOfProperty){
+                        this.typeOfProperty = [+ele.standby1,+this.detail.typeOfProperty];//商用，非商用的区别              
+                        }
+                    })
+
+                    console.log( this.houseTypeMap )
+              }
+          }).catch(err => this.$message.error(err.message));
+    }
   }
 };
 </script>
