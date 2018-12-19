@@ -563,7 +563,14 @@
             <li>12.The "buyer" acknowledges that he inspected and previewed the property and agreed to buy it on its current condition .</li>
             <li>13.By signing this contract from the first party, the "seller" hereby confirms and undertakes that he is the current owner of the property or his legal representative under legal power of attorney duly authorized by the competent authorities.</li>
             <li>14.The parties agree to consider any conditions or clauses contained in any other document or agreement in a manner contrary to what is explicitly agreed in this contract is not valid against them, and will not arrange any rights or obligations for any party against the other party.</li>
-            <li>15.The "seller" undertakes to hand over the property to the "buyer" on the date of transfer as it previewed when signing the contract, along with any cheques or cash payments arising from lease agreements – if any - from &nbsp;&nbsp;&nbsp;  / &nbsp;&nbsp;&nbsp;  / .</li>
+            <li>15.The "seller" undertakes to hand over the property to the "buyer" on the date of transfer as it previewed when signing the contract, along with any cheques or cash payments arising from lease agreements – if any - from 
+                <el-date-picker
+                    format="dd/MM/yyyy"
+                    v-model="detail.transferDate"
+                    type="date"
+                    :placeholder="$t('PleaseSelect')"
+                    value-format="yyyy-MM-dd">
+                </el-date-picker></li>
             <li>16.By signing this contract, both parties approve that they agreed all its terms conditions.</li>
             <li>17.This contract is governed by and shall be construed in accordance with the local and federal laws applicable within the Emirate of Dubai</li>
             <li>18.Any dispute arising in connection with this contract or its interpretation shall be resolved amicably between the parties within (7) seven days from the date of notification by one party to the other regarding the dispute, in the case if the parties unable to reach an amicable solution, the dispute shall be referred to the competent courts in the Emirate of Dubai.The address of each party in this contract will be consider as his chosen address in this regard.</li>
