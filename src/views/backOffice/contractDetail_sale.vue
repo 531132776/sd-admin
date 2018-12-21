@@ -1055,9 +1055,9 @@ export default {
         // console.log(val,this.signDate);
         this.signDate = val;
         console.log( val )
-        this.detail.signYear = val.split('/')[2];
-        this.detail.signMonth = val.split('/')[1];
-        this.detail.signDay = val.split('/')[0];
+        this.detail.signYear = val.split('-')[0];
+        this.detail.signMonth = val.split('-')[1];
+        this.detail.signDay = val.split('-')[2];
     },
     getTESTtime(val){
         // 48小时内

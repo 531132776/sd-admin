@@ -1374,6 +1374,7 @@ export default {
       // 如果是客服直接上传，需要传memberId
       if(this.$route.query.memberMobile){
         this.submitData.memberId = this.$route.query.memberId;
+        this.submitData.applyType = 1
       }
       // POA复印件  mandataryCopiesImgList
       this.handleDataOfImg( this.mandataryCopiesImgList,10,'mandataryCopiesImg' );

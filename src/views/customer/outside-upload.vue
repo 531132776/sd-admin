@@ -119,6 +119,7 @@
                     appointmentDoorTime: '',
                     leaseType:'',
                     contacts:'',
+                    applyType:2
                 },
                 rules:{
                     leaseType: [{required: true, message: `${this.$t("choose")}`,trigger: "change"}],
