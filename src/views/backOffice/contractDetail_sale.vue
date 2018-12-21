@@ -197,7 +197,13 @@
         <div class="color-bar">THE PROPERTY DETAILS</div>
         <ul class="contract-from">
             <li>
-                <span>Unit Status：<el-input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.propertyStatus"></el-input></span>  
+                <span>Unit Status：
+                    <!-- <el-input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.propertyStatus"></el-input> -->
+                    <el-select v-model="detail.propertyStatus" :placeholder="$t('PleaseSelect')">
+                            <el-option :label="$t('periodRoom')" :value="0"></el-option>
+                            <el-option :label="$t('existingHome')" :value="1"></el-option>
+                        </el-select>
+                </span>  
                 <span>Plot Number：<el-input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.plotNumber"></el-input></span>  
             </li>
             <li>
@@ -903,6 +909,7 @@ export default {
                 this.detail[k] = res.dataSet[k]!==""&&res.dataSet[k]!==undefined&&res.dataSet[k]!==null?res.dataSet[k]:this.detail[k];      
                 
                 this.detail.typeOfArea = this.detail.typeOfArea!==""? +this.detail.typeOfArea:this.detail.typeOfArea;
+                this.detail.propertyStatus = this.detail.propertyStatus!==""? +this.detail.propertyStatus:this.detail.propertyStatus;
             }
             console.log(this.detail.estimatedTime)
             this.getHouseTypeMap();
