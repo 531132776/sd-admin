@@ -3,7 +3,7 @@
 
         <div class="header d_flex flex_wrap20">
 
-                    <el-input v-model.trim="pagination.telephone" :placeholder="$t('search')" @change="search">
+                    <el-input v-model.trim="pagination.telephone" :placeholder="$t('search')" @change="search" :style="{width: '380px'}">
                         <el-button slot="append" icon="el-icon-search"  @click="search()"></el-button>
                     </el-input>
 

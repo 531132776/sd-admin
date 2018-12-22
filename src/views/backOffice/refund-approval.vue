@@ -1,15 +1,18 @@
 <template>
     <div class="refund-approval">
-
+        <div>
+            <el-input v-model.trim="pagination.orderCode" :placeholder="$t('search')" @change="search" :style="{width: '380px'}">
+                <el-button slot="append" icon="el-icon-search"  @click="search()"></el-button>
+            </el-input>
+        </div>
         <div class="header d_flex flex_wrap20">
-                    <el-select v-model="pagination.orderType" @change="changeStatus" :placeholder="$t('choose')">
-                        <el-option :label="$t('Rent')" :value="0"></el-option>
-                        <el-option :label="$t('Sale')" :value="1"></el-option>
-                        <el-option :label="$t('all')" :value="null"></el-option>
-                    </el-select>
-                    <el-input v-model.trim="pagination.orderCode" :placeholder="$t('search')" @change="search">
-                        <el-button slot="append" icon="el-icon-search"  @click="search()"></el-button>
-                    </el-input>
+            <el-button type="success" class="mr-10" @click="defaultData">{{$t('Defaultsort')}}</el-button>
+            <el-select v-model="pagination.orderType" @change="changeStatus" :placeholder="$t('choose')">
+                <el-option :label="$t('Rent')" :value="0"></el-option>
+                <el-option :label="$t('Sale')" :value="1"></el-option>
+                <el-option :label="$t('all')" :value="null"></el-option>
+            </el-select>
+                    
         </div>
         <el-table :data="refundApprovalList" :header-cell-style="{'background':'#E5E5E5','color:':'#333333'}" stripe max-height="600"
             size="mini" v-loading="loading" element-loading-text="loading" element-loading-spinner="el-icon-loading"
@@ -93,6 +96,17 @@
                         this.pagination.total = res.pageInfo ? res.pageInfo.total : 0;
                     }).catch(err => this.$message.error(err.message))
                     .finally(() => this.loading = false);
+            },
+            defaultData(){ //默认排序，清除查询条件
+                this.loading = true;
+                this.pagination = {
+                    orderType: null,
+                    pageIndex: 1,
+                    pageSize: 10,
+                    total: 0,
+                    orderCode: null
+                };
+                this.loadRefundApprovalListList();
             },
             changeStatus() {
                 this.loading = true;

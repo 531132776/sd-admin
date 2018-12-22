@@ -24,7 +24,7 @@
                 </el-tabs>  
 
                 <template v-if="moduleType==0 &&searchVal.type==0　|| moduleType==1 || moduleType==2">
-                    <el-button type="success" @click="refreshList(null)">Default sort</el-button>
+                    <el-button type="success" @click="refreshList(null)">{{$t('Defaultsort')}}</el-button>
                     <el-button  class="mr-10" @click="refreshList(0)">{{$t('Rent')}}</el-button>
                     <el-button  class="mr-10" @click="refreshList(1)">{{$t('Sale')}}</el-button>                     
                 </template>

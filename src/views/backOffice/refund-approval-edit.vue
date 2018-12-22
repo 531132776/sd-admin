@@ -2,7 +2,7 @@
 <template>
     <div class="edit-progress">
         <div class="nav">
-            <el-breadcrumb separator="/">
+            <el-breadcrumb separator-class="el-icon-arrow-right">
                 <el-breadcrumb-item :to="{ path:'/home/refundApproval' }"><span class="first-nav">{{$t('refund')}}</span></el-breadcrumb-item>
                 <el-breadcrumb-item>
                     <span class="second-nav">

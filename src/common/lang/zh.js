@@ -634,5 +634,6 @@ export default  {
             xx:'',
             xx:'',
             xx:'',
-            Defaultsort:'默认排序'
+            Defaultsort:'默认排序',
+            Clientlist:'客户列表'
 }

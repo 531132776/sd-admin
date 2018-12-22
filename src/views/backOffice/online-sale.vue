@@ -1,19 +1,18 @@
 <template>
     <div class="online-sale">
-
+        <div>
+            <el-input v-model.trim="pagination.orderCode" :placeholder="$t('search')" @change="search" :style="{width: '380px'}">
+                <el-button slot="append" icon="el-icon-search"  @click="search()"></el-button>
+            </el-input>
+        </div>
         <div class="header d_flex flex_wrap20">
-
-                    <el-select v-model="pagination.tradingStatus" @change="changeStatus" :placeholder="$t('choose')">
-                        <el-option :label="$t('tradingIn')" :value="0"></el-option>
-                        <el-option :label="$t('successfulDeal')" :value="1"></el-option>
-                        <el-option :label="$t('TransactionFailure')" :value="2"></el-option>
-                        <el-option :label="$t('all')" :value="null"></el-option>
-                    </el-select>
-
-                    <el-input v-model.trim="pagination.orderCode" :placeholder="$t('search')" @change="search">
-                        <el-button slot="append" icon="el-icon-search"  @click="search()"></el-button>
-                    </el-input>
-
+            <el-button type="success" class="mr-10" @click="defaultData">{{$t('Defaultsort')}}</el-button>
+            <el-select v-model="pagination.tradingStatus" @change="changeStatus" :placeholder="$t('choose')">
+                <el-option :label="$t('tradingIn')" :value="0"></el-option>
+                <el-option :label="$t('successfulDeal')" :value="1"></el-option>
+                <el-option :label="$t('TransactionFailure')" :value="2"></el-option>
+                <el-option :label="$t('all')" :value="null"></el-option>
+            </el-select>
         </div>
         <el-table :data="rentalList" :header-cell-style="{'background':'#E5E5E5','color:':'#333333'}" stripe max-height="600"
             size="mini" v-loading="loading" element-loading-text="loading" element-loading-spinner="el-icon-loading"
@@ -99,6 +98,19 @@
                         this.pagination.total = res.pageInfo ? res.pageInfo.total : 0;
                     }).catch(err => this.$message.error(err.message))
                     .finally(() => this.loading = false);
+            },
+            defaultData(){  //默认排序，清除查询条件
+                this.loading = true;
+                this.pagination = {
+                    orderType: 1,
+                    pageIndex: 1,
+                    pageSize: 10,
+                    total: 0,
+                    tradingStatus: null,//交易成功-失败
+                    orderCode: null,
+                    orderStatus:'0,1,2,3'
+                };
+                this.loadOnlineRentalList();
             },
             changeStatus() {
                 this.loading = true;

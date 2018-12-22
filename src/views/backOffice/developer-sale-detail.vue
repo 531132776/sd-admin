@@ -1,8 +1,14 @@
 <!-- 房源管理-房源列表 -->
 <template>
     <div class="list">
-        <p class="header">
+        <!-- <p class="header">
             <el-button @click="back">{{$t('return')}}</el-button>
+        </p> -->
+        <p>
+            <el-breadcrumb separator-class="el-icon-arrow-right">
+                <el-breadcrumb-item :to="{ path:'/home/developerSale' }"><span class="first-nav">{{$t('directSalebyDeveloper')}}</span></el-breadcrumb-item>
+                <el-breadcrumb-item><span class="second-nav">{{$t('Clientlist')}}</span></el-breadcrumb-item>
+            </el-breadcrumb>
         </p>
         <el-table :data="list" :header-cell-style="{'background':'#E5E5E5','color:':'#333333'}" stripe max-height="600"
             size="mini" v-loading="loading" element-loading-text="loading" element-loading-spinner="el-icon-loading"
@@ -114,6 +120,9 @@
                 >a {
                     color: #FFFFFF;
                     font-size:16px;
+                    width: 100%;
+                    text-align: center;
+                    line-height: 42px;
                 }
             }
 

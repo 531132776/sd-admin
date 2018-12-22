@@ -777,5 +777,6 @@ Changepassword: 'Change password',
 Originalpassworderror: 'Original password error',
 Pleaseenteryourpasswordagain:'Please enter your password again',
 Twoinconsistentpasswords:'Two inconsistent passwords',
-Defaultsort: 'Default sort'
+Defaultsort: 'Default sort',
+Clientlist: 'Client list'
 } 
