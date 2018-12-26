@@ -569,7 +569,10 @@
                             </el-col>
                             <el-col :span="1" >
                                 <el-form-item>
-                                    <span slot="label">{{$t('edit')}}</span>
+                                    <span slot="label"> 
+                                        <i v-if="autoAnswer.id">{{$t('edit')}}</i>
+                                        <i v-else>{{$t('addBtnNew')}}</i> 
+                                    </span>
                                     <el-button @click="saveAnswer(autoAnswer)" type="success" icon="el-icon-check" size="mini"
                                         circle></el-button>
                                 </el-form-item>
@@ -629,7 +632,10 @@
                             </el-col>
                             <el-col :span="1" >
                                 <el-form-item>
-                                    <span slot="label">{{$t('edit')}}</span>
+                                    <span slot="label"> 
+                                        <i v-if="autoAnswer.id">{{$t('edit')}}</i>
+                                        <i v-else>{{$t('addBtnNew')}}</i> 
+                                    </span>
                                     <el-button @click="saveAnswer(autoAnswer)" type="success" icon="el-icon-check" size="mini"
                                         circle></el-button>
                                 </el-form-item>
@@ -1085,7 +1091,7 @@
 
             },
             saveAnswer(val) {//新增保存自动应答到服务端
-                // console.log(val);
+                console.log(val);
                 //添加房源id
                 let answer = Object.assign(val, { houseId: this.$props.id, applyId: this.housingApplication.id });
                 console.log(answer);
@@ -1094,6 +1100,11 @@
                 this.$axios.post('/api/pc/house/addAutoReplySetting', this.$qs.stringify(answer))
                     .then(res => {
                         // console.log('出售新增自动应答,', res);
+                        if(val.id==""){ //新增
+                            this.$message.success('successfully added');
+                        }else{
+                            this.$message.success('successfully edited');
+                        }
                         this.getAutoAnswerList();
                     }).catch(err => this.$message.error(err.message));
             },
