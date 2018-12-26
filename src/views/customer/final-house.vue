@@ -868,42 +868,9 @@
                 ],
                 appointmentLookTime_checkall: false,
                 appointmentLookTimeStr: "",
-                      // 图片预览---
-                // POA复印件  mandataryCopiesImgList
-                dialogImageUrl_mandataryCopies:'',
-                dialogVisible_mandataryCopies:false,
-                // 被委托人的护照 mandataryPassportImgList
-                dialogImageUrl_mandataryPassport:'',
-                dialogVisible_mandataryPassport:false,
-                //被委托人的签证 mandataryVisaImgList
-                dialogImageUrl_mandataryVisa:'',
-                dialogVisible_mandataryVisa:false,
-                //被委托人的ID卡 mandataryIdcardImgList
-                dialogImageUrl_mandataryIdcard:'',
-                dialogVisible_mandataryIdcard:false,
-                //房屋产权证明 pocImgList
-                dialogImageUrl_pocImg:'',
-                dialogVisible_pocImg:false,
-                // 产权人护照  reoPassportImgList
-                dialogImageUrl_reoPassport:'',
-                dialogVisible_reoPassport:false,
-                //房屋户型图 houseHoldImgList
-                dialogImageUrl_houseHold:'',
-                dialogVisible_houseHold:false,
-                //房屋租赁合同  houseRentContractImg1
-                dialogImageUrl_houseRentContract:'',
-                dialogVisible_houseRentContract:false,
-                // 房源图片 houseSourceImgList
-                dialogImageUrl_houseSource:'',
-                dialogVisible_houseSource:false,  
-                // FormA确认图 FormAImgList
-                dialogImageUrl_FormA:'',
-                dialogVisible_FormA:false, 
 
                 // 房屋租赁代理同意书
                 rentAuthorizationSignImgList:[],
-                dialogImageUrl_rentAuthorizationSign:'',
-                dialogVisible_rentAuthorizationSign:false, 
                 housingTypeDictcode:[],
                 // 图片预览-------
                 dialogVisible:false,
@@ -1095,7 +1062,7 @@
             },
             addAnswer() {//出租模式下--->新增自动应答不超过三条
                 if (this.housingApplication.leaseType===0 && this.autoAnswerList.length >= 3) {
-                    this.$message.error('出租自动应答只能添加三条');
+                    this.$message.error('出租自动应答只能添加三条'); //现在没有提示了，无需改英文
                     return;
                 }
 
@@ -1121,6 +1088,9 @@
                 // console.log(val);
                 //添加房源id
                 let answer = Object.assign(val, { houseId: this.$props.id, applyId: this.housingApplication.id });
+                console.log(answer);
+                // return false;
+
                 this.$axios.post('/api/pc/house/addAutoReplySetting', this.$qs.stringify(answer))
                     .then(res => {
                         // console.log('出售新增自动应答,', res);
