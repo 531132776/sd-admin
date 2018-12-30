@@ -421,7 +421,7 @@ export default {
                 this.detail.leaseType =this.detail.leaseType!==""? +this.detail.leaseType:this.detail.leaseType;
             }
             this.detail.leasePrice = !isNaN(res.dataSet.leasePrice)?res.dataSet.leasePrice.toLocaleString('en-US'):res.dataSet.leasePrice;
-
+            this.detail.securityDepositAmount = this.$route.query.contractId?res.dataSet.securityDepositAmount:res.dataSet.securityDepositAmount*0.1;
             // this.detail.leasePrice = !isNaN(res.dataSet.leasePrice)?`AED${ res.dataSet.leasePrice.toLocaleString('en-US')} Only`: res.dataSet.leasePrice.indexOf('AED')!=-1?res.dataSet.leasePrice:`AED${res.dataSet.leasePrice} Only`;
 
             // if( this.detail.contractValue!="" ){

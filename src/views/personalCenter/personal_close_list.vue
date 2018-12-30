@@ -162,6 +162,8 @@ export default {
                         this.searchVal.pageSize = 10;
                         this.searchVal.total = 0;
                     }
+
+                    console.log( this.tableData  )
                     
                 })
                 .catch(err => this.$message.error(err.message));
