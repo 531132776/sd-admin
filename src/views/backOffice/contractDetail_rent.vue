@@ -312,6 +312,7 @@
 </template>
 
 <script>
+
 export default {
   data() {
     return {
@@ -421,7 +422,18 @@ export default {
                 this.detail.leaseType =this.detail.leaseType!==""? +this.detail.leaseType:this.detail.leaseType;
             }
             this.detail.leasePrice = !isNaN(res.dataSet.leasePrice)?res.dataSet.leasePrice.toLocaleString('en-US'):res.dataSet.leasePrice;
-            this.detail.securityDepositAmount = this.$route.query.contractId?res.dataSet.securityDepositAmount:res.dataSet.securityDepositAmount*0.1;
+
+            // if(this.$route.query.contractId){
+            //     if( res.dataSet.securityDepositAmount.split(',').length==1 ){
+            //         this.detail.securityDepositAmount = formatMoney( res.dataSet.securityDepositAmount )
+            //     }else{
+            //         this.detail.securityDepositAmount = res.dataSet.securityDepositAmount;
+            //     }
+            // }else{
+            //     this.detail.securityDepositAmount = formatMoney(Number(parseFloat(res.dataSet.securityDepositAmount.replace(/[^\d\.-]/g, ""))).mul(0.1)) ;
+            // }
+
+
             // this.detail.leasePrice = !isNaN(res.dataSet.leasePrice)?`AED${ res.dataSet.leasePrice.toLocaleString('en-US')} Only`: res.dataSet.leasePrice.indexOf('AED')!=-1?res.dataSet.leasePrice:`AED${res.dataSet.leasePrice} Only`;
 
             // if( this.detail.contractValue!="" ){
@@ -636,5 +648,45 @@ export default {
     }
   }
 };
+
+
+// //去除乘积浮点数
+// function mul(a, b) {
+//     var c = 0,
+//         d = a.toString(),
+//         e = b.toString();
+//     try {
+//         c += d.split(".")[1].length;
+//     } catch (f) {}
+//     try {
+//         c += e.split(".")[1].length;
+//     } catch (f) {}
+//     return Number(d.replace(".", "")) * Number(e.replace(".", "")) / Math.pow(10, c);
+// }
+
+// Number.prototype.mul = function (arg) {
+//   return mul(arg, this);
+// }
+
+// // 金额转千分位
+// function formatMoney(money) {
+//     //转为字符串 用字符串方法来实现
+//     let str = money.toString().split('.')[0];
+//     let point = money.toString().split('.')[1]?money.toString().split('.')[1]:'0';
+//     console.log(str,point)
+//     let last = '';
+//     //三位数以上的数据才进行格式化
+//     while (str.length > 3) {
+//         //每次取末三位子字符串放到一个新的空字符串里并拼接上之前的末三位
+//         //(slice第一个参数传负数，代表从尾部开始截取该个数)
+//         last = ',' + str.slice(-3) + last;
+//         //原本数组不断截掉后三位直到长度小于三个
+//         str = str.slice(0, str.length - 3);
+//     }
+//     //最后把剥完的原数组拼接上新的不断被填充的数组
+//     return str + last + `.${point}`;
+// }
+
+
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->

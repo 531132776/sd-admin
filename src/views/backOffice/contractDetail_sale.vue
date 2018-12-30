@@ -356,7 +356,7 @@
             </li>
             <li>
                 <span>ORN：
-                    <el-input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.sellerORN"></el-input>
+                    <el-input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.buyerORN"></el-input>
                 </span> 
                 <span>License Number：
                     <el-input type="text" :placeholder="$t('PleaseEnter')" v-model="detail.buyerLicenseNumber"></el-input>
@@ -907,9 +907,35 @@ export default {
             for(let k in this.detail){
                 // this.detail[k] = res.dataSet[k]?res.dataSet[k]:this.detail[k];
                 this.detail[k] = res.dataSet[k]!==""&&res.dataSet[k]!==undefined&&res.dataSet[k]!==null?res.dataSet[k]:this.detail[k];      
-                
+
                 this.detail.typeOfArea = this.detail.typeOfArea!==""? +this.detail.typeOfArea:this.detail.typeOfArea;
                 this.detail.propertyStatus = this.detail.propertyStatus!==""? +this.detail.propertyStatus:this.detail.propertyStatus;
+
+                if(this.$route.query.contractId){ //存在contractId时 将默认值置换为返回值
+                    this.detail.sellerOfficeName = res.dataSet.sellerOfficeName;	  
+                    this.detail.sellerLicenseAuthority = res.dataSet.sellerLicenseAuthority;	 
+                    this.detail.sellerORN = res.dataSet.sellerORN;	 	           
+                    this.detail.sellerFax = res.dataSet.sellerFax;	 	           
+                    this.detail.sellerAddress = res.dataSet.sellerAddress;	 	      
+                    this.detail.sellerEmail = res.dataSet.sellerEmail;	 	           
+                    this.detail.sellerAgentName = res.dataSet.sellerAgentName;	 	      
+                    this.detail.sellerBRN = res.dataSet.sellerBRN;	 	          
+                    this.detail.sellerLicenseNumber = res.dataSet.sellerLicenseNumber;	 	  
+                    this.detail.sellerPhone = res.dataSet.sellerPhone;	 	          
+                    this.detail.sellerMobile = res.dataSet.sellerMobile;	 	      
+                    this.detail.buyerOfficeName = res.dataSet.buyerOfficeName;	 	      
+                    this.detail.buyerLicenseAuthority = res.dataSet.buyerLicenseAuthority;	 
+                    this.detail.buyerORN = res.dataSet.buyerORN;	 	          
+                    this.detail.buyerFax2 = res.dataSet.buyerFax2;	 	          
+                    this.detail.buyerAddress2 = res.dataSet.buyerAddress2;	 	      
+                    this.detail.buyerEmail2 = res.dataSet.buyerEmail2;	 	          
+                    this.detail.buyerAgentName = res.dataSet.buyerAgentName;	 	      
+                    this.detail.buyerBRN = res.dataSet.buyerBRN;	 	          
+                    this.detail.buyerLicenseNumber = res.dataSet.buyerLicenseNumber;	 	  
+                    this.detail.buyerPhone2 = res.dataSet.buyerPhone2;	 	          
+                    this.detail.buyerMobile2 = res.dataSet.buyerMobile2;
+                    this.detail.buyerAgentCommission = res.dataSet.buyerAgentCommission;	 	      
+                }
             }
             console.log(this.detail.estimatedTime)
             this.getHouseTypeMap();
