@@ -1,7 +1,13 @@
 <!--PC内勤-投诉-->
 <template>
         <div class="customer-complaint">
+          <div>
+              <el-input :placeholder="$t('search')" v-model="pagination.complainCode" @change="loadcomplainList" :style="{width: '380px'}">
+                  <el-button slot="append" icon="el-icon-search"  @click="loadcomplainList()"></el-button>
+                </el-input>
+          </div>
           <div class="header d_flex flex_wrap20">
+                <el-button type="success" class="mr-10" @click="defaultData">{{$t('Defaultsort')}}</el-button>
                 <el-select v-model="pagination.leaseType" @change="loadcomplainList" :placeholder="$t('choose')">
                   <el-option v-for="item in [{value:0,label:$t('Rent')},{value:1,label:$t('Sale')},{value:null,label:$t('all')}]" :key="item.value"
                     :label="item.label" :value="item.value">
@@ -14,9 +20,7 @@
                   </el-option>
                 </el-select> -->
 
-                <el-input :placeholder="$t('search')" v-model="pagination.complainCode" @change="loadcomplainList">
-                  <el-button slot="append" icon="el-icon-search"  @click="loadcomplainList()"></el-button>
-                </el-input>
+                
 
           </div>
           <div class="body">
@@ -84,6 +88,18 @@
                   this.pagination.total = res.pageInfo?res.pageInfo.total:0;
                 }).catch(err => this.$message.error(err.message))
                 .finally(() => this.loading = false);
+            },
+            defaultData(){  //默认排序，清除查询条件
+                this.loading = true;
+                this.pagination = {
+                  pageIndex: 1,
+                  pageSize: 10,
+                  total: 0,
+                  leaseType: null,//出租-出售
+                  source: null,//内部-外部,
+                  complainCode:''
+                }
+                this.loadcomplainList()
             },
             changeType() {//切换出租-出售
       
