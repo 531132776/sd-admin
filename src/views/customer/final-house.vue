@@ -311,7 +311,7 @@
                         <span slot="label">{{$t('tenantsPhone')}}</span>
                         <el-input v-model="housingApplication.rentCustomerPhone"></el-input>
                     </el-form-item>
-                    <el-row class="add_multiple_check_all">
+                    <el-row class="add_multiple_check_all" style="width:100%;">
                         <el-col :span="20">
                             <!-- 业主设置预约时间 -->
                             <!-- 

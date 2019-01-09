@@ -275,7 +275,7 @@
                         <span slot="label">{{$t('tenantsPhone')}}</span>
                         <el-input :disabled="this.$route.query.memberMobile ? false : true" v-model="housingApplication.rentCustomerPhone"></el-input>
                     </el-form-item>
-                    <el-row class="add_el_row">
+                    <el-row class="add_el_row" style="width:100%">
                         <el-col :span="20">
                             <!-- 业主设置预约时间 -->
 
