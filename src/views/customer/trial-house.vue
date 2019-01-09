@@ -206,7 +206,7 @@
                     </el-form-item>
                     <!-- 面积 -->
                     <el-form-item prop="houseAcreage">
-                        <span slot="label">{{$t('area')}}</span>
+                        <span slot="label">{{$t('buildingArea')}}</span>
                         <el-input v-model="housingApplication.houseAcreage" type="number"></el-input>
                     </el-form-item>
                     <!-- 车位 -->
@@ -315,7 +315,7 @@
                     <el-row class="add_el_row">
                         <el-col :span="20">
                             <el-form-item>
-                                <span slot="label">{{$t('houseingFacilities')}}</span>
+                                <span slot="label">{{$t('housingAllocationA')}}</span>
                                 <el-select v-model="houseSelfContainedDict" multiple :placeholder="$t('PleaseSelect')" style="width:800px;">
                                     <el-option v-for="item in houseMatchingMap" :key="item.id" :label="$i18n.locale=='zh'?item.itemValue:item.itemValueEn"
                                         :value="item.id">
@@ -327,7 +327,7 @@
                     <el-row class="add_el_row">
                         <el-col :span="20">
                             <el-form-item>
-                                <span slot="label">{{$t('housingAllocation')}}</span>
+                                <span slot="label">{{$t('housingAllocationB')}}</span>
                                 <el-select v-model="houseConfigDict" multiple :placeholder="$t('PleaseSelect')" style="width:800px;">
                                     <el-option v-for="item in houseConfigureMap" :key="item.id" :label="$i18n.locale=='zh'?item.itemValue:item.itemValueEn"
                                         :value="item.id">
@@ -343,15 +343,15 @@
                         <span slot="label">{{$t('payNode')}}</span>
                         <el-select v-model="housingApplication.payNode">
                           <!-- 一张支票 -十二月一付 1 -->
-                            <el-option label="One payments a year" :value="1"></el-option>
+                            <el-option label="1 Cheque" :value="1"></el-option>
                           <!-- 两张张支票 -六月一付 2 --> 
-                            <el-option label="Two payments a year" :value="2"></el-option>
+                            <el-option label="2 Cheques" :value="2"></el-option>
                           <!-- 四张支票 -三月一付 4 -->
-                            <el-option label="four payments a year" :value="4"></el-option>
+                            <el-option label="4 Cheques" :value="4"></el-option>
                           <!-- 六张支票 -二月一付 6 -->
-                            <el-option label="Six payments a year" :value="6"></el-option>
+                            <el-option label="6 Cheques" :value="6"></el-option>
                           <!-- 十二张支票 -一月一付 12 -->
-                            <el-option label="Twelve Payment per Year" :value="12"></el-option>
+                            <el-option label="12 Cheques" :value="12"></el-option>
                         </el-select>
                     </el-form-item>
                     <el-form-item prop="beginRentDate">
@@ -587,12 +587,12 @@ export default {
       houseTypeMap: [
         {   id:0,
             itemValue: "商用",
-            itemValueEn: "commercial",
+            itemValueEn: this.$t('CommercialProperty'),
             sub:[]
         },
         {   id:1,
             itemValue: "非商用",
-            itemValueEn: "Non-commercial",
+            itemValueEn: this.$t('ResidentionalProperty'),
             sub:[]
         }
       ], 
@@ -726,7 +726,7 @@ export default {
         houseAcreage: [
           {
             required: true,
-            message: `${this.$t("PleaseEnter")} ${this.$t("area")}`,
+            message: `${this.$t("PleaseEnter")} ${this.$t("buildingArea")}`,
             trigger: "blur"
           }
         ],

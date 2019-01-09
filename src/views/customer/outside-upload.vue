@@ -92,12 +92,12 @@
                 houseTypeMap: [
                     {   id:0,
                         itemValue: "商用",
-                        itemValueEn: "commercial",
+                        itemValueEn: this.$t('CommercialProperty'),
                         sub:[]
                     },
                     {   id:1,
                         itemValue: "非商用",
-                        itemValueEn: "Non-commercial",
+                        itemValueEn: this.$t('ResidentionalProperty'),
                         sub:[]
                     }
                 ],//房屋类型

@@ -316,6 +316,8 @@ export default  {
             FormAconfirm:'FormA确认',
             houserentalagreement:'房屋租赁合同',
             housingLeasingAgency: '房屋租赁代理同意书',
+            CommercialProperty:"商用Commercial property",
+            ResidentionalProperty:"非商用Residentional property",
 
             //housingLeasingAgency
             
@@ -341,8 +343,8 @@ export default  {
             withFurniture:'带家具', 
             withNoFurniture:'不带家具',
             halfFurniture:'半家具',
-            houseingFacilities:'房源配套',
-            housingAllocation:'房源配置',
+            housingAllocationA:'房屋配置A',
+            housingAllocationB:'房屋配置B',
             rentInformation:'租金信息',
             payNode:'支付节点',
             rentStartDate:'起租日期',
@@ -355,7 +357,6 @@ export default  {
             maxSaleAmount:'最高售价',
             otherContactMethods:'其它联系方式',
             checkAll:'全选',
-            //email:'邮箱',
             approved:'审核通过',
             auditFail:'审核不通过',
             autoAnswer:'自动应答',
@@ -397,7 +398,7 @@ export default  {
             SalesmanHandling:'处理中',
             processingComplete:'处理完成',
             closed:'已关单',
-            haveKey:'是否有钥匙',
+            haveKey:'钥匙归属',
 
             /** PC后台管理-补充 */
             ad:'广告',
