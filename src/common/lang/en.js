@@ -457,7 +457,7 @@ cancel: 'Cancel',
 confirm:'confirm',
 // MeetingTime: 'Meeting time'
 // MeetingSpot: 'Meeting place'
-housingAssociation : 'Customer ID', //1.9修改 Listing associated 
+housingAssociation : "Owner's Mobile", //1.9修改 Listing associated 
 // owner: 'Owner'
 copyOfPOAImg: 'POA copy',
 principalPassportImg: 'Passport of the POA',
