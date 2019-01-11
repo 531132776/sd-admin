@@ -19,14 +19,16 @@ export default new Vuex.Store({
     getPermission(state){
         if(state.permission.length==0){
           state = JSON.parse(localStorage.getItem('store')) 
+        }else{
+          return state.permission;
         }
-        return state.permission;
     },
     getPermissionList(state){
       if(state.permissionList.length==0){
         state = JSON.parse(localStorage.getItem('store')) 
+      }else{
+        return state.permissionList;
       }
-      return state.permissionList;
     },
     getRoutePath(state){
       return state.routePath;
