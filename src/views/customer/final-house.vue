@@ -359,8 +359,8 @@
                         <el-form-item v-if="housingApplication.leaseType===1" prop="typeOfArea">
                             <span slot="label">{{$t('typeOfArea')}}</span>
                             <el-select v-model="housingApplication.typeOfArea">
-                                <el-option label="Free Hold" :value="0"></el-option>
-                                <el-option label="Lease Hold" :value="1"></el-option>
+                                <el-option :label="$t('Freehold')" :value="0"></el-option>
+                                <el-option :label="$t('Leasehold')"  :value="1"></el-option>
                             </el-select>
                         </el-form-item>
 

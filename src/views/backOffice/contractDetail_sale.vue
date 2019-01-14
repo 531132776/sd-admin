@@ -211,7 +211,7 @@
                     <!-- detail.typeOfArea===0?"Free Hold":"Lease Hold" -->
                     <el-select v-model="detail.typeOfArea" placeholder="PleaseSelect">
                         <el-option
-                        v-for="item in [{'value':0,'label':'Free Hold'},{'value':1,'label':'Lease Hold'}]"
+                        v-for="item in [{'value':0,'label':$t('Freehold')},{'value':1,'label':$t('Leasehold')}]"
                         :key="item.value"
                         :label="item.label"
                         :value="item.value">

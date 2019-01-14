@@ -8,19 +8,37 @@
         type="datetime"
         placeholder="选择日期时间" @change="getTESTtime" value-format="yyyy-MM-dd HH:mm:ss" ref="datePicker">
         </el-date-picker>
+
         
+        <!-- PC上传图片会旋转 -->
+        <p>PC上传图片会旋转</p>
+            <el-upload
+            name="submitFile"
+            :file-list="imgList"
+            action="/api/pc/file/upload"
+            list-type="picture-card"
+            :before-upload="beforeUpLoad"
+            :on-success="handleUploadSuccess">
+            <i class="el-icon-plus"></i>
+            </el-upload>
+
     </div>
 </template>
 <script>
+import fileUtil from './fileUtil.js'
     export default{
         data(){
             return{
-                   value1:'' 
+                   value1:'' ,
+                   imageUrl:'',
+                   imgList:[]
             }
         },
-        methods:{
-            
-                getTESTtime(val){
+        mounted(){
+
+        },
+        methods:{  
+            getTESTtime(val){
                     console.log( new Date(val).getTime() - new Date().getTime() >2 * 24 * 60 * 60 * 1000  )
                     // 48小时内
                     let selectTimeStr = new Date(val).getHours()*3600 + new Date(val).getMinutes()*60 + new Date(val).getSeconds();
@@ -44,7 +62,40 @@
                          new Date().getMinutes()<10?`0${new Date().getMinutes()}`:new Date().getMinutes() ,
                          new Date().getSeconds()<10?`0${new Date().getSeconds()}`:new Date().getSeconds()
                     )
-                }
+            },
+
+            handleUploadSuccess(res,file,filelist) {
+                this.imgList = filelist;
+            },
+ 
+            UpLoadOnProgress() {},
+ 
+            UploadError() {},
+ 
+            beforeUpLoad(file) {
+                console.log(file,1)
+                return new Promise((resolve) => {
+                    fileUtil.getOrientation(file).then((orient) => {
+                        console.log( orient  )
+                        if (orient && orient === 6) {
+                            let reader = new FileReader()
+                            let img = new Image()
+                            reader.onload = (e) => {
+                                img.src = e.target.result
+                                img.onload = function () {
+                                    const data = fileUtil.rotateImage(img, img.width, img.height)
+                                    const newFile = fileUtil.dataURLtoFile(data, file.name)
+                                    resolve(newFile)
+                                }
+                            }
+                            reader.readAsDataURL(file)
+                        } else {
+                            resolve(file)
+                        }
+                    })
+                })
+            },
+
         }
     }
 </script>

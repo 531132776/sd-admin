@@ -435,7 +435,7 @@ export default new Router({
           path: 'test',
           name: 'test',
           props: true,
-          component: () => import('./views/test.vue'),
+          component: () => import('./views/test/test.vue'),
           meta: { requireAuth: true },
         },
       ]

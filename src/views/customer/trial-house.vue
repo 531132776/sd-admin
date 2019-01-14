@@ -1487,10 +1487,10 @@ export default {
 
     //产权证明 pocImgList
     beforeUploadPocImg(file) {
-      if(this.pocImgList[2]){
-          return false;
-      } 
-      else return true;
+      // if(this.pocImgList[2]){
+      //     return false;
+      // } 
+      // else return true;
     },
     handleSuccessPocImg(res,file,fileList) {
       
