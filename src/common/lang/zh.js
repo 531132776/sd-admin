@@ -638,5 +638,13 @@ export default  {
             xx:'',
             xx:'',
             Defaultsort:'默认排序',
-            Clientlist:'客户列表'
+            Clientlist:'客户列表',
+
+            // 数据统计
+            dataStatistics:'数据统计',
+            Userbehavior:'用户行为',
+            HomeSourceList:'房源总列表',
+            UserTransactionData:'用户交易数据',
+            Internalpersonneldata:'内部人员数据',
+            D_PersonalCenter:'个人中心'
 }

@@ -274,7 +274,7 @@ feedback:' feedback',
 obtained:'Off load',
 AmendingContract:'Modify contract',
 ContractList:'Contract list',
-PersonalCenter:'My Center',
+PersonalCenter:'Personal Center',
 
 trialHouse:'Initial approval',
 finalHouse:'Final approval',
@@ -780,5 +780,13 @@ Originalpassworderror: 'Original password error',
 Pleaseenteryourpasswordagain:'Please enter your password again',
 Twoinconsistentpasswords:'Two inconsistent passwords',
 Defaultsort: 'Default sort',
-Clientlist: 'Client list'
+Clientlist: 'Client list',
+
+// 数据统计
+dataStatistics:'data Statistics',
+Userbehavior:'User behavior',
+HomeSourceList:'Home Source List',
+UserTransactionData:'User Transaction Data',
+Internalpersonneldata:'Internal personnel Data',
+D_PersonalCenter:'Personal Center'
 } 

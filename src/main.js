@@ -14,11 +14,14 @@ import qs from 'qs';
 import zh from '@/common/lang/zh'
 import en from '@/common/lang/en';
 import './assets/scss/main.scss'
+import echarts from 'echarts'
 
 Vue.use(ElementUI, { locale });
 
 Vue.use(VueI18n);
 
+Vue.use(echarts)
+Vue.prototype.$echarts = echarts
 // 图片懒加载
 
 import VueLazyLoad from 'vue-lazyload'
