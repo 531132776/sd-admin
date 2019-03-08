@@ -10,7 +10,6 @@ build/.cache
 manage/assets/h_pics_control.js
 manage/sell/00.html
 *.bak
-vue.config.js
 .svn
 
 out/linecounter.txt
